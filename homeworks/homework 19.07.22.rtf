@@ -1,0 +1,785 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset204 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Sasha, [02.11.2022 22:02]\par
+// Online C++ compiler to run C++ program online\par
+#include <iostream>\par
+#include <vector>\par
+#include <cstring>\par
+#pragma warning(disable:4996);\par
+using namespace std;\par
+\par
+\par
+\par
+struct user \{\par
+  char name[255];\par
+  int id : 16;\par
+  int messize = 0;\par
+  int rconsize = 0;\par
+  char txt[255];\par
+  int missing_message = 0; //\f1\lang1049\'e1\'f3\'e4\'e5\'f2 \'ee\'f2\'e2\'e5\'f7\'e0\'f2\'fc \'e7\'e0 \'e4\'e0\'eb\'fc\'ed\'e5\'e9\'f8\'e8\'e9 \'f0\'e0\'e7\'ec\'e5\'f0 \par
+  vector<vector<char>> message;\par
+  vector<vector<char>> whomes;\par
+  vector<vector<char>> rconmessage;\par
+\par
+\};\par
+\par
+//void upgrade(user* P, char* size2, int size, bool rconf, char* mes);\par
+void upgrade(user* P, char* size2, int size, bool rconf);\par
+void add(user*& P, int& size, vector<int>& usedid, char* size2) \{\par
+  size += 1;\par
+  user* P2 = new user[size];\par
+  if (size > 1) \{\par
+    for (int i = 0; i < size - 1; i++) \{\par
+      P2[i].id = P[i].id;\par
+      P2[i].missing_message = P[i].missing_message;\par
+      strcpy(P2[i].name, P[i].name);\par
+      strcpy(P2[i].txt, P[i].txt);\par
+      P2[i].message = P[i].message;\par
+\par
+    \}\par
+  \}\par
+  delete[] P;\par
+  P = new user[size];\par
+  if (size > 1) \{\par
+    for (int i = 0; i < size - 1; i++) \{\par
+      P[i].id = P2[i].id;\par
+      P[i].missing_message = P2[i].missing_message;\par
+      strcpy(P[i].name, P2[i].name);\par
+      strcpy(P[i].txt, P2[i].txt);\par
+      P[i].message = P2[i].message;\par
+    \}\par
+  \}\par
+\par
+  cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ec\'ff\\n";\par
+  cin.getline(P[size - 1].name, 255);\par
+  P[size - 1].id = 1000 + rand() % 9999;\par
+  P[size - 1].id = 0;\par
+  P[size - 1].id = 1000 + rand() % 9999;\par
+  usedid.push_back(P[size - 1].id);\par
+  cout << "\'e0\'e9\'e4\'e8 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff " << P[size - 1].id << endl;\par
+  cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5\\n";\par
+  cin.getline(P[size - 1].txt, 255);\par
+\par
+\par
+\par
+  for (int i = 0; i < usedid.size(); i++) \{\par
+    for (int j = 0; j < size; j++) \{\par
+      if (usedid[i] == P[j].id && j != i) \{\par
+        P[size - 1].id = 1000 + rand() % 9999;\par
+        P[size - 1].id = 0;\par
+        P[size - 1].id = 1000 + rand() % 9999;\par
+\par
+      \}\par
+    \}\par
+  \}\par
+  //P[size-1].message.resize(1); //\'ef\'ee \'e4\'e5\'f4\'ee\'eb\'f2\'f3 \'ee\'e4\'ed\'ee \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5\par
+  //for (int j = 0; j < 1; j++) \{\par
+  //  P[size-1].message[j].resize(255); //\'ec\'e0\'ea\'f1 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 255\par
+  //\}\par
+  delete[] P2;\par
+  itoa(size, size2, 10);\par
+  FILE* f = fopen(strcat(size2, ".txt"), "w");\par
+  fprintf(f, "name %s id %d message to send %s", P[size - 1].name, P[size - 1].id, P[size - 1].txt);\par
+  fclose(f);\par
+\par
+\}\par
+\par
+void print(user* P, int size, char* size2) \{\par
+  for (int i = 0; i < size; i++) \{\par
+    cout << i + 1 << " \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc\\n";\par
+    cout << "\'e8\'ec\'ff:\\n";\par
+    cout << P[i].name << endl;\par
+    cout << "id:\\n";\par
+    cout << P[i].id << endl;\par
+    cout << "message:\\n";\par
+    cout << P[i].txt << endl;\par
+    if (P[i].missing_message > 0) \{\par
+\par
+      cout << "\'f3 \'e2\'e0\'f1 \'ef\'f0\'ee\'ef\'f3\'f9\'e5\'ed\'ed\'ee " << P[i].missing_message << " \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e9\\n";\par
+      cout << "\\n\'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ef\'f0\'e8\'e9\'f8\'eb\'ee: \\n";\par
+      for (int g = 0; g < P[i].message.size(); g++) \{\par
+        cout << endl;\par
+        for (int j = 0; j < P[i].message[g].size(); j++) \{\par
+          /*if (P[i].message[g][j] == '\\0')\par
+            break;*/\par
+          cout << P[i].message[g][j];\par
+        \}\par
+      \}\par
+      cout << endl;\par
+      cout << "\\n\'ea\'f2\'ee \'e2\'e0\'ec \'ef\'f0\'e8\'f1\'eb\'e0\'eb :";\par
+      for (int g = 0; g < P[i].whomes.size(); g++) \{\par
+        cout << endl;\par
+        for (int j = 0; j < P[i].whomes[g].size(); j++) \{\par
+\par
+          cout << P[i].whomes[g][j];\par
+        \}\par
+      \}\par
+\par
+\par
+\par
+\par
+      cout << "\\n \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 \'ee\'f2 \'f0\'ea\'ee\'ed:";\par
+      for (int g = 0; g < P[i].rconmessage.size(); g++) \{\par
+        cout << endl;\par
+        for (int j = 0; j < P[i].rconmessage[g].size(); j++) \{\par
+          /*if (P[i].message[g][j] == '\\0')\par
+            break;*/\par
+          cout << P[i].rconmessage[g][j];\par
+        \}\par
+      \}\par
+\par
+\par
+\par
+    \}\par
+  \}\par
+  cout << endl;\par
+\par
+\}\par
+void receive_msg(user*& P, int size, char* size2) \{\par
+  int index;\par
+  cout << "\'e2\'e8\'e1\'e5\'f0\'e8 \'ea\'e0\'ea\'ee\'e3\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ff \'ef\'ee \'f1\'ef\'e8\'f1\'ea\'f3 \'f2\'fb \'f5\'ee\'f7\'e5\'f8\'fc \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 (\'ed\'e0\'f7\'e0\'eb\'ee \'f1 1)";\par
+  cin >> index;\par
+  cin.ignore();\par
+  cout << "\\n \'ed\'ee\'e2\'ee\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'f5\'ee\'f2\'e8\'ec \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \\n";\par
+  cin.getline(P[index - 1].txt, 255);\par
+  upgrade(P, size2, size, false);\par
+\par
+Sasha, [02.11.2022 22:02]\par
+\}\par
+//void upgrade(user* P, char* size2, int size, bool rconf, char* mes) \{\par
+//  FILE* f;\par
+//  for (int i = 0; i < size; i++) \{\par
+//    P[i].rconmessage.resize(P[i].rconsize);\par
+//    for (int j = 0; j < P[i].rconsize; j++) \{\par
+//      P[i].rconmessage[j].resize(255);\par
+//    \}\par
+//  \}\par
+//  for (int i = 1; i < size; i++) \{\par
+//    itoa(i, size2, 10);\par
+//    f = fopen(strcat(size2, ".txt"), "w");\par
+//    fprintf(f, "name %s id %d message to send %s", P[i - 1].name, P[i - 1].id, P[i - 1].txt);\par
+//    fclose(f);\par
+//  \}\par
+//\par
+//\par
+//  for (int g = 0; g < size; g++) \{\par
+//    itoa(g + 1, size2, 10);\par
+//    if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) \{\par
+//      f = fopen(size2, "w");\par
+//      fprintf(f, "missing message: %d", P[g].missing_message);\par
+//      fprintf(f, "\\n");\par
+//      fputs("getting message :", f);\par
+//      fputc('\\n', f);\par
+//      for (int j = 0; j < P[g].message.size(); j++) \{\par
+//\par
+//        for (int i = 0; i < 255; i++) \{\par
+//          if (P[g].message[j][i] == '\\0')\par
+//            break;\par
+//\par
+//          fputc(P[g].message[j][i], f);\par
+//\par
+//        \}\par
+//        fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+//      \}\par
+//\par
+//      \par
+//      fputs("who send message:\\n", f);\par
+//      for (int j = 0; j < P[g].whomes.size(); j++) \{\par
+//\par
+//        for (int i = 0; i < 255; i++) \{\par
+//          if (P[g].whomes[j][i] == '\\0')\par
+//            break;\par
+//\par
+//          fputc(P[g].whomes[j][i], f);\par
+//\par
+//        \}\par
+//        fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+//      \}\par
+//      itoa(g + 1, size2, 10);\par
+//      for (int i = 0; i < size; i++) \{\par
+//        for (int j = 0; j < 255; j++) \{\par
+//          if (mes[j] == '\\0')\par
+//            break;\par
+//\par
+//          P[i].rconmessage[P[i].rconmessage.size() - 1][j] = mes[j];\par
+//        \}\par
+//      \}\par
+//\par
+//      itoa(g + 1, size2, 10);\par
+//      if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) \{\par
+//        fputs("RCON mess: \\n", f);\par
+//        for (int j = 0; j < P[g].rconmessage.size(); j++) \{\par
+//\par
+//          for (int h = 0; h < 255; h++) \{\par
+//            if (P[g].rconmessage[j][h] == '\\0')\par
+//              break;\par
+//\par
+//            fputc(P[g].rconmessage[j][h], f);\par
+//\par
+//          \}\par
+//          fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+//        \}\par
+//      \}\par
+//      fclose(f);\par
+//    \}\par
+//    else\{\par
+//      itoa(g + 1, size2, 10);\par
+//      if (fopen(strcat(strcat(size2, "(3)"), ".txt"), "r") != NULL) \{\par
+//        f = fopen(size2, "w");\par
+//        fprintf(f, "rcon missing message: %d\\n", P[g].rconsize);\par
+//        fputs("RCON mess: \\n", f);\par
+//        for (int j = 0; j < P[g].rconmessage.size(); j++) \{\par
+//\par
+//          for (int h = 0; h < 255; h++) \{\par
+//            if (P[g].rconmessage[j][h] == '\\0')\par
+//              break;\par
+//\par
+//            fputc(P[g].rconmessage[j][h], f);\par
+//\par
+//          \}\par
+//          fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+//        \}\par
+//        fclose(f);\par
+//      \}\par
+//\par
+//    \}\par
+//  \}\par
+//\}\par
+void upgrade(user* P, char* size2, int size, bool rconf) \{ // \'f1 \'e0\'ef\'e9\'e3\'f0\'e5\'f2\'e0\'ec\'e8 \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'fb \'e2\'e8\'e4\'e8\'ec\'ee \'ef\'f0\'e8\'e9\'e4\'e5\'f2\'fc\'f1\'ff \'ef\'e5\'f0\'e5\'ef\'e8\'f1\'ee\'e2\'f2\'e0\'f2\'fc\par
+  FILE* f;\par
+\par
+  for (int i = 1; i < size; i++) \{\par
+    itoa(i, size2, 10);\par
+    f = fopen(strcat(size2, ".txt"), "w");\par
+    fprintf(f, "name %s id %d message to send %s", P[i - 1].name, P[i - 1].id, P[i - 1].txt);\par
+    fclose(f);\par
+  \}\par
+\par
+\par
+  for (int g = 0; g < size; g++) \{\par
+    itoa(g + 1, size2, 10);\par
+    if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) \{\par
+      f = fopen(size2, "w");\par
+      fprintf(f, "missing message: %d", P[g].missing_message);\par
+      fprintf(f, "\\n");\par
+      fputs("getting message :", f);\par
+      fputc('\\n', f);\par
+      for (int j = 0; j < P[g].messize; j++) \{\par
+\par
+        for (int i = 0; i < 255; i++) \{\par
+          if (P[g].message[j][i] == '\\0')\par
+            break;\par
+\par
+          fputc(P[g].message[j][i], f);\par
+\par
+        \}\par
+        fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+      \}\par
+\par
+      fputs("who send message:\\n", f);\par
+      for (int j = 0; j < P[g].messize; j++) \{\par
+\par
+Sasha, [02.11.2022 22:02]\par
+for (int i = 0; i < 255; i++) \{\par
+          if (P[g].whomes[j][i] == '\\0')\par
+            break;\par
+\par
+          fputc(P[g].whomes[j][i], f);\par
+\par
+        \}\par
+        fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+      \}\par
+      fputs("RCON mess:\\n", f);\par
+      for (int j = 0; j < P[g].rconsize; j++) \{\par
+\par
+        for (int i = 0; i < 255; i++) \{\par
+          if (P[g].rconmessage[j][i] == '\\0')\par
+            break;\par
+\par
+          fputc(P[g].rconmessage[j][i], f);\par
+\par
+        \}\par
+        fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+      \}\par
+      itoa(g + 1, size2, 10);\par
+      itoa(g + 1, size2, 10);\par
+      fclose(f);\par
+    \}\par
+    else \{\par
+      itoa(g+1, size2, 10);\par
+      f = fopen(strcat(strcat(size2, "(3)"), ".txt"), "w");\par
+      fprintf(f, "rcon missing message: %d\\n", P[g].rconsize);\par
+      fputs("RCON mess:\\n", f);\par
+      for (int j = 0; j < P[g].rconsize; j++) \{\par
+\par
+        for (int h = 0; h < 255; h++) \{\par
+          if (P[g].rconmessage[j][h] == '\\0')\par
+            break;\par
+\par
+          fputc(P[g].rconmessage[j][h], f);\par
+\par
+        \}\par
+        fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+      \}\par
+      fclose(f);\par
+    \}\par
+    \}\par
+\par
+  \}                \par
+void send(user*& P, int size, char* size2) \{\par
+\par
+  int chose;\par
+  int chose2;\par
+  int num = 0; //\'e8\'ed\'e4\'e5\'ea\'f1 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f9\'e5\'e3\'ee\par
+  int num2 = 0; //\'ef\'f0\'e8\'ed\'e8\'ec\'e0\'fe\'f9\'e8\'e5\par
+\par
+  FILE* f;\par
+  int rcsize = 0;\par
+\par
+\par
+  cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ed\'e4\'e5\'ea\'f1 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f9\'e5\'e3\'ee ";\par
+  cin >> chose;\par
+  for (int i = 0; i < size; i++) \{\par
+\par
+    if (chose == P[i].id) \{\par
+      num = i;\par
+    \}\par
+  \}\par
+  cout << "\'e8\'ec\'ff \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f9\'e5\'e3\'ee " << P[num].name << endl;\par
+  cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ed\'e4\'e5\'ea\'f1 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'fe\'f9\'e8\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff ";\par
+  cin >> chose2;\par
+  for (int i = 0; i < size; i++) \{\par
+\par
+    if (chose2 == P[i].id && i != num) \{\par
+      num2 = i;\par
+    \}\par
+  \}\par
+\par
+  itoa(num2 + 1, size2, 10);\par
+  P[num2].missing_message += 1;\par
+  P[num2].messize += 1;\par
+  P[num2].message.resize(P[num2].messize);\par
+  P[num2].message[P[num2].messize - 1].resize(255); //\'ec\'e0\'ea\'f1 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 255\par
+  P[num2].whomes.resize(P[num2].messize);\par
+  P[num2].whomes[P[num2].messize - 1].resize(255); //\'ec\'e0\'ea\'f1 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 255\par
+\par
+\par
+  cout << "\'e8\'ec\'ff \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'e5\'eb\'ff " << P[num2].name << endl;\par
+  for (int i = 0; i < 255; i++) \{\par
+    if (P[num].txt[i] == '\\0') \{\par
+      break;\par
+    \}\par
+    P[num2].message[P[num2].message.size() - 1][i] = P[num].txt[i]; //1.[] - \'ea\'e0\'ea\'ee\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5  2.[] - \'f1\'e8\'ec\'e2\'ee\'eb\'fb\par
+\par
+\par
+  \}\par
+  for (int i = 0; i < 255; i++) \{\par
+    if (P[num].name[i] == '\\0') \{\par
+      break;\par
+    \}\par
+    P[num2].whomes[P[num2].whomes.size() - 1][i] = P[num].name[i]; //1.[] - \'ea\'f2\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb  2.[] - \'f1\'e8\'ec\'e2\'ee\'eb\'fb\par
+\par
+\par
+  \}\par
+  itoa(num2 + 1, size2, 10);\par
+\par
+\par
+   f = fopen(strcat(strcat(size2, "(2)"), ".txt"), "w");\par
+  fprintf(f, "missing message: %d", P[num2].missing_message);\par
+  fprintf(f, "\\n");\par
+  fclose(f);\par
+  f = fopen(size2, "a");\par
+  fputs("getting message :", f);\par
+  fputc('\\n', f);\par
+  for (int j = 0; j < P[num2].message.size(); j++) \{\par
+\par
+    for (int i = 0; i < 255; i++) \{\par
+      if (P[num2].message[j][i] == '\\0')\par
+        break;\par
+\par
+      fputc(P[num2].message[j][i], f);\par
+\par
+    \}\par
+    fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+  \}\par
+  fputs("who send message:\\n", f);\par
+  for (int j = 0; j < P[num2].whomes.size(); j++) \{\par
+\par
+    for (int i = 0; i < 255; i++) \{\par
+      if (P[num2].whomes[j][i] == '\\0')\par
+        break;\par
+\par
+      fputc(P[num2].whomes[j][i], f);\par
+\par
+    \}\par
+    fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+  \}\par
+  itoa(num2 + 1, size2, 10);\par
+  fclose(f);\par
+  strcat(size2,"(3).txt");\par
+  remove(size2);\par
+  itoa(num2 + 1, size2, 10);\par
+  \par
+  upgrade(P, size2, size, false);\par
+\}\par
+\par
+\par
+void del(user*& P, int& size) \{\par
+  int index;\par
+  user* P2 = new user[size];\par
+  cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ed\'e4\'e5\'ea\'f1";\par
+  cin >> index;\par
+\par
+\par
+\par
+  if (size > 0) \{\par
+\par
+    for (int i = 0; i < size; i++) \{\par
+      if (i > 0) \{\par
+        P2[i].id = P[i].id;\par
+        P2[i].missing_message = P[i].missing_message;\par
+        strcpy(P2[i].name, P[i].name);\par
+        strcpy(P2[i].txt, P[i].txt);\par
+        P2[i].message = P[i].message;\par
+\par
+Sasha, [02.11.2022 22:02]\par
+\}\par
+    \}\par
+    delete[]P;\par
+    P = new user[size - 1];\par
+    for (int i = 0; i < size; i++) \{\par
+      if (i == index)\par
+        continue;\par
+      if (i < index) \{\par
+        P[i].id = P2[i].id;\par
+        P[i].missing_message = P2[i].missing_message;\par
+        strcpy(P[i].name, P2[i].name);\par
+        strcpy(P[i].txt, P2[i].txt);\par
+        P[i].message = P2[i].message;\par
+      \}\par
+\par
+\par
+      if (i > index) \{\par
+        P[i - 1].id = P2[i].id;\par
+        P[i - 1].missing_message = P2[i].missing_message;\par
+        strcpy(P[i - 1].name, P2[i - 1].name);\par
+        strcpy(P[i - 1].txt, P2[i].txt);\par
+        P[i - 1].message = P2[i].message;\par
+      \}\par
+    \}\par
+\par
+\par
+\par
+  \}\par
+  delete[]P2;\par
+\par
+  size -= 1;\par
+\par
+\par
+\}\par
+void sendall(user*& P, int size, char* size2) \{\par
+\par
+  for (int i = 0; i < size; i++)\par
+    P[i].missing_message += 1;\par
+  for (int i = 0; i < size; i++)\par
+    P[i].rconsize += 1;\par
+\par
+  for (int i = 0; i < size; i++) \{\par
+    P[i].rconmessage.resize(P[i].missing_message);\par
+    for (int j = 0; j < P[i].missing_message; j++) \{\par
+      P[i].rconmessage[j].resize(255);\par
+    \}\par
+  \}\par
+  char mes[255];\par
+  cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f7\'f2\'ee \'f5\'ee\'f2\'e8\'f2\'e5 \'ee\'f2\'ef\'f0\'e0\'e2\'f2\'f2\'fc \'ee\'f2 \'e8\'ec\'e5\'ed\'e8 \'ea\'ee\'ed\'f1\'ee\'eb\'e8";\par
+  cin.ignore();\par
+  cin.getline(mes, 255);\par
+  for (int i = 0; i < size; i++) \{\par
+    for (int j = 0; j < 255; j++) \{\par
+      if (mes[j] == '\\0')\par
+        break;\par
+\par
+      P[i].rconmessage[P[i].rconsize-1][j] = mes[j];\par
+    \}\par
+  \}\par
+  FILE* f;\par
+  for (int i = 1; i < size + 1; i++) \{\par
+    itoa(i, size2, 10);\par
+    if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) \{\par
+      f = fopen(size2, "a");\par
+      fputs("RCON mess:\\n", f);\par
+      for (int j = 0; j < P[i - 1].rconmessage.size(); j++) \{\par
+\par
+        for (int h = 0; h < 255; h++) \{\par
+          if (P[i - 1].rconmessage[j][h] == '\\0')\par
+            break;\par
+\par
+          fputc(P[i - 1].rconmessage[j][h], f);\par
+\par
+        \}\par
+        fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+      \}\par
+      fclose(f);\par
+    \}\par
+    else \{\par
+      itoa(i, size2, 10);\par
+      f = fopen(strcat(strcat(size2, "(3)"), ".txt"), "a");\par
+      fprintf(f, "rcon missing message: %d\\n", P[i-1].rconsize);\par
+      fputs("RCON mess \\n:", f);\par
+      for (int j = 0; j < P[i - 1].rconmessage.size(); j++) \{\par
+\par
+        for (int h = 0; h < 255; h++) \{\par
+          if (P[i - 1].rconmessage[j][h] == '\\0')\par
+            break;\par
+\par
+          fputc(P[i - 1].rconmessage[j][h], f);\par
+\par
+        \}\par
+        fputc('\\n', f); //\'e4\'eb\'ff \'e2\'e8\'f7\'e0\'f2\'ea\'e8 \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'ee \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 \'ed\'ee\'e2\'f3\'fe\par
+      \}\par
+      fclose(f);\par
+    \}\par
+  \}\par
+  upgrade(P, size2, size, true);\par
+\par
+\par
+\}\par
+\par
+\par
+\par
+//char buffff[255]\{ "who send message:" \};\par
+//for (int j = 0; j < 255; j++) \{\par
+//  if (bufff[j] == buffff[j])\par
+//  \{\par
+//    break;\par
+//  \}\par
+//  fgets(bufff, 255, f);\par
+//  messize++;\par
+//\}\par
+//messize = P[g - 1].missing_message - (messize - 1);\par
+void checkuser(user*& P, int& size, vector<int>& usedid, char* size2) \{\par
+  char nam[255];\par
+  int id;\par
+  char tx[255];\par
+  int howmany = 0;\par
+  for (int i = 1; i < 255; i++) \{\par
+    itoa(i, size2, 10);\par
+    strcat(size2, ".txt");\par
+    if (fopen(size2, "r") != NULL) \{\par
+      size += 1;\par
+    \}\par
+    else \{\par
+      howmany += 1;\par
+    \}\par
+\par
+    if (howmany == 3)\par
+      break;\par
+\par
+\par
+  \}\par
+  delete[] P;\par
+  P = new user[size];\par
+\par
+  cout << size << " \'eb\'fe\'e4\'e5\'e9 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'fb\'f5";\par
+  FILE* f;\par
+  for (int i = 1; i < size + 1; i++) \{\par
+    itoa(i, size2, 10);\par
+    f = fopen(strcat(size2, ".txt"), "r");\par
+    if (f != NULL) \{\par
+      fscanf(f, "name %s id %d message to send %s", nam, &id, tx);\par
+      fclose(f);\par
+\par
+    \}\par
+    else \{\par
+      break;\par
+    \}\par
+    strcpy(P[i - 1].name, nam);\par
+    strcpy(P[i - 1].txt, tx);\par
+    P[i - 1].id = id;\par
+  \}\par
+  char bufff[255];\par
+  vector<int> l;\par
+  vector<int> l2;\par
+\par
+\par
+\par
+\par
+\par
+\par
+  for (int i = 1; i < size + 1; i++) \{\par
+\par
+    itoa(i, size2, 10);\par
+    if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) \{\par
+      f = fopen(size2, "r");\par
+      l.push_back(i);\par
+      fscanf(f, "missing message: %d", &(P[i - 1].missing_message));\par
+      fclose(f);\par
+\par
+Sasha, [02.11.2022 22:02]\par
+\}\par
+    else \{\par
+      itoa(i, size2, 10);\par
+      if (fopen(strcat(strcat(size2, "(3)"), ".txt"), "r") != NULL) \{\par
+        f = fopen(size2, "r");\par
+        l2.push_back(i);\par
+        fscanf(f, "rcon missing message: %d\\n", &(P[i - 1].missing_message));\par
+        P[i - 1].rconsize = P[i - 1].missing_message;\par
+        fclose(f);\par
+      \}\par
+    \}\par
+\par
+  \}\par
+  for (int m = 1; m < size + 1; m++) \{\par
+    itoa(m, size2, 10);\par
+    if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) \{\par
+      f = fopen(size2, "r");\par
+      for (int i = 0; i < size; i++) \{\par
+        P[i].message.resize(P[i].missing_message);\par
+        for (int j = 0; j < P[i].missing_message; j++) \{\par
+          P[i].message[j].resize(255);\par
+        \}\par
+      \}\par
+\par
+      for (int i = 0; i < size; i++) \{\par
+        P[i].whomes.resize(P[i].missing_message);\par
+        for (int j = 0; j < P[i].missing_message; j++) \{\par
+          P[i].whomes[j].resize(255);\par
+        \}\par
+      \}\par
+      for (int i = 0; i < size; i++) \{\par
+        P[i].rconmessage.resize(P[i].missing_message);\par
+        for (int j = 0; j < P[i].missing_message; j++) \{\par
+          P[i].rconmessage[j].resize(255);\par
+        \}\par
+      \}\par
+      fgets(bufff, 255, f);\par
+      fgets(bufff, 255, f);\par
+      char buffff[255]\{ "who send message:\\n" \};\par
+      \par
+        for (int i = 0; i < 255; i++) \{\par
+          if (bufff[i] == buffff[i])\par
+            break;\par
+          fgets(bufff, 255, f);\par
+          P[m-1].messize = i;\par
+        \}\par
+      rewind(f);\par
+      fgets(bufff, 255, f);\par
+      fgets(bufff, 255, f);\par
+      for (int i = 0; i < P[m-1].messize; i++) \{\par
+        fgets(bufff, 255, f);\par
+        \par
+        for (int j= 0; j< 255; j++) \{\par
+          if (bufff[j] == '\\n')\par
+            break;\par
+          P[m - 1].message[i][j] = bufff[j];\par
+\par
+        \}\par
+      \}\par
+\par
+\par
+      fgets(bufff, 255, f);\par
+      for (int i = 0; i < P[m - 1].messize; i++) \{\par
+        fgets(bufff, 255, f);\par
+\par
+        for (int j = 0; j < 255; j++) \{\par
+          if (bufff[j] == '\\n')\par
+            break;\par
+          P[m - 1].whomes[i][j] = bufff[j];\par
+\par
+        \}\par
+      \}\par
+      fgets(bufff, 255, f);\par
+      if (P[m - 1].missing_message != P[m - 1].messize) \{\par
+        P[m - 1].rconsize = P[m - 1].missing_message - P[m - 1].messize;\par
+        for (int j = 0; j < P[m - 1].rconsize; j++) \{\par
+          fgets(bufff, 255, f);\par
+          for (int g = 0; g < strlen(bufff); g++) \{\par
+            if (bufff[g] == '\\n')\par
+              break;\par
+            P[m - 1].rconmessage[j][g] = bufff[g];\par
+\par
+\par
+\par
+          \}\par
+        \}\par
+      \}\par
+      fclose(f);\par
+    \}\par
+    else \{\par
+      for (int i = 0; i < size; i++) \{\par
+        P[i].rconmessage.resize(P[i].missing_message);\par
+        for (int j = 0; j < P[i].missing_message; j++) \{\par
+          P[i].rconmessage[j].resize(255);\par
+        \}\par
+      \}\par
+\par
+      for (int k : l2) \{\par
+        itoa(k, size2, 10);\par
+        f = fopen(strcat(strcat(size2, "(3)"), ".txt"), "r");\par
+        fgets(bufff, 255, f);\par
+        fgets(bufff, 255, f);\par
+        for (int j = 0; j < P[k - 1].rconsize; j++) \{\par
+          fgets(bufff, 255, f);\par
+          for (int g = 0; g < 255; g++) \{\par
+            if (bufff[g] == '\\n')\par
+              break;\par
+            P[k - 1].rconmessage[j][g] = bufff[g];\par
+\par
+\par
+\par
+          \}\par
+        \}\par
+        fclose(f);\par
+      \}\par
+      cout << bufff;\par
+    \}\par
+  \}\par
+  cout << P[1].missing_message << P[1].messize << P[1].rconsize;\par
+\}\par
+int main() \{\par
+  char size2[4];\par
+  int size = 0;\par
+  user* P = new user[size];\par
+  vector<int>usedid;\par
+  srand(time(NULL));\par
+  checkuser(P, size, usedid, size2);\par
+  cout << endl;\par
+  while (true) \{\par
+    int choose;\par
+    cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f7\'f2\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc 1.\'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'ed\'ee\'e2\'ee\'e3\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ff 2.\'e2\'fb\'e2\'ee\'e4 \'ed\'e0 \'fd\'ea\'f0\'e0\'ed \'e8\'ed\'f4\'f3 \'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5 3.\'e8\'e7\'ec\'e5\'ed\'e8\'f2 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 4.\'ea\'ee\'ec\'f3 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec5.\'f3\'e4\'e0\'eb\'e5\'e3\'e8\'ed \'ef\'f0\'ee\'f4\'e8\'eb\'ff\'e5 6.\'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \'ee\'f2 \'e8\'ec\'e5\'ed\'e8 \'ea\'ee\'ed\'f1\'ee\'eb\'e8 7.\'e7\'e0\'e2\'e5\'f0\'f8\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'fb";\par
+    cin >> choose;\par
+    switch (choose)\par
+    \{\par
+    case 1:\par
+      cin.ignore();\par
+\par
+      add(P, size, usedid, size2);\par
+\par
+      break;\par
+    case 2:\par
+      print(P, size, size2);\par
+      break;\par
+    case 3:\par
+      receive_msg(P, size, size2);\par
+\par
+      break;\par
+    case 4:\par
+      send(P, size, size2);\par
+      break;\par
+    case 5:\par
+      del(P, size);\par
+      break;\par
+    case 6:\par
+      sendall(P, size, size2);\par
+\par
+      break;\par
+    case 7:\par
+      delete[]P;\par
+      exit(0);\par
+\par
+    \}\par
+\par
+  \}\par
+\}\f0\lang9\par
+}
+ 

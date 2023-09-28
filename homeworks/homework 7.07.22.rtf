@@ -1,0 +1,333 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green128\blue0;\red0\green0\blue0;\red128\green128\blue128;\red163\green21\blue21;\red0\green0\blue255;\red43\green145\blue175;\red0\green128\blue128;\red111\green0\blue138;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 // Online C++ compiler to run C++ program online\cf2\par
+\cf3 #include\cf2  \cf4 <iostream>\cf2\par
+\cf3 #include\cf2  \cf4 <vector>\cf2\par
+\cf3 #include\cf2  \cf4 <cstring>\cf2\par
+\cf3 #pragma\cf2  \cf3 warning\cf2 (\cf3 disable\cf2 :4996);\par
+\cf5 using\cf2  \cf5 namespace\cf2  std;\par
+\par
+\par
+\par
+\cf5 struct\cf2  \cf6 user\cf2  \{\par
+\tab\cf5 char\cf2  name[255];\par
+\tab\cf5 int\cf2  id : 16;\par
+\tab\cf5 char\cf2  txt[255];\par
+\tab\cf5 int\cf2  missing_message = 0; \cf1 //\f1\lang1058\'e1\'f3\'e4\'e5\'f2 \'ee\'f2\'e2\'e5\'f7\'e0\'f2\'fc \'e7\'e0 \'e4\'e0\'eb\'fc\'ed\'e5\'e9\'f8\'e8\'e9 \'f0\'e0\'e7\'ec\'e5\'f0 \cf2\par
+\tab\cf6 vector\cf2 <\cf6 vector\cf2 <\cf5 char\cf2 >> message;\par
+\tab\cf6 vector\cf2 <\cf6 vector\cf2 <\cf5 char\cf2 >> whomes;\par
+\tab\cf6 vector\cf2 <\cf6 vector\cf2 <\cf5 char\cf2 >> rconmessage;\par
+\par
+\};\par
+\par
+\par
+\cf5 void\cf2  add(\cf6 user\cf2 *& \cf3 P\cf2 , \cf5 int\cf2 & \cf3 size\cf2 , \cf6 vector\cf2 <\cf5 int\cf2 >& \cf3 usedid\cf2 ) \{\par
+\tab\cf3 size\cf2  += 1;\par
+\tab\cf6 user\cf2 * P2 = \cf5 new\cf2  \cf6 user\cf2 [\cf3 size\cf2 ];\par
+\tab\cf5 if\cf2  (\cf3 size\cf2  > 1) \{\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2  - 1; i++) \{\par
+\tab\tab\tab P2[i].id = \cf3 P\cf2 [i].id;\par
+\tab\tab\tab P2[i].missing_message = \cf3 P\cf2 [i].missing_message;\par
+\tab\tab\tab strcpy(P2[i].name, \cf3 P\cf2 [i].name);\par
+\tab\tab\tab strcpy(P2[i].txt, \cf3 P\cf2 [i].txt);\par
+\tab\tab\tab P2[i].message \cf7 =\cf2  \cf3 P\cf2 [i].message;\par
+\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf5 delete[]\cf2  \cf3 P\cf2 ;\par
+\tab\cf3 P\cf2  = \cf5 new\cf2  \cf6 user\cf2 [\cf3 size\cf2 ];\par
+\tab\cf5 if\cf2  (\cf3 size\cf2  > 1) \{\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2  - 1; i++) \{\par
+\tab\tab\tab\cf3 P\cf2 [i].id = P2[i].id;\par
+\tab\tab\tab\cf3 P\cf2 [i].missing_message = P2[i].missing_message;\par
+\tab\tab\tab strcpy(\cf3 P\cf2 [i].name, P2[i].name);\par
+\tab\tab\tab strcpy(\cf3 P\cf2 [i].txt, P2[i].txt);\par
+\tab\tab\tab\cf3 P\cf2 [i].message \cf7 =\cf2  P2[i].message;\par
+\tab\tab\}\par
+\tab\}\par
+\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ec\'ff\\n"\cf2 ;\par
+\tab cin.getline(\cf3 P\cf2 [\cf3 size\cf2  - 1].name, 255);\par
+\tab\cf3 P\cf2 [\cf3 size\cf2  - 1].id = 1000 + rand() % 9999;\par
+\tab\cf3 P\cf2 [\cf3 size\cf2  - 1].id = 0;\par
+\tab\cf3 P\cf2 [\cf3 size\cf2  - 1].id = 1000 + rand() % 9999;\par
+\tab\cf3 usedid\cf2 .push_back(\cf3 P\cf2 [\cf3 size\cf2  - 1].id);\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e0\'e9\'e4\'e8 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff "\cf2  \cf7 <<\cf2  \cf3 P\cf2 [\cf3 size\cf2  - 1].id \cf7 <<\cf2  endl;\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5\\n"\cf2 ;\par
+\tab cin.getline(\cf3 P\cf2 [\cf3 size\cf2  - 1].txt, 255);\par
+\par
+\par
+\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 usedid\cf2 .size(); i++) \{\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  j = 0; j < \cf3 size\cf2 ; j++) \{\par
+\tab\tab\tab\cf5 if\cf2  (\cf3 usedid\cf7 [\cf2 i\cf7 ]\cf2  == \cf3 P\cf2 [j].id && j != i) \{\par
+\tab\tab\tab\tab\cf3 P\cf2 [\cf3 size\cf2  - 1].id = 1000 + rand() % 9999;\par
+\tab\tab\tab\tab\cf3 P\cf2 [\cf3 size\cf2  - 1].id = 0;\par
+\tab\tab\tab\tab\cf3 P\cf2 [\cf3 size\cf2  - 1].id = 1000 + rand() % 9999;\par
+\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf1 //P[size-1].message.resize(1); //\'ef\'ee \'e4\'e5\'f4\'ee\'eb\'f2\'f3 \'ee\'e4\'ed\'ee \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5\cf2\par
+\tab\cf1 //for (int j = 0; j < 1; j++) \{\cf2\par
+\tab\cf1 //\tab P[size-1].message[j].resize(255); //\'ec\'e0\'ea\'f1 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 255\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf5 delete[]\cf2  P2;\par
+\par
+\par
+\}\par
+\par
+\cf5 void\cf2  print(\cf6 user\cf2 * \cf3 P\cf2 , \cf5 int\cf2  \cf3 size\cf2 ) \{\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\tab\tab cout \cf7 <<\cf2  i + 1 \cf7 <<\cf2  \cf4 " \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc\\n"\cf2 ;\par
+\tab\tab cout \cf7 <<\cf2  \cf4 "\'e8\'ec\'ff:\\n"\cf2 ;\par
+\tab\tab cout \cf7 <<\cf2  \cf3 P\cf2 [i].name \cf7 <<\cf2  endl;\par
+\tab\tab cout \cf7 <<\cf2  \cf4 "id:\\n"\cf2 ;\par
+\tab\tab cout \cf7 <<\cf2  \cf3 P\cf2 [i].id \cf7 <<\cf2  endl;\par
+\tab\tab cout \cf7 <<\cf2  \cf4 "message:\\n"\cf2 ;\par
+\tab\tab cout \cf7 <<\cf2  \cf3 P\cf2 [i].txt \cf7 <<\cf2  endl;\par
+\tab\tab\cf5 if\cf2  (\cf3 P\cf2 [i].missing_message > 0) \{\par
+\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf4 "\'f3 \'e2\'e0\'f1 \'ef\'f0\'ee\'ef\'f3\'f9\'e5\'ed\'ed\'ee "\cf2  \cf7 <<\cf2  \cf3 P\cf2 [i].missing_message \cf7 <<\cf2  \cf4 " \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e9\\n"\cf2 ;\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf4 "\\n\'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ef\'f0\'e8\'e9\'f8\'eb\'ee: \\n"\cf2 ;\par
+\tab\tab\tab\cf5 for\cf2  (\cf5 int\cf2  g = 0; g < \cf3 P\cf2 [i].message.size(); g++) \{\par
+\tab\tab\tab\tab cout \cf7 <<\cf2  endl;\par
+\tab\tab\tab\tab\cf5 for\cf2  (\cf5 int\cf2  j = 0; j < \cf3 P\cf2 [i].message\cf7 [\cf2 g\cf7 ]\cf2 .size(); j++) \{\par
+\tab\tab\tab\tab\tab\cf1 /*if (P[i].message[g][j] == '\\0')\cf2\par
+\cf1\tab\tab\tab\tab\tab\tab break;*/\cf2\par
+\tab\tab\tab\tab\tab cout \cf7 <<\cf2  \cf3 P\cf2 [i].message\cf7 [\cf2 g\cf7 ][\cf2 j\cf7 ]\cf2  ;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab\tab cout \cf7 <<\cf2  endl;\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf4 "\\n\'ea\'f2\'ee \'e2\'e0\'ec \'ef\'f0\'e8\'f1\'eb\'e0\'eb :"\cf2 ;\par
+\tab\tab\tab\cf5 for\cf2  (\cf5 int\cf2  g = 0; g < \cf3 P\cf2 [i].whomes.size(); g++) \{\par
+\tab\tab\tab\tab cout \cf7 <<\cf2  endl;\par
+\tab\tab\tab\tab\cf5 for\cf2  (\cf5 int\cf2  j = 0; j < \cf3 P\cf2 [i].whomes\cf7 [\cf2 g\cf7 ]\cf2 .size(); j++) \{\par
+\tab\tab\tab\tab\tab\par
+\tab\tab\tab\tab\tab cout \cf7 <<\cf2  \cf3 P\cf2 [i].whomes\cf7 [\cf2 g\cf7 ][\cf2 j\cf7 ]\cf2 ;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\par
+\par
+\par
+\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf4 "\\n\'ee\'f2 \'f0\'ea\'ee\'ed"\cf2 ;\par
+\tab\tab\tab\cf5 for\cf2  (\cf5 int\cf2  g = 0; g < \cf3 P\cf2 [i].rconmessage.size(); g++) \{\par
+\tab\tab\tab\tab cout \cf7 <<\cf2  endl;\par
+\tab\tab\tab\tab\cf5 for\cf2  (\cf5 int\cf2  j = 0; j < \cf3 P\cf2 [i].rconmessage\cf7 [\cf2 g\cf7 ]\cf2 .size(); j++) \{\par
+\tab\tab\tab\tab\tab\cf1 /*if (P[i].message[g][j] == '\\0')\cf2\par
+\cf1\tab\tab\tab\tab\tab\tab break;*/\cf2\par
+\tab\tab\tab\tab\tab cout \cf7 <<\cf2  \cf3 P\cf2 [i].rconmessage\cf7 [\cf2 g\cf7 ][\cf2 j\cf7 ]\cf2 ;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\par
+\par
+\par
+\tab\tab\}\par
+\tab\}\par
+\tab cout \cf7 <<\cf2  endl;\par
+\par
+\}\par
+\cf5 void\cf2  receive_msg(\cf6 user\cf2 *& \cf3 P\cf2 ) \{\par
+\tab\cf5 int\cf2  index;\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e8\'e1\'e5\'f0\'e8 \'ea\'e0\'ea\'ee\'e3\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ff \'ef\'ee \'f1\'ef\'e8\'f1\'ea\'f3 \'f2\'fb \'f5\'ee\'f7\'e5\'f8\'fc \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 (\'ed\'e0\'f7\'e0\'eb\'ee \'f1 1)"\cf2 ;\par
+\tab cin \cf7 >>\cf2  index;\par
+\tab cin.ignore();\par
+\tab cout \cf7 <<\cf2  \cf4 "\\n \'ed\'ee\'e2\'ee\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'f5\'ee\'f2\'e8\'ec \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \\n"\cf2 ;\par
+\tab cin.getline(\cf3 P\cf2 [index - 1].txt, 255);\par
+\par
+\par
+\}\par
+\par
+\par
+\cf5 void\cf2  send(\cf6 user\cf2 *& \cf3 P\cf2 , \cf5 int\cf2  \cf3 size\cf2 ) \{\par
+\tab\par
+\tab\cf5 int\cf2  chose;\par
+\tab\cf5 int\cf2  chose2;\par
+\tab\cf5 int\cf2  num = 0; \cf1 //\'e8\'ed\'e4\'e5\'ea\'f1 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f9\'e5\'e3\'ee\cf2\par
+\tab\cf5 int\cf2  num2 = 0; \cf1 //\'ef\'f0\'e8\'ed\'e8\'ec\'e0\'fe\'f9\'e8\'e5\cf2\par
+\par
+\par
+\par
+\par
+\par
+\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ed\'e4\'e5\'ea\'f1 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f9\'e5\'e3\'ee "\cf2 ;\par
+\tab cin \cf7 >>\cf2  chose;\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\par
+\tab\tab\cf5 if\cf2  (chose == \cf3 P\cf2 [i].id) \{\par
+\tab\tab\tab num = i;\par
+\tab\tab\}\par
+\tab\}\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e8\'ec\'ff \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f9\'e5\'e3\'ee "\cf2  \cf7 <<\cf2  \cf3 P\cf2 [num].name \cf7 <<\cf2  endl;\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ed\'e4\'e5\'ea\'f1 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'fe\'f9\'e8\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff "\cf2 ;\par
+\tab cin \cf7 >>\cf2  chose2;\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\par
+\tab\tab\cf5 if\cf2  (chose2 == \cf3 P\cf2 [i].id && i != num) \{\par
+\tab\tab\tab num2 = i;\par
+\tab\tab\}\par
+\tab\}\par
+\par
+\par
+\tab\cf3 P\cf2 [num2].missing_message += 1;\par
+\tab\cf3 P\cf2 [num2].message.resize(\cf3 P\cf2 [num2].missing_message);\par
+\tab\cf3 P\cf2 [num2].message\cf7 [\cf3 P\cf2 [num2].missing_message - 1\cf7 ]\cf2 .resize(255); \cf1 //\'ec\'e0\'ea\'f1 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 255\cf2\par
+\tab\cf3 P\cf2 [num2].whomes.resize(\cf3 P\cf2 [num2].missing_message);\par
+\tab\cf3 P\cf2 [num2].whomes\cf7 [\cf3 P\cf2 [num2].missing_message - 1\cf7 ]\cf2 .resize(255); \cf1 //\'ec\'e0\'ea\'f1 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 255\cf2\par
+\par
+\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e8\'ec\'ff \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'e5\'eb\'ff "\cf2  \cf7 <<\cf2  \cf3 P\cf2 [num2].name \cf7 <<\cf2  endl;\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < 255; i++) \{\par
+\tab\tab\cf5 if\cf2  (\cf3 P\cf2 [num].txt[i] == \cf4 '\\0'\cf2 ) \{\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf3 P\cf2 [num2].message\cf7 [\cf3 P\cf2 [num2].message.size() - 1\cf7 ][\cf2 i\cf7 ]\cf2  = \cf3 P\cf2 [num].txt[i]; \cf1 //1.[] - \'ea\'e0\'ea\'ee\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5  2.[] - \'f1\'e8\'ec\'e2\'ee\'eb\'fb\cf2\par
+\par
+\par
+\tab\}\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < 255; i++) \{\par
+\tab\tab\cf5 if\cf2  (\cf3 P\cf2 [num].name[i] == \cf4 '\\0'\cf2 ) \{\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf3 P\cf2 [num2].whomes\cf7 [\cf3 P\cf2 [num2].whomes.size() - 1\cf7 ][\cf2 i\cf7 ]\cf2  = \cf3 P\cf2 [num].name[i]; \cf1 //1.[] - \'ea\'f2\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb  2.[] - \'f1\'e8\'ec\'e2\'ee\'eb\'fb\cf2\par
+\par
+\par
+\tab\}\par
+\par
+\}\par
+\par
+\cf5 void\cf2  del(\cf6 user\cf2 *& \cf3 P\cf2 , \cf5 int\cf2 & \cf3 size\cf2 ) \{\par
+\tab\cf5 int\cf2  index;\par
+\tab\cf6 user\cf2 * P2 = \cf5 new\cf2  \cf6 user\cf2 [\cf3 size\cf2 ];\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ed\'e4\'e5\'ea\'f1"\cf2 ;\par
+\tab cin \cf7 >>\cf2  index;\par
+\par
+\par
+\par
+\tab\cf5 if\cf2  (\cf3 size\cf2  > 0) \{\par
+\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\tab\tab\tab\cf5 if\cf2  (i > 0) \{\par
+\tab\tab\tab\tab P2[i].id = \cf3 P\cf2 [i].id;\par
+\tab\tab\tab\tab P2[i].missing_message = \cf3 P\cf2 [i].missing_message;\par
+\tab\tab\tab\tab strcpy(P2[i].name, \cf3 P\cf2 [i].name);\par
+\tab\tab\tab\tab strcpy(P2[i].txt, \cf3 P\cf2 [i].txt);\par
+\tab\tab\tab\tab P2[i].message \cf7 =\cf2  \cf3 P\cf2 [i].message;\par
+\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\tab\cf5 delete[]\cf3 P\cf2 ;\par
+\tab\tab\cf3 P\cf2  = \cf5 new\cf2  \cf6 user\cf2 [\cf3 size\cf2  - 1];\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\tab\tab\tab\cf5 if\cf2  (i == index)\par
+\tab\tab\tab\tab\cf5 continue\cf2 ;\par
+\tab\tab\tab\cf5 if\cf2  (i < index) \{\par
+\tab\tab\tab\tab\cf3 P\cf2 [i].id = P2[i].id;\par
+\tab\tab\tab\tab\cf3 P\cf2 [i].missing_message = P2[i].missing_message;\par
+\tab\tab\tab\tab strcpy(\cf3 P\cf2 [i].name, P2[i].name);\par
+\tab\tab\tab\tab strcpy(\cf3 P\cf2 [i].txt, P2[i].txt);\par
+\tab\tab\tab\tab\cf3 P\cf2 [i].message \cf7 =\cf2  P2[i].message;\par
+\tab\tab\tab\}\par
+\par
+\par
+\tab\tab\tab\cf5 if\cf2  (i > index) \{\par
+\tab\tab\tab\tab\cf3 P\cf2 [i - 1].id = P2[i].id;\par
+\tab\tab\tab\tab\cf3 P\cf2 [i - 1].missing_message = P2[i].missing_message;\par
+\tab\tab\tab\tab strcpy(\cf3 P\cf2 [i - 1].name, P2[i - 1].name);\par
+\tab\tab\tab\tab strcpy(\cf3 P\cf2 [i - 1].txt, P2[i].txt);\par
+\tab\tab\tab\tab\cf3 P\cf2 [i - 1].message \cf7 =\cf2  P2[i].message;\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\par
+\par
+\par
+\tab\}\par
+\tab\cf5 delete[]\cf2 P2;\par
+\par
+\tab\cf3 size\cf2  -= 1;\par
+\par
+\par
+\}\par
+\cf5 void\cf2  sendall(\cf6 user\cf2 *& \cf3 P\cf2 , \cf5 int\cf2  \cf3 size\cf2 ) \{\par
+\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++)\par
+\tab\tab\cf3 P\cf2 [i].missing_message += 1;\par
+\par
+\par
+\par
+\par
+\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\par
+\tab\tab\cf3 P\cf2 [i].rconmessage.resize(\cf3 P\cf2 [i].missing_message);\par
+\tab\tab\cf3 P\cf2 [i].rconmessage\cf7 [\cf3 P\cf2 [i].missing_message - 1\cf7 ]\cf2 .resize(255); \cf1 //\'ec\'e0\'ea\'f1 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 255\cf2\par
+\tab\tab\cf3 P\cf2 [i].rconmessage.resize(\cf3 P\cf2 [i].missing_message);\par
+\tab\tab\cf3 P\cf2 [i].rconmessage\cf7 [\cf3 P\cf2 [i].missing_message - 1\cf7 ]\cf2 .resize(255); \cf1 //\'ec\'e0\'ea\'f1 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 255\cf2\par
+\par
+\par
+\tab\}\par
+\tab\cf5 char\cf2  mes[255];\par
+\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f7\'f2\'ee \'f5\'ee\'f2\'e8\'f2\'e5 \'ee\'f2\'ef\'f0\'e0\'e2\'f2\'f2\'fc \'ee\'f2 \'e8\'ec\'e5\'ed\'e8 \'ea\'ee\'ed\'f1\'ee\'eb\'e8"\cf2 ;\par
+\tab cin.ignore();\par
+\tab cin.getline(mes, 255);\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  j = 0; j < 255; j++) \{\par
+\tab\tab\tab\cf5 if\cf2  (mes[j] == \cf4 '\\0'\cf2 )\par
+\tab\tab\tab\tab\cf5 break\cf2 ;\par
+\par
+\tab\tab\tab\cf3 P\cf2 [i].rconmessage\cf7 [\cf3 P\cf2 [i].rconmessage.size() - 1\cf7 ][\cf2 j\cf7 ]\cf2  = mes[j];\par
+\tab\tab\}\par
+\tab\}\par
+\par
+\tab\par
+\par
+\par
+\}\par
+\par
+\cf5 int\cf2  main() \{\par
+\tab\cf5 int\cf2  size = 0;\par
+\tab\cf6 user\cf2 * P = \cf5 new\cf2  \cf6 user\cf2 [size];\par
+\tab\cf6 vector\cf2 <\cf5 int\cf2 >usedid;\par
+\tab srand(time(\cf8 NULL\cf2 ));\par
+\tab\cf5 while\cf2  (\cf5 true\cf2 ) \{\par
+\tab\tab\cf5 int\cf2  choose;\par
+\tab\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f7\'f2\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc 1.\'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'ed\'ee\'e2\'ee\'e3\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ff 2.\'e2\'fb\'e2\'ee\'e4 \'ed\'e0 \'fd\'ea\'f0\'e0\'ed \'e8\'ed\'f4\'f3 \'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5 3.\'e8\'e7\'ec\'e5\'ed\'e8\'f2 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 4.\'ea\'ee\'ec\'f3 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec5.\'f3\'e4\'e0\'eb\'e5\'e3\'e8\'ed \'ef\'f0\'ee\'f4\'e8\'eb\'ff\'e5 6.\'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \'ee\'f2 \'e8\'ec\'e5\'ed\'e8 \'ea\'ee\'ed\'f1\'ee\'eb\'e8 7.\'e7\'e0\'e2\'e5\'f0\'f8\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'fb"\cf2 ;\par
+\tab\tab cin \cf7 >>\cf2  choose;\par
+\tab\tab\cf5 switch\cf2  (choose)\par
+\tab\tab\{\par
+\tab\tab\cf5 case\cf2  1:\par
+\tab\tab\tab cin.ignore();\par
+\par
+\tab\tab\tab add(P, size, usedid);\par
+\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\cf5 case\cf2  2:\par
+\tab\tab\tab print(P, size);\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\cf5 case\cf2  3:\par
+\tab\tab\tab receive_msg(P);\par
+\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\cf5 case\cf2  4:\par
+\tab\tab\tab send(P, size);\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\cf5 case\cf2  5:\par
+\tab\tab\tab del(P, size);\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\cf5 case\cf2  6:\par
+\tab\tab\tab sendall(P, size);\par
+\tab\tab\tab\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\cf5 case\cf2  7:\par
+\tab\tab\tab\cf5 delete[]\cf2 P;\par
+\tab\tab\tab exit(0);\par
+\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\}\cf0\f2\fs22\lang9\par
+}
+ 

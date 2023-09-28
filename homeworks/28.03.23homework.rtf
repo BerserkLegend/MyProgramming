@@ -1,0 +1,204 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;\red43\green145\blue175;\red128\green128\blue128;\red0\green128\blue0;\red0\green128\blue128;\red163\green21\blue21;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 class\cf2  \cf3 tree\cf2  \{\par
+\cf1 private\cf2 :\par
+\tab\cf1 struct\cf2  \cf3 Node\cf2  \{\par
+\tab\tab\cf3 string\cf2  data;\par
+\tab\tab\cf3 vector\cf2 <\cf3 string\cf2 > transdata;\par
+\tab\tab\cf3 Node\cf2 * left;\par
+\tab\tab\cf3 Node\cf2 * right;\par
+\tab\tab\cf1 int\cf2  chot = 0;\par
+\tab\tab Node(\cf3 string\cf2  \cf4 d\cf2 , \cf3 string\cf2  \cf4 t\cf2 ) :left(\cf1 nullptr\cf2 ), right(\cf1 nullptr\cf2 ), data(\cf4 d\cf2 ) \{ transdata.push_back(\cf4 t\cf2 ); \}\par
+\tab\};\par
+\tab\cf3 Node\cf2 * head;\par
+\tab\cf1 int\cf2  size = 0;\par
+\tab\cf5 //friend void find(string num, Node* node);\cf2\par
+\tab\cf1 void\cf2  insert(\cf3 string\cf2  \cf4 d\cf2 , \cf3 string\cf2  \cf4 t\cf2 , \cf3 Node\cf2 *& \cf4 node\cf2 ) \{\par
+\tab\tab\cf1 if\cf2  (\cf4 node\cf2 ->data.size() < \cf4 d\cf2 .size()) \{\par
+\tab\tab\tab\cf1 if\cf2  (\cf4 node\cf2 ->left == \cf1 nullptr\cf2 )\par
+\tab\tab\tab\tab\cf4 node\cf2 ->left = \cf1 new\cf2  \cf3 Node\cf2 (\cf4 d\cf2 , \cf4 t\cf2 );\par
+\tab\tab\tab\cf1 else\cf2\par
+\tab\tab\tab\tab insert(\cf4 d\cf2 , \cf4 t\cf2 , \cf4 node\cf2 ->left);\par
+\par
+\tab\tab\}\par
+\tab\tab\cf1 else\cf2  \{\par
+\tab\tab\tab\cf1 if\cf2  (\cf4 node\cf2 ->right == \cf1 nullptr\cf2 )\par
+\tab\tab\tab\tab\cf4 node\cf2 ->right = \cf1 new\cf2  \cf3 Node\cf2 (\cf4 d\cf2 , \cf4 t\cf2 );\par
+\tab\tab\tab\cf1 else\cf2\par
+\tab\tab\tab\tab insert(\cf4 d\cf2 ,\cf4 t\cf2 ,\cf4 node\cf2 ->right);\par
+\tab\tab\}\par
+\tab\tab\par
+\tab\}\par
+\tab\cf1 void\cf2  order(\cf3 Node\cf2 * \cf4 node\cf2 ) \{\par
+\tab\tab\cf1 if\cf2  (\cf4 node\cf2  != \cf1 nullptr\cf2 ) \{\par
+\tab\tab\tab order(\cf4 node\cf2 ->left);\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf4 node\cf2 ->data \cf6 <<\cf2  \cf7 " "\cf2 ;\par
+\tab\tab\tab\cf1 for\cf2  (\cf1 auto\cf2  i = \cf4 node\cf2 ->transdata.begin(); i \cf6 <\cf2  \cf4 node\cf2 ->transdata.end(); i\cf6 ++\cf2 ) \{\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf6 *\cf2 i\cf6 <<\cf7 " "\cf2 ;\par
+\tab\tab\tab\}\par
+\tab\tab\tab cout \cf6 <<\cf2  endl;\par
+\tab\tab\tab order(\cf4 node\cf2 ->right);\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf1 void\cf2  del_tree(\cf3 Node\cf2 *\cf4 node\cf2 ) \{\par
+\tab\tab\cf1 if\cf2  (\cf4 node\cf2  != \cf1 nullptr\cf2 ) \{\par
+\tab\tab\tab del_tree(\cf4 node\cf2 ->left);\par
+\tab\tab\tab del_tree(\cf4 node\cf2 ->right);\par
+\tab\tab\tab\cf1 delete\cf2  \cf4 node\cf2 ;\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf1 void\cf2  find(\cf3 string\cf2  \cf4 num\cf2 , \cf3 Node\cf2 * \cf4 node\cf2 ) \{\par
+\par
+\tab\tab\cf1 if\cf2  (\cf4 node\cf2  != \cf1 nullptr\cf2 ) \{\par
+\tab\tab\tab find(\cf4 num\cf2 ,\cf4 node\cf2 ->left);\par
+\tab\tab\tab\cf1 if\cf2  (\cf4 node\cf2 ->data \cf6 ==\cf2  \cf4 num\cf2 ) \{\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf4 node\cf2 ->data \cf6 <<\cf2  \cf7 " "\cf2 ;\par
+\tab\tab\tab\tab\cf1 for\cf2  (\cf1 auto\cf2  i = \cf4 node\cf2 ->transdata.begin(); i \cf6 <\cf2  \cf4 node\cf2 ->transdata.end(); i\cf6 ++\cf2 ) \{\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf2  \cf6 *\cf2 i;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 " (\f1\lang1058\'ed\'e0\'e9\'e4\'e5\'ed\'ee) "\cf2 ;\par
+\tab\tab\tab\tab\cf4 node\cf2 ->chot++;\par
+\tab\tab\tab\tab\par
+\par
+\tab\tab\tab\tab\cf1 int\cf2  choose;\par
+\tab\tab\tab\tab\cf3 string\cf2  add;\par
+\tab\tab\tab\tab\cf1 int\cf2  index;\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 "\\n\'e2\'e2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 1.\'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc 2.\'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'ef\'e5\'f0\'e5\'ea\'eb\'e0\'e4 3.\'e2\'fb\'e4\'e0\'eb\'e8\'f2\'e8 \'ef\'e5\'f0\'e5\'ea\'eb\'e0\'e4 4.\'ef\'f0\'ee\'ef\'f3\'f1\'f2\'e8\'f2\'fc\\n"\cf2 ;\par
+\tab\tab\tab\tab cin \cf6 >>\cf2  choose;\par
+\tab\tab\tab\tab\par
+\tab\tab\tab\tab\cf1 switch\cf2  (choose)\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\cf1 case\cf2  1:\par
+\tab\tab\tab\tab\tab cin.ignore();\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\\n"\cf2 ;\par
+\tab\tab\tab\tab\tab getline(cin,add);\par
+\tab\tab\tab\tab\tab\cf4 node\cf2 ->transdata.push_back(add);\par
+\tab\tab\tab\tab\tab\cf1 break\cf2 ;\par
+\tab\tab\tab\tab\cf1 case\cf2  2:\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 "\'e2\'e2\'e5\'e4\'e8 \'e8\'ed\'e4\'e5\'ea\'f1 \\n"\cf2 ;\par
+\tab\tab\tab\tab\tab cin \cf6 >>\cf2  index;\par
+\tab\tab\tab\tab\tab cin.ignore();\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\\n"\cf2 ;\par
+\tab\tab\tab\tab\tab getline(cin, add);\par
+\tab\tab\tab\tab\tab\cf4 node\cf2 ->transdata\cf6 [\cf2 index\cf6 ]\cf2  \cf6 =\cf2  add;\par
+\tab\tab\tab\tab\tab\cf1 break\cf2 ;\par
+\tab\tab\tab\tab\cf1 case\cf2  3:\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 "\'e2\'e2\'e5\'e4\'e8 \'e8\'ed\'e4\'e5\'ea\'f1 \\n"\cf2 ;\par
+\tab\tab\tab\tab\tab cin \cf6 >>\cf2  index;\par
+\tab\tab\tab\tab\tab\cf4 node\cf2 ->transdata.erase(\cf4 node\cf2 ->transdata.begin()\cf6 +\cf2 index);\par
+\tab\tab\tab\tab\tab\cf1 break\cf2 ;\par
+\tab\tab\tab\tab\cf1 case\cf2  4:\par
+\tab\tab\tab\tab\tab\cf1 break\cf2 ;\par
+\tab\tab\tab\tab\cf1 default\cf2 :\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 "\'ed\'e5 \'f2\'e5 \'f7\'e8\'f1\'eb\'e0\\n"\cf2 ;\par
+\tab\tab\tab\tab\tab\cf1 break\cf2 ;\par
+\tab\tab\tab\tab\}\par
+\par
+\tab\tab\tab\}\par
+\tab\tab\tab\par
+\tab\tab\tab find(\cf4 num\cf2 , \cf4 node\cf2 ->right);\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf3 vector\cf2 <\cf3 string\cf2 >s;\par
+\tab\cf3 vector\cf2 <\cf1 int\cf2 >g;\par
+\tab\cf1 void\cf2  findMax(\cf3 Node\cf2 *\cf4 node\cf2 ) \{\par
+\tab\tab\cf1 if\cf2  (\cf4 node\cf2  != \cf1 nullptr\cf2 ) \{\par
+\tab\tab\tab findMax(\cf4 node\cf2 ->left);\par
+\tab\tab\tab s.push_back(\cf4 node\cf2 ->data);\par
+\tab\tab\tab g.push_back(\cf4 node\cf2 ->chot);\par
+\tab\tab\tab findMax(\cf4 node\cf2 ->right);\par
+\tab\tab\tab\cf1 for\cf2  (\cf1 int\cf2  i = 0; i < g.size(); i++) \{\par
+\tab\tab\tab\tab\cf1 for\cf2  (\cf1 int\cf2  j = 0; j < g.size(); j++) \{\par
+\tab\tab\tab\tab\tab\cf1 if\cf2  (g\cf6 [\cf2 i\cf6 ]\cf2  > g\cf6 [\cf2 j\cf6 ]\cf2 ) \{\par
+\tab\tab\tab\tab\tab\tab swap(g\cf6 [\cf2 i\cf6 ]\cf2 , g\cf6 [\cf2 j\cf6 ]\cf2 );\par
+\tab\tab\tab\tab\tab\tab swap(s\cf6 [\cf2 i\cf6 ]\cf2 , s\cf6 [\cf2 j\cf6 ]\cf2 );\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\}\tab\par
+\tab\tab\tab\}\par
+\tab\tab\tab\par
+\tab\tab\}\par
+\tab\tab\par
+\tab\}\par
+\par
+\tab\cf1 void\cf2  findMin(\cf3 Node\cf2 * \cf4 node\cf2 ) \{\par
+\tab\tab\cf1 if\cf2  (\cf4 node\cf2  != \cf1 nullptr\cf2 ) \{\par
+\tab\tab\tab findMin(\cf4 node\cf2 ->left);\par
+\tab\tab\tab s.push_back(\cf4 node\cf2 ->data);\par
+\tab\tab\tab g.push_back(\cf4 node\cf2 ->chot);\par
+\tab\tab\tab findMin(\cf4 node\cf2 ->right);\par
+\tab\tab\tab\cf1 for\cf2  (\cf1 int\cf2  i = 0; i < g.size(); i++) \{\par
+\tab\tab\tab\tab\cf1 for\cf2  (\cf1 int\cf2  j = 0; j < g.size(); j++) \{\par
+\tab\tab\tab\tab\tab\cf1 if\cf2  (g\cf6 [\cf2 i\cf6 ]\cf2  < g\cf6 [\cf2 j\cf6 ]\cf2 ) \{\par
+\tab\tab\tab\tab\tab\tab swap(g\cf6 [\cf2 i\cf6 ]\cf2 , g\cf6 [\cf2 j\cf6 ]\cf2 );\par
+\tab\tab\tab\tab\tab\tab swap(s\cf6 [\cf2 i\cf6 ]\cf2 , s\cf6 [\cf2 j\cf6 ]\cf2 );\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\tab\cf1 void\cf2  print() \{\par
+\tab\tab\cf1 for\cf2  (\cf1 int\cf2  i = 0; i < 3; i++) \{\par
+\tab\tab\tab cout \cf6 <<\cf2  g\cf6 [\cf2 i\cf6 ]\cf2  \cf6 <<\cf2  \cf7 "."\cf2  \cf6 <<\cf2  s\cf6 [\cf2 i\cf6 ]\cf2  \cf6 <<\cf2  endl;\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf1 void\cf2  Clear() \{\par
+\tab\tab s.clear();\par
+\tab\tab g.clear();\par
+\tab\}\par
+\cf1 public\cf2 :\par
+\tab tree()\{\par
+\tab\tab head = \cf1 nullptr\cf2 ;\par
+\tab\tab insert(\cf7 "car"\cf2 , \cf7 "\'ec\'e0\'f8\'e8\'ed\'e0"\cf2 );\par
+\tab     insert(\cf7 "tree"\cf2 , \cf7 "\'e4\'e5\'f0\'e5\'e2\'ee"\cf2 );\par
+\tab\tab insert(\cf7 "mountain"\cf2 , \cf7 "\'e3\'ee\'f0\'e0"\cf2 );\par
+\tab\}\par
+\tab ~tree() \{\par
+\tab\tab del_tree(head);\par
+\tab\}\par
+\par
+\tab\cf1 void\cf2  insert(\cf3 string\cf2  \cf4 d\cf2 , \cf3 string\cf2  \cf4 t\cf2 ) \{\par
+\tab\tab\cf1 if\cf2  (head == \cf1 nullptr\cf2 ) \{\par
+\tab\tab\tab head = \cf1 new\cf2  \cf3 Node\cf2 (\cf4 d\cf2 , \cf4 t\cf2 );\par
+\tab\tab\}\par
+\tab\tab\cf1 else\cf2  \{\par
+\tab\tab\tab insert(\cf4 d\cf2 , \cf4 t\cf2 , head);\par
+\tab\tab\}\par
+\tab\tab size++;\par
+\tab\}\par
+\tab\cf1 void\cf2  order() \{\par
+\tab\tab order(head);\par
+\par
+\tab\}\par
+\tab\cf1 void\cf2  find(\cf3 string\cf2  \cf4 num\cf2 ) \{\par
+\tab      find(\cf4 num\cf2 , head);\par
+\tab\tab\par
+\tab\}\par
+\tab\cf1 void\cf2  findMax() \{\par
+\tab\tab findMax(head);\par
+\tab\tab print();\par
+\tab\tab Clear();\par
+\tab\}\par
+\par
+\tab\cf1 void\cf2  findMin() \{\par
+\tab\tab findMin(head);\par
+\tab\tab print();\par
+\tab\tab Clear();\par
+\tab\}\par
+\};\par
+\cf1 int\cf2  main() \{\par
+\tab\cf3 tree\cf2  trans;\par
+\tab trans.insert(\cf7 "glass"\cf2 , \cf7 "\'f1\'f2\'e5\'ea\'eb\'ee"\cf2 );\par
+\tab trans.order();\par
+ \tab trans.find(\cf7 "car"\cf2 );\par
+\tab trans.find(\cf7 "car"\cf2 );\par
+\tab trans.find(\cf7 "tree"\cf2 );\par
+\tab trans.find(\cf7 "glass"\cf2 );\par
+\tab trans.findMax();\par
+\tab\par
+\}\par
+\cf0\f2\fs22\lang9\par
+}
+ 

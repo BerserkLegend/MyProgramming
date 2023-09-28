@@ -1,0 +1,274 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Consolas;}{\f1\fnil\fcharset204 Consolas;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red163\green21\blue21;\red0\green0\blue255;\red0\green128\blue0;\red0\green100\blue0;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 #include\cf2  \cf3 <iostream>\cf2\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\cf5 //ex1\cf2\par
+\cf6 ///\cf2\par
+\cf5 //int f(int sersh,int left, int right,int k[]) \{\cf2\par
+\cf5 //\tab int tmp = -1;\cf2\par
+\cf5 //\tab int midle = (right + left) / 2;\cf2\par
+\cf5 //\tab if (left > right)\cf2\par
+\cf5 //\tab\tab return tmp;\cf2\par
+\cf5 //\tab if (k[midle] == sersh) \{\cf2\par
+\cf5 //\tab\tab return midle;\cf2\par
+\cf5 //\tab\}\cf2\par
+\cf5 //\tab else\cf2\par
+\cf5 //\tab\{\cf2\par
+\cf5 //\tab\tab if (sersh < k[midle]) \{\cf2\par
+\cf5 //\tab\tab\tab right = midle - 1;\cf2\par
+\cf5 //\tab\tab\tab  f(sersh, left, right, k);\cf2\par
+\cf5 //\tab\tab\}\cf2\par
+\cf5 //\tab\tab else if  (sersh > k[midle]) \{\cf2\par
+\cf5 //\tab\tab\tab left = midle + 1;\cf2\par
+\cf5 //\tab\tab\tab  f(sersh, left, right, k);\cf2\par
+\cf5 //\tab\tab\}\cf2\par
+\cf5 //\tab\}\cf2\par
+\cf5 //\}\cf2\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\cf5 //ex 2\cf2\par
+\cf6 ///\cf2\par
+\cf5 //int chot = 0;\cf2\par
+\cf5 //void r(int **a) \{\cf2\par
+\cf5 //\tab for (int i = 0; i < 5; i++) \{\cf2\par
+\cf5 //\tab\tab cin >> a[chot][i];\cf2\par
+\cf5 //\tab\}\cf2\par
+\cf5 // for (int i = 0; i < 6; i++) \{\cf2\par
+\cf5 // if (a[chot][i + 1]==-111) \{\cf2\par
+\cf5 //   break;\cf2\par
+\cf5 // \}\cf2\par
+\cf5 // swap(a[chot][i], a[chot][i + 1]);\cf2\par
+\cf5 // \}\cf2\par
+\cf5 //\cf2\par
+\cf5 // for (int i = 0; i < 5; i++) \{\cf2\par
+\cf5 // cout << a[chot][i];\cf2\par
+\cf5 // \}\cf2\par
+\cf5 // chot++;\cf2\par
+\cf5 // if (chot <2) \{\cf2\par
+\cf5 //\tab  r(a);\cf2\par
+\cf5 // \}\cf2\par
+ \cf5 /*bool f = false;\cf2\par
+\cf5  for (int i = 0; i < 2; i++) \{\cf2\par
+\cf5  for (int j = 0; j < 5; j++) \{\cf2\par
+\cf5  if (i == 1)\cf2\par
+\cf5  cout << "|";\cf2\par
+\par
+\cf5  cout << a[i][j];\cf2\par
+\cf5  \}\cf2\par
+\cf5  \}*/\cf2\par
+\cf5 //\}\cf2\par
+\cf5 //ex 3\cf2\par
+\cf6 ///\cf2\par
+\cf5 //int chot = 0;\cf2\par
+\cf5 //void r2(int** a) \{\cf2\par
+\cf5 // if (chot == 2) \{\cf2\par
+\cf5 // return;\cf2\par
+\cf5 // \}\cf2\par
+\cf5 // for (int i = 0; i < 6; i++) \{\cf2\par
+\cf5 // if (a[chot][i] == -111 || a[chot][i + 2] == -111) \{\cf2\par
+\cf5 // break;\cf2\par
+\cf5 // \}\cf2\par
+\cf5 // swap(a[chot][i], a[chot][i + 2]);\cf2\par
+\cf5 // \}\cf2\par
+\cf5 // for (int i = 0; i < 5; i++) \{\cf2\par
+\cf5 // cout<<a[chot][i];\cf2\par
+\cf5 // \}\cf2\par
+\cf5 // cout << endl;\cf2\par
+\cf5 // chot += 1;\cf2\par
+\cf5 // r2(a);\cf2\par
+\cf5 //\}\cf2\par
+\cf5 //ex 4 \cf2\par
+\cf6 ///\cf2\par
+\cf5 //void print(int** a) \{\cf2\par
+\cf5 //\tab for (int i = 0; i < 4; i++) \{\cf2\par
+\cf5 //\tab\tab cout << a[0][i]<<endl;\cf2\par
+\cf5 //\tab\}\cf2\par
+\cf5 //\tab cout << endl;\cf2\par
+\cf5 //\tab for (int i = 0; i < 4; i++) \{\cf2\par
+\cf5 //\tab\tab cout << a[1][i] << endl;\cf2\par
+\cf5 //\tab\}\cf2\par
+\cf5 //\tab cout << endl;\cf2\par
+\cf5 //\tab for (int i = 0; i < 4; i++) \{\cf2\par
+\cf5 //\tab\tab cout << a[2][i]<<endl;\cf2\par
+\cf5 //\tab\}\cf2\par
+\cf5 //\tab cout << endl;\cf2\par
+\cf5 //\}\cf2\par
+\cf5 //int chot = 2;\cf2\par
+\cf5 //void change(int** a) \{\cf2\par
+\cf5 //\tab if (chot < 0) \{\cf2\par
+\cf5 //\tab\tab return;\cf2\par
+\cf5 //\tab\}\cf2\par
+\cf5 //\tab if (chot-1 < 0) \{\cf2\par
+\cf5 //\tab\tab return;\cf2\par
+\cf5 //\tab\}\cf2\par
+\cf5 //\tab swap(a[chot], a[chot - 1]);\cf2\par
+\cf5 //\tab chot--;\cf2\par
+\cf5 //\tab change(a);\cf2\par
+\cf5 //\cf2\par
+\cf5 //\}\cf2\par
+\cf4 int\cf2  main() \{\par
+\tab\cf5 //ex1\cf2\par
+\tab\cf6 ///\cf2\par
+\tab\cf5 //int k[] = \{ 1,2,3,4,5,6,7,8 \};\cf2\par
+\tab\cf5 //int right = 7;\cf2\par
+\tab\cf5 //int left = 0;\cf2\par
+\tab\cf5 //std::cout << f(5,left,right,k)  << "\\n";\cf2\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\tab\cf5 //ex2\cf2\par
+\tab\cf6 ///\cf2\par
+\tab\cf5 /*int** a = new int* [2];\cf2\par
+\cf5\tab for (int i = 0; i < 2; i++) \{\cf2\par
+\cf5\tab\tab a[i] = new int[6];\cf2\par
+\cf5\tab\}\cf2\par
+\cf5\tab a[0][5] = -111;\cf2\par
+\cf5\tab a[1][5] = -111;\cf2\par
+\cf5\tab r(a);*/\cf2\par
+\par
+\par
+\tab\cf5 //ex 3\cf2\par
+\tab\cf6 ///\cf2\par
+\tab\cf5 /*int** a = new int*[2];\cf2\par
+\cf5 for (int i = 0; i < 2; i++) \{\cf2\par
+\cf5 a[i] = new int[6];\cf2\par
+\cf5\}\cf2\par
+\cf5 a[0][5] = -111;\cf2\par
+\cf5 a[1][5] = -111;\cf2\par
+\cf5 for (int i = 0; i < 2; i++) \{\cf2\par
+\cf5 for (int j = 0; j < 5; j++) \{\cf2\par
+\par
+\par
+\par
+\cf5 cin >> a[i][j];\cf2\par
+\cf5\}\cf2\par
+\cf5\}\cf2\par
+\cf5 for (int i = 0; i < 2; i++) \{\cf2\par
+\cf5 for (int j = 0; j < 5; j++) \{\cf2\par
+\cf5 cout << a[i][j]<<",";\cf2\par
+\cf5\}\cf2\par
+\cf5\}\cf2\par
+\cf5 cout << endl;\cf2\par
+\cf5 r2(a);*/\cf2\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\cf5 //EX 4\cf2\par
+\tab\cf6 ///\cf2\par
+\par
+\tab\cf5 /*int* a1 = new int[4];\cf2\par
+\cf5\tab int* a2 = new int[4];\cf2\par
+\cf5\tab int* a3 = new int[4];\cf2\par
+\cf5\tab cout << "a1";\cf2\par
+\cf5\tab for (int i = 0; i < 4; i++) \{\cf2\par
+\cf5\tab\tab cin >> a1[i];\cf2\par
+\cf5\tab\}\cf2\par
+\cf5\tab cout << "a2";\cf2\par
+\cf5\tab for (int i = 0; i < 4; i++) \{\cf2\par
+\cf5\tab\tab cin >> a2[i];\cf2\par
+\cf5\tab\}\cf2\par
+\cf5\tab cout << "a3";\cf2\par
+\cf5\tab for (int i = 0; i < 4; i++) \{\cf2\par
+\cf5\tab\tab cin >> a3[i];\cf2\par
+\cf5\tab\}\cf2\par
+\cf5\tab int** a = new int* [3];\cf2\par
+\cf5\tab a[0] = a1;\cf2\par
+\cf5\tab a[1] = a2;\cf2\par
+\cf5\tab a[2] = a3;\cf2\par
+\cf5\tab change(a);\cf2\par
+\cf5\tab print(a);*/\cf2\par
+\tab\par
+\par
+\cf5 //EX 2.1\cf2\par
+\cf6 ///\cf2\par
+\tab\cf5 /*int a;\cf2\par
+\cf5\tab cin >> a;\cf2\par
+\cf5\tab int* a1=&a;\cf2\par
+\cf5\tab int b;\cf2\par
+\cf5\tab cin >> b;\cf2\par
+\cf5\tab int* b1 = &b;\cf2\par
+\cf5\tab int* c = *a1 > *b1 ? a1 : b1;\cf2\par
+\cf5\tab cout << *c;*/\cf2\par
+\cf5 //ex 2.2\cf2\par
+\cf6 ///\cf2\par
+\cf5 //char a;\cf2\par
+\cf5 //cin >> a;\cf2\par
+\cf5 //char* a1 = new char (a);\cf2\par
+\cf5 //if (*a1 == '+') \{\cf2\par
+\cf5 //\tab cout << "+";\cf2\par
+\cf5 //\}\cf2\par
+\cf5 //else \{\cf2\par
+\cf5 //\tab cout << "- ,\f1\lang1058\'e2\'b3\'e4\'e5\'ec\'ed\'e5 \'e7\'ed\'e0\'f7\'f7\'e5\'ed\'ff";\cf2\par
+\cf5 //\}\cf2\par
+\cf5 //ex 2.3\cf2\par
+\cf6 ///\cf2\par
+\cf5 //int a = 2;\cf2\par
+\cf5 //int b = 1;\cf2\par
+\cf5 //int* a1 = new int(a);\cf2\par
+\cf5 //int* b1 = new int(b);\cf2\par
+\cf5 //*a1 = b;\cf2\par
+\cf5 //*b1 = a;\cf2\par
+\cf5 //cout << *a1 << " " << *b1;\cf2\par
+\cf5 //2.4\cf2\par
+\cf6 ///\cf2\par
+                 \cf5 //| \'f2\'f3\'f2 \'e2\'e2\'ee\'e4\'e8\'ec \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\cf2\par
+\cf5 //int* a1 = new int(4);\cf2\par
+\cf5 //int* b1 = new int(2);\cf2\par
+\cf5 //char* c = new char('-');\cf2\par
+\cf5 //if (*c == '+')\cf2\par
+\cf5 //  cout << *a1 + *b1;\cf2\par
+\cf5 //if(*c =='-')\cf2\par
+\cf5 //  if(*a1>*b1)\cf2\par
+\cf5 //    cout << *a1 - *b1;\cf2\par
+\cf5 //  else\cf2\par
+\cf5 //\tab   cout << *b1 - *a1;\cf2\par
+\cf5 //if (*c == '*')\cf2\par
+\cf5 //  cout << *a1 * *b1;\cf2\par
+\cf5 //if (*c == '/')\cf2\par
+\cf5 //if (*a1 > *b1)\cf2\par
+\cf5 //cout << *a1 / *b1;\cf2\par
+\cf5 //else\cf2\par
+\cf5 //cout << *b1 / *a1;\cf2\par
+\cf5 //2.5\cf2\par
+\cf6 ///\cf2\par
+\cf5 //int* a=new int[3];\cf2\par
+\cf5 //for (int i = 0; i < 3; i++)\cf2\par
+\cf5 //\tab cin >> a[i];\cf2\par
+\cf5 //int summ = 0;\cf2\par
+\cf5 //for (int i = 0; i < 3; i++) \{\cf2\par
+\cf5 //\tab summ += *(a + i);\cf2\par
+\cf5 //\}\cf2\par
+\cf5 //cout << summ;\cf2\par
+\par
+\par
+\par
+\tab\}\cf0\f2\fs22\lang9\par
+}
+ 

@@ -1,0 +1,198 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;\red43\green145\blue175;\red128\green128\blue128;\red0\green128\blue0;\red0\green128\blue128;\red163\green21\blue21;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 class\cf2  \cf3 figure\cf2  \{\par
+\tab\cf1 class\cf2  \cf3 Point\cf2  \{\par
+\tab\tab\par
+\tab\cf1 protected\cf2 :\par
+\tab\tab\cf1 int\cf2  x =0;\par
+\tab\tab\cf1 int\cf2  y =0;\par
+\tab\tab\cf1 int\cf2  x2 =0;\par
+\tab\tab\cf1 int\cf2  y2 =0;\par
+\tab\tab\cf1 int\cf2  x3 = 0;\par
+\tab\tab\cf1 int\cf2  y3 = 0;\par
+\tab\tab\cf1 int\cf2  x4 = 0;\par
+\tab\tab\cf1 int\cf2  y4 = 0;\par
+\tab\cf1 public\cf2 :\par
+\tab\tab\cf1 virtual\cf2  \cf1 void\cf2  insert(\cf1 int\cf2  \cf4 x\cf2 , \cf1 int\cf2  \cf4 y\cf2 , \cf1 int\cf2  \cf4 x2\cf2 , \cf1 int\cf2  \cf4 y2\cf2 ,\cf1 int\cf2  \cf4 x3\cf2 ,\cf1 int\cf2  \cf4 y3\cf2 ,\cf1 int\cf2  \cf4 x4\cf2 ,\cf1 int\cf2  \cf4 y4\cf2 )\{\par
+\tab\tab\par
+\tab\tab\tab\cf1 this\cf2 ->x = \cf4 x\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y = \cf4 y\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->x2 = \cf4 x2\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y2= \cf4 y2\cf2 ;\par
+\par
+\tab\tab\tab\cf1 this\cf2 ->x3 = \cf4 x3\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y3 = \cf4 y3\cf2 ;\par
+\par
+\tab\tab\tab\cf1 this\cf2 ->x4 = \cf4 x4\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y4 = \cf4 y4\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf5 //virtual void insert(int x, int y, int x2, int y2 = 0);\cf2\par
+\tab\tab\cf1 virtual\cf2  \cf1 float\cf2  S() = 0;\par
+\tab\tab\cf1 virtual\cf2   \cf1 void\cf2  print() \{\par
+\tab\tab\tab cout \cf6 <<\cf2  x \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x2 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y2 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x3 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y3 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x4 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y4 \cf6 <<\cf2  endl;\par
+\tab\tab\}\par
+\tab\};\par
+\par
+\tab\cf1 class\cf2  \cf3 trio\cf2 :\cf1 public\cf2  \cf3 Point\cf2  \{\par
+\tab\cf1 public\cf2 :\par
+\tab\tab\cf1 void\cf2  insert(\cf1 int\cf2  \cf4 x\cf2 , \cf1 int\cf2  \cf4 y\cf2 , \cf1 int\cf2  \cf4 x2\cf2 , \cf1 int\cf2  \cf4 y2\cf2 , \cf1 int\cf2  \cf4 x3\cf2 , \cf1 int\cf2  \cf4 y3\cf2 , \cf1 int\cf2  \cf4 x4\cf2  = 0, \cf1 int\cf2  \cf4 y4\cf2  = 0) \{\par
+\tab\tab\par
+\par
+\tab\tab\tab\cf1 this\cf2 ->x = \cf4 x\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y = \cf4 y\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->x2 = \cf4 x2\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y2 = \cf4 y2\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->x3 = \cf4 x3\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y3 = \cf4 y3\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf1 float\cf2  S() \{\par
+\tab\tab\tab\cf1 float\cf2  area = 0.5*abs((x2 - x) * (y3 - y) - (x3 - x) * (y2 - y));\par
+\tab\tab\tab\cf1 return\cf2  area;\par
+\tab\tab\}\par
+\tab\tab\par
+\tab\tab\cf1 void\cf2  print() \{\par
+\tab\tab\tab cout \cf6 <<\cf2  x \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x2 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y2 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x3 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y3\cf6 <<\cf2 endl;\par
+\tab\tab\}\par
+\tab\};\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\tab\cf1 class\cf2  \cf3 cube\cf2  :\cf1 public\cf2  \cf3 Point\cf2  \{\par
+\tab\tab\cf1 float\cf2  L=sqrt(pow(x2-x,2) +pow(y2-y,2));\par
+\tab\tab\cf1 float\cf2  L2 = sqrt(pow(x3 - x2, 2) + pow(y3 - y2, 2));\par
+\tab\tab\cf1 float\cf2  L3 = sqrt(pow(x4 - x3, 2) + pow(y4 - y3, 2));;\par
+\tab\tab\cf1 float\cf2  L4 = sqrt(pow(x - x4, 2) + pow(y - y4, 2));;\par
+\tab\cf1 public\cf2 :\par
+\tab\tab\cf1 void\cf2  insert(\cf1 int\cf2  \cf4 x\cf2 , \cf1 int\cf2  \cf4 y\cf2 , \cf1 int\cf2  \cf4 x2\cf2 , \cf1 int\cf2  \cf4 y2\cf2 , \cf1 int\cf2  \cf4 x3\cf2 , \cf1 int\cf2  \cf4 y3\cf2 , \cf1 int\cf2  \cf4 x4\cf2  , \cf1 int\cf2  \cf4 y4\cf2 ) \{\par
+\tab\tab\tab\par
+\par
+\tab\tab\tab\cf1 this\cf2 ->x = \cf4 x\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y = \cf4 y\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->x2 = \cf4 x2\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y2 = \cf4 y2\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->x3 = \cf4 x3\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y3 = \cf4 y3\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->x4 = \cf4 x4\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y4 = \cf4 y4\cf2 ;\par
+\tab\tab\tab L = sqrt(pow(\cf4 x2\cf2  - \cf4 x\cf2 , 2) + pow(\cf4 y2\cf2  - \cf4 y\cf2 , 2));\par
+\tab\tab\tab L2 = sqrt(pow(\cf4 x3\cf2  - \cf4 x2\cf2 , 2) + pow(\cf4 y3\cf2  - \cf4 y2\cf2 , 2));\par
+\tab\tab\tab L3 = sqrt(pow(\cf4 x4\cf2  - \cf4 x3\cf2 , 2) + pow(\cf4 y4\cf2  - \cf4 y3\cf2 , 2));\par
+\tab\tab     L4 = sqrt(pow(\cf4 x\cf2  - \cf4 x4\cf2 , 2) + pow(\cf4 y\cf2  - \cf4 y4\cf2 , 2));\par
+\tab\tab\tab\cf1 if\cf2  (!(L == L2 == L3 == L4)) \{\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x2 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y2 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x3 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y3 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x4 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y4 = 0;\par
+\tab\tab\tab\tab L = 0;\par
+\tab\tab\tab\tab L2 = 0;\par
+\tab\tab\tab\tab L3 = 0;\par
+\tab\tab\tab\tab L4 = 0;\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 "\f1\lang1058\'f1\'f2\'ee\'f0\'ee\'ed\'fb \'ed\'e5 \'f0\'e0\'e2\'ed\'fb \'e4\'eb\'ff \'ea\'e2\'e0\'e4\'f0\'e0\'f2\'e0 \\n"\cf2 ;\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\tab\cf1 float\cf2  S() \{\par
+\tab\tab\tab\cf1 return\cf2  L * L;\par
+\tab\tab\}\par
+\tab\tab\cf1 void\cf2  print()\cf1 override\cf2  \{\par
+\tab\tab\tab cout \cf6 <<\cf2  x \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x2 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y2 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x3 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y3 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x4 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y4 \cf6 <<\cf2  endl;\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf7 "Dlina "\cf2  \cf6 <<\cf2  L \cf6 <<\cf2  \cf7 " \\n"\cf2  \cf6 <<\cf2  L2 \cf6 <<\cf2  \cf7 " \\n"\cf2  \cf6 <<\cf2  L3 \cf6 <<\cf2  \cf7 " \\n"\cf2  \cf6 <<\cf2  L4 \cf6 <<\cf2  endl;\par
+\tab\tab\}\par
+\par
+\tab\};\par
+\par
+\par
+\par
+\par
+\tab\cf1 class\cf2  \cf3 pram\cf2  :\cf1 public\cf2  \cf3 Point\cf2  \{\par
+\tab\tab\cf1 float\cf2  L = sqrt(pow(x2 - x, 2) + pow(y2 - y, 2));\par
+\tab\tab\cf1 float\cf2  L2 = sqrt(pow(x3 - x2, 2) + pow(y3 - y2, 2));\par
+\tab\tab\cf1 float\cf2  L3 = sqrt(pow(x4 - x3, 2) + pow(y4 - y3, 2));;\par
+\tab\tab\cf1 float\cf2  L4 = sqrt(pow(x - x4, 2) + pow(y - y4, 2));;\par
+\tab\cf1 public\cf2 :\par
+\tab\tab\cf1 void\cf2  insert(\cf1 int\cf2  \cf4 x\cf2 , \cf1 int\cf2  \cf4 y\cf2 , \cf1 int\cf2  \cf4 x2\cf2 , \cf1 int\cf2  \cf4 y2\cf2 , \cf1 int\cf2  \cf4 x3\cf2 , \cf1 int\cf2  \cf4 y3\cf2 , \cf1 int\cf2  \cf4 x4\cf2 , \cf1 int\cf2  \cf4 y4\cf2 ) \{\par
+\par
+\par
+\tab\tab\tab\cf1 this\cf2 ->x = \cf4 x\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y = \cf4 y\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->x2 = \cf4 x2\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y2 = \cf4 y2\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->x3 = \cf4 x3\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y3 = \cf4 y3\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->x4 = \cf4 x4\cf2 ;\par
+\tab\tab\tab\cf1 this\cf2 ->y4 = \cf4 y4\cf2 ;\par
+\tab\tab\tab L = sqrt(pow(\cf4 x2\cf2  - \cf4 x\cf2 , 2) + pow(\cf4 y2\cf2  - \cf4 y\cf2 , 2));\par
+\tab\tab\tab L2 = sqrt(pow(\cf4 x3\cf2  - \cf4 x2\cf2 , 2) + pow(\cf4 y3\cf2  - \cf4 y2\cf2 , 2));\par
+\tab\tab\tab L3 = sqrt(pow(\cf4 x4\cf2  - \cf4 x3\cf2 , 2) + pow(\cf4 y4\cf2  - \cf4 y3\cf2 , 2));\par
+\tab\tab\tab L4 = sqrt(pow(\cf4 x\cf2  - \cf4 x4\cf2 , 2) + pow(\cf4 y\cf2  - \cf4 y4\cf2 , 2));\par
+\tab\tab\tab\cf1 if\cf2  ((L == L2 == L3 == L4)) \{\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x2 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y2 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x3 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y3 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x4 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y4 = 0;\par
+\tab\tab\tab\tab L = 0;\par
+\tab\tab\tab\tab L2 = 0;\par
+\tab\tab\tab\tab L3 = 0;\par
+\tab\tab\tab\tab L4 = 0;\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 "\'fd\'f2\'ee \'ea\'e2\'e0\'e4\'f0\'e0\'f2 \'e0 \'ed\'e5 \'ef\'f0\'ff\'ec\'ee\'ea\'f3\'f2\'ed\'e8\'ea \\n"\cf2 ;\par
+\tab\tab\tab\}\par
+\tab\tab\tab\cf1 if\cf2  (L != L3|| L2 != L4) \{\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x2 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y2 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x3 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y3 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->x4 = 0;\par
+\tab\tab\tab\tab\cf1 this\cf2 ->y4 = 0;\par
+\tab\tab\tab\tab L = 0;\par
+\tab\tab\tab\tab L2 = 0;\par
+\tab\tab\tab\tab L3 = 0;\par
+\tab\tab\tab\tab L4 = 0;\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf7 "\'fd\'f2\'ee \'ed\'e5 \'ef\'f0\'ff\'ec\'ee\'ea\'f3\'f2\'ed\'e8\'ea \\n"\cf2 ;\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\tab\cf1 float\cf2  S() \{\par
+\tab\tab\tab\cf1 return\cf2  L * L2;\par
+\tab\tab\}\par
+\tab\tab\cf1 void\cf2  print()\cf1 override\cf2  \{\par
+\tab\tab\tab cout \cf6 <<\cf2  x \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x2 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y2 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  x3 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y3 \cf6 <<\cf7 " "\cf6 <<\cf2 x4 \cf6 <<\cf2  \cf7 " "\cf2  \cf6 <<\cf2  y4 \cf6 <<\cf2  endl;\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf7 "Dlina "\cf2  \cf6 <<\cf2  L \cf6 <<\cf2  \cf7 " \\n"\cf2  \cf6 <<\cf2  L2 \cf6 <<\cf2  \cf7 " \\n"\cf2  \cf6 <<\cf2  L3 \cf6 <<\cf2  \cf7 " \\n"\cf2  \cf6 <<\cf2  L4 \cf6 <<\cf2  endl;\par
+\tab\tab\}\par
+\par
+\tab\};\par
+\par
+\cf1 public\cf2 :\par
+\tab\cf3 cube\cf2  t;\par
+\tab\cf3 pram\cf2  g;\par
+\};\par
+\cf1 int\cf2  main() \{\par
+\tab\cf3 figure\cf2  f;\par
+\tab f.t.insert(1, 1,2,1,2, 2,1,2);\par
+\tab f.t.print();\par
+\tab f.g.insert(1, 2, 3, 4, 1, 2, 3, 4);\par
+\tab f.g.print();\par
+\par
+\par
+\}\cf0\f2\fs22\lang9\par
+}
+ 

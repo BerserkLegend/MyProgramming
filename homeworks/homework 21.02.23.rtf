@@ -1,0 +1,473 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset204 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 // classwork20.03.23.cpp : \f1\lang1058\'dd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe "main". \'c7\'e4\'e5\'f1\'fc \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'e8 \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb.\par
+//\par
+\par
+#include <iostream>\par
+#include <initializer_list>\par
+using namespace std;\par
+//class Data \{\par
+//private:\par
+//    int day, mouth, years;\par
+//public:\par
+//    friend ostream& operator<<(ostream& out, const Data& d);\par
+//    Data(int day, int mouth, int years) :day(day), mouth(mouth), years(years) \{\par
+//\par
+//    \}\par
+//    Data() \{\par
+//        day, mouth, years = 0;\par
+//    \}\par
+//    void setDay(int day) \{\par
+//        this->day=day;\par
+//    \}\par
+//    void setYear(int Year) \{\par
+//        this->years = Year;\par
+//    \}\par
+//    void setmouth(int mouth) \{\par
+//        this->mouth = mouth;\par
+//    \}\par
+//    void OnedayAdd() \{\par
+//        day++;\par
+//        if (mouth == 2) \{\par
+//            if (day == 29) \{\par
+//                mouth += 1;\par
+//                day = 1;\par
+//            \}\par
+//        \}\par
+//        else if (mouth == 12) \{\par
+//            if (day == 32) \{\par
+//                mouth =1;\par
+//                day = 1;\par
+//                years += 1;\par
+//            \}\par
+//        \}\par
+//        else \{\par
+//            if (mouth < 7 && mouth % 2 != 0) \{\par
+//                if (day == 32) \{\par
+//                    mouth += 1;\par
+//                    day = 1;\par
+//                    \par
+//                \}\par
+//            \}\par
+//            else \{\par
+//                if (day == 31) \{\par
+//                    mouth += 1;\par
+//                    day = 1;\par
+//\par
+//                \}\par
+//            \}\par
+//            if (mouth >= 7 && mouth % 2 == 0||mouth==7) \{\par
+//                if (day == 32) \{\par
+//                    mouth += 1;\par
+//                    day = 1;\par
+//\par
+//                \}\par
+//            \}\par
+//            else \{\par
+//                if (day == 31) \{\par
+//                    mouth += 1;\par
+//                    day = 1;\par
+//\par
+//                \}\par
+//            \}\par
+//        \}\par
+//    \}\par
+//    Data& operator ++() \{\par
+//        ++day;\par
+//        ++mouth;\par
+//        ++years;\par
+//    \}\par
+//    Data& operator ++(int value) \{\par
+//        Data temp(*this);\par
+//        ++day;\par
+//        ++mouth;\par
+//        ++years;\par
+//        return temp;\par
+//    \}\par
+//    Data operator -(int value) \{\par
+//        return Data((day == 1) ? day = 1 : day - value, (mouth==1)?mouth =1:mouth-value,years- value);\par
+//    \}\par
+//      bool operator!=(Data& obj) \{\par
+//          if (day != obj.day && mouth != obj.mouth && years != obj.years) \{\par
+//              return true;\par
+//          \}\par
+//          else \{\par
+//              return false;\par
+//          \}\par
+//    \}\par
+//      bool operator==(Data& obj) \{\par
+//          if (day != obj.day && mouth != obj.mouth && years != obj.years) \{\par
+//              return false;\par
+//          \}\par
+//          else \{\par
+//              return true;\par
+//          \}\par
+//      \}\par
+//      bool operator>(Data& obj) \{\par
+//          if (day > obj.day && mouth > obj.mouth && years > obj.years) \{\par
+//              return true;\par
+//          \}\par
+//          else \{\par
+//              return false;\par
+//          \}\par
+//      \}\par
+//      bool operator<(Data& obj) \{\par
+//          if (day > obj.day && mouth > obj.mouth && years > obj.years) \{\par
+//              return false;\par
+//          \}\par
+//          else \{\par
+//              return true;\par
+//          \}\par
+//      \}\par
+//      Data& operator =(int value) \{\par
+//          if (mouth ==2) \{\par
+//              if (value >= 29) \{\par
+//                  return *this;\par
+//              \}\par
+//          \}\par
+//          else \{\par
+//              if (mouth < 7 && mouth % 2!=0) \{\par
+//                  if (value >= 32) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              else \{\par
+//                  if (value >= 31) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              if (mouth >= 7 && mouth % 2 == 0) \{\par
+//                  if (value >= 32) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              else \{\par
+//                  if (value >= 31) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              day = value;\par
+//              return *this;\par
+//          \}\par
+//          \par
+//      \}\par
+//      Data& operator +=(int value) \{\par
+//          if (mouth == 2) \{\par
+//              if (value >= 29) \{\par
+//                  return *this;\par
+//              \}\par
+//          \}\par
+//          else \{\par
+//              if (mouth < 7 && mouth % 2 != 0) \{\par
+//                  if (value >= 32) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              else \{\par
+//                  if (value >= 31) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              if (mouth >= 7 && mouth % 2 == 0) \{\par
+//                  if (value >= 32) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              else \{\par
+//                  if (value >= 31) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              day += value;\par
+//              return *this;\par
+//          \}\par
+//\par
+//      \}\par
+//      Data& operator -=(int value) \{\par
+//          if (mouth == 2) \{\par
+//              if (value >= 29) \{\par
+//                  return *this;\par
+//              \}\par
+//          \}\par
+//          else \{\par
+//              if (mouth < 7 && mouth % 2 != 0) \{\par
+//                  if (value >= 32) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              else \{\par
+//                  if (value >= 31) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              if (mouth >= 7 && mouth % 2 == 0) \{\par
+//                  if (value >= 32) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              else \{\par
+//                  if (value >= 31) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              day -= value;\par
+//              return *this;\par
+//          \}\par
+//\par
+//      \}\par
+//      Data& operator ()(int value) \{\par
+//          if (mouth == 2) \{\par
+//              if (value >= 29) \{\par
+//                  return *this;\par
+//              \}\par
+//          \}\par
+//          else \{\par
+//              if (mouth < 7 && mouth % 2 != 0) \{\par
+//                  if (value >= 32) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              else \{\par
+//                  if (value >= 31) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              if (mouth >= 7 && mouth % 2 == 0) \{\par
+//                  if (value >= 32) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              else \{\par
+//                  if (value >= 31) \{\par
+//                      return *this;\par
+//                  \}\par
+//              \}\par
+//              day = value;\par
+//              return *this;\par
+//          \}\par
+//\par
+//      \}\par
+//\par
+//    void print() \{\par
+//        cout << day << mouth << years<<"\\n";\par
+//    \}\par
+//    friend istream& operator>>(istream& in, Data& d) \{\par
+//        Data temp;\par
+//        temp.day = d.day;\par
+//        temp.mouth = d.mouth;\par
+//        temp.years = d.years;\par
+//        in >> d.day;\par
+//        in >> d.mouth;\par
+//        in >> d.years;\par
+//        \par
+//            if (d.mouth == 2) \{\par
+//                if (d.day > 28) \{\par
+//                    d.day = temp.day;\par
+//                    d.mouth = temp.mouth;\par
+//                    d.years = temp.years;\par
+//                \}\par
+//            \}\par
+//            else if (d.mouth == 12) \{\par
+//                if (d.day >= 32) \{\par
+//                    d.day = temp.day;\par
+//                    d.mouth = temp.mouth;\par
+//                    d.years = temp.years;\par
+//                \}\par
+//            \}\par
+//            else \{\par
+//                if (d.mouth < 7 && d.mouth % 2 != 0) \{\par
+//                    if (d.day >= 32) \{\par
+//                        d.day = temp.day;\par
+//                        d.mouth = temp.mouth;\par
+//                        d.years = temp.years;\par
+//\par
+//                    \}\par
+//                \}\par
+//                else \{\par
+//                    if (d.day >= 31) \{\par
+//                        d.day = temp.day;\par
+//                        d.mouth = temp.mouth;\par
+//                        d.years = temp.years;\par
+//\par
+//                    \}\par
+//                \}\par
+//                if (d.mouth >= 7 && d.mouth % 2 == 0 || d.mouth == 7) \{\par
+//                    if (d.day >= 32) \{\par
+//                        d.day = temp.day;\par
+//                        d.mouth = temp.mouth;\par
+//                        d.years = temp.years;\par
+//\par
+//                    \}\par
+//                \}\par
+//                else \{\par
+//                    if (d.day >= 31) \{\par
+//                        d.day = temp.day;\par
+//                        d.mouth = temp.mouth;\par
+//                        d.years = temp.years;\par
+//\par
+//                    \}\par
+//                \}\par
+//                if (d.mouth <= 0 && d.mouth >= 13) \{\par
+//                    d.day = temp.day;\par
+//                    d.mouth = temp.mouth;\par
+//                    d.years = temp.years;\par
+//\par
+//                \}\par
+//              \par
+//            \}\par
+//            return in;\par
+//\par
+//\par
+//    \}\par
+//\};\par
+//\par
+//ostream& operator<<(ostream& out, const Data& d) \{\par
+//    out << d.day;\par
+//    out << d.mouth;\par
+//    out << d.years<<endl;\par
+//    return out;\par
+//\par
+//\}\par
+//int main()\par
+//\{\par
+//    Data d(31, 12,2022);\par
+//    Data s(31, 12, 2022);\par
+//    d.OnedayAdd();\par
+//    s.OnedayAdd();\par
+//    d.print();\par
+//    cout << d;\par
+//    cout << (d != s);\par
+//    d(1);\par
+//    \par
+//\}\par
+\par
+\par
+\par
+\par
+//2\par
+class MyClass \{\par
+private:\par
+    int* values;\par
+    int size =0;\par
+public:\par
+    int sum() \{\par
+        int result = 0;\par
+        for (int i = 0; i < size; i++) \{\par
+            result += values[i];\par
+        \}\par
+        return result;\par
+    \}\par
+    MyClass(int val) :size(size + 1) \{\par
+        values = new int[size];\par
+        values[size - 1] = val;\par
+    \}\par
+    bool operator>( MyClass& other)  \{\par
+        return sum() > other.sum();\par
+    \}\par
+\par
+    bool operator<(MyClass& other)  \{\par
+        return sum() < other.sum();\par
+    \}\par
+\par
+    bool operator>=(MyClass& other)  \{\par
+        return sum() >= other.sum();\par
+    \}\par
+\par
+    bool operator<=(MyClass& other)  \{\par
+        return sum() <= other.sum();\par
+    \}\par
+\par
+    bool operator!=(MyClass& other) \{\par
+        return sum() != other.sum();\par
+    \}\par
+    MyClass operator ++() \{\par
+        for (int i = 0; i < size; i++) \{\par
+            values[i]++;\par
+        \}\par
+    \}\par
+    MyClass operator ++(int value) \{\par
+        MyClass temp = *this;\par
+        for (int i = 0; i < size; i++) \{\par
+            values[i]++;\par
+        \}\par
+        return temp;\par
+        \par
+    \}\par
+    MyClass operator --() \{\par
+        for (int i = 0; i < size; i++) \{\par
+            values[i]--;\par
+        \}\par
+    \}\par
+    MyClass operator --(int value) \{\par
+        MyClass temp = *this;\par
+        for (int i = 0; i < size; i++) \{\par
+            values[i]--;\par
+        \}\par
+        return temp;\par
+\par
+    \}\par
+    void add(int val) \{\par
+        int* new_values = new int[size + 1];\par
+        for (int i = 0; i < size; i++) \{\par
+            new_values[i] = values[i];\par
+        \}\par
+        new_values[size] = val;\par
+        size++;\par
+        delete[] values;\par
+        values = new_values;\par
+    \}\par
+    void print() \{\par
+        for (int i = 0; i < size; i++) \{\par
+            cout << values[i] << endl;\par
+      \}\par
+    \}\par
+    void sort() \{\par
+        for (int i = 0; i < size; i++) \{\par
+            for (int j = 0; j < size; j++) \{\par
+                if (values[i] > values[j]) \{\par
+                    swap(values[i], values[j]);\par
+                \}\par
+            \}\par
+        \}\par
+    \}\par
+    void quickSort(int left, int right) \{\par
+        int i = left, j = right;\par
+        int pivot = values[(left + right) / 2];\par
+\par
+        while (i <= j) \{\par
+            while (values[i] < pivot) \{\par
+                i++;\par
+            \}\par
+            while (values[j] > pivot) \{\par
+                j--;\par
+            \}\par
+            if (i <= j) \{\par
+                swap(values[i], values[j]);\par
+                i++;\par
+                j--;\par
+            \}\par
+        \}\par
+\par
+        if (left < j) \{\par
+            quickSort(left, j);\par
+        \}\par
+        if (i < right) \{\par
+            quickSort(i, right);\par
+        \}\par
+    \}\par
+\};\par
+int main() \{\par
+    MyClass s(4);\par
+     s.add(5);\par
+     s.add(3);\par
+     s.add(6);\par
+     s.add(7);\par
+     s.add(8);\par
+     s.add(11);\par
+     s.add(1);\par
+     s.quickSort(0, 7);\par
+     s.print();\par
+    return 0;\par
+\}\f0\lang9\par
+}
+ 

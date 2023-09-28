@@ -1,0 +1,220 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue0;\red128\green128\blue128;\red163\green21\blue21;\red0\green0\blue255;\red43\green145\blue175;\red0\green128\blue128;\red0\green128\blue0;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9\par
+\cf2 #include\cf1  \cf3 <iostream>\cf1\par
+\cf2 #include\cf1  \cf3 <string>\cf1\par
+\cf2 #pragma\cf1  \cf2 warning\cf1 (\cf2 disable\cf1 :4996)\par
+\cf4 using\cf1  \cf4 namespace\cf1  std;\par
+\cf4 class\cf1  \cf5 String\cf1  \{\par
+\cf4 private\cf1 :\par
+    \cf4 char\cf1 * name;\par
+    \cf4 int\cf1  size;\par
+    \cf4 int\cf1  capacity;\par
+\par
+\cf4 public\cf1 :\par
+    String() :name(\cf4 nullptr\cf1 ), size(0), capacity(0) \{\par
+    \}\par
+    String(\cf4 const\cf1  \cf4 char\cf1 * \cf2 str\cf1 ) : size(strlen(\cf2 str\cf1 )), capacity(size + 1) \{\par
+        name = \cf4 new\cf1  \cf4 char\cf1 [capacity];\par
+        strcpy(name, \cf2 str\cf1 );\par
+    \}\par
+    String(\cf4 const\cf1  \cf5 String\cf1 & \cf2 str\cf1 ) : size(\cf2 str\cf1 .size), capacity(\cf2 str\cf1 .capacity) \{\par
+        name = \cf4 new\cf1  \cf4 char\cf1 [capacity];\par
+        strcpy(name, \cf2 str\cf1 .name);\par
+    \}\par
+    \cf5 String\cf1  \cf6 operator =\cf1  (\cf5 String\cf1 & \cf2 obj\cf1 ) \{\par
+        \cf4 if\cf1  (\cf4 this\cf1  == &\cf2 obj\cf1 )\par
+            \cf4 return\cf1  *\cf4 this\cf1 ;\par
+        \cf4 else\cf1  \{\par
+            \cf4 delete[]\cf1 name;\par
+            size = \cf2 obj\cf1 .size;\par
+            capacity = \cf2 obj\cf1 .capacity;\par
+            name = \cf4 new\cf1  \cf4 char\cf1 [capacity];\par
+            strcpy(name, \cf2 obj\cf1 .name);\par
+            \cf4 return\cf1  *\cf4 this\cf1 ;\par
+        \}\par
+    \}\par
+    \cf5 String\cf1  \cf6 operator +=\cf1  (\cf5 String\cf1 & \cf2 obj\cf1 ) \{\par
+        size += \cf2 obj\cf1 .size;\par
+        capacity = size + 1;\par
+        \cf4 char\cf1  buff[255];\par
+        strcpy(buff, name);\par
+        strcat(buff, \cf2 obj\cf1 .name);\par
+        \cf4 delete[]\cf1 name;\par
+        name = \cf4 new\cf1  \cf4 char\cf1 [capacity];\par
+        strcpy(name, buff);\par
+        \cf4 return\cf1  *\cf4 this\cf1 ;\par
+    \}\par
+    \cf5 String\cf1  \cf6 operator +=\cf1  (\cf4 const\cf1  \cf4 char\cf1  \cf2 c\cf1 ) \{\par
+        size += 1;\par
+        capacity = size+1;\par
+        \cf4 char\cf1  buff[255];\par
+        strcpy(buff, name);\par
+        \cf4 delete[]\cf1 name;\par
+        name = \cf4 new\cf1  \cf4 char\cf1 [capacity];\par
+        strcpy(name, buff);\par
+        name[size-1] = \cf2 c\cf1 ;\par
+        name[size] = \cf3 '\\0'\cf1 ;\par
+       \par
+        \cf4 return\cf1  *\cf4 this\cf1 ;\par
+    \}\par
+    \cf5 String\cf1  \cf6 operator+=\cf1 (\cf4 const\cf1  \cf4 char\cf1 * \cf2 c\cf1 ) \{\par
+        \cf7 // \f1\lang1058\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'ec \'e4\'eb\'e8\'ed\'f3 \'f1\'f2\'f0\'ee\'ea\'e8, \'ea\'ee\'f2\'ee\'f0\'f3\'fe \'ed\'f3\'e6\'ed\'ee \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc\cf1\par
+        \cf4 int\cf1  len = strlen(\cf2 c\cf1 );\par
+        size += len;\par
+        capacity = len + strlen(name)+1;\par
+        \cf4 char\cf1  buff[255];\par
+        strcpy(buff, name);\par
+        \cf4 delete[]\cf1 name;\par
+        strcat(buff, \cf2 c\cf1 );\par
+        name = \cf4 new\cf1  \cf4 char\cf1 [capacity];\par
+        strcpy(name, buff);\par
+        \cf4 return\cf1  *\cf4 this\cf1 ;\par
+    \}\par
+\par
+\par
+\par
+    \cf4 char\cf1  \cf6 operator[]\cf1 (\cf4 int\cf1  \cf2 index\cf1 ) \{\par
+        \cf4 return\cf1  name[\cf2 index\cf1 ];\par
+    \}\par
+    \cf4 void\cf1  assign(\cf4 const\cf1  \cf4 char\cf1 * \cf2 txt\cf1 ) \{\par
+        \cf4 if\cf1 (name!=\cf4 nullptr\cf1 )\par
+          \cf4 delete[]\cf1 name;\par
+\par
+        size = strlen(\cf2 txt\cf1 );\par
+        capacity = size + 1;\par
+        name = \cf4 new\cf1  \cf4 char\cf1 [capacity];\par
+        strcpy(name, \cf2 txt\cf1 );\par
+\par
+\par
+    \}\par
+\par
+    \cf4 int\cf1  lenght() \{\par
+        \cf4 return\cf1  strlen(name);\par
+    \}\par
+    \cf4 void\cf1  append(\cf4 const\cf1  \cf4 char\cf1 * \cf2 text\cf1 ) \{\par
+        \cf4 int\cf1  textLength = strlen(\cf2 text\cf1 );\par
+        \cf4 int\cf1  newSize = size + textLength;\par
+        \cf4 char\cf1 * temp = \cf4 new\cf1  \cf4 char\cf1 [newSize + 1];\par
+\par
+        \cf4 for\cf1  (\cf4 int\cf1  i = 0; i < size; i++) \{\par
+            temp[i] = name[i];\par
+        \}\par
+        \cf4 for\cf1  (\cf4 int\cf1  i = 0; i < textLength; i++) \{\par
+            temp[size + i] = \cf2 text\cf1 [i];\par
+        \}\par
+        temp[newSize] = \cf3 '\\0'\cf1 ;\par
+        \cf4 delete[]\cf1  name;\par
+        name = temp;\par
+        size = newSize;\par
+        capacity = newSize+1;\par
+    \}\par
+    \cf4 void\cf1  erase() \{\par
+        \cf4 if\cf1  (name != \cf4 nullptr\cf1 ) \{\par
+            \cf4 delete[]\cf1  name;\par
+            name = \cf4 nullptr\cf1 ;\par
+            size = 0;\par
+            capacity = 0;\par
+        \}\par
+    \}\par
+    \cf4 void\cf1  insert(\cf4 int\cf1  \cf2 pos\cf1 ,\cf4 const\cf1  \cf4 char\cf1 * \cf2 text\cf1 ) \{\par
+        \cf4 char\cf1  buff[255];\par
+        \cf4 for\cf1  (\cf4 int\cf1  i = 0; i < \cf2 pos\cf1 ; i++) \{\par
+            buff[i] = name[i];\par
+        \}\par
+        buff[\cf2 pos\cf1 ] = \cf3 '\\0'\cf1 ;\par
+        strcat(buff, \cf2 text\cf1 );\par
+  \par
+        \cf4 delete[]\cf1 name;\par
+        size = strlen(buff);\par
+        capacity = size + 1;\par
+        name = \cf4 new\cf1  \cf4 char\cf1 [capacity];\par
+        strcpy(name, buff);\par
+\par
+\par
+\par
+    \}\par
+\par
+    \cf4 void\cf1  replace(\cf4 const\cf1  \cf5 String\cf1 & \cf2 str\cf1 ) \{\par
+        size = \cf2 str\cf1 .size;\par
+        capacity = \cf2 str\cf1 .capacity;\par
+        \cf4 delete[]\cf1 name;\par
+        name = \cf4 new\cf1  \cf4 char\cf1 [\cf2 str\cf1 .capacity];\par
+        strcpy(name, \cf2 str\cf1 .name);\par
+    \}\par
+    \cf4 void\cf1  wordUp() \{\par
+        \cf4 for\cf1  (\cf4 int\cf1  i = 0; i < capacity; i++) \{\par
+            \cf4 if\cf1  (i == 0) \{\par
+                name[i] = toupper(name[i]);\par
+            \}\par
+            \cf4 if\cf1  (name[i] == \cf3 ' '\cf1 ) \{\par
+                name[i + 1] = toupper(name[i + 1]);\par
+            \}\par
+        \}\par
+    \}\par
+    \cf4 void\cf1  wordUpfirst() \{\par
+        name[0] = toupper(name[0]);\par
+    \}\par
+    \cf4 void\cf1  wordLow() \{\par
+        \cf4 for\cf1  (\cf4 int\cf1  i = 0; i < capacity; i++) \{\par
+            \cf4 if\cf1  (i == 0) \{\par
+                name[i] = tolower(name[i]);\par
+            \}\par
+            \cf4 if\cf1  (name[i] == \cf3 ' '\cf1 ) \{\par
+                name[i + 1] = tolower(name[i + 1]);\par
+            \}\par
+        \}\par
+    \}\par
+\par
+\par
+    \cf4 friend\cf1  \cf5 ostream\cf1 & \cf6 operator<<\cf1 (\cf5 ostream\cf1 & \cf2 out\cf1 , \cf4 const\cf1  \cf5 String\cf1 & \cf2 str\cf1 );\par
+    \cf4 friend\cf1  \cf5 istream\cf1 & \cf6 operator>>\cf1 (\cf5 istream\cf1 & \cf2 in\cf1 , \cf5 String\cf1 & \cf2 str\cf1 );\par
+    ~String() \{\par
+        \cf4 delete[]\cf1  name;\par
+    \}\par
+\};\par
+\cf5 ostream\cf1 & \cf6 operator<<\cf1 (\cf5 ostream\cf1 & \cf2 out\cf1 , \cf4 const\cf1  \cf5 String\cf1 & \cf2 str\cf1 ) \{\par
+    \cf4 if\cf1  (\cf2 str\cf1 .name != \cf4 nullptr\cf1 ) \{\par
+\par
+        \cf2 out\cf1  \cf6 <<\cf1  \cf3 "name "\cf1  \cf6 <<\cf1  \cf2 str\cf1 .name \cf6 <<\cf1  \cf3 " size "\cf1  \cf6 <<\cf1  \cf2 str\cf1 .size \cf6 <<\cf1  \cf3 " capacity "\cf1  \cf6 <<\cf1  \cf2 str\cf1 .capacity\cf6 <<\cf1 endl;\par
+    \}\par
+    \cf4 else\cf1  \{\par
+        \cf2 out\cf1  \cf6 <<\cf3 "don`t have name "\cf1  \cf6 <<\cf1  \cf3 "size "\cf1  \cf6 <<\cf1  \cf2 str\cf1 .size \cf6 <<\cf1  \cf3 "capacity "\cf1  \cf6 <<\cf1  \cf2 str\cf1 .capacity\cf6 <<\cf1 endl;\par
+    \}\par
+    \cf4 return\cf1  \cf2 out\cf1 ;\par
+\}\par
+\cf5 istream\cf1 & \cf6 operator>>\cf1 (\cf5 istream\cf1 & \cf2 in\cf1 , \cf5 String\cf1 & \cf2 str\cf1 ) \{\par
+    \cf4 char\cf1  n[255];\par
+    cout \cf6 <<\cf1  \cf3 "name\\n "\cf1 ;\par
+    \cf2 in\cf1  \cf6 >>\cf1  n;\par
+    \cf4 if\cf1  (\cf2 str\cf1 .name != \cf4 nullptr\cf1 )\par
+        \cf4 delete[]\cf1  \cf2 str\cf1 .name;\par
+    \cf2 str\cf1 .name = \cf4 new\cf1  \cf4 char\cf1 [strlen(n) + 1];\par
+    strcpy(\cf2 str\cf1 .name, n);\par
+    \cf2 str\cf1 .size = strlen(n);\par
+    \cf2 str\cf1 .capacity = strlen(n)+1;\par
+    \cf4 return\cf1  \cf2 in\cf1 ;\par
+\}\par
+\par
+\cf4 int\cf1  main()\par
+\{\par
+    \cf5 String\cf1  h(\cf3 "gggggg"\cf1 );\par
+    \cf5 String\cf1  d(\cf3 "fff "\cf1 );\par
+    d \cf6 +=\cf1  \cf3 'g'\cf1 ;\par
+    cout \cf6 <<\cf1  d;\par
+    d.assign(\cf3 "dfddd"\cf1 );\par
+    cout \cf6 <<\cf1  d\cf6 [\cf1 1\cf6 ]<<\cf1 endl;\par
+    cout \cf6 <<\cf1  d;\par
+    d.insert(3, \cf3 " zdracte"\cf1 );\par
+    cout \cf6 <<\cf1  d;\par
+    d.append(\cf3 " ffff"\cf1 );\par
+    d.wordUp();\par
+   \par
+    cout \cf6 <<\cf1  d;\par
+    \cf7 //d.replace(h);\cf1\par
+    \par
+    \par
+\}\cf0\f2\fs22\lang9\par
+}
+ 

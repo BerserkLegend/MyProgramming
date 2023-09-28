@@ -1,0 +1,753 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat{\fonttbl{\f0\fnil Consolas;}{\f1\fnil\fcharset204 Consolas;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red128\green128\blue128;\red163\green21\blue21;\red0\green0\blue0;\red0\green0\blue255;\red0\green128\blue0;\red0\green128\blue128;\red43\green145\blue175;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang1033 #include\cf2 <iostream>\cf3\par
+\cf1 #include\cf3  \cf2 <string>\cf3\par
+\cf4 using\cf3  \cf4 namespace\cf3  std;\par
+\cf4 int\cf3  main() \{\par
+\tab\cf5 //exersice 1\cf3\par
+\cf5 //\tab char a = '*';\cf3\par
+\tab\cf5 //for (int i = 9; i > 0;i--) \{\cf3\par
+\tab\cf5 //\tab if (i == 9) \{\cf3\par
+\tab\cf5 //\tab\tab cout <<" " << a << a << a << a << a;\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab if (i == 8) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "  " << a << a << a << a ;\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab if (i == 7) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "   " << a << a << a;\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab if (i == 6) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "    " << a << a  ;\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab if (i == 5) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "     " << a ;\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab if (i == 4) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "       ";\cf3\par
+\tab\cf5 //\tab\}if (i == 3) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "       ";\cf3\par
+\tab\cf5 //\tab\}if (i == 2) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "        ";\cf3\par
+\tab\cf5 //\tab\}if (i == 1) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "         ";\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab\cf3\par
+\tab\cf5 //\tab cout << endl;\cf3\par
+\tab\cf5 //\}\cf3\par
+\tab\cf5 //exersice 2\cf3\par
+\par
+\tab\cf5 //char a = '*';\cf3\par
+\tab\cf5 //int b = 2;\cf3\par
+\tab\cf5 //for (int i = 0; i < 12; i++) \{\cf3\par
+\tab\cf5 //\tab for (int j = 1; j < b; j++) \{\cf3\par
+\tab\cf5 //\tab\tab cout << a;\cf3\par
+\tab\cf5 //\tab\tab if (b - i == 1) \{\cf3\par
+\tab\cf5 //\tab\tab\tab b++;\cf3\par
+\tab\cf5 //\tab\tab\}\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab cout << endl;\cf3\par
+\tab\cf5 //\}\cf3\par
+\tab\cf5 //EXERSICE 3\cf3\par
+\par
+\tab\cf5 /*char a = '*';\cf3\par
+\cf5\tab int b = 10;\cf3\par
+\cf5\tab for (int i = 0; i < 5; i++) \{\cf3\par
+\cf5\tab\tab for (int j = 0; j < b; j++) \{\cf3\par
+\cf5\tab\tab\tab if (i == 1&&j==8)\cf3\par
+\cf5\tab\tab\tab\tab break;\cf3\par
+\cf5\tab\tab\tab if (i == 2 && j == 6)\cf3\par
+\cf5\tab\tab\tab\tab break;\cf3\par
+\cf5\tab\tab\tab if (i == 3 && j == 4)\cf3\par
+\cf5\tab\tab\tab\tab break;\cf3\par
+\cf5\tab\tab\tab if (i == 4 && j == 2)\cf3\par
+\cf5\tab\tab\tab\tab break;\cf3\par
+\cf5\tab\tab\tab if (i == 5 && j==5)\cf3\par
+\cf5\tab\tab\tab\tab break;\cf3\par
+\cf5\tab\tab\tab cout << a;\cf3\par
+\par
+\par
+\cf5\tab\tab\}\cf3\par
+\cf5\tab\tab cout << endl;\cf3\par
+\cf5\tab\tab if (i == 0)\cf3\par
+\cf5\tab\tab\tab cout << " ";\cf3\par
+\cf5\tab\tab if (i == 1)\cf3\par
+\cf5\tab\tab\tab cout << "  ";\cf3\par
+\cf5\tab\tab if (i == 2)\cf3\par
+\cf5\tab\tab\tab cout << "   ";\cf3\par
+\cf5\tab\tab if (i == 3)\cf3\par
+\cf5\tab\tab\tab cout << "    ";\cf3\par
+\par
+\par
+\par
+\cf5\tab\}*/\cf3\par
+\tab\cf5 //exersice 4\cf3\par
+\cf5 //\tab char a = '*';\cf3\par
+\cf5 //int b = 10;\cf3\par
+\cf5 //\cf3\par
+\cf5 //for (int i = 0; i < 5; i++) \{\cf3\par
+\cf5 //\tab for (int j = 0; j < b; j++) \{\cf3\par
+\cf5 //\tab if(j==5&&i==0)\{\cf3\par
+\cf5 //\tab\tab cout << "*";\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (j == 4 && i == 1) \{\cf3\par
+\cf5 //\tab\tab cout << "***";\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (j == 3 && i == 2) \{\cf3\par
+\cf5 //\tab\tab cout << "*****";\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (j == 2 && i == 3) \{\cf3\par
+\cf5 //\tab\tab cout << "*******";\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (j == 1 && i == 4) \{\cf3\par
+\cf5 //\tab\tab cout << "*********";\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab cout << " ";\cf3\par
+\cf5 //\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab cout << endl;\cf3\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\cf5 //exersice 5\cf3\par
+\par
+\tab\cf5 //char a = '*';\cf3\par
+\tab\cf5 //int b = 10;\cf3\par
+\tab\cf5 //for (int i = 0; i < 5; i++) \{\cf3\par
+\tab\cf5 //\tab for (int j = 0; j < b; j++) \{\cf3\par
+\tab\cf5 //\tab\tab if (i == 1 && j == 8)\cf3\par
+\tab\cf5 //\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab if (i == 2 && j == 6)\cf3\par
+\tab\cf5 //\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab if (i == 3 && j == 4)\cf3\par
+\tab\cf5 //\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab if (i == 4 && j == 2)\cf3\par
+\tab\cf5 //\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab if (i == 5 && j == 5)\cf3\par
+\tab\cf5 //\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab cout << a;\cf3\par
+\par
+\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab cout << endl;\cf3\par
+\tab\cf5 //\tab if (i == 0)\cf3\par
+\tab\cf5 //\tab\tab cout << " ";\cf3\par
+\tab\cf5 //\tab if (i == 1)\cf3\par
+\tab\cf5 //\tab\tab cout << "  ";\cf3\par
+\tab\cf5 //\tab if (i == 2)\cf3\par
+\tab\cf5 //\tab\tab cout << "   ";\cf3\par
+\tab\cf5 //\tab if (i == 3)\cf3\par
+\tab\cf5 //\tab\tab cout << "    ";\cf3\par
+\par
+\par
+\par
+\tab\cf5 //\}\cf3\par
+\par
+\par
+\par
+\par
+\tab\cf5 //for (int i = 0; i < 5; i++) \{\cf3\par
+\tab\cf5 //\tab for (int j = 0; j < b; j++) \{\cf3\par
+\tab\cf5 //\tab\tab if (j == 4 && i == 0) \{\cf3\par
+\tab\cf5 //\tab\tab\tab cout << "**";\cf3\par
+\tab\cf5 //\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab if (j == 3 && i == 1) \{\cf3\par
+\tab\cf5 //\tab\tab\tab cout << "****";\cf3\par
+\tab\cf5 //\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab if (j == 2 && i == 2) \{\cf3\par
+\tab\cf5 //\tab\tab\tab cout << "******";\cf3\par
+\tab\cf5 //\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab if (j == 1 && i == 3) \{\cf3\par
+\tab\cf5 //\tab\tab\tab cout << "********";\cf3\par
+\tab\cf5 //\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab if (j == 0 && i == 4) \{\cf3\par
+\tab\cf5 //\tab\tab\tab cout << "**********";\cf3\par
+\tab\cf5 //\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab cout << " ";\cf3\par
+\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab cout << endl;\cf3\par
+\par
+\tab\cf5 //\}\cf3\par
+\par
+\cf5 //exersice 7 \f1\lang1049\'e6 \cf3\par
+\cf5 //cout << endl;\cf3\par
+\cf5 //char c = '*';\cf3\par
+\cf5 //int b = 0;\cf3\par
+\cf5 //int a = 1;\cf3\par
+\cf5 //int a1 = 9;\cf3\par
+\cf5 //cout << "*";\cf3\par
+\cf5 //cout << endl;\cf3\par
+\cf5 //while (b<a) \{\cf3\par
+\cf5 //\tab for (int i = -1; i < a; i++) \{\cf3\par
+\cf5 //\tab\tab cout << c;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab cout << endl;\cf3\par
+\cf5 //\cf3\par
+\cf5 //\tab a += 1;\cf3\par
+\cf5 //\tab if (a == 9) \{\cf3\par
+\cf5 //\tab\tab break;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\}\cf3\par
+\cf5 //\cf3\par
+\cf5 //\cf3\par
+\cf5 //for (int i = 0; i < 9; i++) \{\cf3\par
+\cf5 //\tab for (int j = 0; j < a1; j++) \{\cf3\par
+\cf5 //\tab\tab cout << c;\cf3\par
+\cf5 //\tab\tab\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab cout << endl;\cf3\par
+\cf5 //\tab a1 -= 1;\cf3\par
+\cf5 //\}\cf3\par
+\par
+\cf5 //exersice 9 \'e8\cf3\par
+\par
+\cf5 //char a = '*';\cf3\par
+\cf5 //int b = 6;\cf3\par
+\cf5 //int c = 0;\cf3\par
+\cf5 //for (int i = 0; i < 6; i++) \{\cf3\par
+\cf5 //\tab if (i == 1) \{\cf3\par
+\cf5 //\tab\tab b -= 1;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (i == 2) \{\cf3\par
+\cf5 //\tab\tab b -= 1;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (i == 3) \{\cf3\par
+\cf5 //\tab\tab b -= 1;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (i == 4) \{\cf3\par
+\cf5 //\tab\tab b -= 1;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (i == 5) \{\cf3\par
+\cf5 //\tab\tab b -= 1;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (i == 6) \{\cf3\par
+\cf5 //\tab\tab b -= 1;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab for (int j = 0; j < b; j++) \{\cf3\par
+\cf5 //\tab\tab cout << a;\cf3\par
+\cf5 //\cf3\par
+\cf5 //\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab cout << endl;\cf3\par
+\cf5 //\}\cf3\par
+\par
+\par
+\cf5 //\'ee\'f1\'f2\'e0\'eb\'ee\'f1\'fc \'e5  \'e7 \'ea\cf3\par
+\par
+\cf5 //EXERSICE 8\cf3\par
+\tab\cf5 /*char c = '*';\cf3\par
+\cf5\tab int a = 8;\cf3\par
+\cf5\tab int f = 9;\cf3\par
+\cf5\tab for (int i = 0; i < 5; i++) \{\cf3\par
+\cf5\tab\tab if (i == 0) \{\cf3\par
+\cf5\tab\tab\tab cout << "       ";\cf3\par
+\cf5\tab\tab\}\cf3\par
+\cf5\tab\tab if (i == 1) \{\cf3\par
+\cf5\tab\tab\tab cout << "     ";\cf3\par
+\cf5\tab\tab\}\cf3\par
+\cf5\tab\tab if (i == 2) \{\cf3\par
+\cf5\tab\tab\tab cout << "   ";\cf3\par
+\cf5\tab\tab\}\cf3\par
+\cf5\tab\tab if (i == 3) \{\cf3\par
+\cf5\tab\tab\tab cout << " ";\cf3\par
+\cf5\tab\tab\}\cf3\par
+\cf5\tab\tab if (i == 4) \{\cf3\par
+\cf5\tab\tab\tab cout << "";\cf3\par
+\cf5\tab\tab\}\cf3\par
+\cf5\tab\tab for (int j = 0; j < a; j++) \{\cf3\par
+\par
+\cf5\tab\tab\tab if (i == 0) \{\cf3\par
+\cf5\tab\tab\tab\tab a = 2;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}\cf3\par
+\cf5\tab\tab\tab if (i == 1) \{\cf3\par
+\cf5\tab\tab\tab\tab a = 4;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}if (i == 2) \{\cf3\par
+\cf5\tab\tab\tab\tab a = 6;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}if (i == 3) \{\cf3\par
+\cf5\tab\tab\tab\tab a = 8;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}\cf3\par
+\cf5\tab\tab\tab if (i == 4) \{\cf3\par
+\cf5\tab\tab\tab\tab a = 9;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}\cf3\par
+\cf5\tab\tab\}\cf3\par
+\cf5\tab\tab cout << endl;\cf3\par
+\par
+\par
+\par
+\cf5\tab\}\cf3\par
+\cf5\tab for (int i = 0; i < 6; i++) \{\cf3\par
+\cf5\tab\tab if (i == 1) \{\cf3\par
+\cf5\tab\tab\tab cout << " ";\cf3\par
+\cf5\tab\tab\}if (i == 2) \{\cf3\par
+\cf5\tab\tab\tab cout << "  ";\cf3\par
+\cf5\tab\tab\}if (i == 3) \{\cf3\par
+\cf5\tab\tab\tab cout << "    ";\cf3\par
+\cf5\tab\tab\}if (i == 4) \{\cf3\par
+\cf5\tab\tab\tab cout << "     ";\cf3\par
+\cf5\tab\tab\}if (i == 5) \{\cf3\par
+\cf5\tab\tab\tab cout << "       ";\cf3\par
+\cf5\tab\tab\}\cf3\par
+\cf5\tab\tab for (int j = 0; j < f; j++) \{\cf3\par
+\cf5\tab\tab\tab if (i == 0) \{\cf3\par
+\cf5\tab\tab\tab\tab f = 9;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}if (i == 1) \{\cf3\par
+\par
+\cf5\tab\tab\tab\tab f = 8;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}if (i == 2) \{\cf3\par
+\cf5\tab\tab\tab\tab f = 7;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}\cf3\par
+\cf5\tab\tab\tab if (i == 3) \{\cf3\par
+\cf5\tab\tab\tab\tab f = 5;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}\cf3\par
+\cf5\tab\tab\tab if (i == 4) \{\cf3\par
+\cf5\tab\tab\tab\tab f = 4;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}\cf3\par
+\cf5\tab\tab\tab if (i == 5) \{\cf3\par
+\cf5\tab\tab\tab\tab f = 2;\cf3\par
+\cf5\tab\tab\tab\tab cout << c;\cf3\par
+\cf5\tab\tab\tab\}\cf3\par
+\cf5\tab\tab\}\cf3\par
+\cf5\tab\tab cout << endl;\cf3\par
+\cf5\tab\}*/\cf3\par
+\par
+\tab\cf5 //exersice 6 \cf3\par
+\tab\cf5 //char c= '*';\cf3\par
+\tab\cf5 //char c2 = '**';\cf3\par
+\tab\cf5 //\cf3\par
+\tab\cf5 //\tab for (int i = 0; i < 10; i++) \{\cf3\par
+\tab\cf5 //\tab\tab for (int j = 0; j < 10; j++) \{\cf3\par
+\tab\cf5 //\tab\tab\tab if (j == 0 || j == 9) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab else if (j == 1 && i == 1 || j == 8 && i == 1) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab else if (j == 2 && i == 2 || j ==7 && i == 2) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab else if (j == 3 && i == 3 || j == 6 && i == 3) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab else if (j == 4 && i == 4 || j == 5 && i == 4) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab else if (j == 5 && i == 5 || j == 4 && i == 5) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab else if (j == 6 && i == 6 || j == 3 && i == 6) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab else if (j == 7 && i == 7 || j == 2 && i == 7) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab else if (j == 8 && i == 8 || j == 1 && i == 8) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab else \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << " ";\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab cout << endl;\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //exersice 10\cf3\par
+\tab\cf5 //char c = '*';\cf3\par
+\tab\cf5 //for (int i = 0; i < 8; i++) \{\cf3\par
+\tab\cf5 //\tab if (i == 0) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "       ";\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab if (i == 1) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "      ";\cf3\par
+\tab\cf5 //\tab\}if (i == 2) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "     ";\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab if (i == 3) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "    ";\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\tab\cf5 //\tab if (i == 4) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "   ";\cf3\par
+\tab\cf5 //\tab\}if (i == 5) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "  ";\cf3\par
+\tab\cf5 //\tab\}if (i == 6) \{\cf3\par
+\tab\cf5 //\tab\tab cout << " ";\cf3\par
+\tab\cf5 //\tab\}if (i == 7) \{\cf3\par
+\tab\cf5 //\tab\tab cout << "";\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\par
+\tab\cf5 //\tab\tab for (int j = 0; j < 8; j++) \{\cf3\par
+\tab\cf5 //\tab\tab\tab if (i == 0) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab if (j == 0) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab\}if (i == 1) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab if (j == 1) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab if (i == 2) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab if (j == 2) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab if (i == 3) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab if (j == 3) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab if (i == 4) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab if (j == 4) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\par
+\tab\cf5 //\tab\tab\tab if (i == 5) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab if (j == 5) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\par
+\tab\cf5 //\tab\tab\tab if (i == 6) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab if (j == 6) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\par
+\tab\cf5 //\tab\tab\tab if (i == 7) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab cout << c;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab if (j == 7) \{\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\tab break;\cf3\par
+\tab\cf5 //\tab\tab\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab\tab\}\cf3\par
+\par
+\par
+\par
+\tab\cf5 //\tab\tab\}\cf3\par
+\tab\cf5 //\tab\tab cout << endl;\cf3\par
+\tab\cf5 //\tab\}\cf3\par
+\par
+\cf5 //exercise 2.1\cf3\par
+\cf5 //int a;\cf3\par
+\cf5 //int b1 = 1;\cf3\par
+\cf5 //int b = 10;\cf3\par
+\cf5 //int c= 0;\cf3\par
+\cf5 //int v = 0;\cf3\par
+\cf5 //int f = 0;\cf3\par
+\cf5 //bool flag = true;\cf3\par
+\cf5 //int summ\{\};\cf3\par
+\cf5 //cout << "\'c2\'e2\'e5\'e4\'e8\'f2\'e5 \'f7\'e8\'f1\'eb\'ee";\cf3\par
+\cf5 //cin >> a;\cf3\par
+\cf5 //int a1 = a;\cf3\par
+\cf5 //while (flag) \{\cf3\par
+\cf5 //\tab if (a == 1) \{\cf3\par
+\cf5 //\tab\tab break;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (a == 2|| a == 3|| a == 4|| a == 5|| a == 6|| a == 7|| a == 8|| a == 9) \{\cf3\par
+\cf5 //\tab\tab c += 1;\cf3\par
+\cf5 //\tab\tab break;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab a /= b;\cf3\par
+\cf5 //\tab c += 1;\cf3\par
+\cf5 //\tab b1 *= 10;\cf3\par
+\cf5 //\tab if (a == 1) \{\cf3\par
+\cf5 //\cf3\par
+\cf5 //\tab\tab c += 1;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\cf3\par
+\cf5 //\cf3\par
+\cf5 //\}\cf3\par
+\cf5 //cout << c<<"\'f1\'f2\'b3\'eb\'fc\'ea\'e8  \'f6\'e8\'f4\'f0"<<endl;\cf3\par
+\cf5 //while (a1 != 0)\cf3\par
+\cf5 //\{\cf3\par
+\cf5 //\tab summ += a1 % 10;\cf3\par
+\cf5 //\tab if (a1 % 10 <1) \{\cf3\par
+\cf5 //\tab\tab f += 1;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab a1 /= 10;\cf3\par
+\cf5 //\}\cf3\par
+\cf5 //cout << "sum = " << summ << endl;\cf3\par
+\cf5 //cout << "\'f1\'f2\'b3\'eb\'fc\'ea\'e8 \'ed\'f3\'eb\'b3\'e2:" << f;\cf3\par
+\par
+\par
+\par
+\par
+\par
+\cf5 //exersice 2.2\cf3\par
+\tab\cf4 int\cf3  a;\par
+\tab cin \cf6 >>\cf3  a;\par
+\tab\cf7 string\cf3  b = \cf2 "***"\cf3 ;\par
+\tab\cf7 string\cf3  c = \cf2 "&&&"\cf3 ;\par
+\tab\cf4 for\cf3  (\cf4 int\cf3  i = 0; i < a * 2; i++) \{\par
+\tab\tab\cf4 if\cf3  (i % 2 == 0) \{\par
+\tab\tab\tab\cf4 for\cf3  (\cf4 int\cf3  j = 0; j < a; j++) \{\par
+\tab\tab\tab\tab\cf4 if\cf3  (j % 2 == 0) \{\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf3  b;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\cf4 else\cf3  \{\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf3  c;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\tab\cf4 else\cf3  \{\par
+\tab\tab\tab\cf4 for\cf3  (\cf4 int\cf3  j = 0; j < a; j++) \{\par
+\tab\tab\tab\tab\cf4 if\cf3  (j % 2 == 0)\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf3  c;\par
+\par
+\tab\tab\tab\tab\cf4 else\cf3\par
+\tab\tab\tab\tab\tab cout \cf6 <<\cf3  b;\par
+\tab\tab\tab\}\par
+\par
+\tab\tab\}\par
+\par
+\par
+\par
+\tab\tab cout \cf6 <<\cf3  endl;\par
+\par
+\par
+\par
+\par
+\tab\}\par
+\}\par
+\par
+\'f4\'f3\'ed\'ea\'f6\'e8\'e8\par
+\par
+\par
+\par
+\cf1\f0\lang1033 #include\cf2 <iostream>\cf3\par
+\cf1 #include\cf2 <ctime>\cf3\par
+\par
+\cf4 using\cf3  \cf4 namespace\cf3  std;\par
+\cf5 //exersice 1\cf3\par
+\cf5 //int pow1(int num, int step) \{\cf3\par
+\cf5 //\tab int res=1;\cf3\par
+\cf5 //\tab for (int i = 1; i < step + 1; i++) \{\cf3\par
+\cf5 //\tab\tab res *= num;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab return res;\cf3\par
+\cf5 //\}\cf3\par
+\par
+\par
+\cf5 //exersice 2\cf3\par
+\par
+\cf5 //int sum(int first,int second,int summ) \{\cf3\par
+\cf5 //\tab for (int i=first; i<second; i++) \{\cf3\par
+\cf5 //\tab\tab  summ += i;\cf3\par
+\cf5 //\tab\tab\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab return summ;\cf3\par
+\cf5 //\}\cf3\par
+\par
+\cf5 //exersice 3\cf3\par
+\par
+\cf5 //int dil(int a) \{\cf3\par
+\cf5 //\tab int summ = 0;\cf3\par
+\cf5 //\tab int i = 1;\cf3\par
+\cf5 //\tab for (i; i < a; i++) \{\cf3\par
+\cf5 //\tab\tab if (i == 1) \{\cf3\par
+\cf5 //\tab\tab\tab continue;\cf3\par
+\cf5 //\tab\tab\}\cf3\par
+\cf5 //\tab\tab if (a % i == 0) \{\cf3\par
+\cf5 //\tab\tab\tab summ += i;\cf3\par
+\cf5 //\tab\tab\}\cf3\par
+\cf5 //\cf3\par
+\cf5 //  \}\cf3\par
+\cf5 //\tab summ += 1;\cf3\par
+\cf5 //\tab /*cout << i << endl;\cf3\par
+\cf5 //\tab cout << summ;*/\cf3\par
+\cf5 //\tab if (summ == i) \{\cf3\par
+\cf5 //\tab\tab cout << "TRue";\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab else \{\cf3\par
+\cf5 //\tab\tab cout << "FALSE";\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab return summ;\cf3\par
+\cf5 //\}\cf3\par
+\par
+\cf5 //exersice 4\cf3\par
+\cf5 //void karta(int a,int kk) \{\cf3\par
+\cf5 //\tab int m = 0;\cf3\par
+\cf5 //\tab char kar[] = \{ 'B','D','K','A' \};\cf3\par
+\cf5 //\tab for (int i = 0; i < a; i++) \{\cf3\par
+\cf5 //\tab\tab for (int j = 0; j < a; j++) \{\cf3\par
+\cf5 //\tab\tab\tab if (i == 0 || i == a - 1) \{\cf3\par
+\cf5 //\tab\tab\tab\tab cout << "*";\cf3\par
+\cf5 //\tab\tab\tab\}\cf3\par
+\cf5 //\tab\tab\tab else if (j == 0 || j == a - 1) \{\cf3\par
+\cf5 //\tab\tab\tab\tab cout << "*";\cf3\par
+\cf5 //\tab\tab\tab\}\cf3\par
+\cf5 //\tab\tab\tab else \{\cf3\par
+\cf5 //\tab\tab\tab\tab if (m == 0 && j == a / 2 && i == a / 2) \{\cf3\par
+\cf5 //\tab\tab\tab\tab\tab\tab cout << kar[kk];\cf3\par
+\cf5 //\tab\tab\tab\tab\tab\tab m++;\cf3\par
+\cf5 //\tab\tab\tab\tab\tab\tab cout << "";\cf3\par
+\cf5 //\tab\tab\tab\tab\}\cf3\par
+\cf5 //\tab\tab\tab\tab else \{\cf3\par
+\cf5 //\tab\tab\tab\tab\tab cout << " ";\cf3\par
+\cf5 //\tab\tab\tab\tab\}\cf3\par
+\cf5 //\tab\tab\tab\}\cf3\par
+\cf5 //\cf3\par
+\cf5 //\cf3\par
+\cf5 //\tab\tab   \}\cf3\par
+\cf5 //\tab\tab cout << endl;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\cf3\par
+\cf5 //\cf3\par
+\cf5 //\}\cf3\par
+\cf5 //exersice 5\cf3\par
+\par
+\cf5 //bool chs(int a) \{\cf3\par
+\cf5 //\tab int  b = 0;\cf3\par
+\cf5 //\tab int b1 = 0;\cf3\par
+\cf5 //\tab int a1[] = \{ a / 100000,a / 10000 % 10,a / 1000 % 10,a / 100 % 10,a / 10 % 10,a % 10 \};\cf3\par
+\cf5 //\tab for (int i = 0; i < 3; i++) \{\cf3\par
+\cf5 //\cf3\par
+\cf5 //\tab\tab b += a1[i];\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab for (int i = 3; i < 6; i++) \{\cf3\par
+\cf5 //\tab\tab b1 += a1[i];\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab if (b == b1) \{\cf3\par
+\cf5 //\tab\tab cout << "\f1\lang1049\'f1\'f7\'e0\'f1\'f2\'eb\'e8\'e2\'ee\'e5;";\cf3\par
+\cf5 //\tab\tab return true;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab else\cf3\par
+\cf5 //\tab\tab cout << "\'ed\'e5 \'f1\'f7\'e0\'f1\'f2\'eb\'e8\'e2\'ee\'e5";\cf3\par
+\cf5 //\tab return false;\cf3\par
+\cf5 //\}\cf3\par
+\par
+\cf5 //exersice 6\cf3\par
+\cf5 //int sersh() \{\cf3\par
+\cf5 //\tab srand(time(NULL));\cf3\par
+\cf5 //\tab int mas[] = \{1+rand()%80,1 + rand() % 80 ,1 + rand() % 80 ,1 + rand() % 80 ,1 + rand() % 80 \};\cf3\par
+\cf5 //\tab int key;\cf3\par
+\cf5 //\tab for (int i = 0; i < 4; i++) \{\cf3\par
+\cf5 //\tab\tab cout << mas[i]<<endl;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f7\'e8\'f1\'eb\'ee";\cf3\par
+\cf5 //\tab cin >> key;\cf3\par
+\cf5 //\tab for (int i = 0; i < 4; i++) \{\cf3\par
+\cf5 //\tab\tab if (key==mas[i]) \{\cf3\par
+\cf5 //\tab\tab\tab return i;\cf3\par
+\cf5 //\tab\tab\}\cf3\par
+\cf5 //\tab\tab\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\cf3\par
+\par
+\cf5 //\}\cf3\par
+\par
+\cf5 //exersice 7\cf3\par
+\par
+\cf5 //void sershB() \{\cf3\par
+\cf5 //\tab int buff;\cf3\par
+\cf5 //\tab int mas[] = \{10,20,30,40\};\cf3\par
+\cf5 //\tab for (int i = 0; i < 4; i++) \{\cf3\par
+\cf5 //\tab\tab cout << mas[i]<<endl;\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab int key;\cf3\par
+\cf5 //\tab cin >> key;\cf3\par
+\cf5 //\tab int r = 3;\cf3\par
+\cf5 //\tab int lef=0;\cf3\par
+\cf5 //\tab while (true) \{\cf3\par
+\cf5 //\tab\tab int mi = (r + lef) / 2;\cf3\par
+\cf5 //\tab\tab if (mas[mi] >key) \{\cf3\par
+\cf5 //\tab\tab\tab r = mi - 1;\cf3\par
+\cf5 //\tab\tab\}if (mas[mi] < key) \{\cf3\par
+\cf5 //\tab\tab\tab lef = mi + 1;\cf3\par
+\cf5 //\tab\tab\}\cf3\par
+\cf5 //\tab\tab else \{\cf3\par
+\cf5 //\tab\tab\tab buff = mi;\cf3\par
+\cf5 //\tab\tab\tab break;\cf3\par
+\cf5 //\tab\tab\}\cf3\par
+\cf5 //\tab\}\cf3\par
+\cf5 //\tab cout << buff+1;\cf3\par
+\cf5 //\}\cf3\par
+\cf5 //exersice 8\cf3\par
+\par
+\par
+\cf4 int\cf3  main()\{\par
+\tab\cf5 //exersice 1\cf3\par
+\tab\cf5 /*int num;\cf3\par
+\cf5\tab int step;\cf3\par
+\cf5\tab cin >> num;\cf3\par
+\cf5\tab cin >> step;\cf3\par
+\par
+\cf5\tab cout<<pow1(step,num);*/\cf3\par
+\par
+\tab\cf5 //exersice 2\cf3\par
+\tab\cf5 //string a;\cf3\par
+\tab\cf5 //int first;\cf3\par
+\tab\cf5 //int second;\cf3\par
+\tab\cf5 //cin >> a;\cf3\par
+\tab\cf5 //cin >> first;\cf3\par
+\tab\cf5 //cin >> second;\cf3\par
+\tab\cf5 //if (a=="ON") \{\cf3\par
+\tab\cf5 //\tab cout<<sum(first, second,0);\cf3\par
+\par
+\tab\cf5 //\}\cf3\par
+\tab\cf5 //else if(a=="OFF") \{\cf3\par
+\tab\cf5 //\tab cout<<sum(first+1, second,0);\cf3\par
+\par
+\tab\cf5 //\}\cf3\par
+\tab\cf5 //else \{\cf3\par
+\tab\cf5 //\tab cout << R"(Select:"ON" or "OFF")";\cf3\par
+\tab\cf5 //\}\cf3\par
+\par
+\par
+\par
+\tab\cf5 //exersice 3\cf3\par
+\tab\cf5 //int a;\cf3\par
+\tab\cf5 //cin >> a;\cf3\par
+\tab\cf5 //dil(a);\cf3\par
+\par
+\par
+\tab\cf5 //exersice 4\cf3\par
+\par
+\tab\cf5 /*int b;\cf3\par
+\cf5\tab cin >> b;\cf3\par
+\par
+\cf5\tab karta(5,b);*/\cf3\par
+\par
+\par
+\tab\cf5 //exersice 5\cf3\par
+\par
+\tab\cf5 /*int a;\cf3\par
+\cf5\tab cin >> a;\cf3\par
+\par
+\cf5\tab cout << chs(a);*/\cf3\par
+\par
+\par
+\tab\cf5 //exersice 6\cf3\par
+\par
+\tab\cf5 /*cout<<sersh();*/\cf3\par
+\tab\par
+\tab\par
+\tab\par
+\tab\cf5 //exersice 7\cf3\par
+\par
+\par
+\tab\cf5 //sershB();\cf3\par
+\tab\cf5 //exersice 8\cf3\par
+\}\cf0\f2\fs22\lang1033\par
+}
+ 

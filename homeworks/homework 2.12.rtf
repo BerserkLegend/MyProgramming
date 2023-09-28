@@ -1,0 +1,826 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset204 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang1033 // HomeWork\f1\lang1049\'f4\'f3\'ed\'ea\'f6\'e8\'e8\'e42\'c3\'f0\'f3\'e4\'e3\'ff.cpp : \'dd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe "main". \'c7\'e4\'e5\'f1\'fc \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'e8 \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb.\par
+//\par
+\par
+#include <iostream>\par
+using namespace std;\par
+//exer 1\par
+//int  god(int ch, int month, int year, int ch2, int month2, int year2) \{\par
+//    bool flag = false;\par
+//\par
+//\par
+//    for (int i = 2000; i < 2100; i += 4) \{\par
+//        if (year == i)\par
+//            flag = true;\par
+//        \par
+//    \}\par
+//\par
+//\par
+//    if (flag == true) \{\par
+//        year *= 366;\par
+//    \}\par
+//    else \{\par
+//        year *= 365;\par
+//    \}\par
+//    switch (month)\par
+//    \{\par
+//    case 12:\par
+//        if (flag == true) \par
+//            month = 366;\par
+//        else\par
+//            month = 365;\par
+//        break;\par
+//    case 11:\par
+//        if (flag == true)\par
+//            month = 366-30;\par
+//        else\par
+//            month = 365-30;\par
+//        break;\par
+//    case 10:\par
+//        if (flag == true)\par
+//            month = 366 - 30-31;\par
+//        else\par
+//            month = 365 - 30-31;\par
+//        break;\par
+//    case 9:\par
+//        if (flag == true)\par
+//            month = 366 - 30 - 31-30;\par
+//        else\par
+//            month = 365 - 30 - 31-30;\par
+//        break;\par
+//    case 8:\par
+//        if (flag == true)\par
+//            month = 366 - 30 - 31 - 30-31;\par
+//        else\par
+//            month = 365 - 30 - 31 - 30-31; \par
+//        break;\par
+//    case 7:\par
+//        if (flag == true)\par
+//            month = 366 - 30 - 31 - 30-31-30;\par
+//        else\par
+//            month = 365 - 30 - 31 - 30-31-30;\par
+//        break;\par
+//    case 6:\par
+//        if (flag == true)\par
+//            month = 366 - 30 - 31 - 30 - 31 - 30-31;\par
+//        else\par
+//            month = 365 - 30 - 31 - 30 - 31 - 30-31;\par
+//        break;\par
+//    case 5:\par
+//        if (flag == true)\par
+//            month = 366 - 30 - 31 - 30 - 31 - 30 - 31-30;\par
+//        else\par
+//            month = 365 - 30 - 31 - 30 - 31 - 30 - 31-30;\par
+//        break;\par
+//    case 4:\par
+//        if (flag == true)\par
+//            month = 366 - 30 - 31 - 30 - 31 - 30 - 31 - 30-31;\par
+//        else\par
+//            month = 365 - 30 - 31 - 30 - 31 - 30 - 31 - 30-31;\par
+//        break;\par
+//    case 3:\par
+//        if (flag == true)\par
+//            month = 366 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31-30;\par
+//        else\par
+//            month = 365 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31-30;\par
+//        break;\par
+//    case 2:\par
+//        if (flag == true)\par
+//            month = 366 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30-29;\par
+//        else\par
+//            month = 365 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30-28;\par
+//        break;\par
+//    case 1:\par
+//        if (flag == true)\par
+//            month = 366 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 29-31;\par
+//        else\par
+//            month = 365 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 28-31;\par
+//        break; \par
+//    \}\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//    int flag2 = false;\par
+//    for (int i = 2000; i < 2100; i += 4) \{\par
+//        if (year2 == i)\par
+//            flag2 = true;\par
+//\par
+//    \}\par
+//\par
+//\par
+//    if (flag2 == true) \{\par
+//        year2 *= 366;\par
+//    \}\par
+//    else \{\par
+//        year2 *= 365;\par
+//    \}\par
+//    switch (month2)\par
+//    \{\par
+//    case 12:\par
+//        if (flag2 == true)\par
+//            month2 = 366;\par
+//        else\par
+//            month2 = 365;\par
+//        break;\par
+//    case 11:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30;\par
+//        else\par
+//            month2 = 365 - 30;\par
+//        break;\par
+//    case 10:\par
+//        if (flag2== true)\par
+//            month2 = 366 - 30 - 31;\par
+//        else\par
+//            month2 = 365 - 30 - 31;\par
+//        break;\par
+//    case 9:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30 - 31 - 30;\par
+//        else\par
+//            month2 = 365 - 30 - 31 - 30;\par
+//        break;\par
+//    case 8:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30 - 31 - 30 - 31;\par
+//        else\par
+//            month2= 365 - 30 - 31 - 30 - 31;\par
+//        break;\par
+//    case 7:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30 - 31 - 30 - 31 - 30;\par
+//        else\par
+//            month2= 365 - 30 - 31 - 30 - 31 - 30;\par
+//        break;\par
+//    case 6:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30 - 31 - 30 - 31 - 30 - 31;\par
+//        else\par
+//            month2 = 365 - 30 - 31 - 30 - 31 - 30 - 31;\par
+//        break;\par
+//    case 5:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30 - 31 - 30 - 31 - 30 - 31 - 30;\par
+//        else\par
+//            month2 = 365 - 30 - 31 - 30 - 31 - 30 - 31 - 30;\par
+//        break;\par
+//    case 4:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31;\par
+//        else\par
+//            month2 = 365 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31;\par
+//        break;\par
+//    case 3:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30;\par
+//        else\par
+//            month2 = 365 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30;\par
+//        break;\par
+//    case 2:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 29;\par
+//        else\par
+//            month2 = 365 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 28;\par
+//        break;\par
+//    case 1:\par
+//        if (flag2 == true)\par
+//            month2 = 366 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 29 - 31;\par
+//        else\par
+//            month2 = 365 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 31 - 30 - 28 - 31;\par
+//        break;\par
+//    \}\par
+//    int res;\par
+//    bool g = false;\par
+//    if (year == year2) \{\par
+//        if(month>month2)\par
+//            res = (year - year2) + (month - month2) + (ch - ch2);\par
+//        if (month == month2) \{\par
+//            if (ch == ch2) \par
+//                res = (year - year2) + (month - month2) + (ch - ch2);\par
+//            \par
+//            if (ch > ch2) \par
+//                res = (year - year2) + (month - month2) + (ch - ch2);\par
+//           \par
+//       \}\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//        if (year2 == year) \{\par
+//            if (month2 > month)\par
+//                res = (year2 - year) + (month2 - month) + (ch2 - ch);\par
+//            if (month == month2) \{\par
+//                if (ch2 == ch)\par
+//                    res = (year2 - year) + (month2 - month) + (ch2 - ch);\par
+//\par
+//                if (ch2 > ch)\par
+//                    res = (year2 - year) + (month2 - month) + (ch2 - ch);\par
+//\par
+//            \}\par
+//        \}\par
+//      \par
+//\par
+//    \}\par
+//    if (year > year2)\par
+//        res = (year - year2) + (month - month2) + (ch - ch2);\par
+//    else if(year2>year)\par
+//        res = (year2 - year) + (month2 - month) + (ch2 - ch);\par
+//    return res;\par
+\par
+//\}\par
+//ex 2\par
+// void h(int a) \{\par
+//\tab  \par
+//\tab  int arr[] = \{0\};\par
+//\tab\par
+//\tab for (int i = 0; i < a; i++) \{\par
+//\tab\tab int b;\par
+//\tab\tab cin >> b;\par
+//\tab\tab arr[i] = \{ b \};\par
+//\tab\}\par
+//\tab long summ = 0;\par
+//\tab for (int i = 0; i < a; i++) \{\par
+//\tab\tab summ += arr[i];\par
+//\par
+//\tab\}\par
+//\tab cout <<"\'e0\'f0\'e5\'f4\'ec\'e5\'f2\'e8\'f7\'ed\'e5 " << summ / a;\par
+//\}\par
+\par
+\par
+//ex 3\par
+//void h(int a) \{\par
+//\tab int b=0;\par
+//\tab int c=0;\par
+//\tab int v=0;\par
+//\tab int arr[] = \{ 0 \};\par
+//\par
+//\tab for (int i = 0; i < a; i++) \{\par
+//\tab\tab int b;\par
+//\tab\tab cin >> b;\par
+//\tab\tab arr[i] = \{ b \};\par
+//\tab\}\par
+//\tab for (int i = 0; i < a; i++) \{\par
+//\par
+//\tab\tab if (arr[i] == 0)\par
+//\tab\tab\tab c += 1;\par
+//\tab\tab if (arr[i] > 0)\par
+//\tab\tab\tab b += 1;\par
+//\tab\tab if (arr[i] < 0)\par
+//\tab\tab\tab v += 1;\par
+//\par
+//\tab\}\par
+//\tab cout << b << " " << c << " " << v;\par
+//\}\par
+//ex 4\par
+////template<typename T> \par
+////T bb (T a, T b) \{\par
+//double b[2][3];\par
+//char b1[2][3];\par
+//double d;\par
+//double d1;\par
+//double mini=0;\par
+//double mini1=0;\par
+//double a(double p) \{\par
+//\tab double v = 0;\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab\tab b[0][i] = v;\par
+//\tab\tab\tab v += 1.5;\par
+//\tab\}\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab b[0][i] = v;\par
+//\tab\tab v += 1.5;\par
+//\tab\tab\par
+//\tab\}\tab\par
+//\tab cout << endl;\par
+//\tab return v;\par
+//\tab /*for (int i = 0; i < 2; i++) \{\par
+//\tab\tab for (int j = 0; j < 3; j++) \{\par
+//\tab\tab\tab return b[i][j];\par
+//\tab\tab\}*/\par
+//\tab //return 1;\par
+//\tab\}\par
+//\par
+//int  a(int pp) \{\par
+//\tab int v = 0;\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab b[0][i] = v;\par
+//\tab\tab v += 1;\par
+//\tab\}\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab b[1][i] = v;\par
+//\tab\tab v += 1;\par
+//\par
+//\tab\}\par
+//\tab cout << endl;\par
+//\tab return pp;\par
+//\tab /*for (int i = 0; i < 2; i++) \{\par
+//\tab\tab for (int j = 0; j < 3; j++) \{\par
+//\tab\tab\tab return b[i][j];\par
+//\tab\tab\}*/\par
+//\tab\tab //return 1;\par
+//\}\par
+//\par
+//char  a(char ppp) \{\par
+//\tab char v = 65;\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab b1[0][i] = v;\par
+//\tab\tab v += 1;\par
+//\tab\}\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab b1[1][i] = v;\par
+//\tab\tab v += 1;\par
+//\par
+//\tab\}\par
+//\tab cout << endl;\par
+//\tab return ppp;\par
+//\tab /*for (int i = 0; i < 2; i++) \{\par
+//\tab\tab for (int j = 0; j < 3; j++) \{\par
+//\tab\tab\tab return b[i][j];\par
+//\tab\tab\}*/\par
+//\tab\tab //return 1;\par
+//\}\par
+//double a1(double t) \{\par
+//\tab a(3.);\par
+//\tab for (int i = 0; i < 2; i++) \{\par
+//\tab\tab for (int j = 0; j < 6.; j++) \{\par
+//\tab\tab\tab cout << b[i][j] << endl;\par
+//\par
+//\tab\tab\}\par
+//\tab\tab cout << endl;\par
+//\tab\tab return t;\par
+//\tab\}\par
+//\}\par
+//int a1(int tt) \{\par
+//\tab a(3);\par
+//\tab for (int i = 0; i < 2; i++) \{\par
+//\tab\tab for (int j = 0; j < 6; j++) \{\par
+//\tab\tab\tab cout << b[i][j] << endl;\par
+//\par
+//\tab\tab\}\par
+//\tab\tab cout << endl;\par
+//\tab\tab return tt;\par
+//\tab\}\par
+//\}\par
+//char a1(char ttt) \{\par
+//\tab a('&');\par
+//\tab for (int i = 0; i < 2; i++) \{\par
+//\tab\tab for (int j = 0; j < 6; j++) \{\par
+//\tab\tab\tab cout << b1[i][j] << endl;\par
+//\par
+//\tab\tab\}\par
+//\tab\tab cout << endl;\par
+//\tab\tab return ttt;\par
+//\tab\}\par
+//\}\par
+//\par
+//\par
+//double a2(double t1) \{\par
+//\tab a(3.);\par
+//\tab a1(3.);\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (i == 4) \{\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab if (b[0][i] > b[0][i + 1]) \{\par
+//\tab\tab\tab d = b[0][i];\par
+//\tab\tab\}\par
+//\tab\tab if (b[0][i] > b[0][i + 1]) \{\par
+//\tab\tab\tab mini = b[0][i + 1];\par
+//\tab\tab\}\par
+//\tab\tab     \par
+//\tab\}\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (i == 4) \{\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab if (b[1][i] > b[1][i + 1]) \{\par
+//\tab\tab\tab d1 = b[1][i];\par
+//\tab\tab\tab\par
+//\tab\tab\}\par
+//\tab\tab else if (b[1][i + 1] > b[1][i])\par
+//\tab\tab\tab d1 = b[1][i + 1];\par
+//\tab\tab  \par
+//\tab\}\par
+//\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (mini == b[0][i]) \{\par
+//\tab\tab\tab mini = i;\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab mini += 1;\par
+//\tab\}\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (mini1 == b[1][i]) \{\par
+//\tab\tab\tab mini1 = i;\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab mini1 += 1;\par
+//\tab\}\par
+//\tab\par
+//\tab if (d > d1) \{\par
+//\tab\tab cout << "minim";\par
+//\tab\tab cout << mini1;\par
+//\tab\tab cout << "\'f1\'e0\'ec\'ee\'e5 \'e1\'ee\'eb\'fc\'f8\'ee\'e5";\par
+//\tab\tab return d;\par
+//\tab\}\par
+//\tab else \{\par
+//\tab\tab cout << "minim";\par
+//\tab\tab cout << mini;\par
+//\tab\tab cout << "\'f1\'e0\'ec\'ee\'e5 \'e1\'ee\'eb\'fc\'f8\'ee\'e5";\par
+//\tab\tab return d1;\par
+//\tab\}\par
+//\}\par
+//\par
+//\par
+//\par
+//int  a2(int tt1) \{\par
+//\tab a(3);\par
+//\tab a1(3);\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (i == 4) \{\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab if (b[0][i] > b[0][i + 1]) \{\par
+//\tab\tab\tab d = b[0][i];\par
+//\tab\tab\}\par
+//\tab\tab if (b[0][i] > b[0][i + 1]) \{\par
+//\tab\tab\tab mini = b[0][i + 1];\par
+//\tab\tab\}\par
+//\par
+//\tab\}\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (i == 4) \{\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab if (b[1][i] > b[1][i + 1]) \{\par
+//\tab\tab\tab d1 = b[1][i];\par
+//\par
+//\tab\tab\}\par
+//\tab\tab else if (b[1][i + 1] > b[1][i])\par
+//\tab\tab\tab d1 = b[1][i + 1];\par
+//\par
+//\tab\}\par
+//\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (mini == b[0][i]) \{\par
+//\tab\tab\tab mini = i;\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab mini += 1;\par
+//\tab\}\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (mini1 == b[1][i]) \{\par
+//\tab\tab\tab mini1 = i;\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab mini1 += 1;\par
+//\tab\}\par
+//\par
+//\tab if (d > d1) \{\par
+//\tab\tab cout << "minim";\par
+//\tab\tab cout << mini1;\par
+//\tab\tab cout << "\'f1\'e0\'ec\'ee\'e5 \'e1\'ee\'eb\'fc\'f8\'ee\'e5";\par
+//\tab\tab return d;\par
+//\tab\}\par
+//\tab else \{\par
+//\tab\tab cout << "minim";\par
+//\tab\tab cout << mini;\par
+//\tab\tab cout << "\'f1\'e0\'ec\'ee\'e5 \'e1\'ee\'eb\'fc\'f8\'ee\'e5";\par
+//\tab\tab return d1;\par
+//\tab\}\par
+//\}\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//char  a2(char ttt1) \{\par
+//\tab a('&');\par
+//\tab a1('*');\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (i == 4) \{\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab if (b[0][i] > b[0][i + 1]) \{\par
+//\tab\tab\tab d = b[0][i];\par
+//\tab\tab\}\par
+//\tab\tab if (b[0][i] > b[0][i + 1]) \{\par
+//\tab\tab\tab mini = b[0][i + 1];\par
+//\tab\tab\}\par
+//\par
+//\tab\}\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (i == 4) \{\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab if (b[1][i] > b[1][i + 1]) \{\par
+//\tab\tab\tab d1 = b[1][i];\par
+//\par
+//\tab\tab\}\par
+//\tab\tab else if (b[1][i + 1] > b[1][i])\par
+//\tab\tab\tab d1 = b[1][i + 1];\par
+//\par
+//\tab\}\par
+//\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (mini == b[0][i]) \{\par
+//\tab\tab\tab mini = i;\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab mini += 1;\par
+//\tab\}\par
+//\tab for (int i = 0; i < 3; i++) \{\par
+//\tab\tab if (mini1 == b[1][i]) \{\par
+//\tab\tab\tab mini1 = i;\par
+//\tab\tab\tab break;\par
+//\tab\tab\}\par
+//\tab\tab mini1 += 1;\par
+//\tab\}\par
+//\par
+//\tab if (d > d1) \{\par
+//\tab\tab cout << "minim";\par
+//\tab\tab cout << mini1;\par
+//\tab\tab cout << "\'f1\'e0\'ec\'ee\'e5 \'e1\'ee\'eb\'fc\'f8\'ee\'e5";\par
+//\tab\tab return d;\par
+//\tab\}\par
+//\tab else \{\par
+//\tab\tab cout << "minim";\par
+//\tab\tab cout << mini;\par
+//\tab\tab cout << "\'f1\'e0\'ec\'ee\'e5 \'e1\'ee\'eb\'fc\'f8\'ee\'e5";\par
+//\tab\tab return d1;\par
+//\tab\}\par
+//\}\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//double a3(double t2) \{\par
+//\tab const int  len = 4;\par
+//\tab double ar[2][len] = \{\{ 3.3,4.3,5.5,2.6 \}, \{ 1.1,6.4,7.5,8.6 \}\par
+//\};\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab int smallindex = i;\par
+//\tab\tab for (int currindex = 0; currindex < 4; currindex++) \{\par
+//\tab\tab\tab if (ar[0][smallindex] < ar[0][currindex])\par
+//\tab\tab\tab\tab swap(ar[0][smallindex], ar[0][currindex]);\par
+//\par
+//\tab\tab\}\par
+//\tab\}\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab cout << ar[0][i] << " ";\par
+//\tab\}\par
+//\tab cout << endl;\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab int smallindex = i;\par
+//\tab\tab for (int currindex = 0; currindex < 4; currindex++) \{\par
+//\tab\tab\tab if (ar[1][smallindex] < ar[1][currindex])\par
+//\tab\tab\tab\tab swap(ar[1][smallindex], ar[1][currindex]);\par
+//\par
+//\tab\tab\}\par
+//\tab\}\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab cout << ar[1][i] << " ";\par
+//\tab\}\par
+//\tab cout << endl;\par
+//\tab return t2;\par
+//\}\par
+//\par
+//\par
+//int a3(int  tt2) \{\par
+//\tab const int  len = 4;\par
+//\tab int  ar[2][len] = \{ \{ 3.3,4.3,5.5,2.6 \}, \{ 1.1,6.4,7.5,8.6 \}\par
+//\tab\};\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab int smallindex = i;\par
+//\tab\tab for (int currindex = 0; currindex < 4; currindex++) \{\par
+//\tab\tab\tab if (ar[0][smallindex] < ar[0][currindex])\par
+//\tab\tab\tab\tab swap(ar[0][smallindex], ar[0][currindex]);\par
+//\par
+//\tab\tab\}\par
+//\tab\}\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab cout << ar[0][i] << " ";\par
+//\tab\}\par
+//\tab cout << endl;\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab int smallindex = i;\par
+//\tab\tab for (int currindex = 0; currindex < 4; currindex++) \{\par
+//\tab\tab\tab if (ar[1][smallindex] < ar[1][currindex])\par
+//\tab\tab\tab\tab swap(ar[1][smallindex], ar[1][currindex]);\par
+//\par
+//\tab\tab\}\par
+//\tab\}\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab cout << ar[1][i] << " ";\par
+//\tab\}\par
+//\tab cout << endl;\par
+//\tab return tt2;\par
+//\}\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//\par
+//char a3(char tt2) \{\par
+//\tab const int  len = 4;\par
+//\tab char  ar[2][len] = \{ \{66,65,68,67\}, \{69,70,71,72\}\par
+//\tab\};\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab int smallindex = i;\par
+//\tab\tab for (int currindex = 0; currindex < 4; currindex++) \{\par
+//\tab\tab\tab if (ar[0][smallindex] < ar[0][currindex])\par
+//\tab\tab\tab\tab swap(ar[0][smallindex], ar[0][currindex]);\par
+//\par
+//\tab\tab\}\par
+//\tab\}\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab cout << ar[0][i] << " ";\par
+//\tab\}\par
+//\tab cout << endl;\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab int smallindex = i;\par
+//\tab\tab for (int currindex = 0; currindex < 4; currindex++) \{\par
+//\tab\tab\tab if (ar[1][smallindex] < ar[1][currindex])\par
+//\tab\tab\tab\tab swap(ar[1][smallindex], ar[1][currindex]);\par
+//\par
+//\tab\tab\}\par
+//\tab\}\par
+//\tab for (int i = 0; i < 4; i++) \{\par
+//\tab\tab cout << ar[1][i] << " ";\par
+//\tab\}\par
+//\tab cout << endl;\par
+//\tab return tt2;\par
+//\par
+//\}\par
+\par
+\par
+//ex4\par
+//int buff = 0;\par
+//void f(int i) \{\par
+//\tab int a = 6;\par
+//\tab int b = 8;\par
+//\par
+//\tab if (a >= b) \{\par
+//\tab\tab if (b % i == 0&&a%i==0) \{\par
+//\tab\tab\tab buff = i;\par
+//\tab\tab\}\par
+//\tab\tab if (b == i) \{\par
+//\tab\tab\tab cout << buff;\par
+//\tab\tab\tab return;\par
+//\tab\tab\}\par
+//\tab\}\par
+//\tab if (a <b) \{\par
+//\tab\tab if (a % i == 0 && b % i == 0) \{\par
+//\tab\tab\tab buff = i;\par
+//\tab\tab\}\par
+//\tab\tab if (a == i) \{\par
+//\tab\tab\tab cout << buff;\par
+//\tab\tab\tab return;\par
+//\tab\tab\}\par
+//\tab\}\par
+//\par
+//\tab f(i + 1);\par
+//\}\par
+//char a(int b[][]) \{\par
+//\par
+//\}\par
+//\}\par
+\par
+//ex Last ex 3\par
+\tab\par
+int mass1[4], mass2[4], inp;\par
+\par
+void zadum()\par
+\{\par
+    srand(time(0));\par
+    mass1[0] = rand() % 9 + 1;\par
+    for (int I = 1; I <= 3; I++)\par
+        mass1[I] = rand() % 10;\par
+\}\par
+void razb()\par
+\{\par
+    int del = 10;\par
+    for (int i = 3; i > -1; i--)\par
+    \{\par
+        mass2[i] = inp % 10;\par
+        inp /= 10;\par
+    \}\par
+\par
+\}\par
+int b()\par
+\{\par
+    int res = 0;\par
+    for (int I = 0; I < 4; I++)\par
+        if (mass1[I] == mass2[I])\par
+            res++;\par
+    return res;\par
+\}\par
+int c()\par
+\{\par
+    int res = 0;\par
+    for (int I = 0; I < 4; I++)\par
+        for (int J = 0; J < 4; J++)\par
+            if (mass1[I] == mass2[J] && I != J)\par
+                res++;\par
+    return res;\par
+\}\par
+void game()\par
+\{\par
+    zadum();\par
+    cout << "\'d7\'e8\'f1\'eb\'ee  \'c1 \'ca\\n"\par
+        << "----------\\n";\par
+    for (;;)\par
+    \{\par
+        cin >> inp;\par
+        razb();\par
+        cout << "       " << b() << " " << c() << "\\n";\par
+        if (b() == 4)\par
+        \{\par
+            cout << "\'c2\'fb \'e2\'fb\'e9\'e3\'f0\'e0\'eb\'e8!!!\\n";\par
+            break;\par
+        \}\par
+    \}\par
+\}\par
+\par
+\par
+\par
+\}\par
+int main()\par
+\{\par
+\par
+    char m;\par
+    cout << "\'fd\'f2\'ee \'e8\'e3\'f0\'e0 '\'c1\'fb\'ea\'e8 \'e8 \'ea\'ee\'f0\'ee\'e2\'fb'." << endl;\par
+    for (;;)\par
+    \{\par
+        game();\par
+        cout << "\'c5\'f9\'b8 \'f0\'e0\'e7? (\'c4/\'cd)\\n"; cin >> M;\par
+        if (m == '\'ed' || m == '\'cd')\par
+            break;\par
+    \}\par
+    system("pause")\par
+   //cout<<  a3('&');\par
+\tab //f(1);\par
+\tab ////cout<<bb(2.12, 2.11);\par
+\tab //ex 1\par
+   /*cout<<god(3,10, 2004, 4,11 , 2004);*/\par
+\tab //ex 2\par
+\tab // h(3);\par
+\tab //ex 3\par
+\tab //h(3);\par
+\tab //ex 3\par
+\par
+\}\f0\lang1033\par
+}
+ 

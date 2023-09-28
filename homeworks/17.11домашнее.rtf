@@ -1,0 +1,433 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Consolas;}{\f2\fnil\fcharset204 Consolas;}{\f3\fnil\fcharset0 Consolas;}}
+{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red163\green21\blue21;\red0\green0\blue255;\red0\green128\blue128;\red111\green0\blue138;\red0\green128\blue0;\red43\green145\blue175;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang1033 //ex 1\par
+\cf1\f1\fs19 #include\cf2  \cf3 <iostream>\cf2\par
+\cf1 #include\cf2  \cf3 <windows.h>\cf2\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+ \par
+\cf4 void\cf2  main()\par
+\{\par
+    \par
+    \cf4 int\cf2  deys, lines, choosedeys;\par
+    \cf4 char\cf2  symbols, speed;\par
+    \par
+    \par
+    cout \cf5 <<\cf2  \cf3 "\f2\lang1049\'c2\'e2e\'e4\'e8\'f2\'e5 \'f1\'e8\'ec\'e2\'ee\'eb: "\cf2 ;\par
+    cin \cf5 >>\cf2  symbols;\par
+    cout \cf5 <<\cf2  \cf3 "\'c2\'e2e\'e4\'e8\'f2\'e5 \'e4\'eb\'e8\'ed\'f3 \'eb\'e8\'ed\'e8\'e8: "\cf2 ;\par
+    cin \cf5 >>\cf2  lines;\par
+    cout \cf5 <<\cf2  \cf3 "\\n 1 - \'c3\'ee\'f0\'e8\'e7o\'ed\'f2\'e0\'eb\'fc\'ed\'e0\'ff \\n 2 - \'c2e\'f0\'f2\'e8\'eaa\'eb\'fc\'ed\'e0\'ff \'eb\'e8\'ed\'e8\'ff \\n\\n \'c2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 \'e2a\'f0\'e8\'e0\'ed\'f2 : "\cf2 ;\par
+    cin \cf5 >>\cf2  choosedeys;\par
+    cout \cf5 <<\cf2  \cf3 "\\n f - \'c1\'fb\'f1\'f2\'f0a\'ff \\n n - \'cd\'ee\'f0\'eca\'eb\'fc\'ed\'e0\'ff \\n s - \'cce\'e4\'eb\'e5\'ed\'ed\'e0\'ff \\n\\n \'c2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 \'e2\'e0\'f0\'e8\'e0\'ed\'f2 : "\cf2 ;\par
+    cin \cf5 >>\cf2  speed;\par
+ \par
+    \cf4 switch\cf2  (choosedeys)\par
+    \{\par
+    \cf4 case\cf2  1:\par
+    \{\par
+ \par
+        \cf4 for\cf2  (\cf4 int\cf2  i = 0; i < lines; i++)\par
+        \{\par
+            \cf4 if\cf2  (speed == \cf3 'f'\cf2 )\par
+            \{\par
+                Sleep(20);\par
+                cout \cf5 <<\cf2  symbols;\par
+            \}\par
+            \par
+            \cf4 else\cf2  \cf4 if\cf2  (speed == \cf3 'n'\cf2 )\par
+            \{\par
+                Sleep(400);\par
+                cout \cf5 <<\cf2  symbols;\par
+            \}\par
+                \par
+            \cf4 else\cf2  \cf4 if\cf2  (speed == \cf3 's'\cf2 )\par
+            \{\par
+                Sleep(1000);\par
+                cout \cf5 <<\cf2  symbols;\par
+            \}\par
+            \par
+                \par
+        \}\par
+    \}\cf4 break\cf2 ;\par
+    \cf4 case\cf2  2:\par
+    \{\par
+        \cf4 for\cf2  (\cf4 int\cf2  j = 0; j < lines; j++)\par
+        \{\par
+            \cf4 if\cf2  (speed == \cf3 'f'\cf2 )\par
+            \{\par
+                Sleep(20);\par
+                cout \cf5 <<\cf2  symbols;\par
+            \}\par
+ \par
+            \cf4 else\cf2  \cf4 if\cf2  (speed == \cf3 'n'\cf2 )\par
+            \{\par
+                Sleep(400);\par
+                cout \cf5 <<\cf2  symbols;\par
+            \}\par
+ \par
+            \cf4 else\cf2  \cf4 if\cf2  (speed == \cf3 's'\cf2 )\par
+            \{\par
+                Sleep(1000);\par
+                cout \cf5 <<\cf2  symbols;\par
+            \}\par
+        \}\par
+        \par
+    \}\cf4 break\cf2 ;\par
+    \}\par
+\}\par
+\f3\lang1033 //ex 2\par
+\cf1\f1 #include\cf2  \cf3 <iostream>\cf2\par
+\cf1 #include\cf2  \cf3 <conio.h>\cf2\par
+\cf1 #include\cf2  \cf3 <cstdlib>\cf2\par
+\cf1 #include\cf2  \cf3 <ctime>\cf2\par
+\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\par
+\cf4 int\cf2  main ()\{\par
+\par
+   srand(time(0));\par
+\par
+   \cf4 int\cf2  n, one, two, co=0, ol, k=0, var, sum1=0, sum2=0;\par
+\par
+   \cf4 bool\cf2  kto=\cf4 true\cf2 ;\par
+\par
+   cout \cf5 <<\cf2  \cf3 "\f2\lang1049\'cf\'f0\'e8\'e2\'e5\'f2 \'e4\'e0\'e2\'e0\'e9 \'f1\'fb\'e3\'f0\'e0\'e5\'ec \'e2 \'ea\'ee\'f1\'f2\'e8.\\n\'cf\'ee\'e1\'e5\'e4\'e8\'f2 \'f2\'ee\'f2 \'f3 \'ea\'ee\'e3\'ee \'f1\'f3\'ec\'ec\'e0 3-\'f5 \'e1\'f0\'ee\'f1\'ea\'ee\'e2 \'e1\'f3\'e4\'e5\'f2 \'e1\'ee\'eb\'fc\'f8\'e5\\n\\n"\cf2 ;\par
+\par
+   \cf4 while\cf2  (k<3)\par
+\par
+   \{\par
+\par
+       cout \cf5 <<\cf2  \cf3 "\\n1 - \'c1\'f0\'ee\'f1\'e8\'f2\'fc \'ea\'f3\'e1\'e8\'ea\\n2 - \'c2\'fb\'e9\'f2\'e8\\n\'c2\'fb\'e1\'e5\'f0\'e8 \'e2\'e0\'f0\'e8\'e0\'ed\'f2: "\cf2 ;\par
+\par
+       cin \cf5 >>\cf2  var;\par
+\par
+       \cf4 if\cf2  (var==1)\par
+\par
+       \{\par
+\par
+           \cf4 for\cf2  (\cf4 int\cf2  j=0; j<=1; j++)\par
+\par
+               \{\par
+\par
+                   one=1+(rand()%6);\par
+\par
+                   two=1+(rand()%6);\par
+\par
+                   cout \cf5 <<\cf2  \cf3 "\\n"\cf2 ;\par
+\par
+                   \cf4 if\cf2  (kto) cout \cf5 <<\cf2  \cf3 "\\t\'d2\'e2\'ee\'e8 \'ea\'f3\'e1\'e8\'ea\'e8\\n"\cf2 ;\par
+\par
+                   \cf4 if\cf2  (!kto) cout \cf5 <<\cf2  \cf3 "\\t\'cc\'ee\'e8 \'ea\'f3\'e1\'e8\'ea\'e8\\n"\cf2 ;\par
+\par
+                   cout \cf5 <<\cf2  \cf3 "\\n"\cf2 ;\par
+\par
+                   \cf4 for\cf2  (\cf4 int\cf2  i=1; i<=5; i++)\par
+\par
+                   \{\par
+\par
+                           \cf4 if\cf2  (i==1) n=1;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==2 && one==1) n=2;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==2 && one==3 || i==2 && one==2) n=3;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==2 && one==4 || i==2 && one==5 || i==2 && one==6) n=4;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==3 && one==3 || i==3 && one==1 || i==3 && one==5) n=5;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==3 && one==2 || i==3 && one==4) n=2;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==3 && one==6) n=4;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==4 && one==1) n=2;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==4 && one==3 || i==4 && one==2) n=6;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==4 && one==4 || i==4 && one==5 || i==4 && one==6) n=4;\par
+\par
+                           \cf4 else\cf2  \cf4 if\cf2  (i==5) n=7;\par
+\par
+                       \cf4 switch\cf2  (n)\{\par
+\par
+                           \cf4 case\cf2  1:\par
+\par
+                           cout \cf5 <<\cf2  (\cf4 char\cf2 )201 \cf5 <<\cf2  (\cf4 char\cf2 )205  \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )187;\par
+\par
+                           \cf4 break\cf2 ;\par
+\par
+                           \cf4 case\cf2  2:\par
+\par
+                           cout \cf5 <<\cf2  (\cf4 char\cf2 )186 \cf5 <<\cf2  \cf3 "       "\cf2  \cf5 <<\cf2  (\cf4 char\cf2 )186;\par
+\par
+                           \cf4 break\cf2 ;\par
+\par
+                           \cf4 case\cf2  3:\par
+\par
+                           cout \cf5 <<\cf2  (\cf4 char\cf2 )186 \cf5 <<\cf2  \cf3 " o     "\cf2  \cf5 <<\cf2  (\cf4 char\cf2 )186;\par
+\par
+                           \cf4 break\cf2 ;\par
+\par
+                           \cf4 case\cf2  4:\par
+\par
+                           cout \cf5 <<\cf2  (\cf4 char\cf2 )186 \cf5 <<\cf2  \cf3 " o   o "\cf2  \cf5 <<\cf2  (\cf4 char\cf2 )186;\par
+\par
+                           \cf4 break\cf2 ;\par
+\par
+                           \cf4 case\cf2  5:\par
+\par
+                           cout \cf5 <<\cf2  (\cf4 char\cf2 )186 \cf5 <<\cf2  \cf3 "   o   "\cf2  \cf5 <<\cf2  (\cf4 char\cf2 )186;\par
+\par
+                           \cf4 break\cf2 ;\par
+\par
+                           \cf4 case\cf2  6:\par
+\par
+                           cout \cf5 <<\cf2  (\cf4 char\cf2 )186 \cf5 <<\cf2  \cf3 "     o "\cf2  \cf5 <<\cf2  (\cf4 char\cf2 )186;\par
+\par
+                           \cf4 break\cf2 ;\par
+\par
+                           \cf4 case\cf2  7:\par
+\par
+                           cout \cf5 <<\cf2  (\cf4 char\cf2 )200 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )205 \cf5 <<\cf2  (\cf4 char\cf2 )188;\par
+\par
+                           \cf4 break\cf2 ;\par
+\par
+                       \}\par
+\par
+                       \cf4 if\cf2  (co%2==0) \{\par
+\par
+                           cout \cf5 <<\cf2  \cf3 "\\t"\cf2 ;\par
+\par
+                           i--;\par
+\par
+                           ol=one;\par
+\par
+                           one=two;\}\par
+\par
+                       \cf4 else\cf2  \{\par
+\par
+                           cout \cf5 <<\cf2  endl;\par
+\par
+                           one=ol; \}\par
+\par
+                   co++;\par
+\par
+                   \}\par
+\par
+                   \cf4 if\cf2  (kto)\{\par
+\par
+                       sum1=sum1+one+two;\par
+\par
+                       kto=\cf4 false\cf2 ;\par
+\par
+                       \cf4 continue\cf2 ;\par
+\par
+                   \}\par
+\par
+                   \cf4 if\cf2 (!kto)\{\par
+\par
+                       sum2=sum2+one+two;\par
+\par
+                       kto=\cf4 true\cf2 ;\par
+\par
+                   \}\par
+\par
+               \}\par
+\par
+           \}\par
+\par
+           \cf4 else\cf2  \cf4 if\cf2  (var==2) \cf4 return\cf2  0;\par
+\par
+           \cf4 else\cf2  \{\par
+\par
+               cout \cf5 <<\cf2  \cf3 "\\n!!! \'c2\'fb\'e1\'e5\'f0\'e8 \'e2\'e0\'f0\'e8\'e0\'ed\'f2 1 \'e8\'eb\'e8 2 !!!\\n"\cf2 ;\par
+\par
+               \cf4 continue\cf2 ;\}\par
+\par
+               k++;\par
+\par
+   \}\par
+\par
+   cout \cf5 <<\cf2  \cf3 "\\n\'d2\'e2\'ee\'e9 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 = "\cf2  \cf5 <<\cf2  sum1 \cf5 <<\cf2  endl \cf5 <<\cf2  \cf3 "\'cc\'ee\'e9 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 = "\cf2  \cf5 <<\cf2  sum2 \cf5 <<\cf2  endl;\par
+\par
+   \cf4 if\cf2  (sum1>sum2)\par
+\par
+       cout \cf5 <<\cf2  \cf3 "\\n\\t\'d2\'fb \'ef\'ee\'e1\'e5\'e4\'e8\'eb ;)"\cf2 ;\par
+\par
+   \cf4 else\cf2  cout \cf5 <<\cf2  \cf3 "\\n\\t\'d2\'fb \'ef\'f0\'ee\'e8\'e3\'f0\'e0\'eb :("\cf2 ;\par
+\par
+   getch ();\par
+\par
+\}\par
+\f3\lang1033 //ex3\par
+\cf1\f1 #include\cf2  \cf3 <stdio.h>\cf2\par
+\cf1 #include\cf2  \cf3 <locale.h>\cf2\par
+\cf1 #include\cf2  \cf3 <time.h>\cf2\par
+\cf1 #include\cf2  \cf3 <stdlib.h>\cf2\par
+\cf1 #define\cf2  \cf6 RAND_NUMBERS\cf2  10\par
+\par
+\par
+\cf4 int\cf2  main()\par
+\{\par
+\tab srand(time(0));\par
+\tab\cf4 int\cf2  mass[\cf6 RAND_NUMBERS\cf2 ];\par
+\tab\cf4 int\cf2  max;\par
+\tab\cf4 int\cf2  min;\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < RAND_NUMBERS; i++)\par
+\tab\{\par
+\tab\tab mass[i] = rand() % 100;\par
+\tab\tab printf(\cf3 "%i = %i\\n"\cf2 , i, mass[i]);\par
+\par
+\tab\tab\cf4 if\cf2  (i == 0)\par
+\tab\tab\{\par
+\tab\tab\tab max = mass[0];\par
+\tab\tab\tab min = mass[0];\par
+\tab\tab\}\par
+\tab\tab\cf4 if\cf2  (max < mass[i])\par
+\tab\tab\{\par
+\tab\tab\tab max = mass[i];\par
+\tab\tab\}\par
+\tab\tab\cf4 if\cf2  (min > mass[i])\par
+\tab\tab\{\par
+\tab\tab\tab min = mass[i];\par
+\tab\tab\}\par
+\tab\}\par
+\par
+\tab printf(\cf3 "\f2\lang1049\'cc\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'ee\'e5 \'f7\'e8\'f1\'eb\'ee = %i\\n"\cf2\par
+\tab\tab\cf3 "\'cc\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'ee\'e5 \'f7\'e8\'f1\'eb\'ee = %i\\n"\cf2 , max, min);\par
+\par
+\tab\cf4 return\cf2  0;\par
+\}\par
+\f3\lang1033 //ex4\par
+\cf1\f1 #include\cf2  \cf3 <iostream>\cf2\par
+\cf1 #include\cf2  \cf3 <stdlib.h>\cf2\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\cf4 void\cf2  main()\par
+\{\par
+\par
+\par
+\par
+\par
+        \cf4 const\cf2  \cf4 char\cf2  Month[][12] = \{ \cf3 "\f2\lang1049\'df\'ed\'e2\'e0\'f0\'fc"\cf2 ,\cf3 "\'d4\'e5\'e2\'f0\'e0\'eb\'fc"\cf2 ,\cf3 "\'cc\'e0\'f0\'f2"\cf2 ,\cf3 "\'c0\'ef\'f0\'e5\'eb\'fc"\cf2 ,\cf3 "\'cc\'e0\'e9  "\cf2 ,\cf3 "\'c8\'fe\'ed\'fc"\cf2 ,\cf3 "\'c8\'fe\'eb\'fc"\cf2 ,\cf3 "\'c0\'e2\'e3\'f3\'f1\'f2"\cf2 ,\cf3 "\'d1\'e5\'ed\'f2\'ff\'e1\'f0\'fc"\cf2 ,\cf3 "\'ce\'ea\'f2\'ff\'e1\'f0\'fc"\cf2 ,\cf3 "\'cd\'ee\'ff\'e1\'f0\'fc"\cf2 ,\cf3 "\'c4\'e5\'ea\'e0\'e1\'f0\'fc"\cf2  \};\par
+\par
+        \cf4 int\cf2  profit[12];\par
+        \cf4 int\cf2  begin = 0;\par
+        \cf4 int\cf2  end = 0;\par
+        \cf4 int\cf2  max = begin;\par
+        \cf4 int\cf2  min = begin;\par
+\par
+\par
+        \cf4 for\cf2  (\cf4 int\cf2  i = 0; i < 12; i++)\par
+        \{\par
+                cout \cf5 <<\cf2  \cf3 "\'cf\'f0\'e8\'e1\'fb\'eb\'fc \'e2 : "\cf2  \cf5 <<\cf2  Month[i] \cf5 <<\cf2  \cf3 "\\t"\cf2 ;\par
+                cin \cf5 >>\cf2  profit[i];\par
+        \}\par
+\par
+        cout \cf5 <<\cf2  \cf3 "\\n"\cf2 ;\par
+        cout \cf5 <<\cf2  \cf3 "\'c2\'e2\'e5\'e4\'e8\'f2\'e5 \'ed\'e0\'f7\'e0\'eb\'fc\'ed\'fb\'e9 \'e4\'e8\'e0\'ef\'e0\'e7\'ee\'ed \'ec\'e5\'f1\'ff\'f6\'e5\'e2 \'ee\'f2 1 \'e4\'ee 12  : "\cf2 ;\par
+        cin \cf5 >>\cf2  begin;\par
+        cout \cf5 <<\cf2  \cf3 "\'c2\'e2\'e5\'e4\'e8\'f2\'e5 \'ea\'ee\'ed\'e5\'f7\'ed\'fb\'e9 \'e4\'e8\'e0\'ef\'e0\'e7\'ee\'ed \'ec\'e5\'f1\'ff\'f6\'e5\'e2 \'ee\'f2 1 \'e4\'ee 12  : "\cf2 ;\par
+        cin \cf5 >>\cf2  end;\par
+       \par
+\par
+\par
+        \cf4 for\cf2  (\cf4 int\cf2  i = begin; i <= end; i++)\par
+        \{\par
+                cout \cf5 <<\cf2  \cf3 " "\cf2  \cf5 <<\cf2  profit[i];  \cf7 //\'e2\'fb\'e2\'ee\'e6\'f3  \'ef\'f0\'e8\'e1\'fb\'eb\'fc \'ef\'ee \'ec\'e5\'f1\'ff\'f6\'e0\'ec \'e2 \'e7\'e0\'e4\'e0\'ed\'ed\'ee\'ec \'e4\'e8\'e0\'ef\'e0\'e7\'ee\'ed\'e5\cf2\par
+\par
+                \cf4 if\cf2  (profit[max] <= profit[i])\par
+                        max = i;\par
+\par
+                \cf4 if\cf2  (profit[min] >= profit[i])\par
+                        min = i;\par
+        \}\par
+\par
+        cout \cf5 <<\cf2  \cf3 "\\n\'cc\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'e0\'ff \'ef\'f0\'e8\'e1\'fb\'eb\'fc \'e2 \'e2\'fb\'e1\'f0\'e0\'ed\'ee\'ec \'e4\'e8\'e0\'ef\'e0\'e7\'ee\'ed\'e5 \'e1\'f3\'e4\'e5\'f2 \'e2  "\cf2  \cf5 <<\cf2  Month[max]\cf5 <<\cf3 "\\t"\cf2  \cf5 <<\cf2  profit[max]\cf5 <<\cf3 "\\n\\n"\cf2  ;\par
+        cout \cf5 <<\cf2  \cf3 "\\n\'cc\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'e0\'ff \'ef\'f0\'e8\'e1\'fb\'eb\'fc \'e2 \'e2\'fb\'e1\'f0\'e0\'ed\'ee\'ec \'e4\'e8\'e0\'ef\'e0\'e7\'ee\'ed\'e5 \'e1\'f3\'e4\'e5\'f2 \'e2  "\cf2  \cf5 <<\cf2  Month[min] \cf5 <<\cf3 "\\t"\cf2  \cf5 <<\cf2  profit[min] \cf5 <<\cf2  \cf3 "\\n\\n"\cf2 ;\par
+\par
+\par
+\par
+\par
+\}\par
+\f3\lang1033 //ex5\par
+\cf1\f1 #include\cf2  \cf3 <iostream>\cf2\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\par
+\cf4 int\cf2  main() \{\par
+\par
+\cf8 size_t\cf2  N, *firstNegative = \cf4 nullptr\cf2 , lastNegative, minIndex, maxIndex;\par
+cin \cf5 >>\cf2  N;\par
+\par
+\cf8 int64_t\cf2 * arr = \cf4 new\cf2  \cf8 int64_t\cf2 [N], min = \cf6 INT64_MAX\cf2 , max = \cf6 INT64_MIN\cf2 ;\par
+\par
+\cf4 for\cf2  (\cf8 size_t\cf2  i = 0; i < N; ++i) \{\par
+\par
+ cin \cf5 >>\cf2  arr[i];\par
+\par
+ \cf4 if\cf2  (arr[i] < 0) \{\par
+\par
+  \cf4 if\cf2  (firstNegative == \cf4 nullptr\cf2 ) \{\par
+\par
+   firstNegative = \cf4 new\cf2  \cf8 size_t\cf2 ;\par
+\par
+   *firstNegative = i;\par
+\par
+  \}\par
+\par
+  lastNegative = i;\par
+\par
+ \}\par
+\par
+ \cf4 if\cf2  (arr[i] < min) \{\par
+\par
+  min = arr[i];\par
+\par
+  minIndex = i;\par
+\par
+ \}\par
+\par
+ \cf4 else\cf2  \cf4 if\cf2  (arr[i] > max) \{\par
+\par
+  max = arr[i];\par
+\par
+  maxIndex = i;\par
+\par
+ \}\par
+\par
+\}\par
+\par
+\cf8 int64_t\cf2  sumNegative = 0, minMaxMult = 1, evenMult = 1, sumFirstLastNegative = 0;\par
+\par
+\cf4 for\cf2  (\cf8 size_t\cf2  i = 0; i < N; ++i) \{\par
+\par
+ \cf4 if\cf2  (arr[i] < 0)\par
+\par
+  sumNegative += arr[i];\par
+\par
+ \cf4 if\cf2  ((minIndex < maxIndex && i > minIndex && i < maxIndex) || (minIndex > maxIndex && i < minIndex && i > maxIndex))\par
+\par
+  minMaxMult *= arr[i];\par
+\par
+ \cf4 if\cf2  ((i + 1) % 2 == 0) \cf7 // i + 1 \f2\lang1049\'ef-\'ea\'f3 \'ee\'e1\'fb\'f7\'ed\'ee \'f1\'f7\'e8\'f2\'e0\'fe\'f2 \'f1 1\cf2\par
+\par
+  evenMult *= arr[i];\par
+\par
+ \cf4 if\cf2  (i > *firstNegative && i < lastNegative)\par
+\par
+  sumFirstLastNegative += arr[i];\par
+\par
+\}\par
+\par
+setlocale(0, \cf3 ""\cf2 );\par
+\par
+cout \cf5 <<\cf2  \cf3 "\'d1\'f3\'ec\'ec\'e0 \'ee\'f2\'f0\'e8\'f6\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'f5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2: "\cf2  \cf5 <<\cf2  sumNegative \cf5 <<\cf2  endl;\par
+\par
+cout \cf5 <<\cf2  \cf3 "\'cf\'f0\'ee\'e8\'e7\'e2\'e5\'e4\'e5\'ed\'e8\'e5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2 \'ec\'e5\'e6\'e4\'f3 \'ec\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'fb\'ec \'e8 \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'fb\'ec \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0\'ec\'e8: "\cf2  \cf5 <<\cf2  minMaxMult \cf5 <<\cf2  endl;\par
+\par
+cout \cf5 <<\cf2  \cf3 "\'cf\'f0\'ee\'e8\'e7\'e2\'e5\'e4\'e5\'ed\'e8\'e5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2 \'f1 \'ef\'e0\'f0\'ed\'fb\'ec\'e8 (\'f7\'b8\'f2\'ed\'fb\'ec\'e8) \'ef\'ee\'f0\'ff\'e4\'ea\'ee\'e2\'fb\'ec\'e8 \'ed\'ee\'ec\'e5\'f0\'e0\'ec\'e8: "\cf2  \cf5 <<\cf2  evenMult \cf5 <<\cf2  endl;\par
+\par
+cout \cf5 <<\cf2  \cf3 "\'d1\'f3\'ec\'ec\'e0 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2 \'ec\'e5\'e6\'e4\'f3 \'ef\'e5\'f0\'e2\'fb\'ec \'e8 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'ec \'ee\'f2\'f0\'e8\'f6\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'ec\'e8 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0\'ec\'e8: "\cf2  \cf5 <<\cf2  sumFirstLastNegative \cf5 <<\cf2  endl;\par
+\par
+\}\cf0\f0\fs22\lang1033\par
+}
+ 

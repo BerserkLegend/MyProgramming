@@ -1,0 +1,205 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red163\green21\blue21;\red0\green0\blue255;\red0\green128\blue0;\red43\green145\blue175;\red0\green128\blue128;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 #include\cf2  \cf3 <iostream>\cf2\par
+\cf1 #include\cf2  \cf3 <string>\cf2\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\cf5 //1\cf2\par
+\cf5 //class Book \{\cf2\par
+\cf5 //public:\cf2\par
+\cf5 //    string author;\cf2\par
+\cf5 //    string title;\cf2\par
+\cf5 //    string publisher;\cf2\par
+\cf5 //    int year;\cf2\par
+\cf5 //    int pages;\cf2\par
+\cf5 //\cf2\par
+\cf5 //    explicit Book() \{\cf2\par
+\cf5 //        author = "";\cf2\par
+\cf5 //        title = "";\cf2\par
+\cf5 //        publisher = "";\cf2\par
+\cf5 //        year = 0;\cf2\par
+\cf5 //        pages = 0;\cf2\par
+\cf5 //    \}\cf2\par
+\cf5 //\cf2\par
+\cf5 //   explicit Book(string a, string t, string p, int y, int pg) \{\cf2\par
+\cf5 //        author = a;\cf2\par
+\cf5 //        title = t;\cf2\par
+\cf5 //        publisher = p;\cf2\par
+\cf5 //        year = y;\cf2\par
+\cf5 //        pages = pg;\cf2\par
+\cf5 //    \}\cf2\par
+\cf5 //    void prin() const \{\cf2\par
+\cf5 //        \cf2\par
+\cf5 //      \cf2\par
+\cf5 //            cout << "Author: " << author << "\\n";\cf2\par
+\cf5 //            cout << "Title: " << title << "\\n";\cf2\par
+\cf5 //            cout << "Publisher: " << publisher << "\\n";\cf2\par
+\cf5 //            cout << "Year: " << year << "\\n";\cf2\par
+\cf5 //            cout << "Pages: " << pages << "\\n";\cf2\par
+\cf5 //            cout << "\\n";\cf2\par
+\cf5 //        \cf2\par
+\cf5 //    \}\cf2\par
+\cf5 //\};\cf2\par
+\cf5 //void prinauthor(Book books[],int num_books) \{\cf2\par
+\cf5 //    cout << "\f1\lang1058\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e0\'e2\'f2\'ee\'f0\'e0 \\n";\cf2\par
+\cf5 //    string buff;\cf2\par
+\cf5 //    getline(cin,buff);\cf2\par
+\cf5 //\cf2\par
+\cf5 //\cf2\par
+\cf5 //    for (int i = 0; i < num_books; i++) \{\cf2\par
+\cf5 //        if (buff == books[i].author) \{\cf2\par
+\cf5 //            cout << "Book " << i + 1 << ":\\n";\cf2\par
+\cf5 //            cout << "Author: " << books[i].author << "\\n";\cf2\par
+\cf5 //            cout << "Title: " << books[i].title << "\\n";\cf2\par
+\cf5 //            cout << "Publisher: " << books[i].publisher << "\\n";\cf2\par
+\cf5 //            cout << "Year: " << books[i].year << "\\n";\cf2\par
+\cf5 //            cout << "Pages: " << books[i].pages << "\\n";\cf2\par
+\cf5 //            cout << "\\n";\cf2\par
+\cf5 //        \}\cf2\par
+\cf5 //    \}\cf2\par
+\cf5 //\}\cf2\par
+\cf5 //void prinpublisher(Book books[], int num_books) \{\cf2\par
+\cf5 //    cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'e7\'e4\'e0\'f2\'e5\'eb\'fc\'f1\'f2\'e2\'e0 \\n";\cf2\par
+\cf5 //    string buff;\cf2\par
+\cf5 //    getline(cin, buff);\cf2\par
+\cf5 //\cf2\par
+\cf5 //\cf2\par
+\cf5 //    for (int i = 0; i < num_books; i++) \{\cf2\par
+\cf5 //        if (buff == books[i].publisher) \{\cf2\par
+\cf5 //            cout << "Book " << i + 1 << ":\\n";\cf2\par
+\cf5 //            cout << "Author: " << books[i].author << "\\n";\cf2\par
+\cf5 //            cout << "Title: " << books[i].title << "\\n";\cf2\par
+\cf5 //            cout << "Publisher: " << books[i].publisher << "\\n";\cf2\par
+\cf5 //            cout << "Year: " << books[i].year << "\\n";\cf2\par
+\cf5 //            cout << "Pages: " << books[i].pages << "\\n";\cf2\par
+\cf5 //            cout << "\\n";\cf2\par
+\cf5 //        \}\cf2\par
+\cf5 //    \}\cf2\par
+\cf5 //\}\cf2\par
+\cf5 //void prinAfterYear(Book books[], int num_books) \{\cf2\par
+\cf5 //    cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e3\'ee\'e4 \\n";\cf2\par
+\cf5 //    int year;\cf2\par
+\cf5 //    cin >> year;\cf2\par
+\cf5 //\cf2\par
+\cf5 //\cf2\par
+\cf5 //    for (int i = 0; i < num_books; i++) \{\cf2\par
+\cf5 //        if (year < books[i].year) \{\cf2\par
+\cf5 //            cout << "Book " << i + 1 << ":\\n";\cf2\par
+\cf5 //            cout << "Author: " << books[i].author << "\\n";\cf2\par
+\cf5 //            cout << "Title: " << books[i].title << "\\n";\cf2\par
+\cf5 //            cout << "Publisher: " << books[i].publisher << "\\n";\cf2\par
+\cf5 //            cout << "Year: " << books[i].year << "\\n";\cf2\par
+\cf5 //            cout << "Pages: " << books[i].pages << "\\n";\cf2\par
+\cf5 //            cout << "\\n";\cf2\par
+\cf5 //        \}\cf2\par
+\cf5 //    \}\cf2\par
+\cf5 //\}\cf2\par
+\cf5 //int main() \{\cf2\par
+\cf5 //    const int num_books = 3;\cf2\par
+\cf5 //    Book books[num_books] = \{\cf2\par
+\cf5 //        Book("Stephen King", "The Shining", "Doubleday", 1977, 447),\cf2\par
+\cf5 //        Book(/*"J.K. Rowling"*/"Stephen King", "Harry Potter and the Philosopher's Stone", "Doubleday"/*"Bloomsbury"*/, 1997, 223),\cf2\par
+\cf5 //        Book("Gabriel Garcia Marquez", "One Hundred Years of Solitude", "Harper & Row", 1967, 417)\cf2\par
+\cf5 //    \};\cf2\par
+\cf5 //    books[0].prin();\cf2\par
+\cf5 //    prinAfterYear(books, num_books);\cf2\par
+\cf5 //    return 0;\cf2\par
+\cf5 //\}\cf2\par
+\par
+\par
+\cf5 //2\cf2\par
+\cf4 class\cf2  \cf6 Worker\cf2  \{\par
+\cf4 public\cf2 :\par
+    \cf6 string\cf2  name;\par
+    \cf6 string\cf2  position;\par
+    \cf4 int\cf2  start_year;\par
+    \cf4 int\cf2  salary;\par
+\par
+    Worker() \{\par
+        name \cf7 =\cf2  \cf3 ""\cf2 ;\par
+        position \cf7 =\cf2  \cf3 ""\cf2 ;\par
+        start_year = 0;\par
+        salary = 0;\par
+    \}\par
+\par
+    \cf4 explicit\cf2  Worker(\cf6 string\cf2  \cf1 n\cf2 , \cf6 string\cf2  \cf1 p\cf2 , \cf4 int\cf2  \cf1 sy\cf2 , \cf4 int\cf2  \cf1 s\cf2 ) \{\par
+        name \cf7 =\cf2  \cf1 n\cf2 ;\par
+        position \cf7 =\cf2  \cf1 p\cf2 ;\par
+        start_year = \cf1 sy\cf2 ;\par
+        salary = \cf1 s\cf2 ;\par
+    \}\par
+\};\par
+\par
+\cf4 void\cf2  printWorkers(\cf4 int\cf2  \cf1 num_workers\cf2 , \cf6 Worker\cf2  \cf1 workers\cf2 []) \{\par
+    \cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 num_workers\cf2 ; i++) \{\par
+        cout \cf7 <<\cf2  \cf3 "Worker "\cf2  \cf7 <<\cf2  i + 1 \cf7 <<\cf2  \cf3 ":\\n"\cf2 ;\par
+        cout \cf7 <<\cf2  \cf3 "Name: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].name \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+        cout \cf7 <<\cf2  \cf3 "Position: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].position \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+        cout \cf7 <<\cf2  \cf3 "Start year: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].start_year \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+        cout \cf7 <<\cf2  \cf3 "Salary: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].salary \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+        cout \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+    \}\par
+\}\par
+\cf4 void\cf2  printWorkersAge (\cf4 int\cf2  \cf1 num_workers\cf2 , \cf6 Worker\cf2  \cf1 workers\cf2 []) \{\par
+    \cf4 int\cf2  s;\par
+    cout \cf7 <<\cf2  \cf3 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'ea\'e0\'ea\'ee\'e9 \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'fb\'e9 \'f1\'f2\'e0\'e6 \\n"\cf2 ;\par
+    cin \cf7 >>\cf2  s;\par
+\par
+    \cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 num_workers\cf2 ; i++) \{\par
+        \cf4 if\cf2  ((2023-\cf1 workers\cf2 [i].start_year) >= (s)) \{\par
+            cout \cf7 <<\cf2  \cf3 "Worker "\cf2  \cf7 <<\cf2  i + 1 \cf7 <<\cf2  \cf3 ":\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Name: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].name \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Position: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].position \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Start year: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].start_year \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Salary: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].salary \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+        \}\par
+    \}\par
+\}\par
+\cf4 void\cf2  printWorkersMoney(\cf4 int\cf2  \cf1 num_workers\cf2 , \cf6 Worker\cf2  \cf1 workers\cf2 []) \{\par
+    \cf4 int\cf2  s;\par
+    cout \cf7 <<\cf2  \cf3 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e4\'ee\'eb\'e6\'ed\'ee \'ef\'f0\'e5\'e2\'fb\'f8\'e0\'f2\'fc \\n"\cf2 ;\par
+    cin \cf7 >>\cf2  s;\par
+\par
+    \cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 num_workers\cf2 ; i++) \{\par
+        \cf4 if\cf2  (\cf1 workers\cf2 [i].salary > s) \{\par
+            cout \cf7 <<\cf2  \cf3 "Worker "\cf2  \cf7 <<\cf2  i + 1 \cf7 <<\cf2  \cf3 ":\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Name: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].name \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Position: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].position \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Start year: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].start_year \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Salary: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].salary \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+        \}\par
+    \}\par
+\}\par
+\cf4 void\cf2  printWorkersJob(\cf4 int\cf2  \cf1 num_workers\cf2 , \cf6 Worker\cf2  \cf1 workers\cf2 []) \{\par
+    \cf6 string\cf2  s;\par
+    cout \cf7 <<\cf2  \cf3 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'ef\'ee\'f1\'e0\'e4\'f3 \\n"\cf2 ;\par
+    cin \cf7 >>\cf2  s;\par
+\par
+    \cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 num_workers\cf2 ; i++) \{\par
+        \cf4 if\cf2  (\cf1 workers\cf2 [i].position \cf7 ==\cf2  s) \{\par
+            cout \cf7 <<\cf2  \cf3 "Worker "\cf2  \cf7 <<\cf2  i + 1 \cf7 <<\cf2  \cf3 ":\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Name: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].name \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Position: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].position \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Start year: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].start_year \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "Salary: "\cf2  \cf7 <<\cf2  \cf1 workers\cf2 [i].salary \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+            cout \cf7 <<\cf2  \cf3 "\\n"\cf2 ;\par
+        \}\par
+    \}\par
+\}\par
+\cf4 int\cf2  main() \{\par
+    \cf4 const\cf2  \cf4 int\cf2  num_workers = 3;\par
+    \cf6 Worker\cf2  workers[num_workers] = \{\par
+        \cf6 Worker\cf2 (\cf3 "John Smith"\cf2 , \cf3 "Manager"\cf2 , 2010, 50000),\par
+        \cf6 Worker\cf2 (\cf3 "Jane Doe"\cf2 , \cf3 "Engineer"\cf2 , 2015, 60000),\par
+        \cf6 Worker\cf2 (\cf3 "Bob Johnson"\cf2 , \cf3 "Technician"\cf2 , 2020, 40000)\par
+    \};\par
+   \cf5 /* printWorkers(num_workers,workers);\cf2\par
+\cf5     printWorkersJob(num_workers, workers);\cf2\par
+\cf5     printWorkersMoney(num_workers, workers);*/\cf2\par
+    printWorkersAge(num_workers, workers);\par
+\tab\cf4 return\cf2  0;\par
+\}\cf0\f2\fs22\lang9\par
+}
+ 

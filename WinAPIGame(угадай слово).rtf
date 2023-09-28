@@ -1,0 +1,210 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red128\green128\blue128;\red163\green21\blue21;\red0\green0\blue0;\red111\green0\blue138;\red0\green0\blue255;\red43\green145\blue175;\red0\green128\blue0;\red0\green128\blue128;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 #include\cf2 <Windows.h>\cf3\par
+\cf1 #include\cf2 <iostream>\cf3\par
+\cf1 #include\cf2 <fstream>\cf3\par
+\cf1 #include\cf3  \cf2 <string>\cf3\par
+\cf1 #include\cf3  \cf2 <vector>\cf3\par
+\cf1 #pragma\cf3  \cf1 warning\cf3 (\cf1 disable\cf3 :4996)\par
+\cf1 #define\cf3  \cf4 OnButtonClicked\cf3  5\par
+\cf5 using\cf3  \cf5 namespace\cf3  std;\par
+\cf5 int\cf3  xStart;\par
+\cf5 int\cf3  yStart;\par
+\cf5 char\cf3  symbol;\par
+\cf6 string\cf3  word;\par
+\cf7 //vector <int>countsym;\cf3\par
+\cf5 int\cf3  countsym=0;\par
+\cf5 int\cf3  poputka = 5;\par
+\cf6 vector\cf3 <\cf5 char\cf3 >symbols;\par
+\par
+   \cf7 //int main()\{\cf3\par
+   \cf7 /* HWND hwnd = FindWindowA("Shell_TrayWnd", NULL);\cf3\par
+\cf7\tab ShowWindow(hwnd, SW_HIDE);\cf3\par
+\cf7\tab Sleep(5000);\cf3\par
+\cf7\tab ShowWindow(hwnd, SW_SHOW);\}*/\cf3\par
+    \cf6 LRESULT\cf3  \cf4 CALLBACK\cf3  SoftwareMainProcedure(\cf6 HWND\cf3  \cf1 hwnd\cf3 , \cf6 UINT\cf3  \cf1 msg\cf3 , \cf6 WPARAM\cf3  \cf1 wp\cf3 , \cf6 LPARAM\cf3  \cf1 lp\cf3 );\par
+\tab\cf6 WNDCLASS\cf3  newWindowClass(\cf6 HBRUSH\cf3  \cf1 BGColor\cf3 , \cf6 HCURSOR\cf3  \cf1 cursor\cf3 , \cf6 HINSTANCE\cf3  \cf1 hinst\cf3 , \cf6 HICON\cf3  \cf1 icon\cf3 , \cf6 LPCWSTR\cf3  \cf1 Name\cf3 , \cf6 WNDPROC\cf3  \cf1 proc\cf3 );\par
+\tab\cf5 void\cf3  MainAddWidget(\cf6 HWND\cf3  \cf1 hwnd\cf3 );\par
+\tab\cf5 int\cf3  \cf4 WINAPI\cf3  WinMain(\cf6 HINSTANCE\cf3  \cf1 hinst\cf3 , \cf6 HINSTANCE\cf3  \cf1 prev\cf3 , \cf6 LPSTR\cf3  \cf1 args\cf3 , \cf5 int\cf3  \cf1 ncmdshow\cf3 ) \{\par
+\tab\tab srand(time(\cf4 NULL\cf3 ));\par
+\tab\tab\par
+\tab\tab\cf5 int\cf3  numrand = rand() % 3000;\par
+\tab\tab\cf6 ifstream\cf3  in(\cf2 "file.txt"\cf3 );\par
+\tab\tab\cf6 FILE\cf3 * f = fopen(\cf2 "file.txt"\cf3 , \cf2 "r"\cf3 );\par
+\par
+\par
+\par
+\tab\tab\cf5 for\cf3  (\cf5 int\cf3  i = 0; i < numrand; i++) \{\par
+\tab\tab\tab getline(in, word);\par
+\tab\tab\par
+\tab\tab\}\par
+\tab\par
+\tab\tab in.close();\par
+\tab\tab symbols.resize(word.size());\par
+\tab\tab\cf5 for\cf3  (\cf5 int\cf3  i = 0; i < word.size(); i++) \{\par
+\tab\tab\tab symbols\cf8 [\cf3 i\cf8 ]\cf3  = \cf2 '_'\cf3 ;\par
+\tab\tab\}\par
+\tab\tab\cf6 WNDCLASS\cf3  SoftwareMainClass =newWindowClass((\cf6 HBRUSH\cf3 )\cf4 COLOR_WINDOW\cf3 ,\cf4 LoadCursor\cf3 (\cf4 NULL\cf3 ,\cf4 IDC_ARROW\cf3 ),\cf1 hinst\cf3 ,\cf4 LoadIcon\cf3 (\cf4 NULL\cf3 ,\cf4 IDI_QUESTION\cf3 ),\cf2 L"MainWndClass"\cf3 ,SoftwareMainProcedure);\par
+\par
+\tab\tab\par
+\tab\tab\cf5 if\cf3  (!RegisterClassW(&SoftwareMainClass)) \{ \cf5 return\cf3  -1; \}\par
+\par
+\tab\tab\cf6 MSG\cf3  SoftwareMainMessage = \{ 0 \};\par
+\par
+\tab\tab\cf4 CreateWindow\cf3 (\cf2 L"MainWndClass"\cf3 , \cf2 L"first c++ Window"\cf3 , \cf4 WS_OVERLAPPEDWINDOW\cf3  | \cf4 WS_VISIBLE\cf3 ,100,100,500,250,\cf4 NULL\cf3 ,\cf4 NULL\cf3 ,\cf4 NULL\cf3 ,\cf4 NULL\cf3 );\par
+\tab\tab\cf5 while\cf3  (\cf4 GetMessage\cf3 (&SoftwareMainMessage, \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 )) \{\par
+\tab\tab\tab TranslateMessage(&SoftwareMainMessage);\par
+\tab\tab\tab\cf4 DispatchMessage\cf3 (&SoftwareMainMessage);\par
+\tab\tab\}\par
+\tab\tab\par
+\tab\tab\cf5 return\cf3  0;\par
+    \}\par
+\tab\cf5 void\cf3  MainAddWidget(\cf6 HWND\cf3  \cf1 hwnd\cf3 ) \{\par
+\tab\tab\cf5 for\cf3  (\cf5 int\cf3  i = 0; i < 200; i+=10) \{\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "_"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , i, 0, 490, 20, \cf1 hwnd\cf3 ,\cf4 NULL\cf3 ,\cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf5 if\cf3  (i == 100) \{\par
+\tab\tab\tab\tab xStart = 100;\par
+\tab\tab\tab\tab\cf5 for\cf3  (\cf5 int\cf3  j = 10; j < 50; j += 5) \{\par
+\tab\tab\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "|"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , i, j, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\tab\tab yStart = j;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab\tab\par
+\tab\tab\}\par
+\tab\tab\cf5 if\cf3  (poputka == 5) \{\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "0"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart, yStart, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\}\par
+\tab\tab\cf5 if\cf3  (poputka == 4) \{\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "0"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart, yStart, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "|"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart+2, yStart+15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\}\par
+\tab\tab\cf5 if\cf3  (poputka == 3) \{\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "0"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart, yStart, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "/"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart - 10, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "|"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart + 2, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\}\par
+\tab\tab\cf5 if\cf3  (poputka == 2) \{\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "0"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart, yStart, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "/"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart - 10, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "|"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart + 2, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "\\\\"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart + 15, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\}\par
+\tab\tab\cf5 if\cf3  (poputka == 1) \{\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "0"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart, yStart, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "/"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart - 10, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "|"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart + 2, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "\\\\"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart + 15, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "/"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart - 5, yStart + 30, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\}\par
+\tab\tab\cf5 if\cf3  (poputka == 0) \{\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "0"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart, yStart, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "/"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart - 10, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "|"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart + 2, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "\\\\"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart + 15, yStart + 15, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "/"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart - 5, yStart + 30, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "\\\\"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , xStart + 10, yStart + 30, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab Sleep(1000);\par
+\tab\tab\tab MessageBoxA(\cf1 hwnd\cf3 , \cf2 "GAME IS FINISHED(U are LOSE) UPPER u can see the word"\cf3 ,word.c_str(), \cf4 MB_OK\cf3 );\par
+\tab\tab\tab\par
+\tab\tab\tab exit(0);\par
+\tab\tab\}\par
+\tab\tab\cf5 for\cf3  (\cf5 int\cf3  i = 0; i < word.size(); i++) \{\par
+\tab\tab\tab     \cf5 char\cf3  windowname[] = \{ symbols\cf8 [\cf3 i\cf8 ]\cf3 , \cf2 '\\0'\cf3\};\par
+\tab\tab\tab\tab\par
+\tab\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , windowname, \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , i * 20, 150, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\tab\par
+\tab\tab\}\par
+\par
+\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , \cf2 "This is word"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , 0, 180, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 ,\cf2 "count: "\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , 0, 100, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\par
+\tab\tab\cf6 string\cf3  count_itoa = to_string(countsym);\par
+\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "static"\cf3 , count_itoa.c_str(), \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , 40, 100, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\cf5 if\cf3  (countsym != word.size()) \{\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "edit"\cf3 , \cf2 "Here u can Write"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , 310, 25, 490, 20, \cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\par
+\tab\tab\tab\cf4 CreateWindowA\cf3 (\cf2 "Button"\cf3 , \cf2 "This is Button"\cf3 , \cf4 WS_VISIBLE\cf3  | \cf4 WS_CHILD\cf3 , 300, yStart, 120, 50, \cf1 hwnd\cf3 , (\cf6 HMENU\cf3 )\cf4 OnButtonClicked\cf3 , \cf4 NULL\cf3 , \cf4 NULL\cf3 );\par
+\tab\tab\}\par
+\tab\tab\cf5 if\cf3  (countsym == word.size()) \{\par
+\tab\tab\tab MessageBoxA(\cf1 hwnd\cf3 , \cf2 "GAME IS FINISHED(U are WINNER)"\cf3 , \cf2 "Button"\cf3 , \cf4 MB_OK\cf3 );\par
+\tab\tab\tab exit(0);\par
+\tab\tab\}\par
+\tab\}\par
+\par
+\par
+\par
+\par
+\par
+\par
+\tab\cf6 WNDCLASS\cf3  newWindowClass(\cf6 HBRUSH\cf3  \cf1 BGColor\cf3 , \cf6 HCURSOR\cf3  \cf1 cursor\cf3 , \cf6 HINSTANCE\cf3  \cf1 hinst\cf3 , \cf6 HICON\cf3  \cf1 icon\cf3 , \cf6 LPCWSTR\cf3  \cf1 Name\cf3 , \cf6 WNDPROC\cf3  \cf1 proc\cf3 ) \{\par
+\tab\tab\cf6 WNDCLASS\cf3  nws = \{ 0 \};\par
+\tab\tab nws.hIcon = \cf1 icon\cf3 ;\par
+\tab\tab nws.hCursor = \cf1 cursor\cf3 ;\par
+\tab\tab nws.hInstance = \cf1 hinst\cf3 ;\par
+\tab\tab nws.lpszClassName = \cf1 Name\cf3 ;\par
+\tab\tab nws.hbrBackground = \cf1 BGColor\cf3 ;\par
+\tab\tab nws.lpfnWndProc = \cf1 proc\cf3 ;\par
+\tab\tab\cf5 return\cf3  nws;\par
+\tab\}\par
+\par
+\par
+\tab\cf6 LRESULT\cf3  \cf4 CALLBACK\cf3  SoftwareMainProcedure(\cf6 HWND\cf3  \cf1 hwnd\cf3 , \cf6 UINT\cf3  \cf1 msg\cf3 , \cf6 WPARAM\cf3  \cf1 wp\cf3 , \cf6 LPARAM\cf3  \cf1 lp\cf3 ) \{\par
+\tab\tab\cf5 switch\cf3  (\cf1 msg\cf3 ) \{\par
+\tab\tab\cf5 case\cf3  \cf4 WM_CREATE\cf3 :\par
+\tab\tab\tab MainAddWidget(\cf1 hwnd\cf3 );\par
+\tab\tab\tab\cf5 break\cf3 ;\par
+\tab\tab\cf5 case\cf3  \cf4 WM_DESTROY\cf3 :\par
+\tab\tab\tab PostQuitMessage(0);\par
+\tab\tab\tab\cf5 break\cf3 ;\par
+\tab\tab\cf5 case\cf3  \cf4 WM_COMMAND\cf3 :\par
+\tab\tab\tab\cf5 switch\cf3  (\cf1 wp\cf3 ) \{\par
+\tab\tab\tab\tab\par
+\tab\tab\tab\cf5 case\cf3  \cf4 OnButtonClicked\cf3 :\par
+\tab\tab\tab\tab MessageBoxA(\cf1 hwnd\cf3 , \cf2 "Button has been clicked"\cf3 , \cf2 "Button"\cf3 , \cf4 MB_OK\cf3 );\par
+\par
+\tab\tab\tab\tab\cf5 auto\cf3  click = [](\cf6 HWND\cf3  \cf1 hwnd\cf3 )->\cf5 void\cf3  \{\par
+\tab\tab\tab\tab\tab\cf5 bool\cf3  pp = \cf5 false\cf3 ;\par
+\tab\tab\tab\tab\tab\cf7 //\tab static int poputka = word.size();\cf3\par
+\tab\tab\tab\tab\tab\tab\cf7 // \f1\lang1058\'cd\'e0\'e9\'f2\'e8 \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff "edit"\cf3\par
+\tab\tab\tab\tab\tab\cf6 HWND\cf3  hwndEdit = FindWindowExA(\cf1 hwnd\cf3 , \cf4 NULL\cf3 , \cf2 "edit"\cf3 , \cf4 NULL\cf3 );\par
+\par
+\tab\tab\tab\tab\tab\cf5 if\cf3  (hwndEdit != \cf4 NULL\cf3 ) \{\par
+\tab\tab\tab\tab\tab\tab\cf7 // \'cf\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'f2\'e5\'ea\'f1\'f2 \'e8\'e7 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0 \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff "edit"\cf3\par
+\tab\tab\tab\tab\tab\tab\cf5 char\cf3  text[2];\par
+\tab\tab\tab\tab\tab\tab\cf4 SendMessage\cf3 (hwndEdit, \cf4 WM_GETTEXT\cf3 , 1, (\cf6 LPARAM\cf3 )text);\par
+\par
+\tab\tab\tab\tab\tab\tab\cf7 // \'d1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc \'ef\'e5\'f0\'e2\'fb\'e9 \'f1\'e8\'ec\'e2\'ee\'eb \'e2 \'e3\'eb\'ee\'e1\'e0\'eb\'fc\'ed\'ee\'e9 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9\cf3\par
+\tab\tab\tab\tab\tab\tab symbol = text[0];\par
+\tab\tab\tab\tab\tab\}\par
+\par
+\tab\tab\tab\tab\tab\cf5 for\cf3  (\cf5 int\cf3  i = 0; i < word.size(); i++) \{\par
+\tab\tab\tab\tab\tab\tab\cf5 if\cf3  (symbol == word\cf8 [\cf3 i\cf8 ]\cf3 ) \{                       \cf7 //\'ef\'ee \'ef\'ee\'e2\'ee\'e4\'f3 \'f1\'e8\'ec\'e2\'ee\'eb\'e0 \'ed\'e0\'e4\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'e2\'e5\'ea\'f2\'ee\'f0 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 \'ef\'ee\'e4 \'ed\'e8\'f5 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb \'f3\'e6\'e5 \'f1\'ee\'e7\'e4\'e0\'ed\'fb countsym \'e7\'e0\'f2\'e5\'ec \'fd\'f2\'e8 \'f1\'e8\'ec\'e2\'ee\'eb\'fb \'ed\'e0\'e4\'ee \'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'ef\'ee \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'e0\'ec countsym\cf3\par
+\tab\tab\tab\tab\tab\tab\tab countsym += 1;\par
+\tab\tab\tab\tab\tab\tab\tab symbols\cf8 [\cf3 i\cf8 ]\cf3  = word\cf8 [\cf3 i\cf8 ]\cf3 ; \cf7 //\'ed\'e0\'e4\'f0 \'f1\'e4\'e5\'eb\'e0\'e9\'f2\'fc \'f7\'f2\'ee\'e1\'fb \'ec\'fb \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'eb\'e8 \'e2 \'e2\'e5\'ea\'f2\'ee\'f0 symbol \'e0 \'e7\'e0\'f2\'e5\'ec \'f2\'e0\'ec \'e2 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'ef\'f0\'ee\'e2\'e5\'eb\'e8 \'ef\'ee\'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e5 \'ec\'e0\'f5\'e8\'ed\'e0\'f6\'e8\'e8\cf3\par
+\tab\tab\tab\tab\tab\tab\tab pp = \cf5 true\cf3 ;\par
+\par
+\tab\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\cf5 if\cf3  (pp) \{\par
+\tab\tab\tab\tab\tab\tab MainAddWidget(\cf1 hwnd\cf3 );\cf7 //MainAddWidget(HWND hwnd) \'fd\'f2\'e0 \'f4\'e8\'e3\'ed\'ff \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'e7\'e0 \'e2\'fb\'e2\'ee\'e4 \'ed\'e0\'e4\'ee \'e2\'fb\'e2\'e5\'f1\'f2\'e8 \'e1\'f3\'ea\'e2\'fb\cf3\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\cf5 else\cf3  \{\par
+\tab\tab\tab\tab\tab\tab poputka -= 1;\par
+\tab\tab\tab\tab\tab\tab MainAddWidget(\cf1 hwnd\cf3 );\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\};\par
+\tab\tab\tab\tab click(\cf1 hwnd\cf3 );\par
+\tab\tab\tab\tab\cf5 break\cf3 ;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\cf5 break\cf3 ;\par
+\tab\tab\cf5 default\cf3 :\par
+\tab\tab\tab\cf5 break\cf3 ;\par
+\tab   \}\par
+\tab\tab\cf5 return\cf3  \cf4 DefWindowProc\cf3 (\cf1 hwnd\cf3 , \cf1 msg\cf3 , \cf1 wp\cf3 , \cf1 lp\cf3 );\par
+     \}\par
+    \par
+\par
+\cf0\f2\fs22\lang9\par
+}
+ 

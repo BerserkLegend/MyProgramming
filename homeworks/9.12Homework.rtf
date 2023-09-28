@@ -1,0 +1,306 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Consolas;}{\f1\fnil\fcharset204 Consolas;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green128\blue0;\red0\green0\blue0;\red128\green128\blue128;\red163\green21\blue21;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 // homework9.12.cpp : \f1\lang1058\'dd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe "main". \'c7\'e4\'e5\'f1\'fc \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'e8 \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb.\cf2\par
+\cf1 //\cf2\par
+\par
+\cf3 #include\cf2  \cf4 <iostream>\cf5 int\cf2  \par
+\cf5 using\cf2  \cf5 namespace\cf2  std;\par
+\cf1 //ex1\cf2\par
+\cf1 //bool* a1 = new bool[0];\cf2\par
+\cf1 //int* a = new int[0];\cf2\par
+\cf1 //int* b = new int[0];\cf2\par
+\cf1 //int* c = new int[0];\cf2\par
+\cf1 //void ff(int size) \{\cf2\par
+\cf1 //\tab int size1 = 0;\cf2\par
+\cf1 //\tab bool* a1 = new bool[size];\cf2\par
+\cf1 //\tab int* a = new int[size];\cf2\par
+\cf1 //\tab int* b = new int[size];\cf2\par
+\cf1 //\tab int* c = new int[size];\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab a1[i] = true;\cf2\par
+\cf1 //\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab cout << "\'e7\'e0\'ef\'ee\'eb\'ed\'e8\'f2\'e5 a";\cf2\par
+\cf1 //\tab\tab cin >> a[i];\cf2\par
+\cf1 //\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab cout << "\'e7\'e0\'ef\'ee\'eb\'ed\'e8\'f2\'e5 b";\cf2\par
+\cf1 //\tab\tab cin >> b[i];\cf2\par
+\cf1 //\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab int gg = 0;\cf2\par
+\cf1 //\tab size1 = size;\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab for (int j = 0; j < size; j++) \{\cf2\par
+\cf1 //\tab\tab\tab if (a[j] == b[i]) \{\cf2\par
+\cf1 //\tab\tab\tab\tab a1[j] = false;\cf2\par
+\cf1 //\tab\tab\tab\tab size1--;\cf2\par
+\cf1 //\tab\tab  \}\cf2\par
+\cf1 //\tab\tab\}\cf2\par
+\cf1 //\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab c = new int[size1];\cf2\par
+\cf1 //\tab for (int i = 0; i < size1; i++) \{\cf2\par
+\cf1 //\tab\tab if (a1[i]==true) \cf2\par
+\cf1 //\tab\tab\tab c[i] = a[i];\cf2\par
+\cf1 //\tab\tab\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab for (int i = 0; i < size1; i++) \{\cf2\par
+\cf1 //\tab\tab cout << c[i];\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //int main()\cf2\par
+\cf1 //\{\cf2\par
+\cf1 //\tab ff(3);\cf2\par
+\cf1 //\}\cf2\par
+\par
+\par
+\par
+\par
+\par
+\par
+\cf1 //ex2\cf2\par
+\cf1 //int main() \cf2\par
+\cf1 //\{\cf2\par
+\tab\cf1 //ex 2\cf2\par
+\tab\cf1 //int m;\cf2\par
+\tab\cf1 //int n;\cf2\par
+\tab\cf1 //cout << "M" << endl;\cf2\par
+\tab\cf1 //cin >> m;\cf2\par
+\tab\cf1 //cout << "N\\n";\cf2\par
+\tab\cf1 //cin >> n;\cf2\par
+\tab\cf1 //int* a = new int[m];\cf2\par
+\tab\cf1 //int* b = new int[n];\cf2\par
+\tab\cf1 //bool* a1 = new bool[m];\cf2\par
+\tab\cf1 //bool* b1 = new bool[n];\cf2\par
+\tab\cf1 //for (int i = 0; i < m; i++) \{\cf2\par
+\tab\cf1 //\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 a[" << i << "]";\cf2\par
+\tab\cf1 //\tab cin >> a[i];\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf1 //for (int i = 0; i < n; i++) \{\cf2\par
+\tab\cf1 //\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 b[" << i << "]";\cf2\par
+\tab\cf1 //\tab cin >> b[i];\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf1 //for (int i = 0; i < m; i++) \{\cf2\par
+\tab\cf1 //\tab a1[i] = true;\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf1 //for (int i = 0; i < n; i++) \{\cf2\par
+\tab\cf1 //\tab b1[i] = true;\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf1 //for (int i = 0; i < m; i++) \{\cf2\par
+\tab\cf1 //\tab for (int j = 0; j < n; j++) \{\cf2\par
+\tab\cf1 //\tab\tab if (a[i] == b[j])\cf2\par
+\tab\cf1 //\tab\tab\tab a1[i] = b1[j] = false;\cf2\par
+\tab\cf1 //\tab\}\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf1 //int size = 0;\cf2\par
+\par
+\par
+\par
+\tab\cf1 //for (int i = 0; i < m; i++) \{\cf2\par
+\tab\cf1 //\tab if (a1[i]) \{\cf2\par
+\tab\cf1 //\tab\tab size++;\cf2\par
+\tab\cf1 //\tab\}\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf1 //for (int i = 0; i < n; i++) \{\cf2\par
+\tab\cf1 //\tab if (b1[i]) \{\cf2\par
+\tab\cf1 //\tab\tab size++;\cf2\par
+\tab\cf1 //\tab\}\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf1 //int* c = new int[size];\cf2\par
+\tab\cf1 //int co = 0;\cf2\par
+\tab\cf1 //for (int i = 0; i < m; i++) \{\cf2\par
+\tab\cf1 //\tab if (a1[i]) \{\cf2\par
+\tab\cf1 //\tab\tab c[co] = a[i];\cf2\par
+\tab\cf1 //\tab\tab co++;\cf2\par
+\tab\cf1 //\tab\}\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf1 ////int co1 = co;\cf2\par
+\tab\cf1 //for (int i = 0; i < n; i++) \{\cf2\par
+\tab\cf1 //\tab if (b1[i]) \{\cf2\par
+\tab\cf1 //\tab\tab c[co] = b[i];\cf2\par
+\tab\cf1 //\tab\tab co++;\cf2\par
+\tab\cf1 //\tab\}\cf2\par
+\tab\cf1 //\}\cf2\par
+\tab\cf1 //for (int i = 0; i < size; i++) \{\cf2\par
+\tab\cf1 //\tab cout << c[i];\cf2\par
+\tab\cf1 //\}\cf2\par
+\par
+\cf1 //\}\cf2\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\cf1 //ex 2.1 \cf2\par
+\par
+\cf1 //int* arr = new int[2];\cf2\par
+\cf1 //\cf2\par
+\cf1 //void a(int size) \{\cf2\par
+\cf1 //\tab arr = new int[size];\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //void a1(int size) \{\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab arr[i] = i;\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab cout << arr[i];\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //void a2(int size) \{\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab cin>>arr[i];\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //void a2del(int* size) \{\cf2\par
+\cf1 //\tab delete[]arr;\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //int a2endadd(int size) \{\cf2\par
+\cf1 //\tab size += 1;\cf2\par
+\cf1 //\tab cin >> arr[size];\cf2\par
+\cf1 //\tab return arr[size];\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //int a2addInd(int index) \{\cf2\par
+\cf1 //\tab cin >> arr[index];\cf2\par
+\cf1 //\tab return arr[index];\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //int* delInd(int index1, int size) \{\cf2\par
+\cf1 //\tab a2(size);\cf2\par
+\cf1 //\tab cout << "INDEX1\\n";\cf2\par
+\cf1 //\tab cin >> index1;\cf2\par
+\cf1 //\tab int* narr = new int[size - 1];\cf2\par
+\cf1 //\tab for (int i = 0, arrI = 0; arrI < size; arrI++)\cf2\par
+\cf1 //\tab\tab if (arrI != index1)\cf2\par
+\cf1 //\tab\tab\tab narr[i++] = arr[arrI];\cf2\par
+\cf1 //\tab size -= 1;\cf2\par
+\cf1 //\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab cout << narr[i];\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab cout << endl;\cf2\par
+\cf1 //\tab return narr;\cf2\par
+\cf1 //\}\cf2\par
+\par
+\cf1 //ex 2.1\cf2\par
+\cf1 //int main() \{\cf2\par
+\cf1 //\tab //ex 2.1\cf2\par
+\cf1 //\tab //int size;\cf2\par
+\cf1 //\tab //cin >> size;\cf2\par
+\cf1 //\tab //a(size);\cf2\par
+\cf1 //\tab //cout<<delInd(1,size);\cf2\par
+\cf1 //\tab //cout << endl;\cf2\par
+\cf1 //\tab //delete[]arr;\cf2\par
+\cf1 //\cf2\par
+\cf1 //\tab return 0;\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //ex 2.2\cf2\par
+\cf1 //void f(int*a,int size) \{\cf2\par
+\cf1 //\tab int size1 = 0;\cf2\par
+\cf1 //\tab int* c = new int[size1];\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab for (int j = 2; j <= a[i]; j++) \{\cf2\par
+\cf1 //\tab\tab\tab if (j != a[i] && a[i] % j == 0) \{\cf2\par
+\cf1 //\tab\tab\tab\tab c[size1++] = a[i];\cf2\par
+\cf1 //\tab\tab\tab\tab break;\cf2\par
+\cf1 //\tab\tab\tab\}\cf2\par
+\cf1 //\tab\tab\}\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab for (int i = 0; i < size1; i++) \{\cf2\par
+\cf1 //\tab\tab cout << c[i] <<" \'ef\'f0\'ee\'f1\'f2\'e5 \'f7\'e8 \'ef\'f0\'ee\'f1\'f2\'e8 \'f7\'e8\'f1\'eb\'e0" << endl;\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //int main() \{\cf2\par
+\cf1 //\tab\cf2\par
+\cf1 //\tab int* a = new int[6];//\'f1\'e4\'e5\'f1\'fc \'e2\'e2\'e5\'f1\'f2\'e8 \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e1\'f3\'e4\'e5\'f2 size\cf2\par
+\cf1 //\tab for (int i = 0; i < 6/*\'e8 \'f2\'f3\'f2*/; i++) \{\cf2\par
+\cf1 //\tab\tab cin >> a[i];\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab f(a, 6/*\'e8 \'f2\'f3\'f2 \'f2\'ee\'e6\'e5*/);\cf2\par
+\cf1 //\}\cf2\par
+\par
+\cf1 //ex 2.3\cf2\par
+\cf1 //int mass(int* a,int size) \{ \cf2\par
+\cf1 //\tab int sized = 0;\cf2\par
+\cf1 //\tab int sizem = 0;\cf2\par
+\cf1 //\tab int sizez = 0;\cf2\par
+\cf1 //\tab int* dod = new int[sized];\cf2\par
+\cf1 //\tab int* minus = new int[sizem];\cf2\par
+\cf1 //\tab int* zero = new int[sizez];\cf2\par
+\cf1 //\tab for (int i = 0; i < size; i++) \{\cf2\par
+\cf1 //\tab\tab if (a[i] > 0) \{\cf2\par
+\cf1 //\tab\tab\tab dod[sized++] = a[i];\cf2\par
+\cf1 //\tab\tab\}\cf2\par
+\cf1 //\tab\tab if (a[i] < 0) \{\cf2\par
+\cf1 //\tab\tab\tab minus[sizem++] = a[i];\cf2\par
+\cf1 //\tab\tab\}\cf2\par
+\cf1 //\tab\tab if (a[i] == 0) \{\cf2\par
+\cf1 //\tab\tab\tab zero[sizez++] = a[i];\cf2\par
+\cf1 //\tab\tab\}\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab for (int i = 0; i < sized; i++) \{\cf2\par
+\cf1 //\tab\tab cout << dod[i] << " ";\cf2\par
+\cf1 //\tab\tab cout << " \'e4\'ee\'e4\'e0\'f2\'ed\'e8,";\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab cout << endl;\cf2\par
+\cf1 //\tab for (int i = 0; i < sizem; i++) \{\cf2\par
+\cf1 //\tab\tab cout << minus[i] << " ";\cf2\par
+\cf1 //\tab\tab cout << " \'f1 \'ec\'e8\'ed\'f3\'f1\'ee\'ec,";\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab cout << endl;\cf2\par
+\cf1 //\tab for (int i = 0; i < sizez; i++) \{\cf2\par
+\cf1 //\tab\tab cout << zero[i] << " ";\cf2\par
+\cf1 //\tab\tab cout << " \'ed\'f3\'eb\'e8,";\cf2\par
+\cf1 //\tab\}\cf2\par
+\cf1 //\tab cout << endl;\cf2\par
+\cf1 //\tab cout << " \'ed\'e5\'e7\'ed\'e0\'fe \'f7\'f2\'ee \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'f2\'fc(\'ef\'f0\'ee\'f1\'f2\'ee \'f7\'f2\'ee\'e1 \'e1\'fb\'eb\'ee):";\cf2\par
+\cf1 //\tab return *(a);\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //int main() \{\cf2\par
+\cf1 //\tab const int size = 5;\cf2\par
+\cf1 //\tab int a[5] = \{ -1,3,0,0,-4 \};\cf2\par
+\cf1 //\tab cout<<mass(a,size);\cf2\par
+\cf1 //\}\cf2\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\cf1 // \'c7\'e0\'ef\'f3\'f1\'ea \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb: CTRL+F5 \'e8\'eb\'e8 \'ec\'e5\'ed\'fe "\'ce\'f2\'eb\'e0\'e4\'ea\'e0" > "\'c7\'e0\'ef\'f3\'f1\'ea \'e1\'e5\'e7 \'ee\'f2\'eb\'e0\'e4\'ea\'e8"\cf2\par
+\cf1 // \'ce\'f2\'eb\'e0\'e4\'ea\'e0 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb: F5 \'e8\'eb\'e8 \'ec\'e5\'ed\'fe "\'ce\'f2\'eb\'e0\'e4\'ea\'e0" > "\'c7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'ee\'f2\'eb\'e0\'e4\'ea\'f3"\cf2\par
+\par
+\cf1 // \'d1\'ee\'e2\'e5\'f2\'fb \'ef\'ee \'ed\'e0\'f7\'e0\'eb\'f3 \'f0\'e0\'e1\'ee\'f2\'fb \cf2\par
+\cf1 //   1. \'c2 \'ee\'ea\'ed\'e5 \'ee\'e1\'ee\'e7\'f0\'e5\'e2\'e0\'f2\'e5\'eb\'ff \'f0\'e5\'f8\'e5\'ed\'e8\'e9 \'ec\'ee\'e6\'ed\'ee \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc \'f4\'e0\'e9\'eb\'fb \'e8 \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'e8\'ec\'e8.\cf2\par
+\cf1 //   2. \'c2 \'ee\'ea\'ed\'e5 Team Explorer \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc\'f1\'ff \'ea \'f1\'e8\'f1\'f2\'e5\'ec\'e5 \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff \'e2\'e5\'f0\'f1\'e8\'ff\'ec\'e8.\cf2\par
+\cf1 //   3. \'c2 \'ee\'ea\'ed\'e5 "\'c2\'fb\'f5\'ee\'e4\'ed\'fb\'e5 \'e4\'e0\'ed\'ed\'fb\'e5" \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'f2\'fc \'e2\'fb\'f5\'ee\'e4\'ed\'fb\'e5 \'e4\'e0\'ed\'ed\'fb\'e5 \'f1\'e1\'ee\'f0\'ea\'e8 \'e8 \'e4\'f0\'f3\'e3\'e8\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'ff.\cf2\par
+\cf1 //   4. \'c2 \'ee\'ea\'ed\'e5 "\'d1\'ef\'e8\'f1\'ee\'ea \'ee\'f8\'e8\'e1\'ee\'ea" \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'f2\'fc \'ee\'f8\'e8\'e1\'ea\'e8.\cf2\par
+\cf1 //   5. \'cf\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'e2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 \'ef\'f3\'ed\'ea\'f2\'fb \'ec\'e5\'ed\'fe "\'cf\'f0\'ee\'e5\'ea\'f2" > "\'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'ed\'ee\'e2\'fb\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2", \'f7\'f2\'ee\'e1\'fb \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'f4\'e0\'e9\'eb\'fb \'ea\'ee\'e4\'e0, \'e8\'eb\'e8 "\'cf\'f0\'ee\'e5\'ea\'f2" > "\'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2", \'f7\'f2\'ee\'e1\'fb \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'e2 \'ef\'f0\'ee\'e5\'ea\'f2 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e5 \'f4\'e0\'e9\'eb\'fb \'ea\'ee\'e4\'e0.\cf2\par
+\cf1 //   6. \'d7\'f2\'ee\'e1\'fb \'f1\'ed\'ee\'e2\'e0 \'ee\'f2\'ea\'f0\'fb\'f2\'fc \'fd\'f2\'ee\'f2 \'ef\'f0\'ee\'e5\'ea\'f2 \'ef\'ee\'e7\'e6\'e5, \'e2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 \'ef\'f3\'ed\'ea\'f2\'fb \'ec\'e5\'ed\'fe "\'d4\'e0\'e9\'eb" > "\'ce\'f2\'ea\'f0\'fb\'f2\'fc" > "\'cf\'f0\'ee\'e5\'ea\'f2" \'e8 \'e2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 SLN-\'f4\'e0\'e9\'eb.\cf2\par
+\cf0\f2\fs22\lang9\par
+}
+ 

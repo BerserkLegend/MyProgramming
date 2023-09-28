@@ -1,0 +1,250 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green128\blue0;\red0\green0\blue0;\red128\green128\blue128;\red163\green21\blue21;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 // classwork 10.01.22.cpp : \f1\lang1058\'dd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe "main". \'c7\'e4\'e5\'f1\'fc \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'e8 \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb.\cf2\par
+\cf1 //\cf2\par
+\par
+\cf3 #include\cf2  \cf4 <iostream>\cf2\par
+\cf3 #include\cf4 <stdio.h>\cf2\par
+\cf3 #pragma\cf2  \cf3 warning\cf2 (\cf3 disable\cf2 :4996);\par
+\cf1 //1\cf2\par
+\cf1 //struct info \{\cf2\par
+\cf1 //    int data;\cf2\par
+\cf1 //    int mounth;\cf2\par
+\cf1 //    int year;\cf2\par
+\cf1 //\};\cf2\par
+\cf5 struct\cf2  pupil \{\par
+    \cf5 char\cf2 * name;\par
+    \cf5 int\cf2  old;\par
+    \cf5 int\cf2  math;\par
+    \cf5 int\cf2  chem;\par
+    \cf5 int\cf2  physo;\par
+    \cf5 float\cf2  mid;\par
+\};\par
+\cf5 using\cf2  \cf5 namespace\cf2  std;\par
+\cf1 //1\cf2\par
+\cf1 //void read(info&foo) \{\cf2\par
+\cf1 //    info foo2;\cf2\par
+\cf1 //    int size = 0;\cf2\par
+\cf1 //    FILE* f;\cf2\par
+\cf1 //    f = fopen("file.txt", "r");\cf2\par
+\cf1 //    char buff[2];\cf2\par
+\cf1 //    for (int i = 0; i < 2; i++) \{\cf2\par
+\cf1 //        if(i == 0)\cf2\par
+\cf1 //          fscanf(f, "%d/%d/%d", &foo.data, &foo.mounth, &foo.year);\cf2\par
+\cf1 //        else\cf2\par
+\cf1 //            fscanf(f, "%d/%d/%d", &foo2.data, &foo2.mounth, &foo2.year);\cf2\par
+\cf1 //        fgets(buff, 255, f);\cf2\par
+\cf1 //    \}\cf2\par
+\cf1 //    fclose(f);\cf2\par
+\cf1 //   cout << foo.data << foo.mounth << foo.year<<endl;\cf2\par
+\cf1 //   cout << foo2.data << foo2.mounth << foo2.year;\cf2\par
+\cf1 //\}\cf2\par
+\cf5 void\cf2  add(\cf5 int\cf2 & size, pupil*& pup) \{\par
+    size += 1;\par
+    \cf5 float\cf2  ost;\par
+    \cf5 char\cf2  nam[255];\par
+    \cf5 if\cf2  (size == 1) \{\par
+        pup = \cf5 new\cf2  pupil[size];\par
+        cout << \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ec\'ff\\n"\cf2 ;\par
+        cin.getline(nam, 255);\par
+        cout << strlen(nam) + 1;\par
+        pup[size - 1].name = \cf5 new\cf2  \cf5 char\cf2 [strlen(nam) + 1];\par
+        strcpy_s(pup[size - 1].name, strlen(nam) + 1, nam);\par
+        cout << \cf4 "\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'eb\'e5\'f2\\n"\cf2 ;\par
+        cin >> pup[size - 1].old;\par
+        cout << \cf4 "\'ee\'f6\'e5\'ed\'ea\'e8 \'ec\'e0\'f2\'e5\'ec \'f5\'e8\'ec \'f4\'e8\'e7\\n"\cf2 ;\par
+        cin >>pup[size - 1].math;\par
+        cin>>pup[size - 1].chem;\par
+        cin>>pup[size - 1].physo;\par
+        pup[size - 1].mid = (\cf5 float\cf2 )(pup[size - 1].math + pup[size - 1].chem + pup[size - 1].physo)/3;\par
+\par
+        ost = pup[size - 1].mid - (\cf5 int\cf2 )(pup[size - 1].mid);\par
+        ost *= 10;\par
+        \cf5 if\cf2  (ost > 4) \{\par
+            pup[size - 1].mid= ceil(pup[size - 1].mid);\par
+        \}\par
+        \cf5 else\cf2  \{\par
+            pup[size - 1].mid= floor(pup[size - 1].mid);\par
+        \}\par
+        \cf1 //cout << pup[size - 1].mid;\cf2\par
+        cout << pup[size - 1].physo;\par
+       \par
+    \}\par
+    \cf5 if\cf2  (size > 1) \{\par
+        pupil* pup2 = \cf5 new\cf2  pupil[size];\par
+       \par
+        \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size-1; i++) \{\par
+            pup2[i].chem = pup[i].chem;\par
+            pup2[i].math = pup[i].math;\par
+            pup2[i].physo = pup[i].physo;\par
+            pup2[i].old = pup[i].old;\par
+            pup2[i].mid = pup[i].mid;\par
+            \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size-1; i++) \{\par
+                pup2[i].name = \cf5 new\cf2  \cf5 char\cf2 [strlen(pup[i].name) + 1];\par
+                \cf5 for\cf2  (\cf5 int\cf2  j = 0; j < strlen(pup[i].name) + 1; j++) \{\par
+                    \cf5 if\cf2  (pup2[i].name[j] == \cf4 '\\0'\cf2 )\par
+                        \cf5 break\cf2 ;\par
+                    pup2[i].name[j] = pup[i].name[j];\par
+                \}\par
+            \}\par
+        \}\par
+        \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size-1; i++)\par
+            \cf5 delete\cf2 []pup[i].name;\par
+        \cf5 delete\cf2 []pup;\par
+        pup = \cf5 new\cf2  pupil[size];\par
+        \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size - 1; i++) \{\par
+            pup[i].chem = pup2[i].chem;\par
+            pup[i].math = pup2[i].math;\par
+            pup[i].physo = pup2[i].physo;\par
+            pup[i].old = pup2[i].old;\par
+            pup[i].mid = pup2[i].mid;\par
+            \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size - 1; i++) \{\par
+                pup[i].name = \cf5 new\cf2  \cf5 char\cf2 [strlen(pup2[i].name) + 1];\par
+                \cf5 for\cf2  (\cf5 int\cf2  j = 0; j < strlen(pup2[i].name) + 1; j++) \{\par
+                    \cf5 if\cf2  (pup[i].name[j] == \cf4 '\\0'\cf2 )\par
+                        \cf5 break\cf2 ;\par
+                    pup[i].name[j] = pup2[i].name[j];\par
+                \}\par
+            \}\par
+        \}\par
+   \par
+        cout << \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ec\'ff\\n"\cf2 ;\par
+        cin.getline(nam, 255);\par
+        pup[size - 1].name = \cf5 new\cf2  \cf5 char\cf2 [strlen(nam) + 1];\par
+        strcpy_s(pup[size - 1].name, strlen(nam) + 1, nam);\par
+        cout << \cf4 "\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'eb\'e5\'f2\\n"\cf2 ;\par
+        cin >> pup[size - 1].old;\par
+        cout << \cf4 "\'ee\'f6\'e5\'ed\'ea\'e8 \'ec\'e0\'f2\'e5\'ec \'f5\'e8\'ec \'f4\'e8\'e7\\n"\cf2 ;\par
+        cin >> pup[size - 1].math;\par
+        cin >> pup[size - 1].chem;\par
+        cin >> pup[size - 1].physo;\par
+        pup[size - 1].mid = (\cf5 float\cf2 )(pup[size - 1].math + pup[size - 1].chem + pup[size - 1].physo) / 3;\par
+        ost = pup[size - 1].mid - (\cf5 int\cf2 )(pup[size - 1].mid);\par
+        ost *= 10;\par
+        \cf5 if\cf2  (ost > 4) \{\par
+            pup[size - 1].mid = ceil(pup[size - 1].mid);\par
+        \}\par
+        \cf5 else\cf2  \{\par
+            pup[size - 1].mid = floor(pup[size - 1].mid);\par
+        \}\par
+        cout << pup[size - 1].mid;\par
+        \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size-1; i++)\par
+            \cf5 delete\cf2 []pup2[i].name;\par
+        \cf5 delete\cf2 []pup2;\par
+\par
+    \}\par
+    \}\par
+\cf5 void\cf2  prin(pupil* pup, \cf5 int\cf2  size) \{\par
+    \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size; i++) \{\par
+        cout << \cf4 "\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'ff prin\\n"\cf2 ;\par
+        cout << pup[i].name<<endl;\par
+        cout << pup[i].old << endl;\par
+        cout << pup[i].math << endl;\par
+        cout << pup[i].chem << endl;\par
+        cout << pup[i].physo << endl;\par
+        cout << pup[i].mid << endl;\par
+    \}\par
+\}\par
+\cf5 void\cf2  read(pupil*& pup, \cf5 int\cf2 & size) \{\par
+    \cf5 char\cf2  buff[255];\par
+    FILE* f;\par
+    FILE* f2 = fopen(\cf4 "file.txt"\cf2 ,\cf4 "r"\cf2 );\par
+    \cf5 if\cf2  (f2 !=NULL) \{\par
+        f = fopen(\cf4 "file.txt"\cf2 , \cf4 "r"\cf2 );\par
+        fscanf(f, \cf4 "size:%d\\n"\cf2 , &size);\par
+        pup = \cf5 new\cf2  pupil[size];\par
+        \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size; i++) \{\par
+            fscanf(f, \cf4 "name:%s old:%d math:%d chem:%d physo:%d mid:%f\\n"\cf2 , buff, &pup[i].old, &pup[i].math, &pup[i].chem, &pup[i].physo, &pup[i].mid);\par
+            pup[i].name = \cf5 new\cf2  \cf5 char\cf2 [strlen(buff) + 1];\par
+            strcpy_s(pup[i].name, strlen(buff) + 1, buff);\par
+        \}\par
+        fclose(f);\par
+        fclose(f2);\par
+    \}\par
+    \par
+\par
+     \par
+\}\par
+\cf5 int\cf2  main()\par
+\{\par
+\par
+\par
+    \cf1 //2\cf2\par
+\par
+    \cf5 int\cf2  size = 0;\par
+    pupil* pup;\par
+    read(pup, size);\par
+    prin(pup, size);\par
+    add(size, pup);\par
+    prin(pup, size);\par
+    FILE* f = fopen(\cf4 "file.txt"\cf2 , \cf4 "w"\cf2 );\par
+    fprintf(f, \cf4 "size:%d\\n"\cf2 , size);\par
+    \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size; i++) \{\par
+        fprintf(f, \cf4 "name:%s old:%d math:%d chem:%d physo:%d mid:%f\\n"\cf2 , pup[i].name, pup[i].old, pup[i].math, pup[i].chem, pup[i].physo, pup[i].mid);\par
+    \}\par
+    fclose(f);\par
+    \cf5 int\cf2  choose;\par
+    \cf5 while\cf2  (\cf5 true\cf2 ) \{\par
+        cout << \cf4 "1.\'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'f3\'f7\'e5\'ed\'e8\'ea\'e0 2.\'e2\'fb\'e9\'e4\'e8 \'f1 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'fb 3.\'f3\'e4\'e0\'eb\'e8\'f2\'fc \'f1\'ef\'e8\'f1\'ee\'ea\\n"\cf2 ;\par
+        cin >> choose;\par
+        \cf5 if\cf2  (cin.fail()) \{\par
+\par
+            cin.clear();\par
+            cin.ignore();\par
+            cin >> choose;\par
+        \}\par
+        \cf5 if\cf2  (choose == 2)\par
+            \cf5 break\cf2 ;\par
+        \cf5 switch\cf2  (choose)\par
+        \{\par
+        \cf5 case\cf2  1:\par
+            cin.ignore();\par
+            add(size, pup);\par
+            \par
+            prin(pup, size);\par
+            f = fopen(\cf4 "file.txt"\cf2 , \cf4 "w"\cf2 );\par
+            fprintf(f, \cf4 "size:%d\\n"\cf2 , size);\par
+            \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size; i++) \{\par
+                fprintf(f, \cf4 "name:%s old:%d math:%d chem:%d physo:%d mid:%f\\n"\cf2 , pup[i].name, pup[i].old, pup[i].math, pup[i].chem, pup[i].physo, pup[i].mid);\par
+            \}\par
+            fclose(f);\par
+            \cf5 break\cf2 ;\par
+        \cf5 case\cf2  3:\par
+            remove(\cf4 "file.txt"\cf2 );\par
+            \cf5 break\cf2 ;\par
+        \}\par
+        \par
+    \}\par
+    \cf5 for\cf2  (\cf5 int\cf2  i = 0; i < size; i++)\par
+        \cf5 delete\cf2 []pup[i].name;\par
+    \cf5 delete\cf2 []pup;\par
+    \cf1 /*add(size, pup);\cf2\par
+\cf1     cin.ignore();\cf2\par
+\cf1     add(size, pup);\cf2\par
+\cf1     cin.ignore();\cf2\par
+\cf1     add(size, pup);\cf2\par
+\cf1     prin(pup, size);*/\cf2\par
+  \par
+    \cf1 //1\cf2\par
+    \cf1 /*info foo;\cf2\par
+\cf1     info foo2;\cf2\par
+\cf1     read(foo);*/\cf2\par
+\par
+    \par
+\par
+\}\par
+\par
+\cf1 // \'c7\'e0\'ef\'f3\'f1\'ea \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb: CTRL+F5 \'e8\'eb\'e8 \'ec\'e5\'ed\'fe "\'ce\'f2\'eb\'e0\'e4\'ea\'e0" > "\'c7\'e0\'ef\'f3\'f1\'ea \'e1\'e5\'e7 \'ee\'f2\'eb\'e0\'e4\'ea\'e8"\cf2\par
+\cf1 // \'ce\'f2\'eb\'e0\'e4\'ea\'e0 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb: F5 \'e8\'eb\'e8 \'ec\'e5\'ed\'fe "\'ce\'f2\'eb\'e0\'e4\'ea\'e0" > "\'c7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'ee\'f2\'eb\'e0\'e4\'ea\'f3"\cf2\par
+\par
+\cf1 // \'d1\'ee\'e2\'e5\'f2\'fb \'ef\'ee \'ed\'e0\'f7\'e0\'eb\'f3 \'f0\'e0\'e1\'ee\'f2\'fb \cf2\par
+\cf1 //   1. \'c2 \'ee\'ea\'ed\'e5 \'ee\'e1\'ee\'e7\'f0\'e5\'e2\'e0\'f2\'e5\'eb\'ff \'f0\'e5\'f8\'e5\'ed\'e8\'e9 \'ec\'ee\'e6\'ed\'ee \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc \'f4\'e0\'e9\'eb\'fb \'e8 \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'e8\'ec\'e8.\cf2\par
+\cf1 //   2. \'c2 \'ee\'ea\'ed\'e5 Team Explorer \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc\'f1\'ff \'ea \'f1\'e8\'f1\'f2\'e5\'ec\'e5 \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff \'e2\'e5\'f0\'f1\'e8\'ff\'ec\'e8.\cf2\par
+\cf1 //   3. \'c2 \'ee\'ea\'ed\'e5 "\'c2\'fb\'f5\'ee\'e4\'ed\'fb\'e5 \'e4\'e0\'ed\'ed\'fb\'e5" \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'f2\'fc \'e2\'fb\'f5\'ee\'e4\'ed\'fb\'e5 \'e4\'e0\'ed\'ed\'fb\'e5 \'f1\'e1\'ee\'f0\'ea\'e8 \'e8 \'e4\'f0\'f3\'e3\'e8\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'ff.\cf2\par
+\cf1 //   4. \'c2 \'ee\'ea\'ed\'e5 "\'d1\'ef\'e8\'f1\'ee\'ea \'ee\'f8\'e8\'e1\'ee\'ea" \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'f2\'fc \'ee\'f8\'e8\'e1\'ea\'e8.\cf2\par
+\cf1 //   5. \'cf\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'e2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 \'ef\'f3\'ed\'ea\'f2\'fb \'ec\'e5\'ed\'fe "\'cf\'f0\'ee\'e5\'ea\'f2" > "\'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'ed\'ee\'e2\'fb\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2", \'f7\'f2\'ee\'e1\'fb \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'f4\'e0\'e9\'eb\'fb \'ea\'ee\'e4\'e0, \'e8\'eb\'e8 "\'cf\'f0\'ee\'e5\'ea\'f2" > "\'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2", \'f7\'f2\'ee\'e1\'fb \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'e2 \'ef\'f0\'ee\'e5\'ea\'f2 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e5 \'f4\'e0\'e9\'eb\'fb \'ea\'ee\'e4\'e0.\cf2\par
+\cf1 //   6. \'d7\'f2\'ee\'e1\'fb \'f1\'ed\'ee\'e2\'e0 \'ee\'f2\'ea\'f0\'fb\'f2\'fc \'fd\'f2\'ee\'f2 \'ef\'f0\'ee\'e5\'ea\'f2 \'ef\'ee\'e7\'e6\'e5, \'e2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 \'ef\'f3\'ed\'ea\'f2\'fb \'ec\'e5\'ed\'fe "\'d4\'e0\'e9\'eb" > "\'ce\'f2\'ea\'f0\'fb\'f2\'fc" > "\'cf\'f0\'ee\'e5\'ea\'f2" \'e8 \'e2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 SLN-\'f4\'e0\'e9\'eb.\cf2\par
+\cf0\f2\fs22\lang9\par
+}
+ 

@@ -1,0 +1,753 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <vector>
+#include <cstring>
+#pragma warning(disable:4996);
+using namespace std;
+
+
+
+struct user {
+	char name[255];
+	int id : 16;
+	int messize = 0;
+	int rconsize = 0;
+	char txt[255];
+	int missing_message = 0; //будет отвечать за дальнейший размер 
+	vector<vector<char>> message;
+	vector<vector<char>> whomes;
+	vector<vector<char>> rconmessage;
+
+};
+
+//void upgrade(user* P, char* size2, int size, bool rconf, char* mes);
+void upgrade(user* P, char* size2, int size, bool rconf);
+void add(user*& P, int& size, vector<int>& usedid, char* size2) {
+	size += 1;
+	user* P2 = new user[size];
+	if (size > 1) {
+		for (int i = 0; i < size - 1; i++) {
+			P2[i].id = P[i].id;
+			P2[i].missing_message = P[i].missing_message;
+			strcpy(P2[i].name, P[i].name);
+			strcpy(P2[i].txt, P[i].txt);
+			P2[i].message = P[i].message;
+
+		}
+	}
+	delete[] P;
+	P = new user[size];
+	if (size > 1) {
+		for (int i = 0; i < size - 1; i++) {
+			P[i].id = P2[i].id;
+			P[i].missing_message = P2[i].missing_message;
+			strcpy(P[i].name, P2[i].name);
+			strcpy(P[i].txt, P2[i].txt);
+			P[i].message = P2[i].message;
+		}
+	}
+
+	cout << "введите имя\n";
+	cin.getline(P[size - 1].name, 255);
+	P[size - 1].id = 1000 + rand() % 9999;
+	P[size - 1].id = 0;
+	P[size - 1].id = 1000 + rand() % 9999;
+	usedid.push_back(P[size - 1].id);
+	cout << "айди пользователя " << P[size - 1].id << endl;
+	cout << "введите сообщение\n";
+	cin.getline(P[size - 1].txt, 255);
+
+
+
+	for (int i = 0; i < usedid.size(); i++) {
+		for (int j = 0; j < size; j++) {
+			if (usedid[i] == P[j].id && j != i) {
+				P[size - 1].id = 1000 + rand() % 9999;
+				P[size - 1].id = 0;
+				P[size - 1].id = 1000 + rand() % 9999;
+
+			}
+		}
+	}
+	//P[size-1].message.resize(1); //по дефолту одно сообщение
+	//for (int j = 0; j < 1; j++) {
+	//	P[size-1].message[j].resize(255); //макс символов 255
+	//}
+	delete[] P2;
+	itoa(size, size2, 10);
+	FILE* f = fopen(strcat(size2, ".txt"), "w");
+	fprintf(f, "name %s id %d message to send %s", P[size - 1].name, P[size - 1].id, P[size - 1].txt);
+	fclose(f);
+
+}
+
+void print(user* P, int size, char* size2) {
+	for (int i = 0; i < size; i++) {
+		cout << i + 1 << " пользователь\n";
+		cout << "имя:\n";
+		cout << P[i].name << endl;
+		cout << "id:\n";
+		cout << P[i].id << endl;
+		cout << "message:\n";
+		cout << P[i].txt << endl;
+		if (P[i].missing_message > 0) {
+
+			cout << "у вас пропущенно " << P[i].missing_message << " сообщений\n";
+			cout << "\nсообщение которое прийшло: \n";
+			for (int g = 0; g < P[i].message.size(); g++) {
+				cout << endl;
+				for (int j = 0; j < P[i].message[g].size(); j++) {
+					/*if (P[i].message[g][j] == '\0')
+						break;*/
+					cout << P[i].message[g][j];
+				}
+			}
+			cout << endl;
+			cout << "\nкто вам прислал :";
+			for (int g = 0; g < P[i].whomes.size(); g++) {
+				cout << endl;
+				for (int j = 0; j < P[i].whomes[g].size(); j++) {
+
+					cout << P[i].whomes[g][j];
+				}
+			}
+
+
+
+
+			cout << "\n сообщение от ркон:";
+			for (int g = 0; g < P[i].rconmessage.size(); g++) {
+				cout << endl;
+				for (int j = 0; j < P[i].rconmessage[g].size(); j++) {
+					/*if (P[i].message[g][j] == '\0')
+						break;*/
+					cout << P[i].rconmessage[g][j];
+				}
+			}
+
+
+
+		}
+	}
+	cout << endl;
+
+}
+void receive_msg(user*& P, int size, char* size2) {
+	int index;
+	cout << "вибери какого пользователья по списку ты хочешь изменить сообщение (начало с 1)";
+	cin >> index;
+	cin.ignore();
+	cout << "\n новое сообщение которое хотим отправить \n";
+	cin.getline(P[index - 1].txt, 255);
+	upgrade(P, size2, size, false);
+
+
+}
+//void upgrade(user* P, char* size2, int size, bool rconf, char* mes) {
+//	FILE* f;
+//	for (int i = 0; i < size; i++) {
+//		P[i].rconmessage.resize(P[i].rconsize);
+//		for (int j = 0; j < P[i].rconsize; j++) {
+//			P[i].rconmessage[j].resize(255);
+//		}
+//	}
+//	for (int i = 1; i < size; i++) {
+//		itoa(i, size2, 10);
+//		f = fopen(strcat(size2, ".txt"), "w");
+//		fprintf(f, "name %s id %d message to send %s", P[i - 1].name, P[i - 1].id, P[i - 1].txt);
+//		fclose(f);
+//	}
+//
+//
+//	for (int g = 0; g < size; g++) {
+//		itoa(g + 1, size2, 10);
+//		if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) {
+//			f = fopen(size2, "w");
+//			fprintf(f, "missing message: %d", P[g].missing_message);
+//			fprintf(f, "\n");
+//			fputs("getting message :", f);
+//			fputc('\n', f);
+//			for (int j = 0; j < P[g].message.size(); j++) {
+//
+//				for (int i = 0; i < 255; i++) {
+//					if (P[g].message[j][i] == '\0')
+//						break;
+//
+//					fputc(P[g].message[j][i], f);
+//
+//				}
+//				fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+//			}
+//
+//			
+//			fputs("who send message:\n", f);
+//			for (int j = 0; j < P[g].whomes.size(); j++) {
+//
+//				for (int i = 0; i < 255; i++) {
+//					if (P[g].whomes[j][i] == '\0')
+//						break;
+//
+//					fputc(P[g].whomes[j][i], f);
+//
+//				}
+//				fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+//			}
+//			itoa(g + 1, size2, 10);
+//			for (int i = 0; i < size; i++) {
+//				for (int j = 0; j < 255; j++) {
+//					if (mes[j] == '\0')
+//						break;
+//
+//					P[i].rconmessage[P[i].rconmessage.size() - 1][j] = mes[j];
+//				}
+//			}
+//
+//			itoa(g + 1, size2, 10);
+//			if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) {
+//				fputs("RCON mess: \n", f);
+//				for (int j = 0; j < P[g].rconmessage.size(); j++) {
+//
+//					for (int h = 0; h < 255; h++) {
+//						if (P[g].rconmessage[j][h] == '\0')
+//							break;
+//
+//						fputc(P[g].rconmessage[j][h], f);
+//
+//					}
+//					fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+//				}
+//			}
+//			fclose(f);
+//		}
+//		else{
+//			itoa(g + 1, size2, 10);
+//			if (fopen(strcat(strcat(size2, "(3)"), ".txt"), "r") != NULL) {
+//				f = fopen(size2, "w");
+//				fprintf(f, "rcon missing message: %d\n", P[g].rconsize);
+//				fputs("RCON mess: \n", f);
+//				for (int j = 0; j < P[g].rconmessage.size(); j++) {
+//
+//					for (int h = 0; h < 255; h++) {
+//						if (P[g].rconmessage[j][h] == '\0')
+//							break;
+//
+//						fputc(P[g].rconmessage[j][h], f);
+//
+//					}
+//					fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+//				}
+//				fclose(f);
+//			}
+//
+//		}
+//	}
+//}
+void upgrade(user* P, char* size2, int size, bool rconf) { // с апйгретами проблемы видимо прийдеться переписовтать
+	FILE* f;
+
+	for (int i = 1; i < size; i++) {
+		itoa(i, size2, 10);
+		f = fopen(strcat(size2, ".txt"), "w");
+		fprintf(f, "name %s id %d message to send %s", P[i - 1].name, P[i - 1].id, P[i - 1].txt);
+		fclose(f);
+	}
+
+
+	for (int g = 0; g < size; g++) {
+		itoa(g + 1, size2, 10);
+		if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) {
+			f = fopen(size2, "w");
+			fprintf(f, "missing message: %d", P[g].missing_message);
+			fprintf(f, "\n");
+			fputs("getting message :", f);
+			fputc('\n', f);
+			for (int j = 0; j < P[g].messize; j++) {
+
+				for (int i = 0; i < 255; i++) {
+					if (P[g].message[j][i] == '\0')
+						break;
+
+					fputc(P[g].message[j][i], f);
+
+				}
+				fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+			}
+
+			fputs("who send message:\n", f);
+			for (int j = 0; j < P[g].messize; j++) {
+
+				for (int i = 0; i < 255; i++) {
+					if (P[g].whomes[j][i] == '\0')
+						break;
+
+					fputc(P[g].whomes[j][i], f);
+
+				}
+				fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+			}
+			fputs("RCON mess:\n", f);
+			for (int j = 0; j < P[g].rconsize; j++) {
+
+				for (int i = 0; i < 255; i++) {
+					if (P[g].rconmessage[j][i] == '\0')
+						break;
+
+					fputc(P[g].rconmessage[j][i], f);
+
+				}
+				fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+			}
+			itoa(g + 1, size2, 10);
+			itoa(g + 1, size2, 10);
+			fclose(f);
+		}
+		
+
+	}
+}                  
+void send(user*& P, int size, char* size2) {
+
+	int chose;
+	int chose2;
+	int num = 0; //индекс отправляющего
+	int num2 = 0; //принимающие
+
+	FILE* f;
+	int rcsize = 0;
+
+
+	cout << "введите индекс отправляющего ";
+	cin >> chose;
+	for (int i = 0; i < size; i++) {
+
+		if (chose == P[i].id) {
+			num = i;
+		}
+	}
+	cout << "имя отправляющего " << P[num].name << endl;
+	cout << "введите индекс принимающие значения ";
+	cin >> chose2;
+	for (int i = 0; i < size; i++) {
+
+		if (chose2 == P[i].id && i != num) {
+			num2 = i;
+		}
+	}
+
+
+	P[num2].missing_message += 1;
+	P[num2].messize += 1;
+	P[num2].message.resize(P[num2].messize);
+	P[num2].message[P[num2].messize - 1].resize(255); //макс символов 255
+	P[num2].whomes.resize(P[num2].messize);
+	P[num2].whomes[P[num2].messize - 1].resize(255); //макс символов 255
+
+
+	cout << "имя получателя " << P[num2].name << endl;
+	for (int i = 0; i < 255; i++) {
+		if (P[num].txt[i] == '\0') {
+			break;
+		}
+		P[num2].message[P[num2].message.size() - 1][i] = P[num].txt[i]; //1.[] - какое сообщение  2.[] - символы
+
+
+	}
+	for (int i = 0; i < 255; i++) {
+		if (P[num].name[i] == '\0') {
+			break;
+		}
+		P[num2].whomes[P[num2].whomes.size() - 1][i] = P[num].name[i]; //1.[] - кто отправил  2.[] - символы
+
+
+	}
+	itoa(num2 + 1, size2, 10);
+
+
+	 f = fopen(strcat(strcat(size2, "(2)"), ".txt"), "w");
+	fprintf(f, "missing message: %d", P[num2].missing_message);
+	fprintf(f, "\n");
+	fclose(f);
+	f = fopen(size2, "a");
+	fputs("getting message :", f);
+	fputc('\n', f);
+	for (int j = 0; j < P[num2].message.size(); j++) {
+
+		for (int i = 0; i < 255; i++) {
+			if (P[num2].message[j][i] == '\0')
+				break;
+
+			fputc(P[num2].message[j][i], f);
+
+		}
+		fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+	}
+	fputs("who send message:\n", f);
+	for (int j = 0; j < P[num2].whomes.size(); j++) {
+
+		for (int i = 0; i < 255; i++) {
+			if (P[num2].whomes[j][i] == '\0')
+				break;
+
+			fputc(P[num2].whomes[j][i], f);
+
+		}
+		fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+	}
+	itoa(num2 + 1, size2, 10);
+	fclose(f);
+	upgrade(P, size2, size, false);
+}
+
+
+void del(user*& P, int& size) {
+	int index;
+	user* P2 = new user[size];
+	cout << "введите индекс";
+	cin >> index;
+
+
+
+	if (size > 0) {
+
+		for (int i = 0; i < size; i++) {
+			if (i > 0) {
+				P2[i].id = P[i].id;
+				P2[i].missing_message = P[i].missing_message;
+				strcpy(P2[i].name, P[i].name);
+				strcpy(P2[i].txt, P[i].txt);
+				P2[i].message = P[i].message;
+
+			}
+		}
+		delete[]P;
+		P = new user[size - 1];
+		for (int i = 0; i < size; i++) {
+			if (i == index)
+				continue;
+			if (i < index) {
+				P[i].id = P2[i].id;
+				P[i].missing_message = P2[i].missing_message;
+				strcpy(P[i].name, P2[i].name);
+				strcpy(P[i].txt, P2[i].txt);
+				P[i].message = P2[i].message;
+			}
+
+
+			if (i > index) {
+				P[i - 1].id = P2[i].id;
+				P[i - 1].missing_message = P2[i].missing_message;
+				strcpy(P[i - 1].name, P2[i - 1].name);
+				strcpy(P[i - 1].txt, P2[i].txt);
+				P[i - 1].message = P2[i].message;
+			}
+		}
+
+
+
+	}
+	delete[]P2;
+
+	size -= 1;
+
+
+}
+void sendall(user*& P, int size, char* size2) {
+
+	for (int i = 0; i < size; i++)
+		P[i].missing_message += 1;
+	for (int i = 0; i < size; i++)
+		P[i].rconsize += 1;
+
+	for (int i = 0; i < size; i++) {
+		P[i].rconmessage.resize(P[i].missing_message);
+		for (int j = 0; j < P[i].missing_message; j++) {
+			P[i].rconmessage[j].resize(255);
+		}
+	}
+	char mes[255];
+	cout << "введите что хотите отправтть от имени консоли";
+	cin.ignore();
+	cin.getline(mes, 255);
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < 255; j++) {
+			if (mes[j] == '\0')
+				break;
+
+			P[i].rconmessage[P[i].rconsize-1][j] = mes[j];
+		}
+	}
+	FILE* f;
+	cout << P[0].rconmessage[1][0]<<endl;
+	for (int i = 1; i < size + 1; i++) {
+		itoa(i, size2, 10);
+		if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) {
+			f = fopen(size2, "a");
+			fputs("RCON mess:\n", f);
+			for (int j = 0; j < P[i - 1].rconmessage.size(); j++) {
+
+				for (int h = 0; h < 255; h++) {
+					if (P[i - 1].rconmessage[j][h] == '\0')
+						break;
+
+					fputc(P[i - 1].rconmessage[j][h], f);
+
+				}
+				fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+			}
+			fclose(f);
+		}
+		else {
+			itoa(i, size2, 10);
+			f = fopen(strcat(strcat(size2, "(3)"), ".txt"), "a");
+			fputs("RCON mess \n:", f);
+			for (int j = 0; j < P[i - 1].rconmessage.size(); j++) {
+
+				for (int h = 0; h < 255; h++) {
+					if (P[i - 1].rconmessage[j][h] == '\0')
+						break;
+
+					fputc(P[i - 1].rconmessage[j][h], f);
+
+				}
+				fputc('\n', f); //для вичатки это будет типо конец строки и переход на новую
+			}
+			fclose(f);
+		}
+	}
+	upgrade(P, size2, size, true);
+
+
+}
+
+
+
+//char buffff[255]{ "who send message:" };
+//for (int j = 0; j < 255; j++) {
+//	if (bufff[j] == buffff[j])
+//	{
+//		break;
+//	}
+//	fgets(bufff, 255, f);
+//	messize++;
+//}
+//messize = P[g - 1].missing_message - (messize - 1);
+void checkuser(user*& P, int& size, vector<int>& usedid, char* size2) {
+	char nam[255];
+	int id;
+	char tx[255];
+	int howmany = 0;
+	for (int i = 1; i < 255; i++) {
+		itoa(i, size2, 10);
+		strcat(size2, ".txt");
+		if (fopen(size2, "r") != NULL) {
+			size += 1;
+		}
+		else {
+			howmany += 1;
+		}
+
+		if (howmany == 3)
+			break;
+
+
+	}
+	delete[] P;
+	P = new user[size];
+
+	cout << size << " людей подключеных";
+	FILE* f;
+	for (int i = 1; i < size + 1; i++) {
+		itoa(i, size2, 10);
+		f = fopen(strcat(size2, ".txt"), "r");
+		if (f != NULL) {
+			fscanf(f, "name %s id %d message to send %s", nam, &id, tx);
+			fclose(f);
+
+		}
+		else {
+			break;
+		}
+		strcpy(P[i - 1].name, nam);
+		strcpy(P[i - 1].txt, tx);
+		P[i - 1].id = id;
+	}
+	char bufff[255];
+	vector<int> l;
+	vector<int> l2;
+
+
+
+
+
+
+	for (int i = 1; i < size + 1; i++) {
+
+		itoa(i, size2, 10);
+		if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) {
+			f = fopen(size2, "r");
+			l.push_back(i);
+			fscanf(f, "missing message: %d", &(P[i - 1].missing_message));
+			fclose(f);
+		}
+	}
+	for (int i = 1; i < size + 1; i++) {
+		itoa(i, size2, 10);
+		if (fopen(strcat(strcat(size2, "(3)"), ".txt"), "r") != NULL) {
+			f = fopen(size2, "r");
+			l2.push_back(i);
+			fscanf(f, "rcon missing message: %d\n", &(P[i - 1].missing_message));
+			P[i - 1].rconsize = P[i - 1].missing_message;
+			fclose(f);
+		}
+	}
+	for (int m = 1; m < size + 1; m++) {
+		itoa(m, size2, 10);
+		if (fopen(strcat(strcat(size2, "(2)"), ".txt"), "r") != NULL) {
+			f = fopen(size2, "r");
+			for (int i = 0; i < size; i++) {
+				P[i].message.resize(P[i].missing_message);
+				for (int j = 0; j < P[i].missing_message; j++) {
+					P[i].message[j].resize(255);
+				}
+			}
+
+			for (int i = 0; i < size; i++) {
+				P[i].whomes.resize(P[i].missing_message);
+				for (int j = 0; j < P[i].missing_message; j++) {
+					P[i].whomes[j].resize(255);
+				}
+			}
+			for (int i = 0; i < size; i++) {
+				P[i].rconmessage.resize(P[i].missing_message);
+				for (int j = 0; j < P[i].missing_message; j++) {
+					P[i].rconmessage[j].resize(255);
+				}
+			}
+			fgets(bufff, 255, f);
+			fgets(bufff, 255, f);
+			char buffff[255]{ "who send message:\n" };
+			
+				for (int i = 0; i < 255; i++) {
+					if (bufff[i] == buffff[i])
+						break;
+					fgets(bufff, 255, f);
+					P[m-1].messize = i;
+				}
+			rewind(f);
+			fgets(bufff, 255, f);
+			fgets(bufff, 255, f);
+			for (int i = 0; i < P[m-1].messize; i++) {
+				fgets(bufff, 255, f);
+				
+				for (int j= 0; j< 255; j++) {
+					if (bufff[j] == '\n')
+						break;
+					P[m - 1].message[i][j] = bufff[j];
+
+				}
+			}
+
+
+			fgets(bufff, 255, f);
+			for (int i = 0; i < P[m - 1].messize; i++) {
+				fgets(bufff, 255, f);
+
+				for (int j = 0; j < 255; j++) {
+					if (bufff[j] == '\n')
+						break;
+					P[m - 1].whomes[i][j] = bufff[j];
+
+				}
+			}
+			fgets(bufff, 255, f);
+			if (P[m - 1].missing_message != P[m - 1].messize) {
+				P[m - 1].rconsize = P[m - 1].missing_message - P[m - 1].messize;
+				for (int j = 0; j < P[m - 1].rconsize; j++) {
+					fgets(bufff, 255, f);
+					for (int g = 0; g < strlen(bufff); g++) {
+						if (bufff[g] == '\n')
+							break;
+						P[m - 1].rconmessage[j][g] = bufff[g];
+
+
+
+					}
+				}
+			}
+			fclose(f);
+		}
+		else {
+			for (int i = 0; i < size; i++) {
+				P[i].rconmessage.resize(P[i].missing_message);
+				for (int j = 0; j < P[i].missing_message; j++) {
+					P[i].rconmessage[j].resize(255);
+				}
+			}
+
+			for (int k : l2) {
+				itoa(k, size2, 10);
+				f = fopen(strcat(strcat(size2, "(3)"), ".txt"), "r");
+				fgets(bufff, 255, f);
+				fgets(bufff, 255, f);
+				for (int j = 0; j < P[k - 1].rconsize; j++) {
+					fgets(bufff, 255, f);
+					for (int g = 0; g < 255; g++) {
+						if (bufff[g] == '\n')
+							break;
+						P[k - 1].rconmessage[j][g] = bufff[g];
+
+
+
+					}
+				}
+				fclose(f);
+			}
+			cout << bufff;
+		}
+	}
+}
+int main() {
+	char size2[4];
+	int size = 0;
+	user* P = new user[size];
+	vector<int>usedid;
+	srand(time(NULL));
+	checkuser(P, size, usedid, size2);
+	cout << endl;
+	while (true) {
+		int choose;
+		cout << "введите что сделать 1.добавить нового пользователья 2.вывод на экран инфу о пользователе 3.изменит сообщение 4.кому отправляем5.удалегин профиляе 6.отправить от имени консоли 7.завершение програмы";
+		cin >> choose;
+		switch (choose)
+		{
+		case 1:
+			cin.ignore();
+
+			add(P, size, usedid, size2);
+
+			break;
+		case 2:
+			print(P, size, size2);
+			break;
+		case 3:
+			receive_msg(P, size, size2);
+
+			break;
+		case 4:
+			send(P, size, size2);
+			break;
+		case 5:
+			del(P, size);
+			break;
+		case 6:
+			sendall(P, size, size2);
+
+			break;
+		case 7:
+			delete[]P;
+			exit(0);
+
+		}
+
+	}
+}

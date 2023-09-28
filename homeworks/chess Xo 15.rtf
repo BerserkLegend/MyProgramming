@@ -1,0 +1,660 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Cascadia Mono;}{\f2\fnil\fcharset204 Cascadia Mono;}{\f3\fnil\fcharset0 Cascadia Mono;}}
+{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red163\green21\blue21;\red0\green0\blue255;\red43\green145\blue175;\red0\green128\blue0;\red0\green128\blue128;\red111\green0\blue138;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 CHESS\par
+class addarray:\par
+\cf1\f1\fs19 #pragma\cf2  \cf1 once\cf2\par
+\cf1 #include\cf2  \cf3 <iostream>\cf2\par
+\par
+\par
+\cf4 class\cf2   \cf5 Point\cf2  \{\par
+\cf4 public\cf2 :\par
+\tab Point() : x(0), y(0) \{\};\cf6 //\f2\lang1058\'ef\'e5\'f0\'e2\'ee\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'fb\'e5 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb \cf2\par
+\tab Point(\cf4 int\cf2  \cf1 y\cf2 , \cf4 int\cf2  \cf1 x\cf2 ) : x(\cf1 x\cf2 ), y(\cf1 y\cf2 ) \{\} \par
+\tab\par
+\tab\cf4 void\cf2\tab\cf7 operator=\cf2 (\cf5 Point\cf2  & \cf1 pt\cf2 )\par
+\tab\{\par
+\tab\tab\cf4 this\cf2 ->x = \cf1 pt\cf2 .x;          \cf6 //\'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'e2 \'f5\cf2\par
+\tab\tab\cf4 this\cf2 ->y = \cf1 pt\cf2 .y;          \cf6 //\'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'e2 \'f3\cf2\par
+ \tab\}\par
+\tab\par
+\tab\cf4 int\cf2  x;\par
+\tab\cf4 int\cf2  y;\par
+\};\par
+\par
+\par
+\cf4 template\cf2 <\cf4 class\cf2  \cf5 Str\cf2 >\par
+\cf4 class\cf2  \cf5 addaptiveArray\cf2  \cf6 //\'f1\'ee\'e7\'e4\'e0\'e5\'ec \'f8\'e0\'e1\'eb\'ee\'ed \'e8\'e7 \'ea\'eb\'e0\'f1\'f1\'e0\cf2\par
+\{\par
+\cf4 public\cf2 :\par
+\tab addaptiveArray() : alocMemSize(10), iterator(0) \{\par
+\tab\tab arr = \cf4 new\cf2  \cf5 Str\cf2 [alocMemSize];\cf6 //\'e8\'e7 \'ea\'eb\'e0\'f1\'f1\'e0 \'e1\'e5\'f0\'e5\'ec \'f5 \'e8 \'f3 \'e8 \'e4\'eb\'ff \'ee\'e1\'fc\'e5\'ea\'f2\'e0 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'ec \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb \'ed\'e0\'f7\'e0\'eb\'e0\cf2\par
+\tab\tab arr[iterator].x = 0;\par
+\tab\tab arr[iterator].y = 0;\par
+\tab\};\par
+\tab ~addaptiveArray() \{\par
+\tab\tab\cf4 delete\cf2 [] arr;\par
+\tab\}\par
+\cf4 public\cf2 :\par
+\tab\cf4 void\cf2  push_back(\cf5 Str\cf2  \cf1 elem\cf2 ) \{\par
+\tab\tab\cf4 if\cf2  (arr == \cf8 NULL\cf2 )\par
+\tab\tab\tab arr = \cf4 new\cf2  \cf5 Str\cf2 [alocMemSize];\par
+\tab\tab\cf4 if\cf2  (iterator >= alocMemSize)\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 int\cf2  nSize = alocMemSize + ADSIZE;\par
+\tab\tab\tab\cf5 Str\cf2 * parr = \cf4 new\cf2  \cf5 Str\cf2 [nSize];                         \cf6 //\'fd\'f2\'ee \'e7\'e0\'ef\'e8\'f1\'fc \'f7\'e5\'e3\'ee-\'f2\'ee \'e2 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'e8 \'e4\'eb\'ff \'f0\'ee\'e7\'f8\'e8\'f0\'e5\'ed\'e8\'ff \'f0\'e0\'e7\'ec\'e5\'f0\'e0 \'ec\'e0\'f1\'f1\'e8\'e2\'e0 \'e1\'fb\'eb\'ee size 3 \'f1\'f2\'e0\'ed\'e5\'f2 size 4 \'e8 \'e2 \'e4\'ee\'e1\'e0\'e2\'ee\'ea \'ef\'ee\'e4 \'e8\'ed\'e5\'ea\'f1\'ee\'ec 4 \'e1\'f3\'e4\'e5\'ec \'ea\'e0\'ea\'ee\'e9-\'f2\'ee \'fd\'eb\'e5\'ec\'e5\'f2\'ed \cf2\par
+\tab\tab\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < alocMemSize; i++)\par
+\tab\tab\tab\tab parr[i] = arr[i];\par
+\tab\tab\tab alocMemSize = nSize;\par
+\tab\tab\tab\cf4 delete\cf2 [] arr;\par
+\tab\tab\tab arr = parr;\par
+\tab\tab\}\par
+\tab\tab arr[iterator++] = \cf1 elem\cf2 ;\par
+\tab\}\par
+\par
+\tab\cf4 void\cf2  earseElement(\cf4 const\cf2  \cf4 int\cf2  \cf1 item\cf2 ) \{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  i = \cf1 item\cf2  - 1; i < iterator; i++)  \cf6 //\'e4\'eb\'ff \'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0\cf2\par
+\tab\tab\tab arr[i] = arr[i + 1];\par
+\tab\tab iterator--;\par
+\tab\}\par
+\par
+\tab\cf5 Str\cf2 &\tab\tab\cf7 operator[]\cf2 (\cf4 const\cf2  \cf4 int\cf2  \cf1 item\cf2 )\par
+\tab\{\par
+\tab\tab\cf4 if\cf2  (iterator > \cf1 item\cf2  && \cf1 item\cf2  >= 0)\par
+\tab\tab\tab\cf4 return\cf2  arr[\cf1 item\cf2 ];\par
+\tab\tab\cf4 return\cf2  *arr;\par
+\tab\}\par
+\par
+\tab\cf4 const\cf2  \cf4 int\cf2\tab size() \cf4 const\cf2  \{\par
+\tab\tab\cf4 return\cf2  iterator;\par
+\tab\}\par
+\par
+\cf4 private\cf2 :\par
+\tab\cf4 const\cf2  \cf4 int\cf2  ADSIZE = 10;\par
+\tab\cf4 int\cf2  iterator = 0;\par
+\tab\cf4 int\cf2  alocMemSize = 0;\par
+\tab\cf5 Str\cf2  * arr;\par
+\};\par
+\f3\lang1033 class main:\par
+\cf1\f1 #include\cf2  \cf3 <iostream>\cf2\par
+\cf1 #include\cf2  \cf3 <fstream>\cf2\par
+\cf1 #include\cf2  \cf3 <mutex>\cf2\par
+\cf1 #include\cf2  \cf3 <thread>\cf2\par
+\cf1 #include\cf2  \cf3 <vector>\cf2\par
+\cf1 #include\cf2  \cf3 "addArray.h"\cf2\par
+\par
+std::\cf5 mutex\cf2  guard;\par
+\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\par
+\cf4 bool\cf2 **\tab initMap(\cf4 int\cf2  \cf1 size\cf2 ); \cf6 //\f2\lang1058\'f4\'f3\'ed\'ea\'f6\'e8\'ff \'ea\'e0\'f0\'f2\'fb\cf2\par
+\cf4 void\cf2\tab realese(\cf4 bool\cf2 ** \cf1 map\cf2 , \cf4 int\cf2  \cf1 size\cf2 );\par
+\cf4 void\cf2\tab drawTable(\cf4 bool\cf2 ** \cf1 map\cf2 , \cf4 int\cf2  \cf1 size\cf2 )\par
+\{\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size\cf2 ; i++)\par
+\tab\{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size\cf2 ; j++)\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [i][j])\par
+\tab\tab\tab\tab cout \cf7 <<\cf2  \cf3 "1"\cf2  \cf7 <<\cf2  \cf3 " "\cf2 ;  \cf6 //\'f1\'ee\'e7\'e4\'e0\'ed\'e8\'e5 \'f2\'e0\'e1\'eb\'e8\'f6\'e8 \cf2\par
+\tab\tab\tab\cf4 else\cf2\par
+\tab\tab\tab\tab cout \cf7 <<\cf2  \cf3 "0"\cf2  \cf7 <<\cf2  \cf3 " "\cf2 ;\par
+\tab\tab\}\par
+\tab\tab cout \cf7 <<\cf2  endl;\par
+\tab\}\par
+\}\par
+\par
+\cf4 void\cf2\tab findWay(\cf4 bool\cf2 ** \cf1 map\cf2 , \cf4 int\cf2  \cf1 size\cf2 , \cf5 addaptiveArray\cf2 <\cf5 Point\cf2 >& \cf1 arr\cf2 , \cf4 unsigned\cf2  \cf4 long\cf2  \cf4 long\cf2  \cf4 int\cf2  & \cf1 iter\cf2 )\cf6 //\'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb\cf2\par
+\{\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size\cf2 ; i++)\par
+\tab\{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size\cf2 ; j++)\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 if\cf2  (\par
+\tab\tab\tab\tab ((i - \cf1 arr\cf7 [\cf1 arr\cf2 .size() - 1\cf7 ]\cf2 .y) * (i - \cf1 arr\cf7 [\cf1 arr\cf2 .size() - 1\cf7 ]\cf2 .y) +\par
+\tab\tab\tab\tab (j - \cf1 arr\cf7 [\cf1 arr\cf2 .size() - 1\cf7 ]\cf2 .x) * (j - \cf1 arr\cf7 [\cf1 arr\cf2 .size() - 1\cf7 ]\cf2 .x) == 5) && !\cf1 map\cf2 [i][j]) \cf6 //\'e5\'f1\'eb\'e8 \'ec\'fb \'f2\'f3\'e4\'e0 \'ed\'e5 \'f1\'f2\'f3\'ef\'e0\'eb\'e8 map == false\cf2\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab\cf1 map\cf2 [i][j] = \cf4 true\cf2 ; \cf6 //\'f1\'fe\'e4\'e0 \'ec\'fb \'f1\'f2\'f3\'ef\'e0\'e5\'ec\cf2\par
+\tab\tab\tab\tab\cf1 arr\cf2 .push_back(\cf5 Point\cf2 (i, j));\cf6 //\'e7\'e0\'ef\'e8\'f1\'f3\'e5\'ec \'e2 \'e2\'e5\'ea\'f2\'ee\'f0 \cf2\par
+\tab\tab\tab\tab findWay(\cf1 map\cf2 , \cf1 size\cf2 , \cf1 arr\cf2 , \cf1 iter\cf2 );\cf6 //\'e4\'e5\'eb\'e5\'ec \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'fe\cf2\par
+\par
+\tab\tab\tab\tab\cf4 if\cf2  (\cf1 arr\cf2 .size() < \cf1 size\cf2  * \cf1 size\cf2 )\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\cf1 map\cf2 [i][j] = \cf4 false\cf2 ;     \par
+\tab\tab\tab\tab\tab\cf1 arr\cf2 .earseElement(\cf1 arr\cf2 .size());\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\cf4 else\cf2  \cf4 return\cf2 ;\par
+\tab\tab\tab\}\par
+\tab\tab\tab\cf1 iter\cf2 ++; \cf6 //\'fd\'f2\'ee \'f1\'ea\'ee\'f0\'e5\'e5 \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'e2 \'e4\'e0\'eb\'fc\'ed\'e5\'f8\'ee\'ec \'ec\'ee\'e6\'ed\'ee \'e1\'fb\'eb\'ee \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'fc \'e4\'f0\'f3\'e3\'ee\'e9 \'ef\'f3\'f2\'fc\cf2\par
+\tab\tab\}\par
+\tab\tab\cf1 iter\cf2 ++;\par
+\tab\}\par
+\}\par
+\par
+\cf4 void\cf2\tab writeIn(\cf5 fstream\cf2 & \cf1 file\cf2 , \cf4 bool\cf2 ** \cf1 map\cf2 , \cf4 int\cf2  \cf1 size\cf2 , \cf5 addaptiveArray\cf2 <\cf4 int\cf2 > & \cf1 ar\cf2 ) \cf6 //\'fd\'f2\'ee \'e4\'eb\'ff \'e2\'fb\'e2\'ee\'e4\'e0 \cf2\par
+\{\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size\cf2 ; i++)\par
+\tab\{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size\cf2 ; j++)\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [i][j])\par
+\tab\tab\tab\tab\cf1 file\cf2  \cf7 <<\cf2  \cf3 "1"\cf2  \cf7 <<\cf2  \cf3 " "\cf2 ; \cf6 //\'e5\'f1\'eb\'e8 \'ec\'fb \'f2\'e0\'ec \'e1\'fb\'eb\'e8 \'f2\'ee\'e3\'e4\'e0 \'f2\'f3\'e4\'e0 \'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec 1 \'e5\'f1\'eb\'e8 \'ec\'e0\'f0 true \cf2\par
+\tab\tab\tab\cf4 else\cf2\par
+\tab\tab\tab\tab\cf1 file\cf2  \cf7 <<\cf2  \cf3 "0"\cf2  \cf7 <<\cf2  \cf3 " "\cf2 ;\cf6 //\'e5\'f1\'eb\'e8 \'ed\'e5, \'f2\'ee 0 \cf2\par
+\tab\tab\}\par
+\tab\tab\cf1 file\cf2  \cf7 <<\cf2  endl;\par
+\tab\}\par
+\tab\cf1 file\cf2  \cf7 <<\cf2  \cf3 "Turn : "\cf2  \cf7 <<\cf2  endl;\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 ar\cf2 .size(); i++) \cf6 //\'e2\'fb\'e2\'ee\'e4 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ed\'e0\'e0\'f5\'ee\'e4\'e8\'f2\'fc\'f1\'ff \'e2 \'ec\'e0\'f1\'f1\'e8\'e2\'e5\cf2\par
+\tab\{\par
+\tab\tab\cf1 file\cf2  \cf7 <<\cf2  \cf3 "X : "\cf2  << \cf1 ar\cf7 [\cf2 i\cf7 ]\cf2 .x << \cf3 " Y : "\cf2  << \cf1 ar\cf7 [\cf2 i\cf7 ]\cf2 .y << \cf3 "\\n"\cf2 ;\par
+\tab\}\par
+\}\par
+\par
+\cf4 void\cf2\tab algo(\cf5 fstream\cf2 & \cf1 file\cf2 , \cf4 int\cf2  \cf1 beg\cf2 , \cf4 int\cf2  \cf1 end\cf2 , \cf4 int\cf2  \cf1 size\cf2 )\par
+\{\par
+\tab\cf4 int\cf2  k = 1;\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = \cf1 beg\cf2 ; i < \cf1 end\cf2 ; i++)\par
+\tab\{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size\cf2 ; j++)\par
+\tab\tab\{\par
+\tab\tab\tab guard.lock();\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf3 "Now on :\\t"\cf2  \cf7 <<\cf2  std::this_thread::get_id() \cf7 <<\cf2  \cf3 " iteration : "\cf2  \cf7 <<\cf2  k \cf7 <<\cf2  endl;\par
+\tab\tab\tab guard.unlock();\par
+\tab\tab\tab\cf1 file\cf2  \cf7 <<\cf2  \cf3 "X : "\cf2  \cf7 <<\cf2  j \cf7 <<\cf2  \cf3 " Y : "\cf2  \cf7 <<\cf2  i \cf7 <<\cf2  endl;\par
+\tab\tab\tab\cf4 bool\cf2 ** map = initMap(\cf1 size\cf2 ); \cf6 //\'f0\'e0\'e7\'ec\'e5\'f0\'fb \'ea\'e0\'f0\'f2\'fb \cf2\par
+\tab\tab\tab map[i][j] = \cf4 true\cf2 ;\cf6 //\'e7\'e0\'ef\'ee\'eb\'ed\'ff\'e5\'ec \'e2\'f1\'e5 \'ef\'f0\'e0\'e2\'e4\'e0\'e9 \'ee\'e7\'ed\'e0\'f7\'e0\'ff\'ff \'f7\'f2\'ee \'ec\'fb \'f2\'f3\'e4\'e0 \'ed\'e5 \'f1\'f2\'f3\'ef\'e0\'eb\'e8\cf2\par
+\tab\tab\tab\cf5 addaptiveArray\cf2 <\cf5 Point\cf2 >\tab ar;\cf6 //\'e2\'fb\'e4\'e5\'eb\'e0\'ff\'e5\'ec \'f0\'e0\'e7\'ec\'e5\'f0 \'e2\'e5\'ea\'f2\'ee\'f0\'e0\cf2\par
+\tab\tab\tab ar.push_back(\cf5 Point\cf2 (i, j));\cf6 //\'e7\'e0\'ef\'e8\'f1\'f3\'e5\'ec \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb \cf2\par
+\tab\tab\tab\cf4 unsigned\cf2  \cf4 long\cf2  \cf4 long\cf2  \cf4 int\cf2  iter = 0;\cf6 //\'fd\'f2\'ee \'f1\'f7\'e5\'f2\'f7\'e8\'ea \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'f7\'e8\'f2\'e0\'e5\'f2 \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ef\'f3\'f2\'e5\'e9 \cf2\par
+\tab\tab\tab findWay(map, \cf1 size\cf2 , ar, iter);\cf6 //\'ed\'e0\'e9\'f2\'e8 \'ef\'f3\'f2\'fc\cf2\par
+\tab\tab\tab writeIn(\cf1 file\cf2 , map, \cf1 size\cf2 , ar);\cf6 //\'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \cf2\par
+\tab\tab\tab\cf1 file\cf2  \cf7 <<\cf2  \cf3 "Iteration : "\cf2  \cf7 <<\cf2  iter \cf7 <<\cf2  endl;\par
+\tab\tab\tab realese(map, \cf1 size\cf2 );\cf6 //\'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e5 \cf2\par
+\tab\tab\tab k++;\par
+\tab\tab\}\par
+\tab\tab k++;\par
+\tab\}\par
+\}\par
+\par
+\cf4 void\cf2  init_thread(\cf4 int\cf2  \cf1 mapSize\cf2 , \cf5 vector\cf2 <\cf5 fstream\cf2 > & \cf1 fl\cf2 )\par
+\{\par
+\tab std::\cf5 vector\cf2 <std::\cf5 thread\cf2 >\tab thr(\cf1 mapSize\cf2  / 2);\par
+\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0, pos = 0; i < \cf1 mapSize\cf2 ; i += 2, pos++)\par
+\tab\{\par
+\tab\tab cout \cf7 <<\cf2  \cf3 "Thread "\cf2  \cf7 <<\cf2  pos + 1 \cf7 <<\cf2  \cf3 " : inited\\n"\cf2 ;\par
+\tab\tab thr\cf7 [\cf2 i\cf7 ]\cf2  \cf7 =\cf2  \cf5 thread\cf2 (algo, std::ref(\cf1 fl\cf7 [\cf2 pos\cf7 ]\cf2 ), i, i + 2, \cf1 mapSize\cf2 );\par
+\tab\}\par
+\tab\cf4 for\cf2  (\cf4 auto\cf2 & th : thr)\par
+\tab\tab th.join();\par
+\}\par
+\par
+\cf4 int\cf2  main()\par
+\{\par
+\tab\cf5 vector\cf2 <\cf5 fstream\cf2 >\tab\tab fil(4);\par
+\tab fil\cf7 [\cf2 0\cf7 ]\cf2  \cf7 =\cf2  \cf5 fstream\cf2 (\cf3 "Out8x8_1.txt"\cf2 , std::\cf5 fstream\cf2 ::in | std::\cf5 fstream\cf2 ::out | std::\cf5 fstream\cf2 ::app); \cf6 //\'e4\'ee\'f1\'f2\'e0\'e5\'ec \'f1 \'f4\'e0\'e9\'eb\'ee\'e2 Out8x8_1.txt \'ea\'e0\'ea\'ee\'e9-\'f2\'ee \'f2\'e5\'ea\'f1\'f2\cf2\par
+\tab fil\cf7 [\cf2 1\cf7 ]\cf2  \cf7 =\cf2  \cf5 fstream\cf2 (\cf3 "Out8x8_2.txt"\cf2 , std::\cf5 fstream\cf2 ::in | std::\cf5 fstream\cf2 ::out | std::\cf5 fstream\cf2 ::app);\par
+\tab fil\cf7 [\cf2 2\cf7 ]\cf2  \cf7 =\cf2  \cf5 fstream\cf2 (\cf3 "Out8x8_3.txt"\cf2 , std::\cf5 fstream\cf2 ::in | std::\cf5 fstream\cf2 ::out | std::\cf5 fstream\cf2 ::app);\par
+\tab fil\cf7 [\cf2 3\cf7 ]\cf2  \cf7 =\cf2  \cf5 fstream\cf2 (\cf3 "Out8x8_4.txt"\cf2 , std::\cf5 fstream\cf2 ::in | std::\cf5 fstream\cf2 ::out | std::\cf5 fstream\cf2 ::app);\par
+\par
+\tab\cf5 fstream\cf2\tab file(\cf3 "Out6x61.txt"\cf2 , std::\cf5 fstream\cf2 ::in | std::\cf5 fstream\cf2 ::out | std::\cf5 fstream\cf2 ::app);\par
+\tab\cf5 fstream\cf2\tab file1(\cf3 "Out6x62.txt"\cf2 , std::\cf5 fstream\cf2 ::in | std::\cf5 fstream\cf2 ::out | std::\cf5 fstream\cf2 ::app);\par
+\tab\cf5 fstream\cf2\tab file2(\cf3 "Out6x63.txt"\cf2 , std::\cf5 fstream\cf2 ::in | std::\cf5 fstream\cf2 ::out | std::\cf5 fstream\cf2 ::app);\par
+\tab\par
+\tab\cf4 int\cf2  size = 8;\par
+\tab cout \cf7 <<\cf2  \cf3 "BEGIN : "\cf2  \cf7 <<\cf2  endl;\par
+\tab\par
+\tab init_thread(size, fil);\par
+\tab\par
+\tab\cf6 /*cout << "Thread 1 : eneble\\n";\cf2\par
+\cf6\tab thread tr1(algo, std::ref(file), 0, 2, 6);\cf2\par
+\cf6\tab cout << "Thread 2 : eneble\\n";\cf2\par
+\cf6\tab thread tr2(algo, std::ref(file1), 2, 4, 6);\cf2\par
+\cf6\tab cout << "Thread 3 : eneble\\n";\cf2\par
+\cf6\tab thread tr3(algo, std::ref(file2), 4, 6, 6);\cf2\par
+\cf6\tab tr1.join();\cf2\par
+\cf6\tab tr2.join();\cf2\par
+\cf6\tab tr3.join();*/\cf2\par
+\tab cout \cf7 <<\cf2  \cf3 "END : "\cf2  \cf7 <<\cf2  endl;\par
+\par
+\tab\cf4 return\cf2  0;\par
+\}\par
+\par
+\cf4 void\cf2\tab realese(\cf4 bool\cf2  ** \cf1 map\cf2 , \cf4 int\cf2  \cf1 size\cf2 )\par
+\{\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size\cf2 ; i++)\par
+\tab\tab\cf4 delete[]\cf2  \cf1 map\cf2 [i];\par
+\tab\cf4 delete[]\cf2  \cf1 map\cf2 ;\par
+\}\par
+\par
+\cf4 bool\cf2 ** initMap(\cf4 int\cf2  \cf1 size\cf2 )\par
+\{\par
+\tab\cf4 bool\cf2 ** map = \cf4 new\cf2  \cf4 bool\cf2 *[\cf1 size\cf2 ];\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size\cf2 ; i++)\par
+\tab\{\par
+\tab\tab map[i] = \cf4 new\cf2  \cf4 bool\cf2 [\cf1 size\cf2 ];\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size\cf2 ; j++)\par
+\tab\tab\tab map[i][j] = \cf4 false\cf2 ; \cf6 //\cf2\par
+\tab\}\par
+\tab\cf4 return\cf2  map;\par
+\}\par
+\cf0\f0\fs22\lang9\par
+\par
+|\par
+|\par
+|\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+XO\par
+\cf1\f1\fs19 #include\cf2  \cf3 <iostream>\cf2\par
+\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\par
+\cf1 #define\cf2  \cf8 Player1\cf2  \cf3 'X'\cf2  \par
+\cf1 #define\cf2  \cf8 Player2\cf2  \cf3 'O'\cf2   \cf6 //\f2\lang1058\'ea\'e0\'ea\'e8\'e5 \'e8\'e3\'f0\'ee\'ea\'e8 \'e1\'f3\'e4\'f3\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'f1\'e8\'ec\'e2\'ee\'eb\'fb\cf2\par
+\cf1 #define\cf2  \cf8 SIZE\cf2\tab  3 \cf6 //\'f0\'e0\'e7\'ec\'e5\'f0 \'ea\'e0\'f0\'f2\'fb\cf2\par
+\par
+\cf4 bool\cf2\tab get_index_of_box(\cf4 int\cf2 * \cf1 i\cf2 , \cf4 int\cf2 * \cf1 j\cf2 , \cf4 int\cf2  \cf1 num\cf2 )\par
+\{\par
+\tab\cf4 switch\cf2  (\cf1 num\cf2 )\par
+\tab\{\par
+\tab\cf4 case\cf2  1:\par
+\tab\tab *\cf1 i\cf2  = 0; *\cf1 j\cf2  = 0;\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 case\cf2  2:\par
+\tab\tab *\cf1 i\cf2  = 0; *\cf1 j\cf2  = 1;\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 case\cf2  3:\par
+\tab\tab *\cf1 i\cf2  = 0; *\cf1 j\cf2  = 2;\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 case\cf2  4:\par
+\tab\tab *\cf1 i\cf2  = 1; *\cf1 j\cf2  = 0;                            \cf6 //\'fd\'f2\'ee \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'e3\'e4\'e5 \'e1\'f3\'e4\'e5\'f2 \'f1\'f2\'ee\'ff\'f2\'fc \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'fc\'ee\'ed\'fb\'e9 \'f1\'e8\'ec\'e2\'ee\'eb i -\'fd\'f2\'ee \'ef\'ee \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'e8 j-\'ef\'ee \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'e8 \'ee\'f2\'f7\'e5\'f2 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'fc\'f1\'ff \'f1 0\cf2\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 case\cf2  5:\par
+\tab\tab *\cf1 i\cf2  = 1; *\cf1 j\cf2  = 1;\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 case\cf2  6:\par
+\tab\tab *\cf1 i\cf2  = 1; *\cf1 j\cf2  = 2;\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 case\cf2  7:\par
+\tab\tab *\cf1 i\cf2  = 2; *\cf1 j\cf2  = 0;\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 case\cf2  8:\par
+\tab\tab *\cf1 i\cf2  = 2; *\cf1 j\cf2  = 1;\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 case\cf2  9:\par
+\tab\tab *\cf1 i\cf2  = 2; *\cf1 j\cf2  = 2;\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 default\cf2 :\par
+\tab\tab\cf4 return\cf2  \cf4 false\cf2 ;\par
+\tab\}\par
+\tab\cf4 return\cf2  \cf4 false\cf2 ;\par
+\}\par
+\par
+\cf4 char\cf2 ** initMap()\par
+\{\par
+\tab\cf4 int\cf2  size = 3;\par
+\tab\cf4 char\cf2 ** m = \cf4 new\cf2  \cf4 char\cf2 * [size];\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < size; i++)          \cf6 //\'e2 \'ec\'e0\'f1\'f1\'e8\'e2 \'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'e7\'e2\'e5\'e7\'e4\'ee\'f7\'ea\'e8 \'e2 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ec\'fb \'e2 \'e4\'e0\'eb\'fc\'ed\'fc\'e5\'e9\'f8\'ee\'ec \'e1\'f3\'e4\'e5\'ec \'e7\'e0\'ec\'e5\'ed\'ff\'f2\'fc \'ed\'e0 \'f5\'f0\'e5\'f1\'f2\'e8\'ea \'e8\'eb\'e8 \'ed\'e0 \'ed\'ee\'eb\'e8\'ea\cf2\par
+\tab\{\par
+\tab\tab m[i] = \cf4 new\cf2  \cf4 char\cf2 [size];\par
+\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < size; j++)\par
+\tab\tab\tab m[i][j] = \cf3 '*'\cf2 ;\par
+\tab\}\par
+\tab\cf4 return\cf2  m;\par
+\}\par
+\par
+\cf4 void\cf2  realese(\cf4 char\cf2 ** \cf1 map\cf2 , \cf4 int\cf2  \cf1 size\cf2 )\par
+\{\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size\cf2 ; i++)\par
+\tab\tab\cf4 delete[]\cf2  \cf1 map\cf2 [i];                           \cf6 //\'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e5\cf2\par
+\tab\cf4 delete[]\cf2  \cf1 map\cf2 ;\par
+\}\par
+\par
+\cf4 void\cf2  draw(\cf4 char\cf2 ** \cf1 map\cf2 , \cf4 int\cf2  \cf1 size\cf2 )\par
+\{\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size\cf2 ; i++)\par
+\tab\{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size\cf2 ; j++)                \cf6 //\'e2\'fb\'e2\'ee\'e4 \'ea\'e0\'f0\'f2\'fb\cf2\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf1 map\cf2 [i][j] \cf7 <<\cf2  \cf3 " "\cf2 ;\par
+\tab\tab cout \cf7 <<\cf2  endl;\par
+\tab\}\par
+\}\par
+\cf6 /*\cf2\par
+\cf6    0 1 0\tab with recursion find way of true;\cf2\par
+\cf6    1 0 1\tab wich way is true\cf2\par
+\cf6    1 1 1\tab 1. horisontal 2. vertical 3. diagonal\cf2\par
+\cf6 */\cf2\par
+\cf4 bool\cf2\tab find_winner(\cf4 char\cf2 ** \cf1 map\cf2 , \cf4 const\cf2   \cf4 char\cf2 * \cf1 name\cf2 )\par
+\{\par
+\tab\cf4 int\cf2  horizontal = 0;\par
+\tab\cf4 int\cf2  vectical = 0;\par
+\tab\cf4 int\cf2  diagonal = 0;\par
+\tab\cf4 char\cf2  find = (\cf1 name\cf2  == \cf3 "Player 1 :"\cf2 ) ? \cf8 Player1\cf2  : \cf8 Player2\cf2 ; \cf6 //\'e5\'f1\'eb\'e8 \'e2 \'f4\'e0\'e9\'ed\'e4\'e5 \'ed\'e5\'e9\'ec \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e2\'ed\'ee \'ef\'eb\'e5\'e5\'f0\'f3 1 \'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f5\'f0\'e5\'f1\'f2\'e8\'ea \'e2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5\'e5 \'e1\'f3\'e4\'e5\'ec \'ed\'ee\'eb\'e8\'ea \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc\'f1\'ff \'e2 \'f4\'e0\'e9\'ed\'e4\cf2\par
+\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf8 SIZE\cf2 ; i++)\par
+\tab\{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf8 SIZE\cf2 ; j++)\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [i][j] == find)\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab\cf4 if\cf2  (j == 0) \cf6 //\'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'ed\'e0 \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc\cf2\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\cf4 for\cf2  (\cf4 int\cf2  hr = 0; hr < \cf8 SIZE\cf2 ; hr++)\par
+\tab\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [i][hr] == find) \cf6 //\'e5\'f1\'eb\'e8 \'ec\'fb \'ed\'e0\'f8\'eb\'e8 \'f2\'ee\'f2 \'e7\'ed\'e0\'ea\cf2\par
+\tab\tab\tab\tab\tab\tab\tab horizontal++;\cf6 //\'e2 \'f1\'f7\'e5\'f2\'e8\'ea \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec 1\cf2\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\cf4 if\cf2  (horizontal == \cf8 SIZE\cf2 )\cf6 //\'e5\'f1\'eb\'e8 \'e2 \'f1\'f7\'e5\'f2\'f7\'e8\'ea\'e5 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e2\'ed\'ee 3 \cf2\par
+\tab\tab\tab\tab\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\cf6 //\'fd\'f2\'ee \'ef\'ee\'e1\'e5\'e4\'e0,\'e2\'ee\'e7\'e2\'f0\'f9\'e0\'e5\'ec \'f2\'f0\'f3\cf2\par
+\tab\tab\tab\tab\tab\cf4 else\cf2\par
+\tab\tab\tab\tab\tab\tab horizontal = 0;\cf6 //\'e2\'ee\'e1\'f0\'e0\'f2\'ed\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5\'ec \'f1\'f7\'e5\'f2\'e8\'ea \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc\'ff \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e2\'ed\'ee 0\cf2\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\cf4 if\cf2  (i == 0)\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\cf4 for\cf2  (\cf4 int\cf2  vc = 0; vc < \cf8 SIZE\cf2 ; vc++)\par
+\tab\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [vc][j] == find) \cf6 //\'e5\'f1\'eb\'e8 \'ef\'ee \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'e8 \'e2 \'ec\'e0\'f1\'f1\'e8\'e2\'e5 \'ec\'e0\'ef \'ee\'ed\'ee \'f0\'e0\'e2\'ed\'ee \'f4\'e0\'e9\'ed\'e4(\'e7\'ed\'e0\'f7\'ea\'f3)\cf2\par
+\tab\tab\tab\tab\tab\tab\tab vectical++;\cf6 //\'f2\'ee \'f1\'f7\'e5\'f2\'f7\'e8\'ea \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'e8+=1\cf2\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\cf4 if\cf2  (vectical == \cf8 SIZE\cf2 )\cf6 //\'e5\'f1\'eb\'e8 \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc \'f0\'e0\'e2\'ed\'ee 3\cf2\par
+\tab\tab\tab\tab\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\cf6 //\'f2\'ee \'fd\'f2\'ee \'ef\'ee\'e1\'e5\'e4\'e0 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec \'f2\'f0\'f3\cf2\par
+\tab\tab\tab\tab\tab\cf4 else\cf2\par
+\tab\tab\tab\tab\tab\tab vectical = 0;\cf6 //\'e2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5 \'f1\'f7\'e5\'f2\'f7\'e8\'ea\'f3 \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'e8 \'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'e5\'ec 0\cf2\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\cf6 //\'e4\'e0\'eb\'fc\'f8\'e5 \'e8\'e4\'e5\'f2 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'ed\'e0 \cf2\par
+\tab\tab\tab\tab\cf6 /*\cf2\par
+\cf6\tab\tab\tab\tab 0\cf2\par
+\cf6\tab\tab\tab       0\cf2\par
+\cf6\tab\tab\tab\tab     0\cf2\par
+\cf6\tab\tab\tab\tab\tab */\cf2\par
+\tab\tab\tab\tab\cf6 /*\cf2\par
+\cf6\tab\tab\tab\tab\'ed\'e0 \'e2\'ee\'f2 \'f2\'e0\'ea\'ee\'e5\cf2\par
+\cf6\tab\tab\tab\tab\cf2\par
+\cf6\tab\tab\tab\tab */\cf2\par
+\tab\tab\tab\tab\cf4 if\cf2  (i == 0 && (j == 0 || j == \cf8 SIZE\cf2  - 1)) \cf6 //\'e5\'f1\'eb\'e8 i \'f0\'e0\'ed\'e2\'ee \'ed\'f3\'eb\'fe(\'ef\'e5\'f0\'e2\'fb\'e9 \'f1\'f2\'ee\'eb\'e1\'f7\'e8\'ea) \'e2 \'ef\'e5\'f0\'e2\'ee\'ec \'f1\'f2\'ee\'eb\'e1\'f7\'e8\'ea\'e5 j-\'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'ed\'e2\'ee 0 \'e8\'eb\'e8 2(\'ee\'f2\'f7\'e5\'f2 \'e8\'e4\'e5\'f2 \'ee\'f2 0 \'ef\'ee\'fd\'f2\'ee\'ec\'f3, \'f1\'e0\'ec\'ee\'ec\'f3 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'ec\'f3 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'f3)\cf2\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\cf4 bool\cf2  how = (j == 0) ? \cf4 true\cf2  : \cf4 false\cf2 ;\cf6 //\'e5\'f1\'eb\'e8 \'f0\'e0\'e2\'ed\'ee \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc 0 \'f2\'ee \'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'e5\'ec \'fd\'f2\'ee\'e9 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'e5 \'f2\'f0\'f3 \'e2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5 \'f4\'ee\'eb\'f1\cf2\par
+\tab\tab\tab\tab\tab\cf4 for\cf2  (\cf4 int\cf2  gi = 0; gi < \cf8 SIZE\cf2 ; gi++)\par
+\tab\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [gi][gi] == find && how)                         \cf6 /*\cf2\par
+\cf6\tab\tab\tab\tab 0\cf2\par
+\cf6\tab\tab\tab       0                 ----------                  \'e5\'f1\'eb\'e8 \'ee\'ed\'ee \'ed\'e0\'f5\'ee\'e4\'e8\'f2 \'f7\'f2\'ee-\'f2\'ee \'ef\'ee\'e4\'ee\'e1\'ed\'ee\'e5 \'e8 j==0 \'f2\'ee \'e5\'f1\'f2\'fc \'f1\'e8\'ec\'e2\'ee\'eb \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'fc\'f1\'ff \'f1 \'f1\'e0\'ec\'ee\'e3\'ee \'ed\'e0\'f7\'e0\'eb\'e0 \'f2\'ee\'e3\'e4\'e0\cf2\par
+\cf6\tab\tab\tab\tab     0\cf2\par
+\cf6\tab\tab\tab\tab\tab */\cf2          \par
+\tab\tab\tab\tab\tab\tab\tab diagonal++; \cf6 //\'f1\'f7\'e5\'f2\'f7\'e8\'ea \'e4\'e8\'e0\'e3\'ee\'ed\'e0\'eb\'e8 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec 1\cf2\par
+\tab\tab\tab\tab\tab\tab\cf4 else\cf2  \cf4 if\cf2  (!how) \cf6 //\'ed\'ee \'e5\'f1\'eb\'e8 j \'ed\'e5 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e2\'e5\'ed 0\cf2\par
+\tab\tab\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\tab\tab\cf4 for\cf2  (\cf4 int\cf2  gj = 0; gj < \cf8 SIZE\cf2 ; gj++)\par
+\tab\tab\tab\tab\tab\tab\tab\{                                              \cf6 //2\cf2\par
+\tab\tab\tab\tab\tab\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [gi][gj] == find && ((gi + gj) == \cf8 SIZE\cf2  - 1))\cf6 //\'e5\'f1\'eb\'e8 \'e2 \'f2\'ee\'e9 \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'e5 \'ec\'fb \'ed\'e0\'f8\'eb\'e8 \'f2\'ee\'f2 \'f1\'e8\'ec\'e2\'ee\'eb \'f2\'ee \'e2 \'f1\'f7\'e5\'f2\'f7\'e8\'ea\'e5 \'e4\'e8\'e0\'e3\'ee\'ed\'e0\'eb\'ff \'fb \'e4\'ee\'e1\'e0\'e2\'ff\'e5\'ec \'e5\'e4\'e8\'ed\'e8\'f6\'f3 \'ed\'ee \'e5\'f9\'e5 \'ef\'f0\'e8 \'f3\'f1\'eb\'ee\'e2\'e8\'e8 \'e5\'f1\'eb\'e8 gi+gj==\'f2\'ee \'e2 \'f1\'f7\'e5\'f2\'f7\'e8\'ea \'e4\'e8\'e0\'e3\'ee\'ed\'e0\'eb\'ff \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec 1 \'fd\'f2\'ee \'e4\'eb\'ff \'f2\'e0\'ea\'ee\'e3\'ee:\cf2\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\cf6 /*\cf2\par
+\cf6\tab\tab\tab\tab\tab\tab\tab\tab\tab         0\cf2\par
+\cf6\tab\tab\tab\tab\tab\tab\tab\tab\tab       0\cf2\par
+\cf6\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab 0\cf2\par
+\cf6\tab\tab\tab\tab\tab\tab\tab\tab\tab\cf2\par
+\cf6\tab\tab\tab\tab\tab\tab\tab\tab\tab */\cf2\par
+\tab\tab\tab\tab\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab diagonal++;\par
+\tab\tab\tab\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\cf4 if\cf2  (diagonal == \cf8 SIZE\cf2 )\par
+\tab\tab\tab\tab\tab\tab\cf4 return\cf2  \cf4 true\cf2 ; \cf6 //\'e5\'f1\'eb\'e8 \'f1\'f7\'e5\'f2\'f7\'e8\'ea \'fd\'f2\'ee\'e9 \'e4\'e8\'e0\'e3\'ee\'ed\'e0\'eb\'e8 \'f0\'e0\'e2\'e5\'ed 3 \'f2\'ee \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec \'f2\'f0\'f3\cf2\par
+\tab\tab\tab\tab\tab\cf4 else\cf2\par
+\tab\tab\tab\tab\tab\tab diagonal = 0; \cf6 //\'e2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5 \'f1\'f7\'e5\'f2\'f7\'e8\'ea\'f3 \'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'e5\'ec 0\cf2\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf4 return\cf2  \cf4 false\cf2 ;\cf6 //\'e5\'f1\'eb\'e8 \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'f1\'f0\'e0\'e1\'ee\'f2\'e0\'eb\'ee \'f2\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f4\'ee\'eb\'f1\cf2\par
+\}\par
+\par
+\par
+\cf4 void\cf2\tab turn(\cf4 char\cf2 ** \cf1 map\cf2 , \cf4 const\cf2  \cf4 char\cf2 * \cf1 name\cf2 )\par
+\{\par
+\tab\cf4 bool\cf2  correct = \cf4 false\cf2 ;\par
+\tab\cf4 do\cf2\par
+\tab\{\par
+\tab\tab\cf4 int\cf2  num;\par
+\tab\tab\cf4 int\cf2  set_i\{\};\cf6 //\'f0\'e0\'e2\'ed\'ee 0\cf2\par
+\tab\tab\cf4 int\cf2  set_j\{\};\cf6 //\'f0\'e0\'e2\'ed\'ee 0\cf2\par
+\tab\tab cout \cf7 <<\cf2  \cf1 name\cf2  \cf7 <<\cf2  \cf3 "\\nInsert possitionto set character : "\cf2  \cf7 <<\cf2\par
+\tab\tab\tab ((\cf1 name\cf2  == \cf3 "Player 1 :"\cf2 ) ? \cf8 Player1\cf2  : \cf8 Player2\cf2 ) \cf7 <<\cf2  endl; \cf6 //\'e2\'fb\'e2\'ee\'e4\'e8\'ec \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'f3\'fe \'ed\'e5\'e9\'ec \'e5\'f1\'eb\'e8 \'ee\'ed\'e0 \'f0\'e0\'e2\'ed\'e0 '\'ef\'eb\'e5\'e5\'f0\'f3 1' \'f2\'ee \'e2\'fb\'e2\'ee\'e4\'e8\'f2\'f1\'ff \'ef\'eb\'e5\'e5\'f0 \'ee\'e4\'e8\'ed \'e5\'f1\'eb\'e8 \'ed\'e5 \'f2\'ee \'ef\'eb\'e5\'e5\'f0 2(\'ea\'f0\'e5\'f1\'f2\'e8\'ea \'ed\'ee\'eb\'e8\'ea)\cf2\par
+\tab\tab cout \cf7 <<\cf2  \cf3 "Number of box :  "\cf2 ;\par
+\tab\tab\cf4 while\cf2  (cin \cf7 >>\cf2  num && !(get_index_of_box(&set_i, &set_j, num))); \cf6 // \'e2\'e2\'ee\'e4\'e8\'ec \'f7\'e8\'f1\'eb\'ee \'e5\'f1\'eb\'e8  \'fd\'f2\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'ed\'e5  \'f0\'e0\'e2\'ed\'ee \'f4\'ee\'eb\'f1\cf2\par
+\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf8 SIZE\cf2 ; i++)\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf8 SIZE\cf2 ; j++)\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab\cf4 if\cf2  (((set_j) == j && (set_i) == i) && \cf1 map\cf2 [i][j] == \cf3 '*'\cf2 )\cf6 //\'e5\'f1\'eb\'e8 \'f2\'e5 \'f1\'f1\'fb\'eb\'ea\'e8 \'f0\'e0\'e2\'ed\'fb i \'e8 j \'e8 \'ec\'e0\'ef \'f0\'e0\'e2\'ed\'e0 * \'f2\'ee \'ec\'fb \'f1\'f2\'e0\'e2\'e8\'ec X \'e8\'eb\'e8 0 \cf2\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\cf1 map\cf2 [i][j] = (\cf1 name\cf2  == \cf3 "Player 1 :"\cf2 ) ? \cf8 Player1\cf2  : \cf8 Player2\cf2 ;\cf6 //\'e5\'f1\'eb\'e8 \'e2\'ed\'f3\'f2\'f0\'e8 \'fd\'f2\'ee\'e9 \'f2\'e0\'e1\'eb\'e8\'f6\'e8 \'ec\'fb \'ed\'e0\'f8\'eb\'e8 \'ed\'e5\'e9\'ec \'e8 \'e5\'f1\'eb\'e8 \'ee\'ed \'f0\'e0\'e2\'e5\'ed \'ef\'eb\'e5\'e5\'f0\'f3 1 \'f2\'ee \'f1\'f2\'e0\'e2\'e8\'ec \'f5\'f0\'e5\'f1\'f2 \'e2\'ee\'e1\'f0\'e0\'f2\'ed\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5\'e5 \'ed\'ee\'eb\'fc+\cf2\par
+\tab\tab\tab\tab\tab correct = \cf4 true\cf2 ;\cf6 //\'e8 \'e2 \'ea\'ee\'f0\'e5\'ea\'f2 \'f1\'f2\'e0\'e2\'e8\'ec \'f2\'f0\'f3,\'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'ee\'ed\'e0 \'e7\'e0 \'f2\'ee, \'e5\'f1\'eb\'e8 \'ec\'fb \'e7\'e0\'ec\'e5\'ed\'e8\'eb\'e8 * \'ed\'e0 \'f7\'f2\'ee-\'f2\'ee \'f2\'ee \'e2\'fb\'f5\'ee\'e4\'e8\'ec \'e8\'e7 \'fd\'f2\'ee\'e3\'ee \'f6\'e8\'ea\'eb\'e0\cf2\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\} \cf4 while\cf2  (!correct);\par
+\}\par
+\par
+\cf4 void\cf2\tab game_main_loop(\cf4 char\cf2 ** \cf1 map\cf2 )\par
+\{\par
+\tab\cf4 const\cf2  \cf4 char\cf2 ** size_of_player = \cf4 new\cf2  \cf4 const\cf2  \cf4 char\cf2 * [2]; \cf6 //\'e4\'e2\'ee\'f5 \'ec\'e5\'f0\'ed\'fb\'e9 \'ec\'e0\'f1\'f1\'e8\'e2 \{\},\{\}\cf2\par
+\tab\cf4 const\cf2  \cf4 char\cf2 * player1 = \cf3 "Player 1 :"\cf2 ;\cf6 // player1,\{\}         [\cf2\par
+\tab                                                           \cf6 //player1,player2                 ------ \'fd\'f2\'ee \'e2 \'e4\'e2\'f3\'f5\'ec\'e5\'f0\'ed\'ee\'ec \'ec\'e0\'f1\'f1\'e8\'e2\'e5 \cf2\par
+\tab\cf4 const\cf2  \cf4 char\cf2 * player2 = \cf3 "Player 2 :"\cf2 ;\cf6 //\{\},player2          [\cf2\par
+\tab\cf4 bool\cf2\tab\tab\tab game_status = \cf4 true\cf2 ;\cf6 //\'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e5\'ed\'e8\'e5 \'e8\'eb\'e8 \'e7\'e0\'e2\'e5\'f0\'f8\'e5\'ed\'e8\'ff \'e8\'e3\'f0\'fb       // ^\cf2\par
+\tab                                                                             \cf6 //|\cf2\par
+\tab size_of_player[0] = player1;                                                \cf6 //|\cf2\par
+\tab size_of_player[1] = player2;  \cf6 //------->                                    //|\cf2\par
+\par
+\tab\cf4 short\cf2  index_player_now = 0;;\par
+\par
+\tab\cf4 while\cf2  (\cf4 true\cf2 )\par
+\tab\{\par
+\tab\tab draw(\cf1 map\cf2 , \cf8 SIZE\cf2 );\cf6 //\'e2\'fb\'e2\'ee\'e4 \'ea\'e0\'f0\'f2\'fb\cf2\par
+\tab\tab turn(\cf1 map\cf2 , size_of_player[index_player_now]);\cf6 //\'e2\'e2\'ee\'e4 \'f7\'e8\'f1\'eb\'e0 \'ee\'f2 1 \'e8 2 \'e8\'e3\'f0\'ee\'ea\'e0\cf2\par
+\tab\tab\cf4 if\cf2  (find_winner(\cf1 map\cf2 , size_of_player[index_player_now]))\par
+\tab\tab\{\par
+\tab\tab\tab draw(\cf1 map\cf2 , \cf8 SIZE\cf2 );\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf3 "Win : "\cf2  \cf7 <<\cf2  size_of_player[index_player_now] \cf7 <<\cf2  endl;             \cf6 //\'ed\'e0\'f5\'ee\'e4\'e8\'ec \'ea\'f2\'ee \'f7\'e5\'ec\'ef\'e8\'ee\'ed \cf2\par
+\tab\tab\tab game_status = \cf4 false\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf4 if\cf2  (!game_status)\cf6 //\'e5\'f1\'eb\'e8 \'ed\'e5 \'f2\'f0\'f3 \'f2\'ee \cf2\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 int\cf2  ans;\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf3 "Do you wana play again? (1 yes , 0 no) : "\cf2 ;\par
+\tab\tab\tab cin \cf7 >>\cf2  ans;\cf6 //\'e2\'e2\'ee\'e4\'e8\'ec 0 \'e8\'eb\'e8 1 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e8\'f2\'fc \'e8\'eb\'e8 \'e7\'e0\'ea\'ee\'ed\'f7\'e8\'f2\'fc \'e8\'e3\'f0\'f3 \cf2\par
+\tab\tab\tab game_status = (ans == 0) ? \cf4 false\cf2  : \cf4 true\cf2 ;\cf6 //\'e5\'f1\'eb\'e8 \'e2\'e2\'e5\'e4\'e5\'ed\'ee\'e5 \'f7\'e8\'f1\'eb\'ee \'f0\'e0\'e2\'ed\'ee 0 \'f2\'ee \'e3\'e5\'e9\'ec \'f1\'f2\'e0\'f2\'f3\'f1 \'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'f4\'ee\'eb\'f1 \'e2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5 \'f2\'f0\'f3\cf2\par
+\tab\tab\tab\cf4 if\cf2  (game_status)\cf6 //\'e5\'f1\'eb\'e8 \'e3\'e5\'e9\'ec \'f1\'f2\'e0\'f2\'f3\'f1 \'f2\'f0\'f3 \'f2\'ee \'ec\'fb \'ee\'f7\'e8\'f9\'e0\'e5\'ec \'ec\'e0\'f1\'f1\'e8\'e2, \'ed\'e0\'f8\'f3 \'ea\'e0\'f0\'f2\'f3 \'e8 \'ef\'e5\'f0\'e5\'e7\'e0\'ef\'ee\'eb\'ed\'ff\'e5\'ec \'e5\'f9\'e5 \'f0\'e0\'e7 \'e8\'e7 "*"\cf2\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab\cf6 //index_player_now = 0;\cf2\par
+\tab\tab\tab\tab realese(\cf1 map\cf2 , \cf8 SIZE\cf2 );\par
+\tab\tab\tab\tab\cf1 map\cf2  = initMap();\par
+\tab\tab\tab\}\par
+\tab\tab\tab\cf4 else\cf6 //\'e2\'fb\'f5\'ee\'e4\'e8\'ec \'e8\'e7 \'e8\'e3\'f0\'fb\cf2\par
+\tab\tab\tab\tab\cf4 return\cf2 ;\par
+\tab\tab\}\par
+\tab\tab index_player_now = (index_player_now >= 1) ? 0 : index_player_now + 1;\par
+\tab\}\par
+\}\par
+\par
+\cf4 int\cf2  main()\par
+\{\par
+\tab\cf4 int\cf2  size = 3; \cf6 //\'f0\'e0\'e7\'ec\'e5\'f0 \cf2\par
+\tab\cf4 char\cf2 ** game_map = initMap();\cf6 //\'e7\'e0\'ef\'ee\'eb\'ed\'ff\'e5\'ec \'ea\'e0\'f0\'f2\'f3 \cf2\par
+\par
+\tab game_main_loop(game_map);\cf6 //\'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'ed\'e0\'f8\'f3 \'ea\'e0\'f0\'f2\'f3 \'e8 \'fd\'f2\'ee \'ed\'e0\'f7\'e0\'eb\'ee \'e8\'e3\'f0\'fb \cf2\par
+\par
+\tab realese(game_map, size);\cf6 //\'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e5 \'ea\'e0\'f0\'f2\'fb\cf2\par
+\tab\cf4 return\cf2  0;\par
+\}\par
+\par
+\f3\lang1033\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+15 :\par
+\cf1\f1 #include\cf2  \cf3 <Windows.h>\cf2\par
+\cf1 #include\cf2  \cf3 <iostream>\cf2\par
+\cf1 #include\cf2  \cf3 <ctime>\cf2\par
+\par
+\par
+\cf1 #define\cf2  \cf8 SIZE\cf2  4\par
+\cf1 #define\cf2  \cf8 MIN\cf2\tab  1\par
+\cf1 #define\cf2  \cf8 MAX\cf2   16\par
+\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\par
+\cf4 void\cf2\tab draw(\cf4 int\cf2 ** \cf1 map\cf2 );\par
+\cf4 void\cf2\tab draw_word(\cf4 int\cf2 ** \cf1 map\cf2 , \cf4 const\cf2  \cf4 char\cf2 * \cf1 str\cf2 );\par
+\cf4 void\cf2\tab select_box(\cf4 int\cf2 ** \cf1 map\cf2 , \cf4 int\cf2 & \cf1 i\cf2 , \cf4 int\cf2 & \cf1 j\cf2 );\par
+\cf4 void\cf2\tab find_Zero_Box(\cf4 int\cf2 ** \cf1 map\cf2 , \cf4 int\cf2 & \cf1 set_i\cf2 , \cf4 int\cf2 & \cf1 set_j\cf2 );\par
+\par
+\cf4 int\cf2 ** initMap()  \cf6 //\f2\lang1058\'ed\'e0\'ef\'ee\'eb\'ed\'e5\'e8\'e5 \'ec\'e0\'f1\'f1\'e8\'e2\'e0 \'f2\'e0\'ec \'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'ed\'e0\'f8\'e8\'f5 \'ef\'ff\'f2\'ed\'e0\'f8\'e5\'ea\cf2\par
+\{\par
+\tab\cf4 int\cf2  iter = 1;\par
+\tab\cf4 int\cf2 ** map = \cf4 new\cf2  \cf4 int\cf2 * [\cf8 SIZE\cf2 ];\cf6 //\'f1\'ee\'e7\'e4\'e0\'e5\'ec \'ec\'e0\'f1\'f1\'e8\'e2\cf2\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf8 SIZE\cf2 ; i++)\par
+\tab\{\par
+\tab\tab map[i] = \cf4 new\cf2  \cf4 int\cf2 [\cf8 SIZE\cf2 ];\cf6 //\'e2 \'ec\'e0\'f1\'f1\'e8\'e2 \'e2\'fb\'e4\'e5\'eb\'ff\'e5\'ec \'ff\'f7\'e5\'e9\'ea\'e8\'f2\cf2\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf8 SIZE\cf2 ; j++)\par
+\tab\tab\tab map[i][j] = (iter < 16) ? iter++ : 0;\cf6 //\'e5\'f1\'eb\'e8 \'ec\'e5\'ed\'fc\'f8\'e5 16 \'f2\'ee\'e3\'e4\'e0 \'e2 \'ec\'e0\'ef \'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'e8\'f2\'e5\'f0 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ef\'ee\'f1\'f2\'e5\'ef\'e5\'ed\'ee \'f0\'e0\'f1\'f2\'e5\'f2,16 \'e5\'eb\'e5\'ec\'e5\'ed\'f2 = 0\cf2\par
+\tab\}\par
+\tab\cf4 return\cf2  map;\par
+\}\par
+\cf4 void\cf2\tab realese(\cf4 int\cf2 ** \cf1 map\cf2 ) \cf6 //\'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e5\cf2\par
+\{\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf8 SIZE\cf2 ; i++)\par
+\tab\tab\cf4 delete[]\cf2  \cf1 map\cf2 [i];\par
+\tab\cf4 delete[]\cf2  \cf1 map\cf2 ;\par
+\}\par
+\par
+\cf4 void\cf2  main_Loop()\par
+\{\par
+\tab\cf4 bool\cf2  move = \cf4 false\cf2 ;\cf6 //\'e5\'f1\'eb\'e8 \'ed\'e5 \'ef\'ee\'f5\'ee\'e4\'e8\'e8\'eb\'e8 \'f0\'e0\'e2\'ed\'ee \'f4\'ee\'eb\'f1\cf2\par
+\tab\cf4 int\cf2 ** map = initMap();\cf6 //\'e2 \'ec\'e0\'ef \'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'f4\'f3\'ed\'ea\'f6\'e8\'ff\cf2\par
+\tab\cf4 int\cf2  xPos; \cf6 //\'ef\'ee\'e7\'e8\'f6\'e8\'ff 0\cf2\par
+\tab\cf4 int\cf2  yPos;\cf6 //\'f2\'ee\'e6\'e5 \'ef\'ee\'e7\'e8\'f6\'e8\'ff 0 \'ef\'ee \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'e8(\'e2\'f5\'ee\'e4\'e8\'ec \'e2 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'fc\'ee\'ed\'f3\'fe \'ff\'f7\'e5\'e9\'ea\'f3 \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'ec\'fb \'ea\'e0\'e7\'e0\'eb\'e8 x)\cf2\par
+\par
+\tab find_Zero_Box(map, xPos, yPos);\cf6 //\'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0 \'f1 \'f4\'f3\'ed\'ea\'f6\'e8\'e5\'e9  \'e8 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb(\'ef\'ee\'e7\'e8\'f6\'e8\'e8 16 \'f7\'e8\'f1\'eb\'e0 \'e2 \'ed\'e0\'f7\'e0\'eb\'e5 \'f2\'ee \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'f0\'e0\'e2\'ed\'ee 0)\cf2\par
+\par
+\tab\cf4 while\cf2  (\cf4 true\cf2 )\par
+\tab\{\par
+\tab\tab\cf4 int\cf2  i, j;\cf6 //\'f1\'fe\'e4\'e0 \'ef\'e5\'f0\'e5\'e4\'e0\'fe\'f2\'fc\'f1\'ff \'f2\'ee \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb \'f7\'e8\'f1\'eb\'e0 \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ec\'fb \'e2\'e2\'e5\'eb\'e8\cf2\par
+\tab\tab draw(map);\cf6 //\'f0\'e8\'f1\'f3\'e5\'ec \'ea\'e0\'f0\'f2\'f3\cf2\par
+\tab\tab\cf4 do\cf2\par
+\tab\tab\{\par
+\tab\tab\tab select_box(map, i, j);\cf6 //\'ef\'ee\'e7\'e8\'f6\'e8\'e8 \'f2\'ee\'e3\'ee \'f7\'e8\'f1\'eb\'e0 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'ed\'e0\'ef\'e8\'f1\'e0\'eb\'e8 \'e2 \'f4\'f3\'ed\'ea\'f6\'e8\'e8\cf2\par
+\tab\tab\tab\cf4 if\cf2  (((xPos - j) * (xPos - j)) + ((yPos - i) * (yPos - i)) == 1)\cf6 //\'f2\'f3\'f2 \'f1\'eb\'ee\'e6\'ed\'ee \'ee\'e1\'fa\'ff\'f1\'ed\'e8\'f2\'fc \'ef\'ee\'f7\'e5\'ec\'f3 \'f1\'f2\'ed\'e0\'ee\'e2\'e8\'f2\'fc\'f1\'ff 1 \'ed\'ee \'ff \'ef\'ee\'ed\'ff\'eb (\'e1\'f3\'e4\'e5 \'f9\'ee\'f1\'fc \'ed\'e0 \'ef\'ee\'e4\'ee\'e1\'e8\'e8 \'f2\'e0\'ea\'ee\'e3\'ee \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc\'f1\'ff (X0-Y\'f7\'e8\'f1\'eb\'ee)*(X0-Y\'f7\'e8\'f1\'eb\'ee)+(Y0-X\'f7\'e8\'f1\'eb\'ee)*(Y0-X\'f7\'e8\'f1\'eb\'ee)                (X0-Y\'f7\'e8\'f1\'eb\'ee)*(X0-Y\'f7\'e8\'f1\'eb\'ee) \'eb\'e8\'e1\'ee x \'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff 1 -1 \'e8\'eb\'e8 0 \'ed\'ee \'e5\'f1\'eb\'e8 -1 \'f2\'ee -1 \'ed\'e0 -1 \'e1\'f3\'e4\'e5\'f2 1 \cf2\par
+\tab\tab\tab\tab                                  \cf6 //\'ff \'ed\'e5\'e7\'ed\'e0\'fe \'ea\'e0\'ea \'f0\'e0\'f1\'ef\'e8\'f1\'e0\'f2\'fc \'e1\'ee\'eb\'e5\'e5 \'ef\'ee\'e1\'f0\'ee\'e1\'ed\'ee \'fd\'f2\'f3 \'f2\'e0\'e1\'eb\'e8\'f6\'fe \'ed\'ee \'ff \'e5\'e5 \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec \'f0\'e0\'e7\'ee\'e1\'f0\'e0\'eb                                                                                                                                                                                         //(Y0-X\'f7\'e8\'f1\'eb\'ee)*(Y0-X\'f7\'e8\'f1\'eb\'ee) \'e5\'f1\'eb\'e8 x=0 \'f2\'ee y \'e1\'f3\'e4\'e5\'f2 1 -1 \'ed\'ee \'e5\'f1\'eb\'e8 x = 1 \'f2\'ee y = 0                                            \cf2\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab std::swap(map[i][j], map[yPos][xPos]);\cf6 //\'f2\'ee \'f7\'e8\'f1\'eb\'ee \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ec\'e8 \'ed\'e0\'ef\'e8\'f1\'e0\'eb\'e8 \'ec\'e5\'ed\'ff\'e5\'ec \'f1 \'f7\'e8\'f1\'eb\'ee\'ec \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'f0\'e0\'e2\'ed\'ee 0\cf2\par
+\tab\tab\tab\tab xPos = j;\tab yPos = i; \cf6 //\'e2 \'ef\'ee\'f1 x \'e8 y \'ec\'fb \'e2\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'ec \'e8\'ed\'e4\'e5\'ea\'f1\'fb \'f2\'ee\'e3\'ee \'f7\'e8\'f1\'eb\'e0 \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'f0\'e0\'e2\'ed\'ee 0\cf2\par
+\tab\tab\tab\tab move = \cf4 true\cf2 ;\cf6 //\'e5\'f1\'eb\'e8 \'ef\'ee\'f5\'ee\'e4\'e8\'eb\'e8 \'f0\'e0\'e2\'ed\'ee \'f2\'f0\'f3\cf2\par
+\tab\tab\tab\}\par
+\tab\tab\tab\cf4 if\cf2  (!move)\cf6 //\'e5\'f1\'eb\'e8 \'ed\'e5 \'f0\'e0\'e2\'ed\'ee \'f2\'f0\'f3 \'f2\'ee \'e2\'fb\'e2\'ee\'e4\'e8\'f2 \cf2\par
+\tab\tab\tab\tab draw_word(map, \cf3 "Can't move box : \\n"\cf2 );\par
+\tab\tab\} \cf4 while\cf2  (!move);\par
+\tab\}\par
+\tab realese(map);\cf6 //\'ea\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'fb\'f5\'ee\'e4\'e8\'ec \'f1 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'fb \'ef\'ee\'eb\'ed\'ee\'f1\'f2\'fe \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'fc\'f1\'ff \'ec\'e0\'f1\'f1\'e8\'e2\cf2\par
+\}\par
+\par
+\par
+\par
+\cf4 int\cf2  main()\par
+\{\par
+\tab srand(time(\cf8 NULL\cf2 ));\par
+\tab main_Loop();\par
+\tab\cf4 return\cf2  0;\par
+\}\par
+\par
+\cf4 void\cf2\tab draw_word(\cf4 int\cf2 ** \cf1 map\cf2 , \cf4 const\cf2  \cf4 char\cf2 * \cf1 str\cf2 )\par
+\{\par
+\tab draw(\cf1 map\cf2 );\par
+\tab std::cout \cf7 <<\cf2  \cf1 str\cf2 ;\par
+\}\par
+\par
+\cf4 void\cf2\tab draw(\cf4 int\cf2 ** \cf1 map\cf2 )\par
+\{\par
+\tab system(\cf3 "cls"\cf2 );\cf6 //\'ee\'f7\'e8\'f9\'e0\'e5\'ec \'ea\'ee\'ed\'f1\'ee\'eb\'fc\cf2\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf8 SIZE\cf2 ; i++)\par
+\tab\{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf8 SIZE\cf2 ; j++)\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [i][j] < 10)                                      \cf6 //\'e2\'fb\'e2\'ee\'e4\'e8\'ec\cf2\par
+\tab\tab\tab\tab cout \cf7 <<\cf2  \cf1 map\cf2 [i][j] \cf7 <<\cf2  \cf3 "  "\cf2 ;\par
+\tab\tab\tab\cf4 else\cf2\par
+\tab\tab\tab\tab cout \cf7 <<\cf2  \cf1 map\cf2 [i][j] \cf7 <<\cf2  \cf3 " "\cf2 ;\par
+\tab\tab\}\par
+\tab\tab cout \cf7 <<\cf2  endl;\par
+\tab\}\par
+\}\par
+\par
+\cf4 void\cf2  select_box(\cf4 int\cf2 ** \cf1 map\cf2 , \cf4 int\cf2 & \cf1 set_i\cf2 , \cf4 int\cf2 & \cf1 set_j\cf2 )\par
+\{\par
+\tab\cf4 int\cf2  insert_num;\par
+\par
+\par
+\tab\cf4 while\cf2  (\cf4 true\cf2 )\par
+\tab\{\par
+\tab\tab cout \cf7 <<\cf2  \cf3 "Choose one box : "\cf2 ;\par
+\tab\tab cin \cf7 >>\cf2  insert_num;\cf6 //\'e2\'e2\'ee\'e4\'e8\'ec \'f7\'e8\'f1\'eb\'ee\cf2\par
+\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf8 SIZE\cf2 ; i++)\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf8 SIZE\cf2 ; j++)\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [i][j] == insert_num && insert_num != 0)\cf6 //\'e5\'f1\'eb\'e8 \'f2\'ee \'f7\'f2\'ee \'e2\'ed\'f3\'f2\'f0\'e8 \'ec\'e0\'ef \'f0\'e0\'e2\'ed\'ee \'ed\'e0\'f8\'e5\'ec\'f3 \'f7\'e8\'f1\'eb\'ee \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'e2\'e5\'eb\'e8 \'e8 \'ed\'e5 \'f0\'e0\'e2\'ed\'ee 0\cf2\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\cf1 set_i\cf2  = i;\cf6 //\'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb \'fd\'f2\'ee\'e3\'ee \'f7\'e8\'f1\'eb\'e0(\'ea\'e0\'ea\'e0\'ff \'ff\'f7\'e5\'e9\'ea\'e0 \'e8 \'ea\'e0\'ea\'ee\'e5 \'f7\'e8\'f1\'eb\'ee \'e2 \'fd\'f2\'ee\'e9 \'ff\'f7\'e5\'e9\'ea\'e5)\cf2\par
+\tab\tab\tab\tab\tab\cf1 set_j\cf2  = j;\cf6 //\cf2\par
+\tab\tab\tab\tab\tab\cf4 return\cf2 ;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\}\par
+\par
+\cf4 void\cf2\tab find_Zero_Box(\cf4 int\cf2 ** \cf1 map\cf2 , \cf4 int\cf2 & \cf1 set_i\cf2 , \cf4 int\cf2 & \cf1 set_j\cf2 )\par
+\{\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf8 SIZE\cf2 ; i++)\par
+\tab\{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf8 SIZE\cf2 ; j++)\par
+\tab\tab\{\par
+\tab\tab\tab\cf4 if\cf2  (\cf1 map\cf2 [i][j] == 0) \par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab\cf1 set_i\cf2  = i; \cf6 //\'e2 \'f1\'f1\'fb\'eb\'ea\'f3 \'ef\'e5\'f0\'e5\'e4\'e0\'e5\'ec \'fd\'f2\'e8 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb \cf2\par
+\tab\tab\tab\tab\cf1 set_j\cf2  = j; \cf6 //\'f2\'ee\'f7\'ed\'e5\'e5 i j \'e0 \'f1 \'f1\'f1\'fb\'eb\'ea\'e8 \'fd\'f2\'e8 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'ef\'e5\'f0\'e5\'e4\'e0\'e4\'f3\'f2\'f1\'ff \'e2 xPos i yPos(\'e8 \'ed\'e5 \'f2\'ee\'eb\'fc\'ea\'ee),i \'fd\'f2\'ee \'ec\'e0\'f1\'f1\'e8\'e2 \'e0 j \'f7\'f2\'ee \'e2 \'ec\'e0\'f1\'f1\'e8\'e2\'e5\cf2\par
+\tab\tab\tab\tab\cf4 return\cf2 ;\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\}\par
+\}\f3\lang1033\par
+\par
+\cf0\f0\fs22\lang9\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 

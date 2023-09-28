@@ -1,0 +1,370 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green128\blue0;\red0\green0\blue0;\red128\green128\blue128;\red163\green21\blue21;\red0\green0\blue255;\red43\green145\blue175;\red0\green128\blue128;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 // 2.02.23homework.cpp : \f1\lang1058\'dd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe "main". \'c7\'e4\'e5\'f1\'fc \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'e8 \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb.\cf2\par
+\cf1 //\cf2\par
+\par
+\cf3 #include\cf2  \cf4 <iostream>\cf2\par
+\cf3 #include\cf2  \cf4 <string>\cf2\par
+\cf3 #pragma\cf2  \cf3 warning\cf2 (\cf3 disable\cf2 :4996)\par
+\cf5 using\cf2  \cf5 namespace\cf2  std;\par
+\cf1 //class Worker \{\cf2\par
+\cf1 //private:\cf2\par
+\cf1 //    int id = 0;\cf2\par
+\cf1 //public:\cf2\par
+\cf1 //    static int chot;\cf2\par
+\cf1 //    Worker() \{\cf2\par
+\cf1 //        chot += 1;\cf2\par
+\cf1 //        id = chot;\cf2\par
+\cf1 //    \}\cf2\par
+\cf1 //    static void s_prin() \{\cf2\par
+\cf1 //        cout << chot<<endl;\cf2\par
+\cf1 //    \}\cf2\par
+\cf1 //      void prin() \{\cf2\par
+\cf1 //        cout << id<<endl;\cf2\par
+\cf1 //\cf2\par
+\cf1 //       \}\cf2\par
+\cf1 //\};\cf2\par
+\cf1 //int Worker::chot = 0;\cf2\par
+\par
+\par
+\cf1 //int main()\cf2\par
+\cf1 //\{\cf2\par
+\cf1 //    /*Worker c[5];\cf2\par
+\cf1 //    for (int i = 0; i < 5; i++) \{\cf2\par
+\cf1 //        cout<<"static\\n";\cf2\par
+\cf1 //        c[i].s_prin();\cf2\par
+\cf1 //        cout << "id\\n";\cf2\par
+\cf1 //        c[i].prin();\cf2\par
+\cf1 //    \}*/\cf2\par
+\cf1 //\cf2\par
+\cf1 //\cf2\par
+\cf1 //\}\cf2\par
+\cf1 //2\cf2\par
+\par
+\cf5 class\cf2  \cf6 Reservoir\cf2  \{\par
+\cf5 private\cf2 :\par
+\tab\cf5 char\cf2 * name;\par
+\tab\cf6 string\cf2  type;\par
+\tab\cf5 int\cf2  length;\par
+\tab\cf5 int\cf2  width;\par
+\tab\cf5 int\cf2  depth;\par
+\tab\par
+\cf5 public\cf2 :\par
+\tab    \cf5 void\cf2  setname(\cf5 const\cf2  \cf5 char\cf2 * \cf3 name\cf2 )  \{\par
+\tab\tab\cf5 delete[]\cf2 (\cf5 this\cf2 ->name);\par
+\tab\tab\cf5 this\cf2 ->name = \cf5 new\cf2  \cf5 char\cf2 [strlen(\cf3 name\cf2 )+1];\par
+\tab\tab strcpy_s(\cf5 this\cf2 ->name,strlen(\cf3 name\cf2 ) + 1,\cf3 name\cf2 );\par
+\tab\}\par
+\tab    \cf5 char\cf2 * getname() \{\par
+\tab\tab    \cf5 return\cf2  name;\par
+\tab    \}\par
+\tab    \cf5 void\cf2  setlength(\cf5 int\cf2  \cf3 length\cf2 ) \{\par
+\tab\tab    \cf5 this\cf2 ->length = \cf3 length\cf2 ;\par
+\tab    \}\cf5 void\cf2  setwidth(\cf5 int\cf2  \cf3 length\cf2 ) \{\par
+\tab\tab    \cf5 this\cf2 ->width = \cf3 length\cf2 ;\par
+\tab    \}\cf5 void\cf2  setdepth(\cf5 int\cf2  \cf3 length\cf2 ) \{\par
+\tab\tab    \cf5 this\cf2 ->depth = \cf3 length\cf2 ;\par
+\tab    \}\par
+\tab    \cf5 int\cf2  getlength() \{\par
+\tab\tab    \cf5 return\cf2  length;\par
+\tab    \}\par
+\tab    \cf5 int\cf2  getwidth() \{\par
+\tab\tab    \cf5 return\cf2  width;\par
+\tab    \}\par
+\tab    \cf5 int\cf2  getdepth() \{\par
+\tab\tab    \cf5 return\cf2  depth;\par
+\tab    \}\par
+\tab    \cf5 void\cf2  typeselect() \{\par
+\tab\tab\cf5 bool\cf2  flag = \cf5 true\cf2 ;\par
+\tab\tab\cf5 int\cf2  choose;\par
+\tab\tab\cf6 string\cf2  mas[5]\{ \cf4 "noname"\cf2  ,\cf4 "Pool"\cf2 ,\cf4 "ozero"\cf2 ,\cf4 "sea"\cf2 ,\cf4 "ocean"\cf2  \};\par
+\tab\tab\cf5 if\cf2  (length, width, depth == 0) \{\par
+\tab\tab\tab type \cf7 =\cf2  \cf4 "noname"\cf2 ;\par
+\tab\tab\tab flag = \cf5 false\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf5 else\cf2  \cf5 if\cf2  (length < 100 && width <50 && depth < 5) \{\par
+\tab\tab\tab type \cf7 =\cf2  \cf4 "Pool"\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf5 else\cf2  \cf5 if\cf2  (length > 10 && width > 5 && depth < 25) \{\par
+\tab\tab\tab type \cf7 =\cf2  \cf4 "ozero"\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf5 else\cf2  \cf5 if\cf2  (length > 100 && width > 50 && depth > 25 \cf1 /* && length < 200 && width < 100*/\cf2 ) \{\par
+\tab\tab\tab type \cf7 =\cf2  \cf4 "sea"\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf5 else\cf2  \cf5 if\cf2  (length > 200 && width > 100 && depth > 50) \{\par
+\tab\tab\tab type \cf7 =\cf2  \cf4 "ocean"\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf5 else\cf2  \{\par
+\tab\tab\tab type \cf7 =\cf2  \cf4 "noname"\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf5 if\cf2  (flag == \cf5 true\cf2 ) \{\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf4 "type: "\cf2  \cf7 <<\cf2  type \cf7 <<\cf2  \cf4 " \'e2\'f1\'e5 \'f3\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2 0.\'ed\'e5\'f2 1.\'e4\'e0"\cf2 ;\par
+\tab\tab\tab cin \cf7 >>\cf2  choose;\par
+\tab\tab\tab\cf5 if\cf2  (choose == 0) \{\par
+\tab\tab\tab\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 1.\'ed\'e5\'ec\'e0 \'ed\'e0\'e7\'e2\'e0\'ed\'ed\'ff 2.\'e1\'e0\'f1\'e5\'e9\'ed 3.\'ee\'e7\'e5\'f0\'ee 4.\'ec\'ee\'f0\'e5 5.\'ee\'ea\'e5\'e0\'ed\\n"\cf2 ;\par
+\tab\tab\tab\tab cin \cf7 >>\cf2  choose;\par
+\tab\tab\tab\tab type \cf7 =\cf2  mas[choose - 1];\par
+\tab\tab\tab\}\par
+\tab\tab\tab\cf5 else\cf2  \{\par
+\tab\tab\tab\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e0\'f8 \'f2\'e8\'ef \'e2\'ee\'e4\'ee\'e9\'ec\'fb "\cf2  \cf7 <<\cf2  type \cf7 <<\cf2  endl;\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\tab Reservoir() \{\par
+\tab\tab name = \cf5 new\cf2  \cf5 char\cf2 [] \{\cf4 "noname"\cf2\};\par
+\tab\tab length, width, depth = 0;\par
+\tab\tab typeselect();\par
+\tab\}\par
+\tab\cf5 explicit\cf2  Reservoir(\cf5 const\cf2  \cf5 char\cf2 * \cf3 name\cf2 ) :\cf6 Reservoir\cf2 () \{\par
+\tab\tab\cf5 delete[]\cf2 (\cf5 this\cf2 ->name);\par
+\tab\tab\cf5 this\cf2 ->name = \cf5 new\cf2  \cf5 char\cf2 [strlen(\cf3 name\cf2 ) + 1];\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < strlen(\cf3 name\cf2 ) + 1; i++) \{\par
+\tab\tab\tab\cf5 this\cf2 ->name[i] = \cf3 name\cf2 [i];\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf5 explicit\cf2  Reservoir(\cf5 const\cf2  \cf6 Reservoir\cf2 & \cf3 obj\cf2 ) \{\par
+\tab\tab\cf5 delete[]\cf2 name;\par
+\tab\tab name = \cf5 new\cf2  \cf5 char\cf2 [strlen(\cf3 obj\cf2 .name) + 1];\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < strlen(\cf3 obj\cf2 .name) + 1; i++) \{\par
+\tab\tab\tab\cf5 this\cf2 ->name[i] = \cf3 obj\cf2 .name[i];\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf5 void\cf2  sizevoda() \{\par
+\tab\tab cout \cf7 <<\cf2  \cf4 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f0\'e0\'e7\'ec\'e5\'f0\'fb:\'e4\'ee\'eb\'e3\'ee\'f2\'e0,\'f8\'e8\'f0\'e8\'ed\'e0,\'e3\'eb\'f3\'e1\'e8\'ed\'e0\\n"\cf2 ;\par
+\tab\tab cin \cf7 >>\cf2  length;\par
+\tab\tab cin \cf7 >>\cf2  width;\par
+\tab\tab cin \cf7 >>\cf2  depth;\par
+\tab\}\par
+\tab  \cf5 int\cf2  Plosha() \{\par
+\tab\tab\cf5 if\cf2  (length, width, depth == 0) \{\par
+\tab\tab\tab\cf5 return\cf2  0;\par
+\tab\tab\}\par
+\tab\tab\cf5 return\cf2  length * width; \cf1 //\'e2\'ee\'e4\'ee\'e9\'ec\'fb \'f3 \'ec\'e5\'ed\'ff \'f1 \'ec\'e0\'e9\'ed\'ea\'f0\'e0\'f4\'f2\'e0 \'f1\'ee\'ee\'f2\'e2\'e5\'f6\'f2\'e2\'e5\'ed\'ee \'f4\'ee\'f0\'ec\'f3\'eb\'fb \'e1\'f3\'e4\'f3\'f2 \'e4\'eb\'ff \'ea\'e2\'e0\'e4\'f0\'e0\'f2\'ee\'e2,\'ef\'f0\'ff\'ec\'ee\'f3\'e3\'ee\'eb\'fc\'ed\'e8\'ea\'ee\'e2))\cf2\par
+\tab\}\par
+\tab  \cf5 const\cf2  \cf5 void\cf2  prin() \{\par
+\tab\tab cout \cf7 <<\cf2  name \cf7 <<\cf2 type\cf7 <<\cf2  length \cf7 <<\cf2  width \cf7 <<\cf2  depth \cf7 <<\cf2  Plosha() \cf7 <<\cf2  endl;\par
+\tab\}\par
+\tab\cf5 bool\cf2  polsheornot(\cf6 Reservoir\cf2 & \cf3 obj\cf2 ) \{\par
+\tab\tab\cf5 if\cf2  (Plosha() > \cf3 obj\cf2 .Plosha()) \{\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf4 "\'e1\'ee\'eb\'fc\'f8\'e5 \\n"\cf2 ;\par
+\tab\tab\tab\cf5 return\cf2  1;\par
+\tab\tab\}\par
+\tab\tab\cf5 else\cf2  \cf5 if\cf2  (Plosha() == \cf3 obj\cf2 .Plosha()) \{\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf4 "\'f0\'e0\'e2\'ed\'fb \\n"\cf2 ;\par
+\tab\tab\tab\cf5 return\cf2  0;\par
+\tab\tab\}\par
+\tab\tab\cf5 else\cf2  \{\par
+\tab\tab\tab cout \cf7 <<\cf2  \cf4 "\'ed\'e5 \'f0\'e0\'e2\'ed\'fb \\n"\cf2 ;\par
+\tab\tab\tab\cf5 return\cf2  0;\par
+\tab\tab\}\par
+\tab\}\par
+\par
+\tab\cf1 /*bool operator >(Reservoir obj) \{\cf2\par
+\cf1\tab\tab return Plosha() > obj.Plosha();\cf2\par
+\cf1\tab\}\cf2\par
+\cf1\tab bool operator ==(Reservoir obj) \{\cf2\par
+\cf1\tab\tab return Plosha() == obj.Plosha();\cf2\par
+\cf1\tab\}\cf2\par
+\cf1\tab bool operator <(Reservoir obj) \{\cf2\par
+\cf1\tab\tab return Plosha() < obj.Plosha();\cf2\par
+\cf1\tab\}*/\cf2\par
+\par
+\par
+\tab ~Reservoir() \{\par
+\tab\tab\cf5 delete[]\cf2 name;\par
+\tab\}\par
+\tab\cf5 friend\cf2  \cf5 const\cf2  \cf5 void\cf2  prinn(\cf6 Reservoir\cf2 * \cf3 obj\cf2 ,\cf5 int\cf2  \cf3 size\cf2 );\par
+\};\par
+\cf5 const\cf2  \cf5 void\cf2  prinn(\cf6 Reservoir\cf2 * \cf3 obj\cf2 ,\cf5 int\cf2  \cf3 size\cf2 ) \{\par
+\tab\cf5 if\cf2  (\cf3 size\cf2  == 0) \{\par
+\tab\tab cout \cf7 <<\cf2  \cf4 "\'ec\'e0\'f1\'f1\'e8\'e2 \'ef\'f3\'f1\'f2\\n"\cf2 ;\par
+\tab\tab\cf5 return\cf2  ;\par
+\tab\}\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\tab\tab cout \cf7 <<\cf2  \cf3 obj\cf2 [i].name \cf7 <<\cf2  \cf3 obj\cf2 [i].type \cf7 <<\cf2  \cf3 obj\cf2 [i].length \cf7 <<\cf2  \cf3 obj\cf2 [i].width \cf7 <<\cf2  \cf3 obj\cf2 [i].depth \cf7 <<\cf2  \cf3 obj\cf2 [i].Plosha() \cf7 <<\cf2  endl;\par
+\par
+\tab\}\par
+\}\par
+\cf5 void\cf2  add(\cf6 Reservoir\cf2 *& \cf3 s\cf2 , \cf5 int\cf2 & \cf3 size\cf2 ) \{\par
+\tab\cf6 FILE\cf2 * f;\par
+\tab\cf3 size\cf2 ++;\par
+\tab\cf5 if\cf2  (\cf3 size\cf2  > 1) \{\par
+\tab\tab\cf5 int\cf2  l;\par
+\tab\tab\cf5 int\cf2  w;\par
+\tab\tab\cf5 int\cf2  dep;\par
+\tab\tab\cf6 Reservoir\cf2 * d = \cf5 new\cf2  \cf6 Reservoir\cf2 [\cf3 size\cf2  - 1];\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2  - 1; i++) \{\par
+\tab\tab\tab l= \cf3 s\cf2 [i].getlength();\par
+\tab\tab\tab w = \cf3 s\cf2 [i].getwidth();\par
+\tab\tab\tab dep = \cf3 s\cf2 [i].getdepth();\par
+\tab\tab\tab d[i].setname(\cf3 s\cf2 [i].getname());\par
+\tab\tab\tab d[i].setlength(l);\par
+\tab\tab\tab d[i].setwidth(w);\par
+\tab\tab\tab d[i].setdepth(dep);\par
+\tab\tab\}\par
+\tab\tab\cf5 delete[]\cf3 s\cf2 ;\par
+\tab\tab\cf3 s\cf2  = \cf5 new\cf2  \cf6 Reservoir\cf2 [\cf3 size\cf2 ];\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2  - 1; i++) \{\par
+\tab\tab\tab l = d[i].getlength();\par
+\tab\tab\tab w = d[i].getwidth();\par
+\tab\tab\tab dep = d[i].getdepth();\par
+\tab\tab\tab\cf3 s\cf2 [i].setname(d[i].getname());\par
+\tab\tab\tab\cf3 s\cf2 [i].setlength(l);\par
+\tab\tab\tab\cf3 s\cf2 [i].setwidth(w);\par
+\tab\tab\tab\cf3 s\cf2 [i].setdepth(dep);\par
+\tab\tab\}\par
+\tab\tab\cf5 delete[]\cf2  d;\par
+\par
+\tab\tab\cf5 char\cf2  buff[255];\par
+\tab\tab cout \cf7 <<\cf2  \cf4 "name:\\n"\cf2 ;\par
+\tab\tab cin \cf7 >>\cf2  buff;\par
+\tab\tab\cf3 s\cf2 [\cf3 size\cf2  - 1].setname(buff);\par
+\tab\tab\cf3 s\cf2 [\cf3 size\cf2  - 1].sizevoda();\par
+\tab\tab\cf3 s\cf2 [\cf3 size\cf2  - 1].typeselect();\par
+\tab\tab f = fopen(\cf4 "file.txt"\cf2 , \cf4 "w"\cf2 );\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\tab\tab\par
+\tab\tab\tab fprintf(f, \cf4 "name %s length%d width%d depth%d\\n"\cf2 , \cf3 s\cf2 [i].getname(), \cf3 s\cf2 [i].getlength(), \cf3 s\cf2 [i].getwidth(), \cf3 s\cf2 [i].getdepth());\par
+\tab\tab\}\par
+\tab\tab fclose(f);\par
+\tab\tab f = fopen(\cf4 "file2.bin"\cf2 , \cf4 "wb"\cf2 );\par
+\tab\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\par
+\tab\tab\tab fprintf(f, \cf4 "name %s length%d width%d depth%d\\n"\cf2 , \cf3 s\cf2 [i].getname(), \cf3 s\cf2 [i].getlength(), \cf3 s\cf2 [i].getwidth(), \cf3 s\cf2 [i].getdepth());\par
+\tab\tab\}\par
+\tab\tab fclose(f);\par
+\tab\tab\par
+\tab\}\par
+\tab\cf5 else\cf2  \{\par
+\par
+\tab\tab\cf5 char\cf2  buff[255];\par
+\tab\tab\cf3 s\cf2  = \cf5 new\cf2  \cf6 Reservoir\cf2 [\cf3 size\cf2 ];\par
+\tab\tab cout \cf7 <<\cf2  \cf4 "name:\\n"\cf2 ;\par
+\tab\tab cin \cf7 >>\cf2  buff;\par
+\tab\tab\cf3 s\cf2 [\cf3 size\cf2  - 1].setname(buff);\par
+\tab\tab\cf3 s\cf2 [\cf3 size\cf2  - 1].sizevoda();\par
+\tab\tab\cf3 s\cf2 [\cf3 size\cf2  - 1].typeselect();\par
+\tab\tab f = fopen(\cf4 "file.txt"\cf2 , \cf4 "w"\cf2 );\par
+\tab\tab fprintf(f, \cf4 "name %s length%d width%d depth%d\\n"\cf2 , \cf3 s\cf2 [\cf3 size\cf2  - 1].getname(), \cf3 s\cf2 [\cf3 size\cf2  - 1].getlength(), \cf3 s\cf2 [\cf3 size\cf2  - 1].getwidth(), \cf3 s\cf2 [\cf3 size\cf2  - 1].getdepth());\par
+\tab\tab fclose(f);\par
+\tab\tab f = fopen(\cf4 "file2.bin"\cf2 , \cf4 "wb"\cf2 );\par
+\tab\tab fprintf(f, \cf4 "name %s length%d width%d depth%d\\n"\cf2 , \cf3 s\cf2 [\cf3 size\cf2  - 1].getname(), \cf3 s\cf2 [\cf3 size\cf2  - 1].getlength(), \cf3 s\cf2 [\cf3 size\cf2  - 1].getwidth(), \cf3 s\cf2 [\cf3 size\cf2  - 1].getdepth());\par
+\tab\tab fclose(f);\par
+\tab\}\par
+\par
+\}\par
+\cf5 void\cf2  delet(\cf6 Reservoir\cf2 *& \cf3 s\cf2 ,\cf5 int\cf2 & \cf3 size\cf2 ) \{\par
+\tab\cf6 FILE\cf2 * f;\par
+\tab\cf5 int\cf2  index;\par
+\tab\cf3 size\cf2  -= 1;\par
+\tab cout \cf7 <<\cf2  \cf4 "choose index for deleting\\n"\cf2 ;\par
+\tab cin \cf7 >>\cf2  index;\par
+\tab\cf5 int\cf2  l;\par
+\tab\cf5 int\cf2  w;\par
+\tab\cf5 int\cf2  dep;\par
+\tab\cf6 Reservoir\cf2 * d = \cf5 new\cf2  \cf6 Reservoir\cf2 [\cf3 size\cf2 ];\par
+\tab\cf5 bool\cf2  flag = \cf5 false\cf2 ;\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 +1; i++) \{\par
+\tab\tab\cf5 if\cf2  (i == index) \{\par
+\tab\tab\tab flag = \cf5 true\cf2 ;\par
+\tab\tab\tab\cf5 continue\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf5 if\cf2  (flag ==\cf5 true\cf2 ) \{\par
+\tab\tab\tab l = \cf3 s\cf2 [i].getlength();\par
+\tab\tab\tab w = \cf3 s\cf2 [i].getwidth();\par
+\tab\tab\tab dep = \cf3 s\cf2 [i].getdepth();\par
+\tab\tab\tab d[i-1].setname(\cf3 s\cf2 [i].getname());\par
+\tab\tab\tab d[i-1].setlength(l);\par
+\tab\tab\tab d[i-1].setwidth(w);\par
+\tab\tab\tab d[i-1].setdepth(dep);\par
+\tab\tab\}\par
+\tab\tab\cf5 else\cf2  \{\par
+\tab\tab\tab l = \cf3 s\cf2 [i].getlength();\par
+\tab\tab\tab w = \cf3 s\cf2 [i].getwidth();\par
+\tab\tab\tab dep = \cf3 s\cf2 [i].getdepth();\par
+\tab\tab\tab d[i].setname(\cf3 s\cf2 [i].getname());\par
+\tab\tab\tab d[i].setlength(l);\par
+\tab\tab\tab d[i].setwidth(w);\par
+\tab\tab\tab d[i].setdepth(dep);\par
+\tab\tab\}\par
+\tab\}\par
+\tab\par
+\tab\cf5 delete[]\cf3 s\cf2 ;\par
+\tab\cf3 s\cf2  = \cf5 new\cf2  \cf6 Reservoir\cf2 [\cf3 size\cf2 ];\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\tab\tab\cf1 /*if (i == index) \{\cf2\par
+\cf1\tab\tab\tab flag = true;\cf2\par
+\cf1\tab\tab\tab continue;\cf2\par
+\cf1\tab\tab\}*/\cf2\par
+\tab\cf1 //\tab if (flag) \{\cf2\par
+\tab\tab\tab l = d[i].getlength();\par
+\tab\tab\tab w = d[i].getwidth();\par
+\tab\tab\tab dep = d[i].getdepth();\par
+\tab\tab\tab\cf3 s\cf2 [i].setname(d[i].getname());\par
+\tab\tab\tab\cf3 s\cf2 [i].setlength(l);\par
+\tab\tab\tab\cf3 s\cf2 [i ].setwidth(w);\par
+\tab\tab\tab\cf3 s\cf2 [i ].setdepth(dep);\par
+\tab\cf1 //\tab\}\cf2\par
+\tab\tab\cf1 /*else \{\cf2\par
+\cf1\tab\tab\tab l = d[i].getlength();\cf2\par
+\cf1\tab\tab\tab w = d[i].getwidth();\cf2\par
+\cf1\tab\tab\tab dep = d[i].getdepth();\cf2\par
+\cf1\tab\tab\tab s[i].setname(d[i].getname());\cf2\par
+\cf1\tab\tab\tab s[i].setlength(l);\cf2\par
+\cf1\tab\tab\tab s[i].setwidth(w);\cf2\par
+\cf1\tab\tab\tab s[i].setdepth(dep);\cf2\par
+\cf1\tab\tab\}*/\cf2\par
+\tab\}\par
+\tab f = fopen(\cf4 "file.txt"\cf2 , \cf4 "w"\cf2 );\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\par
+\tab\tab fprintf(f, \cf4 "name %s length%d width%d depth%d\\n"\cf2 , \cf3 s\cf2 [i].getname(), \cf3 s\cf2 [i].getlength(), \cf3 s\cf2 [i].getwidth(), \cf3 s\cf2 [i].getdepth());\par
+\tab\}\par
+\tab fclose(f);\par
+\tab f = fopen(\cf4 "file2.bin"\cf2 , \cf4 "wb"\cf2 );\par
+\tab\cf5 for\cf2  (\cf5 int\cf2  i = 0; i < \cf3 size\cf2 ; i++) \{\par
+\par
+\tab\tab fprintf(f, \cf4 "name %s length%d width%d depth%d\\n"\cf2 , \cf3 s\cf2 [i].getname(), \cf3 s\cf2 [i].getlength(), \cf3 s\cf2 [i].getwidth(), \cf3 s\cf2 [i].getdepth());\par
+\tab\}\par
+\tab fclose(f);\par
+\}\par
+\cf5 int\cf2  main()\par
+\{\par
+\tab\cf5 int\cf2  size = 0;\par
+\tab\cf6 Reservoir\cf2 *s;\par
+\tab\cf5 int\cf2  choose;\par
+\tab\cf5 int\cf2  index;\par
+\par
+\tab\cf5 bool\cf2  fl = \cf5 true\cf2 ;\par
+\tab add(s, size);\par
+\tab\cf5 while\cf2  (fl) \{\par
+\tab\tab cout \cf7 <<\cf2  \cf4 "1.add 2.print 3.delete other exit\\n"\cf2 ;\par
+\tab\tab cin \cf7 >>\cf2  choose;\par
+\tab\tab\cf5 switch\cf2  (choose)\par
+\tab\tab\{\par
+\tab\tab\cf5 case\cf2  1:\par
+\tab\tab\tab add(s,size);\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\cf5 case\cf2  2:\par
+\tab\tab\tab\cf1 /*cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f7\'e8\'f1\'eb\'ee(\'ea\'e0\'ea\'ee\'e9 \'ee\'ed \'ef\'ee \'f1\'ef\'e8\'f1\'ea\'f3)";\cf2\par
+\cf1\tab\tab\tab cin >> index;\cf2\par
+\cf1\tab\tab\tab s[index-1].prin();*/\cf2\par
+\tab\tab\tab prinn(s, size);\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\cf5 case\cf2  3:\par
+\tab\tab\tab delet(s,size);\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\cf5 default\cf2 :\par
+\tab\tab\tab fl = \cf5 false\cf2 ;\par
+\tab\tab\tab\cf5 break\cf2 ;\par
+\tab\tab\}\par
+\tab\}\par
+\tab\par
+\tab\cf1 //Reservoir b(s);\cf2\par
+\tab\cf1 //b.prin();\cf2\par
+\tab\cf5 return\cf2  0;\par
+\}\cf0\f2\fs22\lang9\par
+}
+ 

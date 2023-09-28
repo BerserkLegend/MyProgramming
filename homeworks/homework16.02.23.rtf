@@ -1,0 +1,343 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red163\green21\blue21;\red0\green0\blue255;\red43\green145\blue175;\red0\green128\blue128;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 #include\cf2  \cf3 <iostream>\cf2\par
+\cf1 #include\cf2  \cf3 <initializer_list>\cf2\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\cf4 class\cf2  \cf5 Data\cf2  \{\par
+\cf4 private\cf2 :\par
+    \cf4 int\cf2  day, mouth, years;\par
+\cf4 public\cf2 :\par
+    \cf4 friend\cf2  \cf5 ostream\cf2 & \cf6 operator<<\cf2 (\cf5 ostream\cf2 & \cf1 out\cf2 , \cf4 const\cf2  \cf5 Data\cf2 & \cf1 d\cf2 );\par
+    Data(\cf4 int\cf2  \cf1 day\cf2 , \cf4 int\cf2  \cf1 mouth\cf2 , \cf4 int\cf2  \cf1 years\cf2 ) :day(\cf1 day\cf2 ), mouth(\cf1 mouth\cf2 ), years(\cf1 years\cf2 ) \{\par
+\par
+    \}\par
+    Data() \{\par
+        day, mouth, years = 0;\par
+    \}\par
+    \cf4 void\cf2  setDay(\cf4 int\cf2  \cf1 day\cf2 ) \{\par
+        \cf4 this\cf2 ->day=\cf1 day\cf2 ;\par
+    \}\par
+    \cf4 void\cf2  setYear(\cf4 int\cf2  \cf1 Year\cf2 ) \{\par
+        \cf4 this\cf2 ->years = \cf1 Year\cf2 ;\par
+    \}\par
+    \cf4 void\cf2  setmouth(\cf4 int\cf2  \cf1 mouth\cf2 ) \{\par
+        \cf4 this\cf2 ->mouth = \cf1 mouth\cf2 ;\par
+    \}\par
+    \cf4 void\cf2  OnedayAdd() \{\par
+        day++;\par
+        \cf4 if\cf2  (mouth == 2) \{\par
+            \cf4 if\cf2  (day == 29) \{\par
+                mouth += 1;\par
+                day = 1;\par
+            \}\par
+        \}\par
+        \cf4 else\cf2  \cf4 if\cf2  (mouth == 12) \{\par
+            \cf4 if\cf2  (day == 32) \{\par
+                mouth =1;\par
+                day = 1;\par
+                years += 1;\par
+            \}\par
+        \}\par
+        \cf4 else\cf2  \{\par
+            \cf4 if\cf2  (mouth < 7 && mouth % 2 != 0) \{\par
+                \cf4 if\cf2  (day == 32) \{\par
+                    mouth += 1;\par
+                    day = 1;\par
+                    \par
+                \}\par
+            \}\par
+            \cf4 else\cf2  \{\par
+                \cf4 if\cf2  (day == 31) \{\par
+                    mouth += 1;\par
+                    day = 1;\par
+\par
+                \}\par
+            \}\par
+            \cf4 if\cf2  (mouth >= 7 && mouth % 2 == 0||mouth==7) \{\par
+                \cf4 if\cf2  (day == 32) \{\par
+                    mouth += 1;\par
+                    day = 1;\par
+\par
+                \}\par
+            \}\par
+            \cf4 else\cf2  \{\par
+                \cf4 if\cf2  (day == 31) \{\par
+                    mouth += 1;\par
+                    day = 1;\par
+\par
+                \}\par
+            \}\par
+        \}\par
+    \}\par
+    \cf5 Data\cf2 & \cf6 operator ++\cf2 () \{\par
+        ++day;\par
+        ++mouth;\par
+        ++years;\par
+    \}\par
+    \cf5 Data\cf2 & \cf6 operator ++\cf2 (\cf4 int\cf2  \cf1 value\cf2 ) \{\par
+        \cf5 Data\cf2  temp(*\cf4 this\cf2 );\par
+        ++day;\par
+        ++mouth;\par
+        ++years;\par
+        \cf4 return\cf2  temp;\par
+    \}\par
+    \cf5 Data\cf2  \cf6 operator -\cf2 (\cf4 int\cf2  \cf1 value\cf2 ) \{\par
+        \cf4 return\cf2  \cf5 Data\cf2 ((day == 1) ? day = 1 : day - \cf1 value\cf2 , (mouth==1)?mouth =1:mouth-\cf1 value\cf2 ,years- \cf1 value\cf2 );\par
+    \}\par
+      \cf4 bool\cf2  \cf6 operator!=\cf2 (\cf5 Data\cf2 & \cf1 obj\cf2 ) \{\par
+          \cf4 if\cf2  (day != \cf1 obj\cf2 .day && mouth != \cf1 obj\cf2 .mouth && years != \cf1 obj\cf2 .years) \{\par
+              \cf4 return\cf2  \cf4 true\cf2 ;\par
+          \}\par
+          \cf4 else\cf2  \{\par
+              \cf4 return\cf2  \cf4 false\cf2 ;\par
+          \}\par
+    \}\par
+      \cf4 bool\cf2  \cf6 operator==\cf2 (\cf5 Data\cf2 & \cf1 obj\cf2 ) \{\par
+          \cf4 if\cf2  (day != \cf1 obj\cf2 .day && mouth != \cf1 obj\cf2 .mouth && years != \cf1 obj\cf2 .years) \{\par
+              \cf4 return\cf2  \cf4 false\cf2 ;\par
+          \}\par
+          \cf4 else\cf2  \{\par
+              \cf4 return\cf2  \cf4 true\cf2 ;\par
+          \}\par
+      \}\par
+      \cf4 bool\cf2  \cf6 operator>\cf2 (\cf5 Data\cf2 & \cf1 obj\cf2 ) \{\par
+          \cf4 if\cf2  (day > \cf1 obj\cf2 .day && mouth > \cf1 obj\cf2 .mouth && years > \cf1 obj\cf2 .years) \{\par
+              \cf4 return\cf2  \cf4 true\cf2 ;\par
+          \}\par
+          \cf4 else\cf2  \{\par
+              \cf4 return\cf2  \cf4 false\cf2 ;\par
+          \}\par
+      \}\par
+      \cf4 bool\cf2  \cf6 operator<\cf2 (\cf5 Data\cf2 & \cf1 obj\cf2 ) \{\par
+          \cf4 if\cf2  (day > \cf1 obj\cf2 .day && mouth > \cf1 obj\cf2 .mouth && years > \cf1 obj\cf2 .years) \{\par
+              \cf4 return\cf2  \cf4 false\cf2 ;\par
+          \}\par
+          \cf4 else\cf2  \{\par
+              \cf4 return\cf2  \cf4 true\cf2 ;\par
+          \}\par
+      \}\par
+      \cf5 Data\cf2 & \cf6 operator =\cf2 (\cf4 int\cf2  \cf1 value\cf2 ) \{\par
+          \cf4 if\cf2  (mouth ==2) \{\par
+              \cf4 if\cf2  (\cf1 value\cf2  >= 29) \{\par
+                  \cf4 return\cf2  *\cf4 this\cf2 ;\par
+              \}\par
+          \}\par
+          \cf4 else\cf2  \{\par
+              \cf4 if\cf2  (mouth < 7 && mouth % 2!=0) \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 32) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 else\cf2  \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 31) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 if\cf2  (mouth >= 7 && mouth % 2 == 0) \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 32) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 else\cf2  \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 31) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              day = \cf1 value\cf2 ;\par
+              \cf4 return\cf2  *\cf4 this\cf2 ;\par
+          \}\par
+          \par
+      \}\par
+      \cf5 Data\cf2 & \cf6 operator +=\cf2 (\cf4 int\cf2  \cf1 value\cf2 ) \{\par
+          \cf4 if\cf2  (mouth == 2) \{\par
+              \cf4 if\cf2  (\cf1 value\cf2  >= 29) \{\par
+                  \cf4 return\cf2  *\cf4 this\cf2 ;\par
+              \}\par
+          \}\par
+          \cf4 else\cf2  \{\par
+              \cf4 if\cf2  (mouth < 7 && mouth % 2 != 0) \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 32) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 else\cf2  \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 31) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 if\cf2  (mouth >= 7 && mouth % 2 == 0) \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 32) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 else\cf2  \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 31) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              day += \cf1 value\cf2 ;\par
+              \cf4 return\cf2  *\cf4 this\cf2 ;\par
+          \}\par
+\par
+      \}\par
+      \cf5 Data\cf2 & \cf6 operator -=\cf2 (\cf4 int\cf2  \cf1 value\cf2 ) \{\par
+          \cf4 if\cf2  (mouth == 2) \{\par
+              \cf4 if\cf2  (\cf1 value\cf2  >= 29) \{\par
+                  \cf4 return\cf2  *\cf4 this\cf2 ;\par
+              \}\par
+          \}\par
+          \cf4 else\cf2  \{\par
+              \cf4 if\cf2  (mouth < 7 && mouth % 2 != 0) \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 32) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 else\cf2  \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 31) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 if\cf2  (mouth >= 7 && mouth % 2 == 0) \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 32) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 else\cf2  \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 31) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              day -= \cf1 value\cf2 ;\par
+              \cf4 return\cf2  *\cf4 this\cf2 ;\par
+          \}\par
+\par
+      \}\par
+      \cf5 Data\cf2 & \cf6 operator ()\cf2 (\cf4 int\cf2  \cf1 value\cf2 ) \{\par
+          \cf4 if\cf2  (mouth == 2) \{\par
+              \cf4 if\cf2  (\cf1 value\cf2  >= 29) \{\par
+                  \cf4 return\cf2  *\cf4 this\cf2 ;\par
+              \}\par
+          \}\par
+          \cf4 else\cf2  \{\par
+              \cf4 if\cf2  (mouth < 7 && mouth % 2 != 0) \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 32) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 else\cf2  \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 31) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 if\cf2  (mouth >= 7 && mouth % 2 == 0) \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 32) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              \cf4 else\cf2  \{\par
+                  \cf4 if\cf2  (\cf1 value\cf2  >= 31) \{\par
+                      \cf4 return\cf2  *\cf4 this\cf2 ;\par
+                  \}\par
+              \}\par
+              day = \cf1 value\cf2 ;\par
+              \cf4 return\cf2  *\cf4 this\cf2 ;\par
+          \}\par
+\par
+      \}\par
+\par
+    \cf4 void\cf2  print() \{\par
+        cout \cf6 <<\cf2  day \cf6 <<\cf2  mouth \cf6 <<\cf2  years\cf6 <<\cf3 "\\n"\cf2 ;\par
+    \}\par
+    \cf4 friend\cf2  \cf5 istream\cf2 & \cf6 operator>>\cf2 (\cf5 istream\cf2 & \cf1 in\cf2 , \cf5 Data\cf2 & \cf1 d\cf2 ) \{\par
+        \cf5 Data\cf2  temp;\par
+        temp.day = \cf1 d\cf2 .day;\par
+        temp.mouth = \cf1 d\cf2 .mouth;\par
+        temp.years = \cf1 d\cf2 .years;\par
+        \cf1 in\cf2  \cf6 >>\cf2  \cf1 d\cf2 .day;\par
+        \cf1 in\cf2  \cf6 >>\cf2  \cf1 d\cf2 .mouth;\par
+        \cf1 in\cf2  \cf6 >>\cf2  \cf1 d\cf2 .years;\par
+        \par
+            \cf4 if\cf2  (\cf1 d\cf2 .mouth == 2) \{\par
+                \cf4 if\cf2  (\cf1 d\cf2 .day > 28) \{\par
+                    \cf1 d\cf2 .day = temp.day;\par
+                    \cf1 d\cf2 .mouth = temp.mouth;\par
+                    \cf1 d\cf2 .years = temp.years;\par
+                \}\par
+            \}\par
+            \cf4 else\cf2  \cf4 if\cf2  (\cf1 d\cf2 .mouth == 12) \{\par
+                \cf4 if\cf2  (\cf1 d\cf2 .day >= 32) \{\par
+                    \cf1 d\cf2 .day = temp.day;\par
+                    \cf1 d\cf2 .mouth = temp.mouth;\par
+                    \cf1 d\cf2 .years = temp.years;\par
+                \}\par
+            \}\par
+            \cf4 else\cf2  \{\par
+                \cf4 if\cf2  (\cf1 d\cf2 .mouth < 7 && \cf1 d\cf2 .mouth % 2 != 0) \{\par
+                    \cf4 if\cf2  (\cf1 d\cf2 .day >= 32) \{\par
+                        \cf1 d\cf2 .day = temp.day;\par
+                        \cf1 d\cf2 .mouth = temp.mouth;\par
+                        \cf1 d\cf2 .years = temp.years;\par
+\par
+                    \}\par
+                \}\par
+                \cf4 else\cf2  \{\par
+                    \cf4 if\cf2  (\cf1 d\cf2 .day >= 31) \{\par
+                        \cf1 d\cf2 .day = temp.day;\par
+                        \cf1 d\cf2 .mouth = temp.mouth;\par
+                        \cf1 d\cf2 .years = temp.years;\par
+\par
+                    \}\par
+                \}\par
+                \cf4 if\cf2  (\cf1 d\cf2 .mouth >= 7 && \cf1 d\cf2 .mouth % 2 == 0 || \cf1 d\cf2 .mouth == 7) \{\par
+                    \cf4 if\cf2  (\cf1 d\cf2 .day >= 32) \{\par
+                        \cf1 d\cf2 .day = temp.day;\par
+                        \cf1 d\cf2 .mouth = temp.mouth;\par
+                        \cf1 d\cf2 .years = temp.years;\par
+\par
+                    \}\par
+                \}\par
+                \cf4 else\cf2  \{\par
+                    \cf4 if\cf2  (\cf1 d\cf2 .day >= 31) \{\par
+                        \cf1 d\cf2 .day = temp.day;\par
+                        \cf1 d\cf2 .mouth = temp.mouth;\par
+                        \cf1 d\cf2 .years = temp.years;\par
+\par
+                    \}\par
+                \}\par
+                \cf4 if\cf2  (\cf1 d\cf2 .mouth <= 0 && \cf1 d\cf2 .mouth >= 13) \{\par
+                    \cf1 d\cf2 .day = temp.day;\par
+                    \cf1 d\cf2 .mouth = temp.mouth;\par
+                    \cf1 d\cf2 .years = temp.years;\par
+\par
+                \}\par
+              \par
+            \}\par
+            \cf4 return\cf2  \cf1 in\cf2 ;\par
+\par
+\par
+    \}\par
+\};\par
+\par
+\cf5 ostream\cf2 & \cf6 operator<<\cf2 (\cf5 ostream\cf2 & \cf1 out\cf2 , \cf4 const\cf2  \cf5 Data\cf2 & \cf1 d\cf2 ) \{\par
+    \cf1 out\cf2  \cf6 <<\cf2  \cf1 d\cf2 .day;\par
+    \cf1 out\cf2  \cf6 <<\cf2  \cf1 d\cf2 .mouth;\par
+    \cf1 out\cf2  \cf6 <<\cf2  \cf1 d\cf2 .years\cf6 <<\cf2 endl;\par
+    \cf4 return\cf2  \cf1 out\cf2 ;\par
+\par
+\}\par
+\cf4 int\cf2  main()\par
+\{\par
+    \cf5 Data\cf2  d(31, 12,2022);\par
+    \cf5 Data\cf2  s(31, 12, 2022);\par
+    d.OnedayAdd();\par
+    s.OnedayAdd();\par
+    d.print();\par
+    cout \cf6 <<\cf2  d;\par
+    cout \cf6 <<\cf2  (d \cf6 !=\cf2  s);\par
+    d\cf6 (\cf2 1\cf6 )\cf2 ;\par
+    \par
+\}\par
+\cf0\f1\fs22\par
+}
+ 

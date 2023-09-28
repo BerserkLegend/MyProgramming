@@ -1,0 +1,189 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;\red43\green145\blue175;\red128\green128\blue128;\red0\green128\blue128;\red163\green21\blue21;\red0\green128\blue0;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 class\cf2  \cf3 String\cf2  \{\par
+\cf1 private\cf2 :\par
+    \cf1 char\cf2 * name;\par
+    \cf1 int\cf2  size;\par
+    \cf1 int\cf2  capacity;\par
+\par
+\cf1 public\cf2 :\par
+    String() :name(\cf1 nullptr\cf2 ), size(0), capacity(0) \{\par
+    \}\par
+    String(\cf1 const\cf2  \cf1 char\cf2 * \cf4 str\cf2 ) : size(strlen(\cf4 str\cf2 )), capacity(size + 1) \{\par
+        name = \cf1 new\cf2  \cf1 char\cf2 [capacity];\par
+        strcpy(name, \cf4 str\cf2 );\par
+    \}\par
+    String(\cf1 const\cf2  \cf3 String\cf2 & \cf4 str\cf2 ) : size(\cf4 str\cf2 .size), capacity(\cf4 str\cf2 .capacity) \{\par
+        name = \cf1 new\cf2  \cf1 char\cf2 [capacity];\par
+        strcpy(name, \cf4 str\cf2 .name);\par
+    \}\par
+    \cf3 String\cf2  \cf5 operator =\cf2  (\cf3 String\cf2 & \cf4 obj\cf2 ) \{\par
+        \cf1 if\cf2  (\cf1 this\cf2  == &\cf4 obj\cf2 )\par
+            \cf1 return\cf2  *\cf1 this\cf2 ;\par
+        \cf1 else\cf2  \{\par
+            \cf1 delete[]\cf2 name;\par
+            size = \cf4 obj\cf2 .size;\par
+            capacity = \cf4 obj\cf2 .capacity;\par
+            name = \cf1 new\cf2  \cf1 char\cf2 [capacity];\par
+            strcpy(name, \cf4 obj\cf2 .name);\par
+            \cf1 return\cf2  *\cf1 this\cf2 ;\par
+        \}\par
+    \}\par
+    \cf3 String\cf2  \cf5 operator +=\cf2  (\cf3 String\cf2 & \cf4 obj\cf2 ) \{\par
+        size += \cf4 obj\cf2 .size;\par
+        capacity = size + 1;\par
+        \cf1 char\cf2  buff[255];\par
+        strcpy(buff, name);\par
+        strcat(buff, \cf4 obj\cf2 .name);\par
+        \cf1 delete[]\cf2 name;\par
+        name = \cf1 new\cf2  \cf1 char\cf2 [capacity];\par
+        strcpy(name, buff);\par
+        \cf1 return\cf2  *\cf1 this\cf2 ;\par
+    \}\par
+    \cf3 String\cf2  \cf5 operator +=\cf2  (\cf1 const\cf2  \cf1 char\cf2  \cf4 c\cf2 ) \{\par
+        size += 1;\par
+        capacity = size+1;\par
+        \cf1 char\cf2  buff[255];\par
+        strcpy(buff, name);\par
+        \cf1 delete[]\cf2 name;\par
+        name = \cf1 new\cf2  \cf1 char\cf2 [capacity];\par
+        strcpy(name, buff);\par
+        name[size-1] = \cf4 c\cf2 ;\par
+        name[size] = \cf6 '\\0'\cf2 ;\par
+       \par
+        \cf1 return\cf2  *\cf1 this\cf2 ;\par
+    \}\par
+    \cf3 String\cf2  \cf5 operator+=\cf2 (\cf1 const\cf2  \cf1 char\cf2 * \cf4 c\cf2 ) \{\par
+        \cf7 // \f1\lang1058\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'ec \'e4\'eb\'e8\'ed\'f3 \'f1\'f2\'f0\'ee\'ea\'e8, \'ea\'ee\'f2\'ee\'f0\'f3\'fe \'ed\'f3\'e6\'ed\'ee \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc\cf2\par
+        \cf1 int\cf2  len = strlen(\cf4 c\cf2 );\par
+        size += len;\par
+        capacity = len + strlen(name)+1;\par
+        \cf1 char\cf2  buff[255];\par
+        strcpy(buff, name);\par
+        \cf1 delete[]\cf2 name;\par
+        strcat(buff, \cf4 c\cf2 );\par
+        name = \cf1 new\cf2  \cf1 char\cf2 [capacity];\par
+        strcpy(name, buff);\par
+        \cf1 return\cf2  *\cf1 this\cf2 ;\par
+    \}\par
+\par
+\par
+\par
+    \cf1 char\cf2  \cf5 operator[]\cf2 (\cf1 int\cf2  \cf4 index\cf2 ) \{\par
+        \cf1 return\cf2  name[\cf4 index\cf2 ];\par
+    \}\par
+    \cf1 void\cf2  assign(\cf1 const\cf2  \cf1 char\cf2 * \cf4 txt\cf2 ) \{\par
+        \cf1 if\cf2 (name!=\cf1 nullptr\cf2 )\par
+          \cf1 delete[]\cf2 name;\par
+\par
+        size = strlen(\cf4 txt\cf2 );\par
+        capacity = size + 1;\par
+        name = \cf1 new\cf2  \cf1 char\cf2 [capacity];\par
+        strcpy(name, \cf4 txt\cf2 );\par
+\par
+\par
+    \}\par
+\par
+    \cf1 int\cf2  lenght() \{\par
+        \cf1 return\cf2  strlen(name);\par
+    \}\par
+    \cf1 void\cf2  append(\cf1 const\cf2  \cf1 char\cf2 * \cf4 text\cf2 ) \{\par
+        \cf1 int\cf2  textLength = strlen(\cf4 text\cf2 );\par
+        \cf1 int\cf2  newSize = size + textLength;\par
+        \cf1 char\cf2 * temp = \cf1 new\cf2  \cf1 char\cf2 [newSize + 1];\par
+\par
+        \cf1 for\cf2  (\cf1 int\cf2  i = 0; i < size; i++) \{\par
+            temp[i] = name[i];\par
+        \}\par
+        \cf1 for\cf2  (\cf1 int\cf2  i = 0; i < textLength; i++) \{\par
+            temp[size + i] = \cf4 text\cf2 [i];\par
+        \}\par
+        temp[newSize] = \cf6 '\\0'\cf2 ;\par
+        \cf1 delete[]\cf2  name;\par
+        name = temp;\par
+        size = newSize;\par
+        capacity = newSize+1;\par
+    \}\par
+    \cf1 void\cf2  erase() \{\par
+        \cf1 if\cf2  (name != \cf1 nullptr\cf2 ) \{\par
+            \cf1 delete[]\cf2  name;\par
+            name = \cf1 nullptr\cf2 ;\par
+            size = 0;\par
+            capacity = 0;\par
+        \}\par
+    \}\par
+    \cf1 void\cf2  insert(\cf1 int\cf2  \cf4 pos\cf2 ,\cf1 const\cf2  \cf1 char\cf2 * \cf4 text\cf2 ) \{\par
+        \cf1 char\cf2  buff[255];\par
+        \cf1 for\cf2  (\cf1 int\cf2  i = 0; i < \cf4 pos\cf2 ; i++) \{\par
+            buff[i] = name[i];\par
+        \}\par
+        buff[\cf4 pos\cf2 ] = \cf6 '\\0'\cf2 ;\par
+        strcat(buff, \cf4 text\cf2 );\par
+  \par
+        \cf1 delete[]\cf2 name;\par
+        size = strlen(buff);\par
+        capacity = size + 1;\par
+        name = \cf1 new\cf2  \cf1 char\cf2 [capacity];\par
+        strcpy(name, buff);\par
+\par
+\par
+\par
+    \}\par
+\par
+    \cf1 void\cf2  replace(\cf1 const\cf2  \cf3 String\cf2 & \cf4 str\cf2 ) \{\par
+        size = \cf4 str\cf2 .size;\par
+        capacity = \cf4 str\cf2 .capacity;\par
+        \cf1 delete[]\cf2 name;\par
+        name = \cf1 new\cf2  \cf1 char\cf2 [\cf4 str\cf2 .capacity];\par
+        strcpy(name, \cf4 str\cf2 .name);\par
+    \}\par
+\par
+    \cf1 friend\cf2  \cf3 ostream\cf2 & \cf5 operator<<\cf2 (\cf3 ostream\cf2 & \cf4 out\cf2 , \cf1 const\cf2  \cf3 String\cf2 & \cf4 str\cf2 );\par
+    \cf1 friend\cf2  \cf3 istream\cf2 & \cf5 operator>>\cf2 (\cf3 istream\cf2 & \cf4 in\cf2 , \cf3 String\cf2 & \cf4 str\cf2 );\par
+    ~String() \{\par
+        \cf1 delete[]\cf2  name;\par
+    \}\par
+\};\par
+\cf3 ostream\cf2 & \cf5 operator<<\cf2 (\cf3 ostream\cf2 & \cf4 out\cf2 , \cf1 const\cf2  \cf3 String\cf2 & \cf4 str\cf2 ) \{\par
+    \cf1 if\cf2  (\cf4 str\cf2 .name != \cf1 nullptr\cf2 ) \{\par
+\par
+        \cf4 out\cf2  \cf5 <<\cf2  \cf6 "name "\cf2  \cf5 <<\cf2  \cf4 str\cf2 .name \cf5 <<\cf2  \cf6 " size "\cf2  \cf5 <<\cf2  \cf4 str\cf2 .size \cf5 <<\cf2  \cf6 " capacity "\cf2  \cf5 <<\cf2  \cf4 str\cf2 .capacity\cf5 <<\cf2 endl;\par
+    \}\par
+    \cf1 else\cf2  \{\par
+        \cf4 out\cf2  \cf5 <<\cf6 "don`t have name "\cf2  \cf5 <<\cf2  \cf6 "size "\cf2  \cf5 <<\cf2  \cf4 str\cf2 .size \cf5 <<\cf2  \cf6 "capacity "\cf2  \cf5 <<\cf2  \cf4 str\cf2 .capacity\cf5 <<\cf2 endl;\par
+    \}\par
+    \cf1 return\cf2  \cf4 out\cf2 ;\par
+\}\par
+\cf3 istream\cf2 & \cf5 operator>>\cf2 (\cf3 istream\cf2 & \cf4 in\cf2 , \cf3 String\cf2 & \cf4 str\cf2 ) \{\par
+    \cf1 char\cf2  n[255];\par
+    cout \cf5 <<\cf2  \cf6 "name\\n "\cf2 ;\par
+    \cf4 in\cf2  \cf5 >>\cf2  n;\par
+    \cf1 if\cf2  (\cf4 str\cf2 .name != \cf1 nullptr\cf2 )\par
+        \cf1 delete[]\cf2  \cf4 str\cf2 .name;\par
+    \cf4 str\cf2 .name = \cf1 new\cf2  \cf1 char\cf2 [strlen(n) + 1];\par
+    strcpy(\cf4 str\cf2 .name, n);\par
+    \cf4 str\cf2 .size = strlen(n);\par
+    \cf4 str\cf2 .capacity = strlen(n)+1;\par
+    \cf1 return\cf2  \cf4 in\cf2 ;\par
+\}\par
+\par
+\cf1 int\cf2  main()\par
+\{\par
+    \cf3 String\cf2  h(\cf6 "gggggg"\cf2 );\par
+    \cf3 String\cf2  d(\cf6 "fff"\cf2 );\par
+    d \cf5 +=\cf2  \cf6 'g'\cf2 ;\par
+    cout \cf5 <<\cf2  d;\par
+    d.assign(\cf6 "dfddd"\cf2 );\par
+    cout \cf5 <<\cf2  d\cf5 [\cf2 1\cf5 ]<<\cf2 endl;\par
+    cout \cf5 <<\cf2  d;\par
+    d.insert(3, \cf6 "zdracte"\cf2 );\par
+    cout \cf5 <<\cf2  d;\par
+    d.append(\cf6 "ffff"\cf2 );\par
+    cout \cf5 <<\cf2  d;\par
+    d.replace(h);\par
+    cout \cf5 <<\cf2  d;\par
+    \par
+\}\cf0\f2\fs22\lang9\par
+}
+ 

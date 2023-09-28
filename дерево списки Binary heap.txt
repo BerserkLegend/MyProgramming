@@ -1,0 +1,556 @@
+// SpiskiTreeDoubleSpiski.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
+using namespace std;
+//1 Списки
+// template<typename T>
+//class list {
+//private:
+//    struct Node {
+//        Node* next;
+//        T data;
+//        Node(T data = T()) :data(data), next(nullptr)
+//        {
+//
+//        }
+//    };
+//    Node* head;
+//    int size;
+//public:
+//
+//    void push_front(T data) {
+//        Node* node = new Node(data);
+//        node->next = head;
+//        head = node;
+//        size++;
+//    }
+//    void pop_front() {
+//        if (head == nullptr) {
+//            cout << "list is empty";
+//        }
+//        else {
+//            if (head != nullptr) {
+//                Node* temp;
+//                temp = head;
+//                head = head->next;
+//                delete temp;
+//                size--;
+//            }
+//            /* if (head != nullptr) {
+//                 Node* new_head = head->next;
+//                 delete head;
+//                 head = new_head;
+//                 size--;
+//             }*/
+//
+//        }
+//    }
+//    void find(T dat) {
+//        Node* temp = head;
+//        for (int i = 0; i < size; i++) {
+//            if (temp->data == dat) {
+//                cout << i;
+//                break;
+//            }
+//            temp = temp->next;
+//        }
+//    }
+//    T front() const {
+//        if (head == nullptr) {
+//            cout << "list empty";
+//        }
+//        else
+//            return head->data;
+//
+//
+//    }
+//    T at(int index) {
+//        Node* temp =head;
+//        for (int i = 0; i < index; i++) {
+//            if (index > -1 && size > index) {
+//                temp = temp->next;
+//            }
+//            else
+//            {
+//                cout << "error index bigger/equals than size or index smaller 0\n";
+//                return T();
+//            }
+//        }
+//        return temp->data;
+//
+//     }
+//    
+//
+//    T operator [](int index) {
+//        Node* temp = head;
+//        for (int i = 0; i < index; i++) {
+//            if (index > -1 && size > index) {
+//                temp = temp->next;
+//            }
+//            else
+//            {
+//                cout << "error index bigger/equals than size or index smaller 0\n";
+//                return T();
+//            }
+//        }
+//        return temp->data;
+//
+//    }
+//
+//
+// 
+//   void prin() {
+//        if (head == nullptr) {
+//            cout << "list empty";
+//                return ;
+//        }
+//      
+//            Node* temp;
+//            temp = head;
+//            while (temp != nullptr) {
+//                cout << temp->data;
+//                temp = temp->next;
+//                
+//           }
+//            cout << "\n";
+//            /*temp = head;
+//            temp = temp->next->next;
+//            cout << temp->data;*/
+//            
+//      
+//
+//    }
+//
+//    bool empty() const {
+//        return size == 0;
+//    }
+//    list()
+//    {
+//        head = nullptr;
+//        size = 0;
+//    }
+//    ~list() {
+//        Node* curr = head;
+//        while (curr != nullptr) {
+//            Node* temp = curr;
+//            curr = curr->next;
+//            delete temp;
+//        }
+//    }
+//};
+//
+//
+//int main()
+//{
+//    list<int>f;
+//    f.push_front(23);
+//    f.push_front(26);
+//    f.push_front(30);
+//    /*cout << "head =" << f.front();
+//    f.pop_front();
+//    cout << "head =" << f.front();
+//    f.pop_front();
+//    cout << "head =" << f.front();*/
+//    f.prin();
+//    f.find(30);
+//    cout << endl;
+//    cout<<f.at(10);
+//}
+
+
+
+//2 //двухсвязаный список
+//template <typename T>
+//class list {
+//
+//private:
+//	struct Node {
+//		Node* next;
+//		Node* prev;
+//		T data;
+//		Node(const T data, Node* next = nullptr, Node* prev = nullptr) :
+//			data(data), next(next), prev(prev) {};
+//	};
+//	Node* head;
+//	Node* tail; //последний елемент
+//	int size = 0;
+//public:
+//	bool is_empty() {
+//		return size == 0;
+//	}
+//
+//	list() {
+//		head = nullptr;
+//		tail = nullptr;
+//		size = 0;
+//	}
+//	/*~list() {
+//		while () {
+//			pop_front();
+//		}
+//	}*/
+//	void push_front(T data) {
+//		if (is_empty()) {
+//			head = tail = new Node(data);
+//		}
+//		else {
+//			head = new Node(data, head);
+//			head->next->prev = head;
+//		}
+//		size++;
+//	}
+//	void push_back(T data) {
+//		if (is_empty()) {
+//			tail = head = new Node(data);
+//		}
+//		else {
+//			tail = new Node(data, nullptr, tail);
+//			tail->prev->next = tail;
+//		}
+//	}
+//
+//	void pop_front() {
+//		if (is_empty()) {
+//			cerr << "list is empty";
+//		}
+//		else {
+//			Node* temp = head;
+//			head = head->next;
+//			if (head != nullptr) {
+//				head->prev = nullptr;
+//			}
+//			else {
+//				head = nullptr;
+//				tail = nullptr;
+//			}
+//			delete temp;
+//			size--;
+//
+//		}
+//
+//	}
+//	void print() {
+//		Node* temp = head;
+//		if (!is_empty()) {
+//			while (temp != nullptr) {
+//				cout << temp->data << " ";
+//				temp = temp->next;
+//			}
+//			cout << "\n";
+//		}
+//	}
+//
+//
+//
+//	friend ostream& operator<<(ostream& os, list<T>& lis) {
+//		Node* temp = lis.tail;
+//		if (!lis.is_empty()) {
+//			while (temp != nullptr) {
+//				os << temp->data << " ";
+//				temp = temp->prev;
+//			}
+//		}
+//		os << "\n";
+//
+//		return os;
+//	}
+//	
+//};
+//
+//int main() {
+//	list<int> s;
+//	s.push_front(1);
+//	s.push_front(2);
+//	s.push_front(3);
+//	s.push_back(0);
+//	s.print();
+//	return 0;
+//}
+
+
+
+
+
+//3
+//template<typename T>
+//class Tree {
+//
+//private:
+//	struct Node {
+//		T data;
+//		Node* right;
+//		Node* left;
+//		Node(T value) :data(value), left(nullptr), right(nullptr) {};
+//
+//	};
+//	void delete_tree(Node* node) {
+//		if (node != nullptr) {
+//			delete_tree(node->left);
+//			delete_tree(node->right);
+//			delete[] node;
+//		}
+//
+//	}
+//	Node* root;
+//	int size;
+//public:
+//	Tree() { root = nullptr; }
+//	~Tree() { delete_tree(root); }
+//	void insert(T value) {
+//		if (root == nullptr) {
+//			root = new Node(value);
+//		}
+//		else {
+//			insert(value, root);
+//		}
+//	}
+//	void insert(T value, Node* node) {
+//		if (value < node->data) {
+//			if (node->left == nullptr)
+//				node->left = new Node(value);
+//			else
+//				insert(value, node->left);
+//
+//
+//		}
+//		else {
+//			if (node->right == nullptr)
+//				node->right = new Node(value);
+//			else
+//				insert(value, node->right);
+//
+//
+//
+//		}
+//	}
+//	void in_order() {
+//		in_order(root);
+//	}
+//
+//	void in_order(Node* node) {
+//		if (node != nullptr) {
+//			in_order(node->left);
+//			cout << node->data << " ";
+//			in_order(node->right);
+//		}
+//	}
+//
+//
+//};
+//
+//int main() {
+//	Tree<int>first;
+//	first.insert(12);
+//	first.insert(22);
+//	first.insert(34);
+//	first.insert(65);
+//	first.insert(14);
+//	first.insert(13);
+//	first.insert(1);
+//	first.in_order();
+//
+//}
+
+
+//4
+template <typename T>    //код исправил но надо немного изучить
+class BinaryHeap {
+
+private:
+	T* data;
+	int size;
+	int capacity;
+	int parent(int i) {
+		return (i - 1) / 2;
+	}
+	int left(int i) {
+		return(2 * i) + 1;
+	}
+	int right(int i) {
+		return(2 * i) + 2;
+	}
+	void Shiftup(int i) {
+		while (i > 0 && data[parent(i)] < data[i]) {
+			swap(data[parent(i)], data[i]);
+			i = parent(i);
+		}
+	}
+	void Shiftdown(int i)
+	{
+		int max_index = i;
+		int l = left(i);
+		int r = right(i);
+		if (l<size && data[l]>data[max_index]) {
+			max_index = l;
+		}
+		if (r<size && data[r]>data[max_index]) {
+			max_index = r;
+		}
+		if (i != max_index) {
+			swap(data[i], data[max_index]);
+			Shiftdown(max_index);
+		}
+	}
+	void InCapacity() {
+		capacity *= 2;
+		T* temp = new T[capacity];
+		for (int i = 0; i < size; i++) {
+			temp[i] = data[i];
+		}
+		delete[]data;
+		data = temp;
+	}
+public:
+	BinaryHeap() :size(0), capacity(10) {
+		data = new T[capacity];
+	}
+	BinaryHeap(int in) :size(0), capacity(in) {
+		data = new T[in];
+	}
+	~BinaryHeap() {
+		delete[]data;
+	}
+	void insert(T val) {
+		if (size == capacity) {
+			InCapacity();
+		}
+		data[size] = val;
+		size++;
+		Shiftup(size - 1);
+	}
+	T max() {
+		T result = data[0];
+		data[0] = data[--size];
+		Shiftdown(0);
+		return result;
+
+	}
+	bool is_empty() {
+		return size == 0;
+	}
+	int Getsize() {
+		return size;
+	}
+	void print() {
+		for (int i = 0; i < size; i++) {
+			cout << data[i] << " ";
+		}
+		cout << "\n";
+	}
+};
+
+int main() {
+	BinaryHeap<int>first;
+	first.insert(24);
+	first.insert(3);
+	first.insert(11);
+	first.insert(5);
+	first.insert(99);
+	first.insert(14);
+	first.insert(150);
+	first.print();
+}
+
+
+//этот BinaryHeap работает коректно
+#include <iostream>
+
+template <typename T>
+class BinaryHeap {
+private:
+    T* data;
+    int size;
+    int capacity;
+    int parent(int i) {
+        return (i - 1) / 2;
+    }
+    int left(int i) {
+        return (2 * i) + 1;
+    }
+    int right(int i) {
+        return (2 * i) + 2;
+    }
+    void Shiftup(int i) {
+        while (i > 0 && data[parent(i)] < data[i]) {
+            std::swap(data[parent(i)], data[i]);
+            i = parent(i);
+        }
+    }
+    void Shiftdown(int i) {
+        int max_index = i;
+        int l = left(i);
+        int r = right(i);
+        if (l < size && data[l] > data[max_index]) {
+            max_index = l;
+        }
+        if (r < size && data[r] > data[max_index]) {
+            max_index = r;
+        }
+        if (i != max_index) {
+            std::swap(data[i], data[max_index]);
+            Shiftdown(max_index);
+        }
+    }
+    void InCapacity() {
+        capacity = capacity * 2;
+        T* temp = new T[capacity];
+        for (int i = 0; i < size; i++) {
+            temp[i] = data[i];
+        }
+        delete[]data;
+        data = temp;
+    }
+public:
+    BinaryHeap() :size(0), capacity(10) {
+        data = new T[capacity];
+    }
+    BinaryHeap(int in) :size(0), capacity(in) {
+        data = new T[in];
+    }
+    ~BinaryHeap() {
+        delete[]data;
+    }
+    void insert(T val) {
+        if (size == capacity) {
+            InCapacity();
+        }
+        data[size] = val;
+        size++;
+        Shiftup(size - 1);
+    }
+    T max() {
+        T result = data[0];
+        data[0] = data[--size];
+        Shiftdown(0);
+        return result;
+
+    }
+    bool is_empty() {
+        return size == 0;
+    }
+    int Getsize() {
+        return size;
+    }
+    void print() {
+        for (int i = 0; i < size; i++) {
+            std::cout << data[i] << " ";
+        }
+        std::cout << "\n";
+    }
+};
+
+int main() {
+    BinaryHeap<int> first;
+    first.insert(24);
+    first.insert(3);
+    first.insert(11);
+    first.insert(5);
+    first.insert(99);
+    first.insert(14);
+    first.insert(150);
+    first.print();
+    std::cout << "max element: " << first.max() << std::endl;
+    first.print();
+    return 0;
+}

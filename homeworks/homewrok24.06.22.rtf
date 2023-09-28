@@ -1,0 +1,233 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red163\green21\blue21;\red0\green0\blue255;\red0\green128\blue0;\red0\green128\blue128;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 #include\cf2  \cf3 <iostream>\cf2\par
+\par
+\cf4 using\cf2  \cf4 namespace\cf2  std;\par
+\par
+\par
+\cf4 bool\cf2  proverkagmail(\cf4 char\cf2 * \cf1 gmail\cf2 );\par
+\cf4 void\cf2  prin(\cf4 char\cf2 *** \cf1 a\cf2 , \cf4 int\cf2  \cf1 size\cf2 , \cf4 int\cf2  \cf1 size2\cf2 , \cf4 int\cf2  \cf1 size3\cf2 );\par
+\cf4 void\cf2  add(\cf4 char\cf2 ***& \cf1 a\cf2 , \cf4 int\cf2 & \cf1 size\cf2 , \cf4 int\cf2  \cf1 size2\cf2 , \cf4 int\cf2  \cf1 size3\cf2 , \cf4 int\cf2  \cf1 chot\cf2 ,\cf4 bool\cf2  \cf1 gmailcheck\cf2 ) \{\par
+\tab\cf1 size\cf2 ++;\par
+\tab\cf4 char\cf2 *** b = \cf4 new\cf2  \cf4 char\cf2 ** [\cf1 size\cf2 ];\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size\cf2 ; i++) \{\par
+\tab\tab b[i] = \cf4 new\cf2  \cf4 char\cf2 * [\cf1 size2\cf2 ];\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size2\cf2 ; j++) \{\par
+\par
+\tab\tab\tab b[i][j] = \cf4 new\cf2  \cf4 char\cf2 [\cf1 size3\cf2 ];              \cf5 //\f1\lang1058\'e8\'ed\'e8\'f6\'e8\'eb\'e8\'e7\'e0\'f6\'e8\'ff\cf2\par
+\tab\tab\}\par
+\par
+\par
+\tab\}\par
+\tab\par
+\tab\par
+\tab cout \cf6 <<\cf2  \cf3 "\'e2\'e2\'ee\'e4 \'e4\'e0\'ed\'ed\'fb\'f5 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff \'ef\'ee \'e4\'e5\'f4\'ee\'eb\'f2\'f3\\n"\cf2 ;\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size2\cf2 ; j++) \{\par
+\tab\tab\cf1 chot\cf2  += 1;\par
+\tab\tab\cf4 if\cf2  (\cf1 chot\cf2  == 1) \{\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf3 "\'e8\'ec\'ff "\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf4 if\cf2  (\cf1 chot\cf2  == 2) \{\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf3 "gmail "\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf4 if\cf2  (\cf1 chot\cf2  == 3) \{\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf3 "\'ef\'e0\'f0\'ee\'eb\'fc "\cf2 ;\par
+\tab\tab\tab\cf1 chot\cf2  = 0;\par
+\tab\tab\}\par
+\par
+\tab\tab cin \cf6 >>\cf2  b[\cf1 size\cf2  - 1][j];\par
+\tab\par
+\tab\tab\cf4 if\cf2  (\cf1 chot\cf2  == 2) \{\par
+\tab\tab\tab\par
+\tab\tab\tab\cf1 gmailcheck\cf2  = proverkagmail(b[\cf1 size\cf2  - 1][j]);\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf1 gmailcheck\cf2 ;\par
+\tab\tab\tab\cf4 if\cf2  (\cf1 gmailcheck\cf2  == \cf4 false\cf2 ) \{\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf3 "\'e8\'e7\'e2\'e8\'ed\'e8\'f2\'e5 \'e3\'ec\'e5\'e9\'eb \'ed\'e5 \'e2\'e5\'f0\'ed\'fb\'e9 \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e2\'f1\'e5 \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'fc\'f1\'ff \'e8 \'e2\'e2\'ee\'e4\'e8\'f2\'fc\'f1\'ff \'e7\'e0\'ed\'ee\'e2\'ee:):);)\\n"\cf2 ;\par
+\tab\tab\tab\tab cin \cf6 >>\cf2  b[\cf1 size\cf2  - 1][j];\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\}\par
+\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size\cf2  - 1; i++) \{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size2\cf2 ; j++) \{\par
+\tab\tab\tab b[i][j] = \cf1 a\cf2 [i][j];\par
+\tab\tab\}\par
+\tab\}\par
+\tab\cf4 delete[]\cf2  \cf1 a\cf2 ;\par
+\tab\cf1 a\cf2  = \cf4 nullptr\cf2 ;\par
+\tab\cf1 a\cf2  = b; \cf5 //\'ed\'e5 \'f3\'e4\'e0\'eb\'ff\'e5\'ec b \'ef\'ee\'f2\'ee\'ec\'f3 \'f7\'f2\'ee \'e0 \'ef\'f0\'e8\'f1\'e2\'ee\'e8\'eb\'ee \'e0\'e4\'f0\'e5\'f1 \'e1\cf2\par
+\par
+\tab prin(\cf1 a\cf2 , \cf1 size\cf2 , \cf1 size2\cf2 , \cf1 size3\cf2 );\par
+\par
+\tab\par
+\}\par
+\par
+\par
+\par
+\cf4 void\cf2  prin(\cf4 char\cf2 *** \cf1 a\cf2 , \cf4 int\cf2  \cf1 size\cf2 , \cf4 int\cf2  \cf1 size2\cf2 , \cf4 int\cf2  \cf1 size3\cf2 )\par
+\{\par
+\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  g = 0; g < \cf1 size\cf2 ; g++) \{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < \cf1 size2\cf2 ; i++) \{\par
+\tab\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < \cf1 size3\cf2 ; j++) \{\par
+\tab\tab\tab\tab\cf4 if\cf2  (\cf1 a\cf2 [g][i][j] == \cf3 '\\0'\cf2 )\par
+\tab\tab\tab\tab\tab\cf4 break\cf2 ;\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf1 a\cf2 [g][i][j];\par
+\tab\tab\tab\}\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf3 "  "\cf2 ;\par
+\tab\tab\}\par
+\tab\tab cout \cf6 <<\cf2  endl;\par
+\tab\}\par
+\}\par
+\cf4 bool\cf2  proverkagmail(\cf4 char\cf2 * \cf1 gmail\cf2 ) \{\par
+\tab\cf4 int\cf2  chot(0);\par
+\tab\cf4 bool\cf2  flag = \cf4 false\cf2 ; \par
+\tab\cf4 bool\cf2  flag2 = \cf4 false\cf2 ; \par
+\tab\cf4 bool\cf2  flag3 = \cf4 true\cf2 ;\par
+\tab\par
+\tab\cf4 char\cf2 * error = \cf4 new\cf2  \cf4 char\cf2 [9]\{ \cf3 '&'\cf2 ,\cf3 '='\cf2 ,\cf3 '+'\cf2 ,\cf3 '-'\cf2 ,\cf3 '_'\cf2 ,\cf3 '<'\cf2 ,\cf3 '>'\cf2 , \};\par
+\tab\cf4 int\cf2  size = 0;\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < 255; i++) \{\par
+\tab\tab\cf4 if\cf2  (\cf1 gmail\cf2 [i] == \cf3 '\\0'\cf2 ) \{\par
+\tab\tab\tab\cf4 break\cf2 ;\par
+\tab\tab\}\par
+\tab\tab size += 1;\par
+\par
+\par
+\par
+\tab\}\par
+\par
+\tab\cf4 int\cf2  indexcobaka = 0;\par
+\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < size; i++) \{\par
+\tab\tab\par
+\tab\tab\cf4 if\cf2  (\cf1 gmail\cf2 [i] == \cf3 '@'\cf2 ) \{\par
+\tab\tab\tab\cf4 if\cf2  (i > 1) \{\par
+\tab\tab\tab\tab flag = \cf4 true\cf2 ;\par
+\tab\tab\tab\tab\par
+\tab\tab\tab\tab\cf4 break\cf2 ;\par
+\par
+\tab\tab\tab\}\par
+\tab\tab     \par
+\tab\tab\}\par
+\tab\tab indexcobaka += 1;\par
+\par
+\tab\}\par
+\par
+\tab\cf4 if\cf2  (flag == \cf4 true\cf2 ) \{\par
+\tab\tab\cf4 if\cf2  (\cf1 gmail\cf2 [indexcobaka + 1] == \cf3 '.'\cf2 ) \par
+\tab\tab\tab flag2 = \cf4 false\cf2 ;\par
+\tab\tab\par
+\tab\tab\cf4 else\cf2  \{\par
+\par
+\par
+\tab\tab\tab\cf4 for\cf2  (\cf4 int\cf2  i = indexcobaka + 1; i < size; i++) \{\par
+\par
+\tab\tab\tab\tab\cf4 if\cf2  (\cf1 gmail\cf2 [i] == \cf3 '@'\cf2 )\par
+\tab\tab\tab\tab\tab\cf4 break\cf2 ;\par
+\tab\tab\tab\tab\cf4 if\cf2  (\cf1 gmail\cf2 [i] == \cf3 '.'\cf2 ) \{\par
+\tab\tab\tab\tab\tab\cf4 if\cf2  (\cf1 gmail\cf2 [i + 1] == \cf3 '\\0'\cf2 )\par
+\tab\tab\tab\tab\tab\tab\cf4 break\cf2 ;\par
+\tab\tab\tab\tab\tab\cf4 if\cf2  (i > indexcobaka + 1) \par
+\tab\tab\tab\tab\tab\tab flag2 = \cf4 true\cf2 ;\par
+\par
+\tab\tab\tab\tab\tab\par
+\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\par
+\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < size; i++) \{\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < 9; j++) \{\par
+\tab\tab\tab\cf4 if\cf2  (\cf1 gmail\cf2 [i] == error[j]) \{\par
+\tab\tab\tab\tab flag3 = \cf4 false\cf2 ;\par
+\tab\tab\tab\tab\cf4 break\cf2 ;\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\}\par
+\par
+\tab\cf4 if\cf2  (flag ==\cf4 true\cf2  &&flag2==\cf4 true\cf2  &&flag3 == \cf4 true\cf2 )\par
+\tab\tab\cf4 return\cf2  \cf4 true\cf2 ;\par
+\tab\cf4 else\cf2\par
+\tab\tab\cf4 return\cf2  \cf4 false\cf2 ;\par
+\par
+\}\par
+\par
+\par
+\par
+\cf4 int\cf2  main() \{\par
+\tab\cf4 int\cf2  size = 1; \cf5 //\'e8\'ed\'e4\'e5\'ea\'f1 (\'ea\'e0\'ea\'ee\'e9 \'ef\'ee\'eb\'fc\'ee\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc)\cf2\par
+\tab\cf4 int\cf2  size2 = 3; \cf5 //\'e4\'e2\'f3\'f5\'ec\'e5\'f0\'ed\'fb\'e9 \'ec\'e0\'f1\'f1\'e8\'e2 (\'e2 \'ed\'e5\'ec \'f5\'f0\'e0\'ed\'e8\'f2\'fc\'f1\'ff \'e2\'f1\'ff \'e8\'ed\'f4\'e0 \'ef\'f0\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff)\cf2\par
+\tab\cf4 int\cf2  size3 = 255;\cf5 //\'ec\'e0\'f1\'f1\'e8\'e2(\'e2 \'ed\'e5\'ec \'f5\'f0\'e0\'ed\'e8\'f2\'fc\'f1\'ff \'f1\'e8\'ec\'e2\'ee\'eb\'fb)\cf2\par
+\tab\cf4 bool\cf2  f = \cf4 true\cf2 ;\par
+\tab\cf4 bool\cf2  gmailcheck;\par
+\tab\cf4 char\cf2 *** a = \cf4 new\cf2  \cf4 char\cf2 ** [size];\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  i = 0; i < size; i++) \{\par
+\tab\tab a[i] = \cf4 new\cf2  \cf4 char\cf2 * [size2];\par
+\tab\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < size2; j++) \{\par
+\par
+\tab\tab\tab a[i][j] = \cf4 new\cf2  \cf4 char\cf2 [size3];              \cf5 //\'e8\'ed\'e8\'f6\'e8\'eb\'e8\'e7\'e0\'f6\'e8\'ff\cf2\par
+\tab\tab\}\par
+\par
+\par
+\tab\}\par
+\tab\cf4 int\cf2  chot = 0;\par
+\tab\cf4 char\cf2 * gmail = \cf4 new\cf2  \cf4 char\cf2 [255];\par
+\tab cout \cf6 <<\cf2  \cf3 "\'e2\'e2\'ee\'e4 \'e4\'e0\'ed\'ed\'fb\'f5 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff \'ef\'ee \'e4\'e5\'f4\'ee\'eb\'f2\'f3\\n"\cf2 ;\par
+\tab\cf4 for\cf2  (\cf4 int\cf2  j = 0; j < size2; j++) \{\par
+\tab\tab chot += 1;\par
+\tab\tab\cf4 if\cf2  (chot == 1) \{\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf3 "\'e8\'ec\'ff "\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf4 if\cf2  (chot == 2) \{\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf3 "gmail "\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\cf4 if\cf2  (chot == 3) \{\par
+\tab\tab\tab cout \cf6 <<\cf2  \cf3 "\'ef\'e0\'f0\'ee\'eb\'fc "\cf2 ;\par
+\tab\tab\tab chot = 0;\par
+\tab\tab\}\par
+\par
+\tab\tab cin \cf6 >>\cf2  a[size - 1][j];\par
+\tab\tab\cf4 if\cf2  (chot == 2) \{\par
+\tab\tab\tab gmail = a[size - 1][j];\par
+\tab\tab\tab gmailcheck = proverkagmail(gmail);\par
+\tab\tab\tab cout \cf6 <<\cf2  gmailcheck;\par
+\tab\tab\tab\cf4 if\cf2  (gmailcheck == \cf4 false\cf2 ) \{\par
+\tab\tab\tab\tab cout \cf6 <<\cf2  \cf3 "\'e8\'e7\'e2\'e8\'ed\'e8\'f2\'e5 \'e3\'ec\'e5\'e9\'eb \'ed\'e5 \'e2\'e5\'f0\'ed\'fb\'e9 \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e2\'f1\'e5 \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'fc\'f1\'ff \'e8 \'e2\'e2\'ee\'e4\'e8\'f2\'fc\'f1\'ff \'e7\'e0\'ed\'ee\'e2\'ee:):);)\\n"\cf2 ;\par
+\tab\tab\tab\tab cin \cf6 >>\cf2  a[size - 1][j];\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\tab\par
+\par
+\tab\cf4 int\cf2  sel;\par
+\tab\cf4 while\cf2  (f) \{\par
+\tab\tab cout \cf6 <<\cf2  \cf3 "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'f7\'f2\'ee \'e4\'e5\'eb\'e0\'f2\'fc 1.\'e4\'ee\'e1\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'ed\'ee\'e2\'ee\'e3\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff 2.\'e2\'fb\'e2\'ee\'e4 \'ed\'e0 \'fd\'ea\'f0\'e0\'ed \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5\'e93.\'e7\'e0\'e2\'e5\'f0\'f8\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'e0\'ec\'ec\'fb"\cf2 ;\par
+\tab\tab cin \cf6 >>\cf2  sel;\par
+\tab\tab\cf4 switch\cf2  (sel)\par
+\tab\tab\{\par
+\tab\tab\cf4 case\cf2  1:\par
+\tab\tab\tab  add(a, size, size2, size3, chot, gmailcheck);\par
+\tab\tab\tab\cf4 break\cf2 ;\par
+\tab\tab\cf4 case\cf2  2:\par
+\tab\tab\tab prin(a, size, size2, size3);\par
+\tab\tab\tab\cf4 break\cf2 ;\par
+\tab\tab\cf4 case\cf2  3:\par
+\tab\tab\tab\cf4 delete[]\cf2 a;\par
+\tab\tab\tab\cf4 delete[]\cf2 gmail;\par
+\tab\tab\tab f = \cf4 false\cf2 ;\par
+\tab\tab\tab\cf4 break\cf2 ;\par
+\tab\tab\}\par
+\tab\tab\par
+\par
+\tab\tab\par
+\tab\}\par
+\tab\par
+\}\cf0\f2\fs22\lang9\par
+}
+ 

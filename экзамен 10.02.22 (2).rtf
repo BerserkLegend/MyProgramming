@@ -1,0 +1,577 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat{\fonttbl{\f0\fnil Cascadia Mono;}{\f1\fnil\fcharset204 Cascadia Mono;}{\f2\fnil\fcharset1 Segoe UI Symbol;}{\f3\fnil\fcharset0 Cascadia Mono;}}
+{\colortbl ;\red128\green128\blue128;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang1033 #include <iostream>\par
+#pragma warning(disable:4996);\par
+using namespace std;\par
+struct gur \{\par
+\tab char name[20];\par
+\tab int num;\par
+\tab char email[32];\par
+\tab char group[16];\par
+\par
+\par
+\par
+\};\par
+void add(gur*& cont, int& size, char**& a, int a1) \{\par
+\tab gur* temp = new gur[size + 1];\par
+\tab for (int i = 0; i < size; i++)\par
+\tab\tab temp[i] = cont[i];\par
+\tab delete[] cont;\par
+\tab cont = temp;\par
+\tab cout << "\f1\lang1058\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ec\'ff\\n";\par
+\tab cin.ignore();\par
+\tab cin.getline(cont[size].name, 15);\par
+\tab for (int i = 0; i < 15; i++) \{\par
+\tab\tab if (cont[a1].name[i] == ' ')\par
+\tab\tab\tab break;\par
+\tab\tab a[a1][i] = cont[a1].name[i];\par
+\tab\}\par
+\par
+\par
+\par
+\tab cout << "\'e2\'e5\'e4\'e8\'f2\'e5 \'ed\'ee\'ec\'e5\'f0\\n";\par
+\tab cin >> cont[size].num;\par
+\par
+\par
+\par
+\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2 \'e5\'ec\'e0\'e9\'eb\\n";\par
+\tab cin.ignore();\par
+\tab cin.getline(cont[size].email, 32);\par
+\par
+\par
+\par
+\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e2 \'ea\'e0\'ea\'ee\'e9 \'fd\'f2\'ee\'f2 \'f7\'e5\'eb\'ee\'e2\'e5\'ea \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'e3\'f0\'f3\'ef\'ef\'e5\\n";\par
+\tab cin.getline(cont[size].group, 16);\par
+\tab size++;\par
+\}\par
+void read(gur* cont, int size) \{\par
+\tab for (int i = 0; i < size; i++)\par
+\tab\{\par
+\tab\tab cout << cont[i].name << " " << cont[i].num << " " << cont[i].email << " " << cont[i].group << "\\n";\par
+\tab\}\par
+\par
+\par
+\par
+\}\par
+bool numproverka(gur* cont, int size) \{\par
+\tab for (int i = 0; i < size; i++) \{\par
+\tab\tab if (cont[i].num / 100000000 != 0) \{\par
+\tab\tab\tab cout << cont[i].num << " \'f0\'e5\'e0\'eb\'fc\'ed\'fb\'e9 \'ed\'ee\'ec\'e5\'f0\\n";\par
+\tab\tab\tab return true;\par
+\tab\tab\}\par
+\tab\tab else \{\par
+\tab\tab\tab cout << cont[i].num << " \'ed\'e5\'e2\'e5\'f0\'ed\'fb\'e9 \'ed\'ee\'ec\'e5\'f0\\n";\par
+\tab\tab\tab return false;\par
+\tab\tab\}\par
+\tab\}\par
+\par
+\par
+\par
+\}\par
+void del(gur*& cont, int& size) \{\par
+\tab int index;\par
+\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ed\'e4\'e5\'ea\'f1 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f5\'ee\'f2\'e8\'f2\'e5 \'f3\'e4\'e0\'eb\'e8\'f2\'fc \'ed\'e0\'f7\'e0\'eb\'ee \'f1 0";\par
+\tab cin >> index;\par
+\tab gur* temp = new gur[size - 1];\par
+\tab for (int i = 0; i < size - 1; i++) \{\par
+\tab\tab if (i < index)\par
+\tab\tab\tab temp[i - 1] = cont[i];\par
+\tab\tab else if (i > index)\par
+\tab\tab\tab temp[i - 1] = cont[i];\par
+\tab\}\par
+\tab delete[]cont;\par
+\tab size--;\par
+\tab cont = temp;\par
+\par
+\par
+\par
+\}\par
+void sort(gur*& cont, int size) \{\par
+\tab for (int i = 0; i < size; i++) \{\par
+\tab\tab if (i == size - 1) \{\par
+\tab\tab\tab break;\par
+\tab\tab\}\par
+\tab\tab if (cont[i].name[0] > cont[i + 1].name[0]) \{\par
+\tab\tab\tab swap(cont[i], cont[i + 1]);\par
+\tab\tab\}\par
+\tab\}\par
+\}\par
+void Write(gur* cont, int size, char* filename) \{\par
+\tab char buf[15];\par
+\tab FILE* f = fopen(filename, "w");\par
+\tab for (int i = 0; i < size; i++) \{\par
+\tab\tab fputs(cont[i].name, f);\par
+\tab\tab fputs(" ", f);\par
+\tab\tab itoa(cont[i].num, buf, 10);\par
+\tab\tab fputs(buf, f);\par
+\tab\tab fputs(" ", f);\par
+\tab\tab fputs(cont[i].email, f);\par
+\tab\tab fputs(" ", f);\par
+\tab\tab fputs(cont[i].group, f);\par
+\tab\tab fputs("\\n", f);\par
+\par
+\par
+\par
+\tab\}\par
+\tab fclose(f);\par
+\par
+\par
+\par
+\}\par
+//11111111111111111111111111111111111111111111111\par
+void read(gur*& cont, int& size, char* filename) \{\par
+\tab char buf[50];\par
+\tab FILE* f = fopen(filename, "r");\par
+\par
+\tab if (!f)\par
+\tab\tab cout << "Wrong filename\\n";\par
+\tab else\par
+\tab\{\par
+\tab\tab while (fgets(buf, 50, f))\par
+\tab\tab\tab size++;\par
+\tab\tab cont = new gur[size];\par
+\tab\tab rewind(f);\par
+\tab\tab for (int i = 0; i < size; i++)\par
+\tab\tab\{\par
+\tab\tab\tab fgets(buf, 100, f);\par
+\par
+\tab\tab\}\par
+\tab\tab for (int i = 0; i < size; i++)\par
+\tab\tab\{\par
+\tab\tab\tab fgets(buf, 100, f);\par
+\tab\tab\tab char* token = strtok(buf, " ");\par
+\tab\tab\tab strcpy(cont[i].name, token);\par
+\tab\tab\tab token = strtok(NULL, " ");\par
+\tab\tab\tab cont[i].num = atoi(token);\par
+\tab\tab\tab token = strtok(buf, " ");\par
+\tab\tab\tab strcpy(cont[i].email, token);\par
+\tab\tab\tab token = strtok(NULL, "\\n");\par
+\tab\tab\tab token = strtok(buf, " ");\par
+\tab\tab\tab strcpy(cont[i].group, token);\par
+\tab\tab\tab token = strtok(NULL, "\\n");\par
+\par
+\par
+\tab\tab\}\par
+\par
+\tab\tab fclose(f);\par
+\par
+\tab\}\par
+\}\par
+\par
+\par
+\par
+\par
+\par
+//\}\par
+\par
+\par
+\par
+//read \'ed\'e5\'e4\'ee\'e4\'e5\'eb\'e0\'ed\'ee\par
+\par
+\par
+\par
+void remake(gur*& cont, int size) \{\par
+\tab int index;\par
+\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ed\'e4\'e5\'ea\'f1(\'ed\'e0\'f7\'e0\'eb\'ee \'f1 0\\n";\par
+\tab cin >> index;\par
+\par
+\par
+\par
+\par
+\par
+\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ec\'ff\\n";\par
+\tab cin.ignore();\par
+\tab cin.getline(cont[index].name, 15);\par
+\tab cout << "\'e2\'e5\'e4\'e8\'f2\'e5 \'ed\'ee\'ec\'e5\'f0\\n";\par
+\tab cin.ignore();\par
+\tab cin >> cont[index].num;\par
+\par
+\par
+\par
+\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2 \'e5\'ec\'e0\'e9\'eb\\n";\par
+\tab cin.ignore();\par
+\tab cin.getline(cont[index].email, 32);\par
+\par
+\par
+\par
+\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e2 \'ea\'e0\'ea\'ee\'e9 \'fd\'f2\'ee\'f2 \'f7\'e5\'eb\'ee\'e2\'e5\'ea \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'e3\'f0\'f3\'ef\'ef\'e5\\n";\par
+\tab cin.getline(cont[index].group, 16);\par
+\par
+\par
+\par
+\}\par
+void sersh(gur*& cont, int size) \{\par
+\tab char index[15];\par
+\tab cin >> index;\par
+\tab char a[10];\par
+\par
+\par
+\par
+\par
+\}\par
+int find(gur* cont, int size) \{\par
+\tab char find[20];\par
+\tab bool f = false;\par
+\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'d4\'c8\'ce";\par
+\tab cin.ignore();\par
+\tab cin.getline(find, 20);\par
+\tab for (int i = 0; i < 20; i++) \{\par
+\tab\tab // find[0]=toupper(find[0]);\par
+\tab\tab if (!strcmp(find, cont[i].name)) \{//\'e5\'f1\'eb\'e8 \'ee\'ed\'e8 \'e8\'e4\'e5\'ed\'f2\'e8\'f7\'ed\'fb strcmp(\'f8\'ee\'f2\'ee,\'f8\'ee\'f2\'ee) \'e8\'f9\'e5\'f2 \'e2 \'f7\'e5\'ec \'f0\'e0\'e7\'ed\'e8\'f6\'e0(\'e5\'f1\'eb\'e8 \'e5\'f1\'f2\'fc \'f0\'e0\'e7\'ed\'e8\'f6\'e0 \'f1\'f2\'f0\'ee\'ea) !strcmp - \'e5\'f1\'eb\'e8 \'ed\'e5\'f2\'f3 \'f2\'ee... \par
+\tab\tab\tab f = 1;\par
+\tab\tab\tab return i;\par
+\par
+\par
+\par
+\tab\tab\}\par
+\tab\tab if (f == false)\par
+\tab\tab\tab return -1;\par
+\tab\}\par
+\par
+\par
+\par
+\}\par
+void Grup(gur* cont, int size) \{\par
+\tab char* buff = new char[16];\par
+\tab for (int i = 0; i < size; i++) \{\par
+\tab\tab cout << cont[i].group << "-\'e3\'f0\'f3\'ef\'ef\'e0 \\n";\par
+\tab\}\par
+\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 \'e3\'f0\'f3\'ef\'ef\'fb";\par
+\tab cin.getline(buff, 16);\par
+\tab for (int i = 0, j = 0; j < size; i++) \{\par
+\tab\tab if (buff[i] == cont[j].group[i]) \{\par
+\tab\tab\tab cout << "\'e2\'ee\'f2 \'e8\'f5\'ed\'e8\'e5 \'e8\'ec\'e5\'ed\'ed\'e0:\\n";\par
+\tab\tab\tab cout << j + 1 << " - " << cont[j].name << endl;\par
+\tab\tab\}\par
+\par
+\par
+\par
+\par
+\tab\tab ++j;\par
+\tab\}\par
+\tab cout << "\\n\\n\\n";\par
+\tab cout << "\'fd\'f2\'ee \'e2\'f1\'e5 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'fb\\n";\par
+\par
+\par
+\par
+\par
+\}\par
+void proverkagmail(gur* cont, int size) \{\par
+\tab char buff[32];\par
+\tab int chot(0);\par
+\tab int a = 0;\par
+\par
+\par
+\tab bool flag = false; //\'fd\'f2\'ee \'ed\'e0 \'ed\'e0\'eb\'e8\'f7\'e8\'e8 @\par
+\tab bool flag2 = false; //\'fd\'f2\'ee \'ed\'e0 \'eda\'eb\'e8\'f7\'e8\'e8 .\par
+\tab bool flag3 = true;\par
+\tab cout << "flag \'fd\'f2\'ee \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 @ \\n";\par
+\tab cout << "flag2 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'ed\'e0 \'f2\'ee\'f7\'ea\'f3\\n";\par
+\tab for (int i = 0; i < size; i++) \{\par
+\tab\tab for (int j = 0; j < 32; j++) \{\par
+\tab\tab\tab\par
+\tab\tab\tab if (cont[i].email[j] == '@') \{\par
+\tab\tab\tab\tab if (cont[i].email[j] == '@')\par
+\tab\tab\tab\tab\tab a += 1;\par
+\tab\tab\tab\tab if (cont[i].email[j + 1] == '\\0')\par
+\tab\tab\tab\tab\tab break;\par
+\tab\tab\tab\tab if (cont[i].email[0] == '@')\par
+\tab\tab\tab\tab\tab break;\par
+\tab\tab\tab\tab if (a > 1)\par
+\tab\tab\tab\tab\tab break;\par
+\par
+\par
+\tab\tab\tab\tab else\par
+\tab\tab\tab\tab\tab flag = true;\par
+\par
+\par
+\tab\tab\tab\}\par
+\par
+\tab\tab\tab if (flag == true) \{\par
+\tab\tab\tab\tab if (cont[i].email[j] == '.') \{\par
+\tab\tab\tab\tab\tab if (cont[i].email[j + 1] == '\\0')\par
+\tab\tab\tab\tab\tab\tab break;\par
+\par
+\tab\tab\tab\tab\tab if (j == 0)\par
+\tab\tab\tab\tab\tab\tab break;\par
+\par
+\tab\tab\tab\tab\tab else \{\par
+\tab\tab\tab\tab\tab\tab flag2 = true;\par
+\tab\tab\tab\tab\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab\tab chot++;\par
+\tab\tab\tab if (cont[i].email[j] == '/')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '%')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '!')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '(')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == ')')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '()')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '#')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '\f2\u8470?\f3\lang1033 ')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '$')\par
+\tab\tab\tab\tab flag3 = false;\par
+\par
+\tab\tab\}\par
+\tab\tab cout << "flag: " << flag << endl;\par
+\tab\tab cout << "flag2: " << flag2 << endl;\par
+\tab\tab cout << "flag3: " << flag3 << endl;\par
+\tab\tab if (flag == true && flag2 == true && flag3 == true) \{\par
+\tab\tab\tab cout << i + 1 << " \f1\lang1058\'f2\'e0\'ea\'e0\'ff \'ef\'ee\'f7\'f2\'e0 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2\\n";\par
+\par
+\tab\tab\}\par
+\tab\tab else\par
+\tab\tab\tab cout << i + 1 << " \'cd\'c5\'cc\'c0 \'d2\'c0\'ca\'ce\'c9 \'cf\'ce\'d7\'d2\'c8\\n";\par
+\par
+\tab\tab\par
+\tab\tab chot = 0;\par
+\tab\tab cout << "\\n\\n\\n";\par
+\tab\tab flag = false;\par
+\tab\tab flag2 = false;\par
+\par
+\tab\}\par
+\par
+\par
+\par
+\}\par
+bool proverkagmail2(gur* cont, int size) \{\par
+\tab char buff[32];\par
+\tab int chot(0);\par
+\tab int a = 0;\par
+\par
+\par
+\tab bool flag = false; //\'fd\'f2\'ee \'ed\'e0 \'ed\'e0\'eb\'e8\'f7\'e8\'e8 @\par
+\tab bool flag2 = false; //\'fd\'f2\'ee \'ed\'e0 \'eda\'eb\'e8\'f7\'e8\'e8 .\par
+\tab bool flag3 = true;\par
+\tab cout << "flag \'fd\'f2\'ee \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 @ \\n";\par
+\tab cout << "flag2 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'ed\'e0 \'f2\'ee\'f7\'ea\'f3\\n";\par
+\tab for (int i = 0; i < size; i++) \{\par
+\tab\tab for (int j = 0; j < 32; j++) \{\par
+\par
+\tab\tab\tab if (cont[i].email[j] == '@') \{\par
+\tab\tab\tab\tab if (cont[i].email[j] == '@')\par
+\tab\tab\tab\tab\tab a += 1;\par
+\tab\tab\tab\tab if (cont[i].email[j + 1] == '\\0')\par
+\tab\tab\tab\tab\tab break;\par
+\tab\tab\tab\tab if (cont[i].email[0] == '@')\par
+\tab\tab\tab\tab\tab break;\par
+\tab\tab\tab\tab if (a > 1)\par
+\tab\tab\tab\tab\tab break;\par
+\par
+\par
+\tab\tab\tab\tab else\par
+\tab\tab\tab\tab\tab flag = true;\par
+\par
+\par
+\tab\tab\tab\}\par
+\tab\tab\tab\par
+\par
+\tab\tab\tab if (flag == true) \{\par
+\tab\tab\tab\tab if (cont[i].email[j] == '.') \{\par
+\tab\tab\tab\tab\tab if (cont[i].email[j + 1] == '\\0')\par
+\tab\tab\tab\tab\tab\tab break;\par
+\par
+\tab\tab\tab\tab\tab if (j == 0)\par
+\tab\tab\tab\tab\tab\tab break;\par
+\par
+\tab\tab\tab\tab\tab else\par
+\tab\tab\tab\tab\tab\tab flag2 = true;\par
+\par
+\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\par
+\tab\tab\tab\}\par
+\tab\tab\tab chot++;\par
+\tab\tab\tab if (cont[i].email[j] == '/')\par
+\tab\tab\tab\tab flag3 = false;\par
+\par
+\tab\tab\tab if (cont[i].email[j] == '%')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '!')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '(')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == ')')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '()')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '#')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '\f2\u8470?\f3\lang1033 ')\par
+\tab\tab\tab\tab flag3 = false;\par
+\tab\tab\tab if (cont[i].email[j] == '$')\par
+\tab\tab\tab\tab flag3 = false;\par
+\par
+\tab\tab\}\par
+\tab\tab cout << "flag: " << flag << endl;\par
+\tab\tab cout << "flag2: " << flag2 << endl;\par
+\tab\tab cout << "flag3: " << flag3 << endl;\par
+\tab\tab if (flag == true && flag2 == true && flag3 == true) \{\par
+\tab\tab\tab return true;\par
+\par
+\tab\tab\}\par
+\tab\tab else \{\par
+\tab\tab\tab return false;\par
+\par
+\tab\tab\}\par
+\tab\tab /*chot = 0;\par
+\tab\tab cout << "\\n\\n\\n";\par
+\tab\tab flag = false;\par
+\tab\tab flag2 = false*/;\par
+\par
+\par
+\tab\}\par
+\par
+\par
+\par
+\}\par
+void dela(gur*& cont, int& size,int index) \{\par
+\tab gur* temp = new gur[size - 1];\par
+\tab for (int i = 0; i < size - 1; i++) \{\par
+\tab\tab if (i < index)\par
+\tab\tab\tab temp[i - 1] = cont[i];\par
+\tab\tab else if (i > index)\par
+\tab\tab\tab temp[i - 1] = cont[i];\par
+\tab\}\par
+\tab delete[]cont;\par
+\tab size--;\par
+\tab cont = temp;\par
+\par
+\par
+\par
+\}\par
+\par
+int main()\par
+\{\par
+\par
+\par
+\par
+\tab gur* phone = nullptr;\par
+\tab int choice;\par
+\tab int size = 0;\par
+\tab char filename[255];\par
+\tab int f;\par
+\tab char** a = new char* [20];\par
+\tab int a1 = 0;\par
+\tab bool num;\par
+\tab bool gmail;\par
+\tab for (int i = 0; i < 20; i++) \{\par
+\tab\tab a[i] = new char[20];\par
+\tab\}\par
+\tab while (true) \{\par
+\tab\tab cout << "\f1\lang1058\'e2\'e2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 1.\'c4\'ee\'e1\'e0\'e2\'eb\'e5\'ed\'e8\'e5 2.\'f7\'f2\'e5\'ed\'e8\'e53.\'ef\'f0\'ee\'f1\'ec\'ee\'f2\'f0 \'ed\'e0 \'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee\'f1\'f2\'fc \'ed\'ee\'ec\'e5\'f0\'e0 \'f2\'e5\'eb 4.\'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e5 5.\'f1\'ee\'f0\'f2\'e8\'ee\'e2\'ea\'e0 6.\'e7\'e0\'ef\'e8\'f1\'fc \'e2 \'f4\'e0\'e9\'eb 7.\'f7\'f2\'e5\'ed\'e8\'e5(\'ed\'e5 \'f1\'e4\'e5\'eb\'e0\'ed\'ee)8.\'f0\'e5\'e4\'e0\'ea\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff 9.\'ef\'ee\'e8\'f1\'ea \'eb\'fe\'e4\'e8\'ed 10.\'e2\'fb\'e2\'ee\'e4 \'ef\'ee \'e3\'f0\'f3\'ef\'ef\'e0\'ec 11.\'ef\'f0\'ee\'e2\'e5\'f0\'ea \'ed\'e0 \'fd\'ec\'e0\'e8\'eb12.\'e2\'fb\'f5\'ee\'e4 \'f1 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'fb";\par
+\tab\tab cin >> choice;\par
+\par
+\par
+\par
+\tab\tab switch (choice)\par
+\tab\tab\{\par
+\tab\tab case 1:\par
+\par
+\tab\tab\tab add(phone, size, a, a1);\par
+\tab\tab\tab a1++;\par
+\tab\tab\tab num = numproverka(phone,size);\par
+\tab\tab\tab if (num == true) \par
+\tab\tab\tab\tab cout << "\'c2\'c5\'d0\'cd\'db\'c9 \'cd\'ce\'cc\'c5\'d0\\n";\par
+\tab\tab\tab\par
+\tab\tab\tab else \{\par
+\tab\tab\tab\tab dela(phone, size, size - 1);\par
+\tab\tab\tab\tab add(phone, size, a, a1);\par
+\tab\tab\tab\}\par
+\tab\tab\tab gmail = proverkagmail2(phone, size);\par
+\tab\tab\tab if (gmail == true)\par
+\tab\tab\tab\tab cout << "\'c2\'c5\'d0\'cd\'db\'c9 GMAIl\\n";\par
+\tab\tab\tab else \{\par
+\tab\tab\tab\tab dela(phone, size, size - 1);\par
+\tab\tab\tab\tab add(phone, size, a, a1);\par
+\tab\tab\tab\}\par
+\tab\tab\par
+\tab\tab\par
+\par
+\tab\tab\tab break;\par
+\tab\tab case 2:\par
+\tab\tab\tab read(phone, size);\par
+\tab\tab\tab break;\par
+\tab\tab case 3:\par
+\tab\tab\tab numproverka(phone, size);\par
+\tab\tab\tab break;\par
+\tab\tab case 4:\par
+\tab\tab\tab del(phone, size);\par
+\tab\tab\tab break;\par
+\tab\tab case 5:\par
+\tab\tab\tab sort(phone, size);\par
+\tab\tab\tab break;\par
+\tab\tab case 6:\par
+\par
+\par
+\par
+\tab\tab\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ec\'ff \'f4\'e0\'e9\'eb\'e0\\n";\par
+\tab\tab\tab cin.ignore();\par
+\tab\tab\tab cin.getline(filename, 255);\par
+\par
+\par
+\par
+\tab\tab\tab Write(phone, size, filename);\par
+\tab\tab\tab break;\par
+\tab\tab case 7:\par
+\tab\tab\tab cin.ignore();\par
+\tab\tab\tab cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 \'e8\'ec\'ff \'f4\'e0\'e9\'eb\'e0\\n";\par
+\tab\tab\tab cin.getline(filename, 255);\par
+\tab\tab\tab read(phone, size, filename);\par
+\tab\tab\tab break;\par
+\tab\tab case 8:\par
+\tab\tab\tab remake(phone, size);\par
+\tab\tab\tab break;\par
+\tab\tab case 9:\par
+\tab\tab\tab cout << endl;\par
+\tab\tab\tab f = find(phone, size);\par
+\par
+\tab\tab\tab if (f == -1) \{\par
+\tab\tab\tab\tab cout << "\'ff \'ed\'e5\'ec\'ee\'e3\'f3 \'ed\'e0\'e9\'f2\'e8" << endl;\par
+\tab\tab\tab\}\par
+\tab\tab\tab else\par
+\tab\tab\tab\tab cout << "\'ff \'f1\'ec\'ee\'e3 \'ed\'e0\'e9\'f2\'e8,\'fd\'f2\'ee \'ef\'ee\'e7\'e8\'f6\'e8\'ff " << f + 1 << "\\n";\par
+\tab\tab\tab break;\par
+\tab\tab case 10:\par
+\tab\tab\tab cin.ignore();\par
+\tab\tab\tab Grup(phone, size);\par
+\tab\tab\tab break;\par
+\tab\tab case 11:\par
+\tab\tab\tab proverkagmail(phone, size);\par
+\tab\tab\tab break;\par
+\par
+\tab\tab case 12:\par
+\tab\tab\tab choice = 0; break;\par
+\tab\tab default:\par
+\tab\tab\tab cout << "\'ed\'e5 \'f2\'e5 \'f7\'e8\'f1\'eb\'e0";\par
+\tab\tab\tab break;\par
+\tab\tab\}\par
+\tab\}\par
+\}\par
+\par
+\par
+\par
+// \'c7\'e0\'ef\'f3\'f1\'ea \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb: CTRL+F5 \'e8\'eb\'e8 \'ec\'e5\'ed\'fe "\'ce\'f2\'eb\'e0\'e4\'ea\'e0" > "\'c7\'e0\'ef\'f3\'f1\'ea \'e1\'e5\'e7 \'ee\'f2\'eb\'e0\'e4\'ea\'e8"\par
+// \'ce\'f2\'eb\'e0\'e4\'ea\'e0 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb: F5 \'e8\'eb\'e8 \'ec\'e5\'ed\'fe "\'ce\'f2\'eb\'e0\'e4\'ea\'e0" > "\'c7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'ee\'f2\'eb\'e0\'e4\'ea\'f3"\par
+\par
+\par
+\par
+// \'d1\'ee\'e2\'e5\'f2\'fb \'ef\'ee \'ed\'e0\'f7\'e0\'eb\'f3 \'f0\'e0\'e1\'ee\'f2\'fb\par
+// 1. \'c2 \'ee\'ea\'ed\'e5 \'ee\'e1\'ee\'e7\'f0\'e5\'e2\'e0\'f2\'e5\'eb\'ff \'f0\'e5\'f8\'e5\'ed\'e8\'e9 \'ec\'ee\'e6\'ed\'ee \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc \'f4\'e0\'e9\'eb\'fb \'e8 \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'e8\'ec\'e8.\par
+// 2. \'c2 \'ee\'ea\'ed\'e5 Team Explorer \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc\'f1\'ff \'ea \'f1\'e8\'f1\'f2\'e5\'ec\'e5 \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff \'e2\'e5\'f0\'f1\'e8\'ff\'ec\'e8.\par
+// 3. \'c2 \'ee\'ea\'ed\'e5 "\'c2\'fb\'f5\'ee\'e4\'ed\'fb\'e5 \'e4\'e0\'ed\'ed\'fb\'e5" \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'f2\'fc \'e2\'fb\'f5\'ee\'e4\'ed\'fb\'e5 \'e4\'e0\'ed\'ed\'fb\'e5 \'f1\'e1\'ee\'f0\'ea\'e8 \'e8 \'e4\'f0\'f3\'e3\'e8\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'ff.\par
+// 4. \'c2 \'ee\'ea\'ed\'e5 "\'d1\'ef\'e8\'f1\'ee\'ea \'ee\'f8\'e8\'e1\'ee\'ea" \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'f2\'fc \'ee\'f8\'e8\'e1\'ea\'e8.\par
+// 5. \'cf\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'e2\'fb\'e1\'e5\'f0\'e8\'f2\'e5 \'ef\'f3\'ed\'ea\'f2\'fb \'ec\'e5\'ed\'fe "\'cf\'f0\'ee\'e5\'ea\'f2" > "\'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'ed\'ee\'e2\'fb\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2", \'f7\'f2\'ee\'e1\'fb \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'f4\'e0\'e9\'eb\'fb \'ea\'ee\'e4\'e0, \'e8\'eb\'e8 "\'cf\'f0\'ee\'e5\'ea\'f2" > "\'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2", \'f7\'f2\'ee\'e1\'fb \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'e2 \'ef\'f0\'ee\'e5\'ea\'f2 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e5 \'f4\'e0\'e9\'eb\'fb \'ea\'ee\'e4\'e0.\par
+// 6. \'d7\'f2\'ee\'e1\'fb \'f1\'ed\'ee\'e2\'e0 \'ee\'f2\'ea\'f0\'fb\'f2\'fc\f0\lang1033\par
+}
+ 

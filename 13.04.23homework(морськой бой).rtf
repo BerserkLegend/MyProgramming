@@ -1,0 +1,640 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset204 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 void Show(int mass[][10], int size);\par
+void Fill(int mass[][10], int size)\par
+\{\par
+    int deck = 4; //\f1\lang1058\'ea\'b3\'eb\'fc\'ea\'b3\'f1\'f2\'fc \'ef\'e0\'eb\'f3\'e1\par
+    int ship = 1; //\'ea\'b3\'eb\'fc\'ea\'b3\'f1\'f2\'fc \'ea\'ee\'f0\'e0\'e1\'eb\'b3\'e2\par
+    int direct; // \'ed\'e0\'ef\'f0\'ff\'ec\'ee\'ea \'ea\'ee\'f0\'e0\'e1\'eb\'ff\par
+    int x, y; // \'ea\'ee\'ee\'f0\'e4\'b3\'ed\'e0\'f2\'e8 \'ea\'ee\'f0\'e0\'e1\'eb\'ff\par
+    bool free;//\'e7\'ec\'b3\'ed\'ed\'e0, \'ff\'ea\'e0 \'e2\'b3\'e4\'ef\'ee\'e2\'b3\'e4\'e0\'ba - \'f7\'e8\'f1\'f2\'e5 \'ef\'ee\'eb\'e5 \'ef\'b3\'e4 \'ea\'ee\'f0\'e0\'e1\'e5\'eb\'fc\par
+    //\'f7\'e8 \'ed\'b3\par
+    //\'f6\'e8\'ea\'eb, \'ff\'ea\'e8\'e9 \'e2\'b3\'e4\'ef\'ee\'e2\'b3\'e4\'e0\'ba \'e7\'e0 \'ea\'b3\'eb\'fc\'ea\'b3\'f1\'f2\'fc \'ef\'e0\'eb\'f3\'e1\par
+    //\'ef\'ee\'f7\'e8\'ed\'e0\'ba\'ec\'ee \'f0\'ee\'e7\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'f3 \'e7 4-\'ef\'e0\'eb\'f3\'e1\'ed\'ee\'e3\'ee \'ea\'ee\'f0\'e0\'e1\'eb\'ff\par
+    for (int k = deck; k > 0; k--)\par
+    \{\par
+        int temp = 0;//\'e7\'ec\'b3\'ed\'ed\'e0, \'ff\'ea\'e0 \'e2\'b3\'e4\'ef\'ee\'e2\'b3\'e4\'e0\'ba \'e7\'e0 \'ea\'b3\'eb\'fc\'ea\'b3\'f1\'f2\'fc \'ea\'ee\'f0\'e0\'e1\'eb\'b3\'e2\par
+        //\'f6\'e8\'ea\'eb, \'ff\'ea\'e8\'e9 \'e2\'b3\'e4\'ef\'ee\'e2\'b3\'e4\'e0\'ba \'e7\'e0 \'f0\'ee\'e7\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'f3 \'ea\'ee\'f0\'e0\'e1\'eb\'b3\'e2\par
+        while (temp < ship)\par
+        \{\par
+            direct = rand() % 100;//\'f1\'e3\'e5\'ed\'e5\'f0\'f3\'e2\'e0\'eb\'e8 \'ed\'e0\'ef\'f0\'ff\'ec\'ee\'ea \'ea\'ee\'f0\'e0\'e1\'eb\'ff\par
+            if (direct % 2 == 0)//\'ff\'ea\'f9\'ee \'e2\'b3\'ed - \'ef\'e0\'f0\'ed\'e8\'e9 (\'e3\'ee\'f0\'fb\'e7\'ee\'ed\'f2\'e0\'eb\'fc\'ed\'fb\'e9)\par
+            \{\par
+                //\'e7\'e0\'ef\'f3\'f1\'ea\'e0\'ba\'f1\'ee \'f6\'e8\'ea\'eb, \'ff\'ea\'e8\'e9 \'f1\'f2\'e2\'ee\'f0\'fe\'ba \'ea\'ee\'ee\'f0\'e4\'b3\'ed\'e0\'f2\'e8 \'f2\'e0 \'ef\'e5\'f0\'e5\'e2\'b3\'f0\'ff\'ba\par
+                //\'f3\'f1\'b3 \'ea\'eb\'b3\'f2\'e8\'ed\'e8 \'ed\'e0 \'e4\'ee\'f1\'f2\'f3\'ef\'ed\'b3\'f1\'f2\'fc\par
+                do\par
+                \{\par
+                    free = 0;//\'e7\'ec\'b3\'ed\'ed\'f3 \'ef\'e5\'f0\'e5\'e2\'e5\'eb\'e8 \'f3 0\par
+                    //\'f1\'f2\'e2\'ee\'f0\'fe\'ba\'ec\'ee \'ea\'ee\'ee\'f0\'e4\'b3\'ed\'e0\'f2\'e8 \'ef\'e5\'f0\'f8\'ee\'bf \'ea\'eb\'b3\'f2\'e8\'ed\'e8\par
+                    x = rand() % size;\par
+                    y = rand() % (size - deck + 1);\par
+                    //\'f3 \'f6\'e8\'ea\'eb\'b3 \'ef\'e5\'f0\'e5\'e2\'b3\'f0\'ff\'ba\'ec\'ee \'f3\'f1\'b3 \'ed\'e0\'f1\'f2\'f3\'ef\'ed\'b3, \'f9\'ee\'e1 \'e2\'ee\'ed\'e8 \'e1\'f3\'eb\'e8 \'e2\'b3\'eb\'fc\'ed\'b3\par
+                    for (int i = y; i <= y + deck; i++)\par
+                    \{\par
+                        //\'ff\'ea\'f9\'ee \'ea\'eb\'b3\'f2\'e8\'ed\'e0 \'e2\'e6\'e5 \'e7\'e0\'ef\'ee\'e2\'ed\'e5\'ed\'e0\par
+                        if (mass[x][i] == 1 || mass[x][i] == 2)\par
+                        \{\par
+                            free = 1;//\'e7\'ec\'b3\'ed\'ed\'f3 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'ec\'ee \'e2 1\par
+                            break;//\'e7\'f3\'ef\'e8\'ed\'ff\'ba\'ec\'ee \'f6\'e8\'ea\'eb\par
+                        \}\par
+                    \}\par
+                \} while (free);\par
+\par
+                //\'e7\'e0\'ef\'ee\'e2\'ed\'fe\'ba\'ec\'ee \'ef\'b3\'e4\'ec\'e0\'f1\'e8\'e2 \'e4\'e2\'b3\'e9\'ea\'e0\'ec\'e8\par
+                for (int i = x - 1; i <= x + 1; i++)\par
+                \{\par
+                    for (int j = y - 1; j <= y + deck; j++)\par
+                    \{\par
+                        //\'e7 \'ef\'e5\'f0\'e5\'e2\'b3\'f0\'ea\'ee\'fe, \'f9\'ee\'e1 \'ed\'e5 \'e2\'e8\'e9\'f2\'e8 \'e7\'e0 \'ec\'e5\'e6\'b3 \'ec\'e0\'f1\'e8\'e2\'e0\par
+                        if (i >= 0 && i < size && j >= 0 && j < size)\par
+                            mass[i][j] = 2;\par
+                    \}\par
+                \}\par
+                //\'e2\'e8\'f1\'f2\'e0\'e2\'eb\'ff\'ba\'ec\'ee \'ea\'ee\'f0\'e0\'e1\'e5\'eb\'fc\par
+                for (int i = y; i < y + deck; i++)\par
+                    mass[x][i] = 1;\par
+            \}\par
+            else//\'f2\'e0\'ea\'e0\'e6 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e2\'ff \'f9\'ee\'e1 \'f0\'ee\'e7\'f1\'f2\'e0\'e2\'e8\'f2\'e8 \'ea\'ee\'f0\'e0\'e1\'eb\'b3 \'ef\'ee \'e2\'e5\'f0\'f2\'b3\'ea\'e0\'eb\'b3\par
+            \{\par
+                do\par
+                \{\par
+                    free = 0;\par
+                    x = rand() % (size - deck + 1);\par
+                    y = rand() % size;\par
+                    for (int i = x; i <= x + deck; i++)\par
+                    \{\par
+                        if (mass[i][y] == 1 || mass[i][y] == 2)\par
+                        \{\par
+                            free = 1;\par
+                            break;\par
+                        \}\par
+                    \}\par
+                \} while (free);\par
+\par
+                for (int i = x - 1; i <= x + deck; i++)\par
+                \{\par
+                    for (int j = y - 1; j <= y + 1; j++)\par
+                    \{\par
+                        if (i >= 0 && i < size && j >= 0 && j < size)\par
+                            mass[i][j] = 2;\par
+                    \}\par
+                \}\par
+\par
+                for (int i = x; i < x + deck; i++)\par
+                    mass[i][y] = 1;\par
+            \}\par
+            temp++;//\'ea\'ee\'f0\'e0\'e1\'e5\'eb\'fc \'ef\'ee\'f1\'f2\'e0\'e2\'e8\'eb\'e8!\par
+        \}\par
+        deck--;//\'ef\'b3\'f1\'eb\'ff \'ea\'ee\'e6\'ed\'ee\'bf \'ef\'e0\'f0\'f2\'b3\'bf \'ea\'ee\'f0\'e0\'e1\'eb\'b3\'e2 \'ea\'b3\'eb\'fc\'ea\'b3\'f1\'f2\'fc \'ef\'e0\'eb\'f3\'e1 \'e7\'ec\'e5\'ed\'fc\'f8\'f3\'ba\'f2\'fc\'f1\'ff\par
+        ship++;//\'e0 \'ea\'b3\'eb\'fc\'ea\'b3\'f1\'f2\'fc \'ea\'ee\'f0\'e0\'e1\'eb\'b3\'e2 \'e7\'ec\'e5\'ed\'fc\'f8\'f3\'ba\'f2\'fc\'f1\'ff \par
+    \}\par
+\}\par
+\par
+void Fillsel(int mass[][10], int size) \{\par
+    int deck = 4; //\'ea\'b3\'eb\'fc\'ea\'b3\'f1\'f2\'fc \'ef\'e0\'eb\'f3\'e1\par
+    int ship = 1; //\'ea\'b3\'eb\'fc\'ea\'b3\'f1\'f2\'fc \'ea\'ee\'f0\'e0\'e1\'eb\'b3\'e2\par
+    int direct; // \'ed\'e0\'ef\'f0\'ff\'ec\'ee\'ea \'ea\'ee\'f0\'e0\'e1\'eb\'ff\par
+    int x, y; // \'ea\'ee\'ee\'f0\'e4\'b3\'ed\'e0\'f2\'e8 \'ea\'ee\'f0\'e0\'e1\'eb\'ff\par
+    bool free;//\'e7\'ec\'b3\'ed\'ed\'e0, \'ff\'ea\'e0 \'e2\'b3\'e4\'ef\'ee\'e2\'b3\'e4\'e0\'ba - \'f7\'e8\'f1\'f2\'e5 \'ef\'ee\'eb\'e5 \'ef\'b3\'e4 \'ea\'ee\'f0\'e0\'e1\'e5\'eb\'fc\par
+    //\'f7\'e8 \'ed\'b3\par
+    for (int k = deck; k > 0; k--) \{\par
+        int temp = 0;\par
+        while (temp<ship) \{\par
+            cout << "\'ed\'e0\'ef\'f0\'ff\'ec\'ee\'ea \'ea\'ee\'f0\'e0\'e1\'eb\'ff 0 \'f6\'e5 \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc 1 \'e3\'ee\'f0\'fb\'e7\'ee\'ed\'f2\'e0\'eb\'fc \\n";\par
+            cin >> direct;\par
+            if (direct % 2 == 0) \{\par
+\par
+\par
+                do\par
+                \{\par
+                    while (true) \{\par
+                        cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 x (y \'f6\'e5 \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc x \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc):\\n";\par
+                        cin >> x;\par
+                        if (x + deck > size) \{\par
+                            cout << "\'e2\'fb\'f5\'ee\'e4\'e8\'f2 \'e7\'e0 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb\\n";\par
+                            cin.ignore();\par
+                            cin.clear();\par
+                        \}\par
+                        else\par
+                            break;\par
+\par
+                    \}\par
+                    while (true) \{\par
+                        cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 y (y \'f6\'e5 \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc x \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc):\\n";\par
+                        cin >> y;\par
+                        if (y > size) \{\par
+                            cout << "\'e2\'fb\'f5\'ee\'e4\'e8\'f2 \'e7\'e0 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb\\n";\par
+                            cin.ignore();\par
+                            cin.clear();\par
+                        \}\par
+                        else\par
+                            break;\par
+                    \}\par
+\par
+\par
+                    free = 0;\par
+                    for (int i = x; i <= x + deck; i++)\par
+                    \{\par
+                        if (mass[i][y] == 1 || mass[i][y] == 2)\par
+                        \{\par
+                            free = 1;\par
+                            cout << " \'e2\'fb \'e2\'e2\'e5\'eb\'e8 \'e2 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb \'ea\'f3\'e4\'e0 \'e2\'e2\'ee\'e4\'e8\'f2\'fc \'ed\'e5\'eb\'fc\'e7\'e0\'ff";\par
+                            break;\par
+                        \}\par
+                    \}\par
+                \} while (free);\par
+\par
+\par
+         \par
+\par
+\par
+                for (int i = x - 1; i <= x + deck; i++)\par
+                \{\par
+                    for (int j = y - 1; j <= y + 1; j++)\par
+                    \{\par
+                        if (i >= 0 && i < size && j >= 0 && j < size)\par
+                            mass[i][j] = 2;\par
+                    \}\par
+                \}\par
+\par
+                for (int i = x; i < x + deck; i++)\par
+                    mass[i][y] = 1;\par
+               \par
+            \}\par
+            else \{\par
+                do\par
+                \{\par
+                    while (true) \{\par
+                        cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 x (y \'f6\'e5 \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc x \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc):\\n";\par
+                        cin >> x;\par
+                        if (x > size) \{\par
+                            cout << "\'e2\'fb\'f5\'ee\'e4\'e8\'f2 \'e7\'e0 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb\\n";\par
+                            cin.ignore();\par
+                            cin.clear();\par
+                        \}\par
+                        else\par
+                            break;\par
+\par
+                    \}\par
+                    while (true) \{\par
+                        cout << "\'e2\'e2\'e5\'e4\'e8\'f2\'e5 y (y \'f6\'e5 \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc x \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc):\\n";\par
+                        cin >> y;\par
+                        if (y + deck > size) \{\par
+                            cout << "\'e2\'fb\'f5\'ee\'e4\'e8\'f2 \'e7\'e0 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb\\n";\par
+                            cin.ignore();\par
+                            cin.clear();\par
+                        \}\par
+                        else\par
+                            break;\par
+                    \}\par
+\par
+\par
+                    free = 0;\par
+                    for (int i = y; i <= y + deck; i++)\par
+                    \{\par
+                        if (mass[x][i] == 1 || mass[x][i] == 2)\par
+                        \{\par
+                            free = 1;\par
+                            cout << " \'e2\'fb \'e2\'e2\'e5\'eb\'e8 \'e2 \'ea\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb \'ea\'f3\'e4\'e0 \'e2\'e2\'ee\'e4\'e8\'f2\'fc \'ed\'e5\'eb\'fc\'e7\'e0\'ff";\par
+                            break;\par
+                        \}\par
+                    \}\par
+                \} while (free);\par
+\par
+\par
+\par
+\par
+\par
+                for (int i = x - 1; i <= x + 1; i++)\par
+                \{\par
+                    for (int j = y - 1; j <= y + deck; j++)\par
+                    \{\par
+                        //\'e7 \'ef\'e5\'f0\'e5\'e2\'b3\'f0\'ea\'ee\'fe, \'f9\'ee\'e1 \'ed\'e5 \'e2\'e8\'e9\'f2\'e8 \'e7\'e0 \'ec\'e5\'e6\'b3 \'ec\'e0\'f1\'e8\'e2\'e0\par
+                        if (i >= 0 && i < size && j >= 0 && j < size)\par
+                            mass[i][j] = 2;\par
+                    \}\par
+                \}\par
+\par
+                for (int i = y; i < y + deck; i++)\par
+                    mass[x][i] = 1;\par
+            \}\par
+            Show(mass, size);\par
+            _sleep(3000);\par
+            system("cls");\par
+            temp++;\par
+        \}\par
+\par
+        deck--;\par
+        ship++;\par
+    \}\par
+\par
+\}\par
+void Show(int mass[][10], int size)\par
+\{\par
+    cout << "y:1 2 3 4 5 6 7 8 9 10\\n";\par
+    for (int i = 0; i < 10; i++)\par
+    \{\par
+       // cout << i + 1<<"  ";\par
+        if (i + 1 != 10)\par
+            cout << i + 1 << " ";\par
+        else\par
+            cout << i + 1;\par
+        for (int j = 0; j < size; j++)\par
+        \{\par
+            if (mass[i][j] == 0) cout << " |";\par
+            else if (mass[i][j] == 1) cout << "o|";\par
+            else if (mass[i][j] == 2) cout << ".|";\par
+        \}\par
+        cout << "\\n";\par
+    \}\par
+    cout << "\\n";\par
+\par
+\par
+\}\par
+void StartGame(int mass[][10],int size,int mass2[][10]) \{\par
+    int attack1 = 0;//x\par
+    int attack2 = 0;//y\par
+    /*for (int i = 0; i < size; i++)\par
+    \{\par
+\par
+        if (i + 1 != 10)\par
+            cout << i + 1 << " ";\par
+        else\par
+            cout << i + 1;\par
+        for (int j = 0; j < size; j++)\par
+        \{\par
+            cout << "*|";\par
+\par
+        \}\par
+        cout << "\\n";\par
+    \}*/\par
+    //vector<int>killed;\par
+    bool popal[10][10]\{false\};\par
+    bool popal2[10][10]\{ false \};\par
+    bool cont = true;\par
+    bool cont2 = true;\par
+    int deck=0;\par
+    int deck2 = 0;\par
+    int attack=0;\par
+    int attack3 = 0;\par
+    int killed = 0;\par
+    int killed2 = 0;\par
+    while (killed<10||killed2<10) \{\par
+       \par
+        if (cont2 == true) \{\par
+            cout << "Player1 attack:\\n";\par
+            cout << "y:1 2 3 4 5 6 7 8 9 10\\n";\par
+            for (int i = 0; i < size; i++)\par
+            \{\par
+\par
+                if (i + 1 != 10)\par
+                    cout << i + 1 << " ";\par
+                else\par
+                    cout << i + 1;\par
+                for (int j = 0; j < size; j++)\par
+                \{\par
+                    if (popal[i][j] && mass2[i][j] == 1) \{\par
+                        cout << "X|";\par
+\par
+\par
+                    \}\par
+                    else if (mass2[i][j] == 4)\par
+                        cout << "-|";\par
+                    else if (popal[i][j])\par
+                        cout << "0|";\par
+                    else\par
+                        cout << "*|";\par
+\par
+\par
+                \}\par
+                cout << "\\n";\par
+            \}\par
+            cout << "killed:" << killed;\par
+            cout << "\\n";\par
+\par
+\par
+            cout << " attack please write x \'ef\'f0\'ee\'e1\'e5\'eb y\\n";\par
+            while (true) \{\par
+\par
+                cin >> attack1;\par
+                if (cin.fail()) \{\par
+                    cin.ignore();\par
+                    cin.clear();\par
+                \}\par
+                cin >> attack2;\par
+                if (cin.fail()) \{\par
+                    cin.ignore();\par
+                    cin.clear();\par
+                \}\par
+                if (popal[attack1 - 1][attack2 - 1] == false)\par
+                    break;\par
+                cout << "please attack again\\n";\par
+\par
+            \}\par
+            popal[attack1 - 1][attack2 - 1] = true;\par
+            for (int i = 0; i < size; i++)\par
+            \{\par
+\par
+\par
+                for (int j = 0; j < size; j++)\par
+                \{\par
+                    if (popal[i][j] && mass2[i][j] == 1) \{\par
+\par
+                        bool angle = 0;\par
+                        cont = 0;\par
+                        for (int g = j; mass2[i][g] != 2; g++) \{\par
+\par
+                            if (popal[i][g] && mass2[i][g] == 1) \{\par
+                                if (g > j)\par
+                                    angle = 1;\par
+                                else if (g == j) \{\par
+                                    if (mass2[i][g - 1] == 1)\par
+                                        deck++;\par
+                                \}\par
+                                attack++;\par
+                                deck++;\par
+\par
+                            \}\par
+                            else if (mass2[i][g] == 1)\par
+                                deck++;\par
+                        \}\par
+                        if (!angle) \{\par
+                            for (int g = i; mass2[g][j] != 2; g++) \{\par
+\par
+                                if (popal[g][j] && mass2[g][j] == 1) \{\par
+                                    if (g > i)\par
+                                        angle = 0;\par
+                                    else if (g == i) \{\par
+                                        if (mass2[g - 1][j] == 1)\par
+                                            deck++;\par
+                                    \}\par
+                                    attack++;\par
+                                    deck++;\par
+\par
+                                \}\par
+                                else if (mass2[g][j] == 1)\par
+                                    deck++;\par
+                            \}\par
+                        \}\par
+                        if (attack == deck) \{\par
+                            killed += 1;\par
+                            if (angle) \{\par
+                                for (int g = j; mass2[i][g] != 2; g++) \{\par
+                                    mass2[i][g] = 4;\par
+\par
+                                \}\par
+                            \}\par
+                            else \{\par
+                                for (int g = i; mass2[g][j] != 2; g++) \{\par
+                                    mass2[g][j] = 4;\par
+                                \}\par
+                            \}\par
+\par
+                        \}\par
+\par
+                        deck = 0;\par
+                        attack = 0;\par
+\par
+                    \}\par
+                   \par
+                \}\par
+\par
+            \}\par
+            system("cls");\par
+            cout << "Player1 attack:\\n";\par
+            cout << "y:1 2 3 4 5 6 7 8 9 10\\n";\par
+            for (int i = 0; i < size; i++)\par
+            \{\par
+\par
+                if (i + 1 != 10)\par
+                    cout << i + 1 << " ";\par
+                else\par
+                    cout << i + 1;\par
+                for (int j = 0; j < size; j++)\par
+                \{\par
+                    if (popal[i][j] && mass2[i][j] == 1) \{\par
+                        cout << "X|";\par
+\par
+\par
+                    \}\par
+                    else if (mass2[i][j] == 4)\par
+                        cout << "-|";\par
+                    else if (popal[i][j])\par
+                        cout << "0|";\par
+                    else\par
+                        cout << "*|";\par
+\par
+\par
+                \}\par
+                cout << "\\n";\par
+            \}\par
+            cout << "killed:" << killed;\par
+            cout << "\\n";\par
+            _sleep(1500);\par
+\par
+            system("cls");\par
+\par
+\par
+        \}\par
+   \par
+        if (popal[attack1 - 1][attack2 - 1] == true && mass2[attack1 - 1][attack2 - 1] != 1)\par
+            cont = 1;\par
+\par
+        if (cont) \{\par
+\par
+\par
+\par
+            cout << "Player2 attack:\\n";\par
+            cout << "y:1 2 3 4 5 6 7 8 9 10\\n";\par
+            for (int i = 0; i < size; i++)\par
+            \{\par
+\par
+                if (i + 1 != 10)\par
+                    cout << i + 1 << " ";\par
+                else\par
+                    cout << i + 1;\par
+                for (int j = 0; j < size; j++)\par
+                \{\par
+                    if (popal2[i][j] && mass[i][j] == 1) \{\par
+                        cout << "X|";\par
+\par
+\par
+                    \}\par
+                    else if (mass[i][j] == 4)\par
+                        cout << "-|";\par
+                    else if (popal2[i][j])\par
+                        cout << "0|";\par
+                    else\par
+                        cout << "*|"; \par
+\par
+\par
+                \}\par
+                cout << "\\n";\par
+            \}\par
+            cout << "killed:" << killed2;\par
+            cout << "\\n";\par
+\par
+\par
+            cout << " attack please write x \'ef\'f0\'ee\'e1\'e5\'eb y\\n";\par
+            while (true) \{\par
+\par
+                cin >> attack1;\par
+                if (cin.fail()) \{\par
+                    cin.ignore();\par
+                    cin.clear();\par
+                \}\par
+                cin >> attack2;\par
+                if (cin.fail()) \{\par
+                    cin.ignore();\par
+                    cin.clear();\par
+                \}\par
+                if (popal2[attack1 - 1][attack2 - 1] == false)\par
+                    break;\par
+                cout << "please attack again\\n";\par
+\par
+            \}\par
+            popal2[attack1 - 1][attack2 - 1] = true;\par
+            for (int i = 0; i < size; i++)\par
+            \{\par
+\par
+\par
+                for (int j = 0; j < size; j++)\par
+                \{\par
+                    if (popal2[i][j] && mass[i][j] == 1) \{\par
+                        cont2 = 0;\par
+                        bool angle = 0;\par
+\par
+                        for (int g = j; mass[i][g] != 2; g++) \{\par
+\par
+                            if (popal2[i][g] && mass[i][g] == 1) \{\par
+                                if (g > j)\par
+                                    angle = 1;\par
+                                else if (g == j) \{\par
+                                    if (mass[i][g - 1] == 1)\par
+                                        deck2++;\par
+                                \}\par
+                                attack3++;\par
+                                deck2++;\par
+\par
+                            \}\par
+                            else if (mass[i][g] == 1)\par
+                                deck2++;\par
+                        \}\par
+                        if (!angle) \{\par
+                            for (int g = i; mass[g][j] != 2; g++) \{\par
+\par
+                                if (popal2[g][j] && mass[g][j] == 1) \{\par
+                                    if (g > i)\par
+                                        angle = 0;\par
+                                    else if (g == i) \{\par
+                                        if (mass[g - 1][j] == 1)\par
+                                            deck2++;\par
+                                    \}\par
+                                    attack3++;\par
+                                    deck2++;\par
+\par
+                                \}\par
+                                else if (mass[g][j] == 1)\par
+                                    deck2++;\par
+                            \}\par
+                        \}\par
+                        if (attack3 == deck2) \{\par
+                            killed2 += 1;\par
+                            if (angle) \{\par
+                                for (int g = j; mass[i][g] != 2; g++) \{\par
+                                    mass[i][g] = 4;\par
+\par
+                                \}\par
+                            \}\par
+                            else \{\par
+                                for (int g = i; mass[g][j] != 2; g++) \{\par
+                                    mass[g][j] = 4;\par
+                                \}\par
+                            \}\par
+\par
+                        \}\par
+\par
+                        deck2 = 0;\par
+                        attack3 = 0;\par
+\par
+                    \}\par
+                    \par
+                \}\par
+\par
+            \}\par
+\par
+            system("cls");\par
+            cout << "Player2 attack:\\n";\par
+            cout << "y:1 2 3 4 5 6 7 8 9 10\\n";\par
+            for (int i = 0; i < size; i++)\par
+            \{\par
+\par
+                if (i + 1 != 10)\par
+                    cout << i + 1 << " ";\par
+                else\par
+                    cout << i + 1;\par
+                for (int j = 0; j < size; j++)\par
+                \{\par
+                    if (popal2[i][j] && mass[i][j] == 1) \{\par
+                        cout << "X|";\par
+\par
+\par
+                    \}\par
+                    else if (mass[i][j] == 4)\par
+                        cout << "-|";\par
+                    else if (popal2[i][j])\par
+                        cout << "0|";\par
+                    else\par
+                        cout << "*|";\par
+\par
+\par
+                \}\par
+                cout << "\\n";\par
+            \}\par
+            cout << "killed:" << killed2;\par
+            cout << "\\n";\par
+            _sleep(1500);\par
+\par
+            system("cls");\par
+\par
+\par
+\par
+\par
+\par
+        \}\par
+        if (popal2[attack1 - 1][attack2 - 1] == true && mass[attack1 - 1][attack2 - 1] != 1)\par
+            cont2 = 1;\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+        \par
+\par
+\par
+\par
+    \}\par
+\}\par
+int main()\par
+\{\par
+    srand(time(NULL));\par
+    int const size = 10;\par
+    int mass[size][size] = \{ 0 \};\par
+    int mass2[size][size] = \{ 0 \};\par
+\par
+    cout << "Player 1:\\n";\par
+    Fill(mass, size);\par
+    Show(mass, size);\par
+    _sleep(5000);\par
+    system("cls");\par
+    cout << "Player 2:\\n";\par
+    Fill(mass2, size);\par
+    Show(mass2, size);\par
+    _sleep(5000);\par
+    system("cls");\par
+    StartGame(mass, size, mass2);\par
+\}\f0\lang9\par
+}
+ 
